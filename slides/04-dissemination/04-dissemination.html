@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducible Research: Why and How</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible Research: Why and How
+## Part 4: Dissemination Solutions
+### Sam Harper
+### <br> </br>
+### SER Pre-Conference Workshop <br> 2020-10-30 </br>
+
+---
+
+
+
+
+
+
+
+
+class: center, top, inverse
+# .orange[**4. Dissemination Solutions**]
+
+--
+.left[
+## .orange[**4.1. Replication Files**]
+## .orange[**4.2 Sharing**]
+]
+
+---
+class: center, top, inverse
+name: replication
+# .orange[**4. Dissemination Solutions**]
+
+.left[
+## .orange[**4.1. Replication Files**]
+## .gray[**4.2 Sharing**]
+]
+
+---
+# Replication files provide the 'recipe' for reproducing your results.
+
+.footnote[ Clark (2017)]
+
+.left-column[
+&lt;img src="04-dissemination_files/figure-html/unnamed-chunk-2-1.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+Should: 
+- be complete but parsimonious. Don't over do it.
+- run / reproduce results with minimal effort (1-click).
+- be "literate" (human readable).
+- protect confidential data.
+
+There is no single, perfect way to organize or prepare files for replication.
+
+Find a workflow that works well for you.
+]
+
+---
+# Step 1: Generate replication files
+.footnote[ Clark (2017)]
+
+.left-column[
+![](04-dissemination_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+]
+
+.right-column[
+1. Create a new organized empty replication folder within your project directory (e.g., “replication_files/”)
+
+2. Subfolders: Should be same as overall file structure:
+ - .blue[code/] — scripts
+  - .blue[data_clean/] — manipulated data
+  - .blue[data_raw/] — original data
+  - .blue[output/] — generated tables, graphs, etc.
+  - .blue[extra/] — misc. extras (e.g., code book)
+
+3. A "README" text/markdown file to document contents, sources, software/system versions, other info necessary for replication/comprehension.
+]
+
+---
+# Step 2: Replicate your own results
+.footnote[ Clark (2017)]
+
+.left-column[
+![](04-dissemination_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+]
+
+.right-column[
+1. Copy data and code to your new replication directory.
+
+2. After copying all of the relevant files, see if you can replicate the results in your paper.
+
+3. May want to start with the "final" products (i.e., tables and figures from clean data), which should be "easiest" to replicate.
+
+4. Check for errors and make sure all is well.
+
+5. Now copy the original raw data and cleaning scripts and run the entire thing.
+
+6. All good? If not, debug and try again.
+]
+
+---
+# Step 3: Final check
+.footnote[ Clark (2017)]
+.left-column[
+![](04-dissemination_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+]
+
+.right-column[
+1. Shut down and restart software package.
+
+2. Replicate again...all good?
+
+3. Or have a friend / colleague try on another computer.
+
+4. Fix any remaining bugs and try again.
+
+5. Now ready to disseminate!
+]
+
+---
+### How replication can help
+.left-column[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/materials_large_color.png" width="207" /&gt;
+]
+
+.right-column[
+### Facilitate reproducibility
+#### Anyone can reproduce your tables and figures.
+
+### Detects errors
+#### Coding is hard. We all make mistakes.
+
+### Extends work
+#### Probes reliability of findings, answers new questions.
+]
+
+---
+.footnote[Hatzenbuehler et al. *SSM* (2014). [NY Times](https://www.nytimes.com/2018/10/09/well/live/gay-lesbian-lgbt-health-stigma-laws.html)]
+.left-column[
+Hatzenbuehler et al. *Soc Sci Med* 2014:
+
+Reported 12 year decrease in life expectancy for sexual minorities living in more prejudiced communities.
+]
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/same-sex-nyt.png" width="70%" /&gt;
+]]
+
+---
+.footnote[Source: [Retraction Watch](https://retractionwatch.com/2019/02/26/study-claiming-hate-cuts-12-years-off-gay-lives-retracted/)]
+
+.left-column[
+Replication attempt using same public data "failed".
+
+Re-analysis commissioned by original authors.
+
+Coding errors discovered.
+
+Study retracted.
+]
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/same-sex-retraction.png" width="80%" /&gt;
+]]
+
+---
+class: center, top, inverse
+# .orange[**4. Dissemination Solutions**]
+
+.left[
+## .gray[**4.1. Replication Files**]
+## .orange[**4.2 Sharing**]
+]
+
+---
+# Why share?
+.left-column[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/materials_large_color.png" width="100%" height="100%" /&gt;
+]
+.right-column[
+### Credibility
+#### Others can reproduce or interrogate your findings.
+
+### Social Good
+#### Resource for other questions and new ideas.
+
+### Changing norms
+#### Professional norms are insufficient to change behavior.
+]
+
+---
+## What to share?
+.pull-left[
+## .orange[Pre publication]
+### Preregistration/pre-analysis plan
+### Codebook / data documentation
+### Code to create / analyze data.
+### Replication files
+### Reports / preprints
+
+]
+
+.pull-right[
+## .orange[Post publication]
+### Peer-reviewed papers / postprints
+### Entire project?
+]
+
+---
+.footnote[Standard Oxford University Press [License](https://academic.oup.com/journals/pages/authors/production_and_publication/online_licensing) (e.g., AJE, IJE)]
+
+.pull-left[
+## What about pre-prints (or post-prints)?
+
+### Most publishers allow posting of a final "accepted" proof.
+
+### Consult the agreement you sign.
+
+### It is your work!
+
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/oxford-license.png" width="90%" /&gt;
+]
+
+---
+## Rationale for sharing data and code
+.pull-left[
+Online repositories last longer, are indexed.
+
+Concerns:
+
+- Can usually be embargoed, or provide only what is necessary for replication (e.g., unused survey Qs).
+
+- Biggest risk isn't having your data/ideas stolen, it's having your research ignored! (King 1995)
+
+- *More* difficult if research products are proprietary.
+]
+
+.pull-right[
+### Many resources to help
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/marwick-title.png" width="2560" /&gt;
+]
+
+---
+## Same code, different environment
+.footnote[More advanced than we can cover today. See https://mybinder.org and https://hub.docker.com/ for more. ]
+
+Code may not run somewhere else. People are working on that:
+.right-column[
+### Docker containers
+#### packages up everything needed to run an application: code, runtime, system tools, system libraries and settings in a standalone, executable package.
+
+### Binder
+#### a service that provides your code and the hardware and software to execute it (mostly R, Python).
+]
+
+---
+background-image: url(../../images/marwick-figs.png)
+background-size: contain
+class: center, top
+
+.left[Can be done for any size project 👇 ]
+
+---
+# When to share data or code?
+
+## Many options
+
+### 1. Include everything with submitted paper (public)
+### 2. Include everything with submitted paper (for review)
+### 3. Post-publication (recall TOP guidelines)
+
+--
+# .center[
+.orange[What if someone steals my idea?]
+]
+
+---
+### Replication files may not matter!
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/dansiger-letter.png" width="2624" /&gt;
+
+---
+### Biased anecdote for benefits of sharing *with* paper submission
+.pull-left[
+"Thanks for the opportunity to review this interesting paper. It is exciting to see the FARS data used in this way. **It was also exciting that you shared your code and this allowed me to review your work in a way I have not done before.**"
+.right[-Reviewer 1]
+]
+
+.pull-right[
+"Overall verdict: This paper was both exciting and a pleasure to read. Clearly written, well argued, and with a highly commendable open science approach. As a referee, one frequently thinks 'why didn’t they report the results of a model with...' - and in this case **I was able to download the data, assess their code scripts, and run my own specification to see how it changed things**."
+.right[-Reviewer 2]
+]
+
+.footnote[ We probably got lucky, but the [paper](https://osf.io/9yrdq/) was accepted on the first submission.]
+---
+
+.pull-left[
+## Where to share?
+Depends on discipline: find appropriate registry at http://www.re3data.org/, or check out ...
+
+- [Harvard’s Dataverse](http://dataverse.harvard.edu)
+
+- [Open Science Framework](http://osf.io)
+
+- [OpenICPSR](https://www.openicpsr.org/openicpsr/)
+
+- [figshare](https://figshare.com/)
+
+- [Data Dryad](https://datadryad.org/stash)
+
+- Many others...
+]
+
+.pull-right[
+![](/Users/samharper/git/reproducibility-workshop-2020/images/repos.jpg)&lt;!-- --&gt;
+]
+
+---
+### Open Science Foundation
+.pull-left[
+OSF (http://osf.io) provides a central location to manage project files.
+
+Any type of files can be uploaded (up to 5GB).
+
+Most common file types will render to be viewed on OSF.
+
+OSF also provides a more comprehensive system for planning, documenting, executing, and disseminating your research over the entire life cycle of a project--and beyond.
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-add-ons.png" width="2211" /&gt;
+]
+
+---
+## OSF workflow
+.pull-left[
+
+### 1. Create a structured workspace.
+### 2. (Possibly) pre-register study 
+### 3. Deposit / add study materials.
+### 4. Add and document analyses.
+### 5. Share study data, materials, and code.
+]
+
+.pull-right[
+.center[OSF project landing page
+![](osf-choc-happy.png)
+]]
+
+---
+### Manage access/permissions
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-permissions.png" width="2243" /&gt;
+]
+
+---
+### Automate version control
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-vcs.png" width="70%" /&gt;
+]
+
+---
+### Persistent, unique .red[identifiers] for published work
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-id-example.png" width="70%" /&gt;
+]
+---
+# Not everything can (or should) be shared
+### Spectrum for sharing sensitive material:
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/sturdy-spectrum.png" width="2467" /&gt;
+
+.footnote[ Source: Jennifer Sturdy (https://osf.io/5yq4u/)]
+
+---
+.left-column[
+## OSF allows both public and private components
+
+Allows for maximum sharing without sacrificing privacy concerns.
+]
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-private.png" width="60%" /&gt;
+]]
+
+---
+# Why we worry (re-identification)
+.footnote[Narayanan (2008)]
+
+.pull-left[
+### Netflix "contest" data:
+- unique "random" ID
+- film rated
+- date
+- ⭐ ⭐ ⭐
+
+But people rate in many places, some of which .red[do] contain personal data.
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/narayanan-netflix.png" width="1584" /&gt;
+
+]
+
+---
+# Concerns about privacy
+.right-column[
+### Trade-offs
+#### Can't pretend there aren't social costs to open data.
+
+### Dangers of re-identification
+#### Wealth of data after social media revolution.
+
+### Limits
+#### Solutions may be too severe to justify utility of sharing.
+]
+---
+.pull-left[
+## Synthetic data may also be possible
+
+- mimics an original dataset, preserving its statistical properties and relationships between variables
+
+- classification and regression tree approach
+
+- 0% disclosure risk
+
+- `synthpop` R package 📦
+
+- code and materials on [GitHub](https://github.com/dsquintana/synthpop-primer)
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/quintana-title.png" width="1501" /&gt;
+]
+
+.footnote[ Quintana (2020)]
+
+---
+class: center, middle, inverse
+# .orange[**5. Reproducible Example**]
+
+---
+class: middle, center
+# Today's Research Project
+## Does chocolate increase graduate student happiness?
+
+---
+background-image: url(../../images/choc-happy-design.png)
+background-size: contain
+
+---
+.left-column[
+### Example
+- Folder structure
+
+- Organizing via OSF
+
+- Cleaning
+
+- Analysis
+  - Descriptives
+  - Tables
+  - Figures
+
+- Write-up
+]
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/choc-happy-design.png" width="70%" /&gt;
+]]
+
+---
+class: left
+### Folder structure
+Separate code from data and manuscript:
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/choc-folders.png" width="80%" /&gt;
+---
+class: middle, center
+# Live Demo
+# 🙏
+
+---
+## Follow along
+### Create a copy of the OSF [repository](https://osf.io/3fcxd/) (called 'forking')
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/osf-fork.png" width="70%" /&gt;
+
+### Clone the GitHub [repository]() (download to your machine)
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/github-clone.png" width="40%" /&gt;
+
+
+---
+class: middle, center, inverse
+# .orange[**Final Thoughts**]
+
+---
+# Working with "friends"
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/nandi-cluster.png" width="2421" /&gt;
+]
+
+1. Ugh.
+2. He's right.
+2. Need to regenerate the model and table results.
+- Do you know where your materials are?
+- Is it 6 months later?
+- Could someone else take over and figure out what you did?
+
+---
+# Other resources for reproducibility in R
+.footnote[Source: [Anna Krystalli](https://annakrystalli.me/talks/r-in-repro-research-dc.html#120)]
+.pull-left[
+Version Control
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+RMarkdown
+- [R Markdown: The Definitive guide](https://bookdown.org/yihui/rmarkdown/)
+- [RMarkdown Driven Development (RmdDD)](https://emilyriederer.netlify.com/post/rmarkdown-driven-development/): Blog post by Emily Riederer
+
+R Packages
+- [R packages](https://r-pkgs.org/) by Hadley Wickham and Jenny Bryan
+]
+.pull-right[
+Research Compendia
+- Karthik Ram: [_rstudio::conf 2019 talk_](https://github.com/karthik/rstudio2019)
+
+Docker &amp; Binder
+- Getting started with binder [docs](https://mybinder.readthedocs.io/en/latest/introduction.html)
+- rOpenSci [Docker tutorial](https://ropenscilabs.github.io/r-docker-tutorial/)
+
+Tutorials
+- [Rstudio Essentials](https://resources.rstudio.com/) Webinar series
+- [rrresearch](https://annakrystalli.me/rrresearch/): ACCE DTP course on Research Data &amp; Project Management
+]
+
+---
+# This seems like a lot of extra work.
+.pull-left[
+## What's in it for me?
+Selfish reasons to work reproducibly:
+- Helps to avoid disaster.
+- Makes it easier to write papers.
+- Can help reviewers
+- Enables continuity of your work.
+- Builds your scholarly reputation.
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/research-lifecycle.png" width="90%" /&gt;
+]
+
+.footnote[ Markowetz (2015)]
+
+---
+## Take home messages
+
+.left-column[
+.right[
+# 🧰
+.white[x]
+# 🔒
+
+.white[x]
+# 🚀
+]]
+
+.right-column[
+### Reproducible `\(\neq\)` rigid
+#### Don't like *R*? Need to use SAS? There is no single set of tools--more important to find a workflow that works for **you** and your team.
+
+### Security still matters
+#### Some things can't be shared. Providing a rationale for what is/not shared means being transparent.
+
+### Lead by example
+#### Transparency and openness are positive norms. We need help.
+]
+
+---
+background-image: url(../../images/mcgill-university.jpg)
+background-size: contain
+class: center, middle
+#### .white[sam.harper@mcgill.ca]
+#### .white[@sbh4th]
+&lt;img src="../../images/mcgill-logo-transparent.png" style="width: 15%" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

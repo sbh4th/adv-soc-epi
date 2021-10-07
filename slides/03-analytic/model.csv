@@ -1,0 +1,5 @@
+"Analysis of Maximum Likelihood Estimates",,,,,
+"Parameter","DF","Estimate","StandardError","WaldChi-Square","Pr > ChiSq"
+"Intercept",1,0.7923,0.0494,257.0705,"<.0001"
+"free",1,0.00484,0.0907,0.0029,0.9574
+

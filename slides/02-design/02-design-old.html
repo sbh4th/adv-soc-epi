@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducible Research: Why and How</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible Research: Why and How
+## Part 2: Design Solutions
+### Sam Harper
+### <br> </br>
+### SER Pre-Conference Workshop <br> 2020-10-30 </br>
+
+---
+
+
+
+
+
+
+
+
+class: center, top, inverse
+# .orange[**2. Design Solutions**]
+
+--
+.left[
+## .orange[**2.1 Preregistration**]
+## .orange[**2.2 Pre-analysis plans**]
+## .orange[**2.3 Reporting guidelines**]
+]
+
+---
+class: center, top, inverse
+# .orange[**2. Design Solutions**]
+
+.left[
+## .orange[**2.1 Preregistration**]
+## .gray[**2.2 Pre-analysis plans**]
+## .gray[**2.3 Reporting guidelines**]
+]
+
+---
+# What is study preregistration?
+.left-column[
+### A detailed study proposal that is:
+]
+
+.right-column[
+### Time stamped
+#### Records and publicizes time and date.
+
+
+### Read-only
+#### Can't be modified.
+
+### Registered prior to data collection/access
+#### Robust to fieldwork, data snooping.
+]
+
+---
+# What is preregistration?
+.left-column[
+&lt;img src="preregistered_large_color.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+Common / required for publishing most RCTs
+
+Controversial for observational studies.
+
+Idea is to help *reduce publication bias*, since registered studies may be followed over time.
+
+No guarantee anyone will publish.
+
+Also can provide intellectual provenance of your ideas and hypotheses.
+
+Good for planning and hypothesizing, .red[not a straightjacket.]
+]
+
+---
+# Why preregistration?
+.right-column[
+## 1. It's *not* about minimizing Type 1 errors.
+
+## 2. It *is* about:
+ ###  .blue[Allowing others to transparently evaluate the credibility of the analysis.]
+ ###  .blue[Assuring that all of the evidence is available for synthesis.]
+]
+
+---
+
+.pull-left[
+## Why not preregistration?
+- Observational studies are hard.
+
+- Manuscripts may adhere to registrations rather than reality.
+
+- May discourage innovation/exploration.
+
+- Pre-specification is irrelevant to the credibility of inference.
+
+- Severe tests of hypotheses are more important than pre-specification.
+]
+
+.pull-right[
+![](lash-prereg.png)
+]
+
+.footnote[Lash and Vandenbroucke, *Epidemiology* [(2012)](https://doi.org/10.1097/EDE.0b013e318245c05b)]
+
+---
+# Where can you pre-register your study?
+.left-column[
+&lt;img src="preregistered_large_color.png" width="207" /&gt;
+]
+
+.right-column[
+- The [AEA registry](https://www.socialscienceregistry.org/) includes the option to upload PAPs. Search under
+"advanced options" for studies which include PAPs.
+
+- [EGAP](https://egap.org/registry/) is a registry for political science studies, some of which include pre-analysis plans.  
+
+- [3ie](https://www.3ieimpact.org/evidence-hub/ridie) also has a database (RIDIE) of ongoing international development impact evaluations.  
+
+- The Open Science Framework [(OSF)](https://osf.io) also invites pre-registered studies and PAPs.  
+- Many clinical trials in the US must be registered with [Clinicaltrials.gov](https://clinicaltrials.gov).
+]
+
+---
+### Where can you find templates for preregistration?
+.footnote[See the [page](https://osf.io/zab38/wiki/home/) at Open Science Foundation]
+
+![](osf-prereg-wiki.png)
+
+---
+# Writing up pre-registered studies
+
+## 1. Include a link to the registration 
+## 2. Report *all* pre-registered results.
+## 3. Explain and justify deviations.
+## 4. Non-registered analyses appropriately described as "exploratory" or "hypothesis generating".
+
+---
+# Why does preregistration matter?
+
+## .orange[Evidence synthesis should be on *all* the evidence.]
+## .orange[Distorts planning of future studies.]
+## .orange[Unethical and wasteful.]
+
+---
+class: center, top, inverse
+# .background[**X**]
+# .orange[**Registration is useful**]
+
+---
+.footnote[redrawn from Kaplan and Irwin [(2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0132382)]
+
+.left-column[
+In 2000 NHLBI required the registration of primary outcome on ClinicalTrials.gov for all their grant-funded activity.
+]
+
+.right-column[
+&lt;img src="kaplan-plos-redraw.png" width="4400" /&gt;
+]
+
+---
+class: center, top, inverse
+# What if my results are null?
+
+# You showed us that they won't get published!
+
+# I have to make rent, you know.
+
+---
+## Emphasis on design: .red[Registered Reports]
+
+![](lee-rr-stage1.png)
+.footnote[ Lee (2019)]
+
+---
+## Emphasis on design: .red[Registered Reports]
+
+![](lee-rr.png)
+.footnote[ Lee (2019)]
+
+---
+.footnote[Allen &amp; Mehler, *PLoS Biology* [(2019)](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000246)]
+
+.left-column[
+### RRs in Psychology
+
+Little difference between 'replication' studies and 'novel' studies.
+
+Big difference from non-registered studies.
+]
+
+
+.right-column[
+.center[
+![:scale 75%](allen-rr-2019.png)
+]]
+
+---
+class: center, top, inverse
+# .background[**X**]
+# .orange[**Registration is useful**]
+# .orange[**but not sufficient**]
+
+---
+.footnote[Zarin *NEJM* (2019)]
+.center[
+A majority of registerd RCTs still not reported.
+![:scale 80%](zarin-nejm-2019-fig.png)
+]
+
+
+---
+.footnote[ Goldacre [(2019)](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-019-3173-2)]
+
+.left-column[
+### But is preregistration enough?
+
+- Still many differences between registration and published reports.
+]
+
+.right-column[
+&lt;img src="goldacre-compare-title.png" width="700" /&gt;
+]
+
+---
+.footnote[ Goldacre [(2019)](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-019-3173-2)]
+
+# Academic journals are not helping
+.center[
+&lt;img src="goldacre-compare-table.png" width="700" /&gt;
+]
+
+---
+# Preregistration is not a panacea
+
+.right-column[
+### Preregistered `\(\neq\)` correct/sensible/useful
+#### Transparency helps, but cannot fix terrible design or methods.
+
+### Post-hoc analysis can be worthwhile
+#### Probing surprising results or mechanisms generates knowledge.
+
+### May also lead to 'halo' effects
+#### Preregistered research deserves equal opportunity interrogation.
+]
+
+.footnote[See Nosek et al. [(2019)](https://doi.org/10.1016/j.tics.2019.07.009) and Szollosi et al. [(2020)](https://doi.org/10.1016/j.tics.2019.11.009)]
+
+---
+class: center, top, inverse
+# .orange[**2. Design Solutions**]
+
+.left[
+## .gray[**2.1 Preregistration**]
+## .orange[**2.2 Pre-analysis plans**]
+## .gray[**2.3 Reporting guidelines**]
+]
+
+---
+## **H**ypothesizing **A**fter the **R**esults are **K**nown (HARKing)
+
+.left-column[
+- Pretending what you found was what you were looking for.
+
+- Easy to "find" theory / biological evidence consistent with results.
+]
+
+.right-column[
+![](targets.png)
+]
+.footnote[ *New Yorker*, 2014-12-07]
+
+---
+# What is a pre-analysis plan?
+.left-column[
+&lt;img src="notebook.png" width="683" /&gt;
+]
+
+.right-column[
+- Detailed description of research design and data analysis plans, submitted to a registry before looking at the data.
+
+- Helps to tie your hands for data analysis (address researcher degrees of freedom, etc.).
+
+- Distinguish between confirmatory and exploratory analysis.
+
+- Increases the credibility of research.
+
+- Transparent methods make it easier for others to build on your work.
+]
+
+---
+## Confirmatory and exploratory studies have different aims
+.footnote[ Dehaven and Bowman OSF (2020)]
+.pull-left[
+### Confirmatory
+- Well-theorized.
+
+- Plausible mechanisms.
+
+- Minimize false positives.
+
+- Hypothesis *testing*.
+]
+
+.pull-right[
+### Exploratory
+- Pushes new ideas.
+
+- Hypothesis *generating*
+
+- Minimize false negatives.
+
+- Testing irrelevant.
+]
+
+---
+## What goes into a pre-analysis plan?
+
+.pull-left[
+- General info (Title, PIs, Staff)
+
+- Introduction and Summary
+
+- Study Design:
+  - Hypotheses
+  - Main variables
+  - Study setting.
+  - Intervention components.
+  - Data collection methods.
+  - Treatment assignment mechanism.
+  - Power calculations.
+]
+
+.pull-right[
+- Analytic decisions
+  - models
+  - derived variables
+  - clustering
+  - multiple testing
+  
+- Threats/mitigation/robustness checks.
+
+- Dissemination plans
+]
+
+---
+# Example from development economics
+.footnote[ Casey et al. [(2012)](https://academic.oup.com/qje/article-abstract/127/4/1755/1841616?redirectedFrom=fulltext)]
+
+.pull-left[
+![](casey-title.png)
+]
+
+--
+
+.pull-right[
+### Conclusions:
+![](casey-conclusion.png)
+]
+
+---
+## Example from epidemiology
+Note the time-stamp, which provides credible evidence of *when* you had your brilliant ideas.
+
+![](harper-pap-stamp.png)
+
+
+---
+.left-column[
+### Example from epidemiology
+Can be challenging for observational studies or secondary data analyses.
+
+Can you prove when you obtained data access?
+]
+
+.right-column[
+.center[
+![:scale 100%](harper-pap-abstract.png)
+]]
+
+---
+class: center, top, inverse
+# .orange[**2. Design Solutions**]
+
+.left[
+## .gray[**2.1 Preregistration**]
+## .gray[**2.2 Pre-analysis plans**]
+## .orange[**2.3 Reporting guidelines**]
+]
+
+---
+.footnote[ Glasziou et al. (2014)]
+.pull-left[
+# "Most publications have elements that are missing, poorly reported, or ambiguous"
+]
+
+.pull-right[
+![](glasziou-title.png)
+![](glasziou-table.png)
+]
+
+---
+## Importance of intervention details
+.footnote[Hoffman (2013)]
+.left-column[
+Want decision-makers to act on your evidence?
+
+Can they actually understand what you did?
+]
+
+--
+
+.right-column[
+![](hoffman-title.png)
+- Of 137 interventions, only 53 (39%) were adequately described;
+
+- The most frequently missing item was the “intervention materials”
+(47% complete);
+
+]
+
+---
+.footnote[Hoffman (2014)]
+.left-column[
+Missing due to:
+- copyright or intellectual property;
+
+- absent materials or intervention details;
+
+- unaware of their importance.
+]
+
+.right-column[
+.center[
+![:scale 85%](hoffman-fig.png)
+]]
+
+---
+Reporting guidelines exist for entire research lifecycle
+
+.footnote[See the [EQUATOR Network](https://www.equator-network.org/)]
+
+.pull-left[
+.right[
+### Question and approach
+#### .white[x]
+### Pre-intervention
+#### .white[x]
+### Research report
+#### .white[x]
+### Cost-effectivness
+]]
+
+--
+
+.pull-right[
+.left[
+### Systematic review
+#### 👉 PRISMA/PROSPERO
+### Research protocol/preanalysis
+#### 👉 SPIRIT
+### Trials/Observational studies
+#### 👉 CONSORT/STROBE
+### Benefits and costs of interventions
+#### 👉 CHEERS
+]]
+
+---
+![](equator-network-2020.png)
+
+---
+## (Some) evidence that it might matter.
+.footnote[Hopewell et al. *BMJ* [(2010)](https://www.bmj.com/content/bmj/340/bmj.c723.full.pdf)]
+
+.left-column[
+- Some evidence that item reporting has increased.
+
+- Consistent with revised CONSORT (2001).
+
+- Non-adopting journals report fewer items.
+]
+
+.right-column[
+.center[
+![:scale 80%](hopewell-title.png)
+![:scale 80%](hopewell-bmj-fig2.png)
+]]
+
+---
+Since 2015 funders, journals are embracing *Transparency and Openness* (TOP) guidelines.
+.center[
+![:scale 90%](TOP_standards.png)
+]
+
+.footnote[Source: OSF]
+
+---
+## It's still difficult to change norms
+.footnote[Hamra, Goldstein, Harper [(2019)](https://www.ahajournals.org/doi/10.1161/JAHA.119.012292)]
+
+.pull-left[
+Most journals chose *Level 1* (disclosure)
+
+*J Am Heart Assoc* published 40 original research papers during first half of 2019.
+- Posted data: 0
+- Posted code: 1
+- Data upon "reasonable" request: 30
+- Code upon "reasonable" request: 5
+
+
+]
+
+.pull-right[
+![](hamra-paper.png)
+]
+
+---
+# Value of reporting guidelines
+
+.left-column[
+&lt;img src="02-design_files/figure-html/unnamed-chunk-8-1.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+### Improve transparency of reported research
+#### Benefits funders, producers and consumers of research.
+
+### May help to improve the quality of research.
+#### More evidence needed, unintented consequences possible.
+
+### Better reporting `\(\neq\)` more reliable.
+#### Tranparently reported research can still be biased/bad.
+]
+
+---
+class: center, middle, inverse
+# .orange[**Registration, pre-analysis plans, and reporting guides are design strategies to help mitigate bias from underreported research**]
+
+---
+class: center, middle, inverse
+
+## .orange[**They do not guarantee reliable or valid research**]
+
+---
+class: center, top, inverse
+# .orange[**Break!**] ☕
+<div class="countdown" id="timer_5f9c146c" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

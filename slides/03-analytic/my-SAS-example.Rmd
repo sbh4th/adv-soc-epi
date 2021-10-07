@@ -1,0 +1,26 @@
+---
+title: "My SAS Example"
+author: "Sam Harper"
+date: "26/10/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(kableExtra)
+```
+
+## Results
+
+We ran a logistic model:
+
+```{r model, echo=F, message=FALSE}
+t1 <- read_csv(here("slides/03-analytic", "model.csv"), skip=2,
+  col_names=c("Parameter", "df", "Estimate", "SE", "X2", "pvalue"))
+kable(t1, format = 'latex', digits=2, 
+      caption = "Logistic Estimates", booktabs = T) %>%
+      kable_styling(latex_options = "hold_position")
+```
+Results look good!

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducible Research: Why and How</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible Research: Why and How
+## Part 1: Integrity Problems
+### Sam Harper
+### <br> </br>
+### SER Pre-Conference Workshop <br> 2020-10-30 </br>
+
+---
+
+
+
+
+
+
+
+class: center, top, inverse
+# .orange[**1. Scientific Integrity Problems**]
+
+--
+
+.left[
+## .orange[**1.1 Mertonian norms**]
+## .orange[**1.2 Significance testing**]
+## .orange[**1.3 Non-replication**]
+## .orange[**1.4 Incentive structure**]
+]
+
+---
+class: center, top, inverse
+# .orange[**1. Scientific Integrity Problems**]
+
+.left[
+## .orange[**1.1 Mertonian norms**]
+## .gray[**1.2 Significance testing**]
+## .gray[**1.3 Non-replication**]
+## .gray[**1.4 Incentive structure**]
+]
+
+---
+# Mertonian Norms in Science
+.pull-left[
+### Core Values of Scientific Research
+1. Universalism
+
+2. Communality
+
+3. Disinterestedness
+
+4. Organized Skepticism
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/merton-note.png" width="1280" /&gt;
+]
+
+.footnote[ Merton (1942), Christensen et al. (2019)]
+
+---
+.pull-left[
+### Norms
+- *Universalism*: Evaluate research only on its merit.
+
+- *Communality*: Openly share new findings.
+
+- *Disinterestedness*: Motivated by the desire for knowledge and discovery.
+
+- *Skepticism*: Consider all new evidence, hypotheses, theories, and innovations, even those that challenge or contradict their own work.
+]
+
+--
+
+.pull-right[
+### Counternorms
+- *Particularism*: New knowledge from reputation or group.
+
+- *Secrecy*: Protect own findings for private gain.
+
+- *Self-interestedness*: Colleagues are competitors.
+
+- *Dogmatism*: Protecting one's own findings, resisting alternatives.
+]
+
+---
+## Potential sources of "bias" in published research
+.pull-left[
+### Usual explanations
+#### Confounding, measurement error, selection bias, model misspecification, etc.
+]
+
+--
+
+.pull-right[
+### Problems with integrity
+#### • Fraud/data manipulation/fabrication.
+#### • Poor design / inadequate power.
+#### • NHST: Publication bias.
+#### • NHST: P-hacking.
+#### • Financial ties/ideological commitments.
+#### • Careerism.
+#### • Lack of transparency.
+]
+
+---
+.footnote[ Munafo et al. (2017)]
+
+.center[Affects the entire research lifecycle
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/munafo-figure.png" width="900" /&gt;
+]
+
+---
+class: center, top, inverse
+# .background[x]
+
+# .orange[**How do we know that science isn't working?**]
+
+--
+
+# .orange[**Ask scientists.**]
+
+---
+.footnote[ Christensen et al. (2019) surveyed 3247 US researchers funded by NIH]
+.left-column[
+.right[
+### Norm support:
+### "In theory"
+#### .white[x]
+### "Me"
+####.white[x]
+### .blue["Others"]
+]]
+
+.right-column[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/christensen-norms-arrow.png" width="1707" /&gt;
+]
+
+---
+.footnote[Fanelli *PLoS ONE* (2011)]
+.left-column[
+### Scientists admit to engaging in questionable research practices.
+
+
+]
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/fanelli-qrp-figure.png" width="70%" /&gt;
+]]
+
+---
+.footnote[Baker *Nature* (2018)]
+.left-column[
+## Scentists think there is a "reproducibility" crisis
+
+### or a "slight" crisis?  🤔
+]
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/baker-crisis.png" width="70%" /&gt;
+]]
+
+---
+class: center, top, inverse
+# .orange[**1. Scientific Integrity Problems**]
+
+.left[
+## .gray[**1.1 Mertonian norms**]
+## .orange[**1.2 Significance testing**]
+## .gray[**1.3 Non-replication**]
+## .gray[**1.4 Incentive structure**]
+]
+---
+.pull-left[
+## A lot of irreproducible or unreliable research stems from Null Hypothesis Significance Testing (NHST).
+]
+
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/pushing-for-p.png" width="2435" /&gt;
+]
+
+.footnote[ https://mobile.twitter.com/wviechtb/status/1228327958810648576/photo/1]
+
+---
+### Researcher "degrees of freedom" are difficult to control
+.footnote[ Source: Gary King]
+
+.pull-left[
+### How are analyses conducted?
+- collect the data over many months.
+- finish recording and merging.
+- run *one* regression.
+- new regression, different controls.
+- now a different functional form.
+- new regression, different measures.
+- yet another regression on subset.
+- have 100 or 1000 estimates.
+- 1 or maybe 5 results in the paper.
+]
+
+--
+
+.pull-right[
+### What's the problem?
+- Some result is designated as the “correct” one, only *after* looking
+at the estimates.
+
+- Is this a true test of a hypothesis or just confirmation bias?
+
+- This is "p-hacking"
+]
+
+---
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/truth-vigilantes-soccer-calls2.png" width="2731" /&gt;
+
+.footnote[ Source: [fivethirtyeight.com](https://projects.fivethirtyeight.com/p-hacking/)]
+
+---
+# Let's do some hacking!
+
+## Go to https://projects.fivethirtyeight.com/p-hacking/ and answer this question:
+
+--
+
+.center[
+# .orange[**Will next week's election affect the economy?**]
+]
+
+<div class="countdown" id="timer_5fb309a6" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+background-image: url(../../images/hacking-result.png)
+background-size: contain
+
+---
+background-image: url(../../images/hacking-result2.png)
+background-size: contain
+
+---
+## How NHST facilitates non-replication
+.footnote[ Lash (2017)]
+.left-column[
+
+.red[Study results are sampled from the (---) distribution, but we only see 'statistically significant' ones ]
+
+]
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/lash-aje-2017d.png" width="90%" /&gt;
+]]
+
+
+---
+.left-column[
+.footnote[ https://www.ahajournals.org/doi/abs/10.1161/jaha.116.004880]
+### How do we know there is p-hacking?
+(1) Look at what people are doing.
+]
+
+.right-column[
+Two estimates:
+- HR=0.90, 95%CI: 0.81, 0.99    .blue["Significantly lower"]
+- HR=0.89, 95%CI: 0.78, 1.00009 .red["No difference"]
+
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/aha-ns.jpeg" width="700" /&gt;
+]
+---
+.left-column[
+.footnote[ Chavalarais et al. (2013)]
+### How do we know there is p-hacking?
+(2) Seriously, everything is significant
+]
+
+.right-column[
+P-values in the biomedical literature, 1990-2015
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/chavalarais-fig3.png" width="700" /&gt;
+]
+
+---
+.left-column[
+.footnote[ Gotzsche (2006)]
+### How do we know there is p-hacking?
+(3) Maldistribution of published p-values
+
+True for medicine, economics, psychology, political science, many other disciplines.
+]
+
+.right-column[
+P-values from 260 RCTs
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/gotzsche.png" width="700" /&gt;
+]
+
+---
+.left-column[
+.footnote[ data from Barnett and Wren [(2019)](https://bmjopen.bmj.com/content/bmjopen/9/11/e032506.full.pdf)]
+### Won't 95% confidence intervals help?
+No.
+
+Researchers still dichotomize them.
+]
+
+.right-column[
+.center[Nearly 1,000,000 95% CIs from PubMed:]
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/wren-cis.png" width="700" /&gt;
+]
+
+---
+class: middle, center
+# NHST also leads to missing evidence and publication bias
+
+---
+.footnote[ Turner et al. *NEJM* [(2008)](https://www.nejm.org/doi/full/10.1056/nejmsa065779)]
+
+.left-column[
+###  Missing evidence
+Negative studies of antidepressents less likely to be published. 
+
+Impacts regulatory decisions.
+]
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/turner-nejm-title.png" width="80%" /&gt;
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/turner-nejm-figure.png" width="50%" /&gt;
+]]
+
+---
+.footnote[Fanelli *PLoS ONE* (2010), Yong *Nature* [(2012)](https://www.nature.com/news/replication-studies-bad-copy-1.10634)]
+
+.pull-left[
+## .orange[Publication bias affects nearly all disciplines]
+### Statistically significant results are more likely to be published, across virtually all disciplines.
+### May be worse in "softer" sciences.
+### Much of the bias is likely self-imposed.
+]
+
+.pull-right[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/yong-accentuate.png" width="90%" /&gt;
+]]
+
+---
+.footnote[ Figure from Mervis in Science 29 Aug 2014;345:992]
+
+.left-column[
+### Self-imposed by many researchers
+221 survey experiments funded by US NSF.
+
+All peer reviewed, required to be deposited in a registry.
+
+All studies had results.
+]
+
+--
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/mervis-franco-fig.png" width="65%" /&gt;
+]]
+
+---
+class: center, top, inverse
+# .orange[**1. Scientific Integrity Problems**]
+
+.left[
+## .gray[**1.1 Mertonian norms**]
+## .gray[**1.2 Significance testing**]
+## .orange[**1.3 Non-replication**]
+## .gray[**1.4 Incentive structure**]
+]
+
+---
+## Distinctions between commonly used terms
+.footnote[ National Academy of Sciences (2019)]
+.pull-left[
+### Replication
+Using using independent investigators, methods, data, equipment, and protocols, we arrive at the same conclusions and/or the same estimate of the effect.
+
+.blue[There can be good reasons why findings do not replicate.]
+
+]
+
+--
+
+.pull-right[
+### Reproducibility
+If we start from the *same* data gathered by the scientist we can reproduce the same results, p-values, confidence intervals, tables and figures as in the original report.
+
+.red[There are fewer reasons for non-reproducibility.]
+
+]
+---
+### Large scale efforts to replicate studies are not reassuring
+.footnote[ Nosek et al. (2017), Camerer et al. (2016)]
+
+.pull-left[
+#### In Psychology
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/nosek-abstract.png" width="650" /&gt;
+]
+
+.pull-right[
+#### In Economics
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/camerer-abstract.png" width="650" /&gt;
+]
+
+---
+.footnote[ Nosek et al. (2017)]
+
+.left-column[
+### Effect sizes are much lower in replication studies.
+]
+.right-column[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/nosek-fig.png" width="650" /&gt;
+]
+
+---
+## Surely the "top" journals are better, right?
+.footnote[ Camerer et al. [(2018)](https://www.nature.com/articles/s41562-018-0399-z)]
+
+.pull-left[
+"We find a significant effect in the same direction as the original study for 13 (62%) studies, and the effect size of the replications is on average about 50% of the original effect size"
+
+"The relative effect size of true positives is estimated to be 71%, suggesting that both .red[false positives and inflated effect sizes] of true positives contribute to imperfect reproducibility."
+]
+.pull-right[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/camerer-nature-fig-a.png" width="1240" /&gt;
+]
+
+---
+# What about peer review?
+.pull-left[
+### Peer review is:
+- Slow, inefficient, and expensive.
+
+- Reviewers agreement no better than chance.
+
+- Does not detect errors.
+]
+
+.pull-right[
+### Reviewiers are biased against:
+- Less prestigious institutions.
+
+- Against new or original ideas.
+]
+
+.footnote[ Smith (2010), editor at *BMJ* for many years.]
+
+
+---
+### If we wanted to reproduce, often the materials aren't there
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/mol-brain.png" width="700" /&gt;
+]
+
+.footnote[ Miyakawa *Molecular Brain* (2020) 13:24]
+
+---
+.pull-left[
+### Even with data, efforts to reproduce are &lt;/br&gt; rarely successful
+Gertler et al. gathered replication materials from published papers in econ.
+
+Most authors only included estimation code.
+
+*Estimation code* only ran in 40% of cases.
+
+
+]
+
+.pull-right[
+![](/Users/samharper/git/reproducibility-workshop-2020/images/gertler-replication.jpg)&lt;!-- --&gt;
+]
+
+.footnote[ Gertler et al. 2018]
+
+---
+class: center, top, inverse
+# .orange[**1. Scientific Integrity Problems**]
+
+.left[
+## .gray[**1.1 Mertonian norms**]
+## .gray[**1.2 Significance testing**]
+## .gray[**1.3 Non-replication**]
+## .orange[**1.4 Incentive structure**]
+]
+
+---
+## Incentive problems
+.right-column[
+### Reward structure
+#### Papers, grants, media, "novel" and "significant" results.
+### Incentives
+#### Gift authorship, CV padding, salami-slicing
+#### Overstating claims, ignoring "non-significant" results, p-hacking
+#### Hoarding data, non-transparent materials and methods
+]
+
+---
+## Incentive problems
+### Remember Brian Wansink?
+### After encouraging his postdoc to "find" specific results, fish for interactions, change the dependent variable, and eliminate outliers, he concluded:
+
+.center[
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/wansink-careerism.png" width="1877" /&gt;
+]
+
+---
+# Summary points
+## Science is conducted by humans.
+## Many counternorms exist that undermine scientific integrity.
+
+--
+
+.center[
+## .orange[What can we do about it?]
+]
+
+---
+### A reproducible path forward: Reminaging the research lifecycle?
+&lt;img src="/Users/samharper/git/reproducibility-workshop-2020/images/research-lifecycle-solution.png" width="1865" /&gt;
+
+.footnote[ Policy Design &amp; Evaluation Lab (2017)]
+
+---
+class: center, top, inverse
+# .orange[**Break!**] ☕
+<div class="countdown" id="timer_5fb308d9" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
