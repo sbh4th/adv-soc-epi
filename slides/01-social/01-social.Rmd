@@ -1,0 +1,384 @@
+---
+title: "Measuring Social Inequality"
+subtitle: "Advanced Social Epidemiology PhD Course"  
+author: "Sam Harper"
+institute: " <br> </br>"
+date: "University of Copenhagen <br> 2021-10-11 </br>"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [xaringan-themer.css, style.css]
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(here)
+library(DiagrammeR)
+library(xaringan)
+library(leaflet)
+library(ggplot2)
+library(emojifont)
+library(countdown)
+xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
+```
+
+```{r, include=FALSE}
+pdf2png = function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) return(path)
+  path2 = xfun::with_ext(path, "png")
+  img = magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
+```
+
+class: center, middle, inverse
+# .orange[**Part 1: Measuring the "Social" in Social Inequality**]
+
+---
+class: center, top, inverse
+# .orange[**1. Measuring Social Position**]
+
+--
+
+.left[
+## .orange[**1.1 Why?**]
+## .orange[**1.2 Individual Social Position**]
+## .orange[**1.3 Aggregate Social Position**]
+## .orange[**1.4 Life Course Exposures**]
+]
+
+---
+class: center, top, inverse
+# .orange[**1. Measuring Social Position**]
+
+--
+
+.left[
+## .orange[**1.1 Why?**]
+## .gray[**1.2 Individual Social Position**]
+## .gray[**1.3 Aggregate Social Position**]
+## .gray[**1.4 Life Course Exposures**]
+]
+
+---
+## Why should we care?
+
+Because we are epidemiologists, and exposure measurement matters!
+Ethical importance of social inequalities in health.
+As with other exposures, we need to think about:
+specific links between the elements of exposure and outcome of interest
+intensity
+duration
+cumulative vs. transient effects
+thresholds or dose-response
+*direct or indirect effects of exposure
+
+---
+## The need for accuracy
+
+1. Interest in social position as an EXPOSURE:
+Modifiable exposures and counterfactual causation
+Individual causal effect of social position (X), for disease/outcome Y=1:
+
+			Pr[Y = 1 | Set(X = x1)] vs. Pr[Y = 1 | Set(X = x2)]
+
+Difference (or ratio) of between average risks of Y if assigned to differing levels of X (e.g., x1 vs. x2)
+
+2. Need to control for CONFOUNDING by social position:
+Social position correlated with many disease risks and exposures
+Poor measurement of confounders=misclassification
+Potential to bias your effect measure of interest
+
+---
+## Position vs. Status
+We usually think of socioeconomic indicators as “fixed” characteristics of individuals (i.e., status), at least analytically, but…
+Theoretically more useful to consider them as markers of location (i.e., position) in the social structure that may vary over time and with local context.
+
+---
+## Key ideas: SEP measures are context dependent
+
+.right-column[
+>“There is no single best indicator of SEP suitable for all study aims and applicable at all time points in all settings. Each indicator measures different, often related aspects of socioeconomic stratification and may be more or less relevant to different health outcomes and at different stages in the life course. 
+
+>The choice of SEP measure(s) should ideally be informed by consideration of the specific research question and the proposed mechanisms linking SEP to the outcome.”
+
+> Galobardes (2004)
+
+]
+
+---
+class: center, middle, inverse
+
+# Question for Discussion
+
+## Suppose it’s your job to measure and track health inequalities in Copenhagen.
+
+### What social indicator(s) would you choose?
+### Why?
+
+---
+## Theoretical basis for measuring the 'social'
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "mccartney-model.png"))
+```
+]
+.footnote[McCartney et al. 2019]
+
+---
+## Potential equity 'stratifiers'
+### Also called “dimensions of inequality”
+
+.right-column[
+
+PROGRESS scheme used by WHO:
+- Place of residence (rural, urban, etc.)
+- Race or ethnicity
+- Occupation
+- Gender
+- Religion
+- Education
+- Socioeconomic status
+- Social capital or resources
+]
+
+.footnote[WHO 2013]
+
+---
+## Which indicator to use?
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "galobardes-figure.png"))
+```
+]
+.footnote[Galobardes et al. 2007]
+
+---
+## Individual-level measures: Occupation
+Measurement
+Relevant exposure period? (current vs. longest held job)
+Relations to workplace and means of production
+
+Interpretation
+May reflect both material resources and a measure of prestige/social standing
+Influences living conditions and represents a link between education and income. 
+
+Challenges
+Individual vs. household exposure status
+Comparability over time with changing societal norms
+Often country-specific, so limited comparability.
+Need to make specific links to exposures encountered in occupational setting
+
+---
+## Example: Smoking and class in Denmark
+How to locate Danish 15-year olds in social class?
+Holstein et al. (2019) used parents occupational social class.
+“…defined by the occupational skills and competencies necessary for the job as well as the power and control associated with the position”
+
+“The participants reported their father’s and mother’s occupation and the research group coded this information into OSC from I (highest) to V (lowest) [14]. We added OSC VI to include economically inactive parents who receive unemployment benefits, disability pension, or other kinds of transfer income.”
+
+“Each schoolchild was categorised by the .red[highest ranking parent] into high (I–II), middle (III–IV) and low (V–VI) OSC.”
+
+
+---
+## (Some) Danish Occupational Class Definitions
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "christensen-table1.png"))
+```
+]
+
+.footnote[Christensen et al., 2014]
+
+---
+## (Some) Danish Occupational Class Definitions
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "christensen-table2.png"))
+```
+]
+
+.footnote[Christensen et al., 2014]
+
+---
+.footnote[Holstein et al., 2019]
+.left-column[
+### Smoking occupational social class
+]
+
+.right-column[
+```{r, echo=F, out.height="70%", out.width="70%"}
+knitr::include_graphics(here("images", "holstein-figure.png"))
+```
+]
+
+
+---
+## Individual measures: Education
+Measurement
+Continuous (years of accumulated education)
+Milestones/achievement categories (e.g., university degree)
+
+Interpretation
+What is the relevant exposure?
+Accumulated intellectual resources? Cognitive skills? Unmeasured non-cognitive skills (e.g., persistence, discipline)?
+
+Challenges
+Potentially confounded by cohort effects
+Does quality matter?
+
+---
+background-image: url(../../images/mackenbach-obesity.png)
+background-size: contain
+.footnote[Mackenbach et al. NEJM 2010]
+
+---
+background-image: url(../../images/mackenbach-smoking.png)
+background-size: contain
+.footnote[Mackenbach et al. NEJM 2010]
+
+---
+The changing context of social exposures has implications for evaluating descriptive trends as well.
+
+
+
+
+
+“In terms of mortality risk, those excluded from high school in the early part of the 20th century are not comparable with those excluded from high school a generation later, because those left behind by the high school expansions in mid century likely had childhoods that were more disadvantaged along many dimensions, and so were at higher mortality risk all along. Describing differences between these two subgroups as a ‘decline’ in the life expectancy of high school non-completers simply because they were born at different times almost certainly reflects [lagged selection bias].” 
+-Dowd and Hamoudi, Int J Epid 2014
+
+---
+## individual measures: household income
+Do you think that income per se is causally related to health?
+
+If not, why do we measure it?
+
+How would you test it?
+Potential pathways involving income
+Material conditions (Housing quality, food, clothing, medical care, opportunities for recreation, etc.)
+Psychosocial factors (financial insecurity, etc.)
+Health behaviors
+These factors often travel together (residual confounding).
+
+---
+## Individual measures: household income
+.pull-left[
+### Measurement
+- Continuous is ideal, but often much missing data
+
+- Categories may be some improvement, but how to adjust for inflation?
+- Some novel study designs to get more data (links to tax records, reporting above or below thresholds)
+]
+
+.pull-right[
+### Interpretation
+Difficult, since it is unlikely that income itself is the causal exposure
+
+### Challenges
+Consumption may be better linked to resources that affect health, but very expensive (both time and $) to measure (e.g. World Bank’s LSMS)
+]
+
+---
+## Questions about income
+.right-column[
+Household or individual income?
+
+Absolute amount or categorical?
+
+Threshold or gradient?
+
+What about in-kind benefits? Public assistance?
+
+What about reverse causation?
+]
+
+---
+.footnote[Mortensen et al. 2015]
+.left-column[
+### .white[x]
+
+- Broadly similar patterns for all countries
+
+- Note stronger gradients for men than women
+]
+
+.right-column[
+.center[
+Age standardized mortality for 2003 (solid) and 1995 (dashed)
+```{r, echo=F, out.height="70%", out.width="70%"}
+knitr::include_graphics(here("images", "mortensen-figure.png"))
+```
+
+]]
+
+---
+## Individual measures: Ethnic background
+Measurement
+No gold standard
+Self-reported typical
+Genetic markers of geographic ancestry exist, but limited.
+
+Interpretation
+Potentially measured with less error, but encompasses wide range of possible historical factors
+
+Challenges
+Changes in arbitrary categories over time (e.g., North American countries are bad at this)
+
+---
+## Why might ethnicity affect health?
+.right-column[
+- May be associated with living conditions such as safe housing, freedom from violence, and access to health enhancing resources.
+
+- In some countries, ethnic background shows strong associations with important behavioural and biological risk factors, but there is wide variation.
+- Certain ethnic groups may be victims of overt and covert discrimination that can affect their health through multiple channels.
+]
+
+---
+.footnote[Marmot and Syme, *Am J Epidemiol* 1976]
+.left-column[
+- Measuring 'exposure' by 'distance' relative to Western diet.
+
+
+]
+.right-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "marmot-chd-1976.png"))
+```
+]
+
+---
+.footnote[Marmot and Syme, *Am J Epidemiol* 1976]
+.left-column[
+- More 'direct' measures of diet according to following 'traditional' based on country of origin.
+
+
+]
+.right-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "marmot-assimilation-1976.png"))
+```
+]
+
+---
+class: center, top, inverse
+# .orange[**Break!**] `r emo::ji("coffee")`
+```{r, echo=F}
+countdown(minutes = 10, 
+          left = 0, right = 0, bottom = "15%", top = "15%",
+          padding = "50px",
+          margin = "5%",
+          font_size = "7em",
+          color_text= '#f5bc6c')
+```
