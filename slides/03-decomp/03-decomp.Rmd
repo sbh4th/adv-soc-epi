@@ -3,7 +3,7 @@ title: "Decomposition Techniques for Social Epidemiology"
 subtitle: "Advanced Social Epidemiology PhD Course"  
 author: "Sam Harper"
 institute: " <br> </br>"
-date: "University of Copenhagen <br> 2021-10-XX </br>"
+date: "University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs

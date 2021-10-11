@@ -1,0 +1,108 @@
+---
+title: "Measuring Social Inequality"
+subtitle: "Advanced Social Epidemiology PhD Course"  
+author: "Sam Harper"
+institute: " <br> </br>"
+date: "SER Pre-Conference Workshop <br> 2021-10-11 to 2021-10-15 </br>"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [xaringan-themer.css, style.css]
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(here)
+library(tidyverse)
+library(DiagrammeR)
+library(xaringan)
+library(leaflet)
+library(ggplot2)
+library(emojifont)
+library(countdown)
+xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
+```
+
+```{r, include=FALSE}
+pdf2png = function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) return(path)
+  path2 = xfun::with_ext(path, "png")
+  img = magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
+```
+
+class: center, middle, inverse
+# .orange[**Part 2: Measuring the "Inequality" in Social Inequality**]
+
+---
+class: center, top, inverse
+# .orange[**2. Measuring Inequality**]
+
+.left[
+## .orange[**2.1 Conceptual Issues**]
+## .orange[**2.2 Simple vs. Complex Measures**]
+## .orange[**2.3 Absolute and Relative Inequality**]
+## .orange[**2.4 Weighting**]
+## .orange[**2.5 Reference Points**]
+]
+
+---
+class: center, top, inverse
+# .orange[**2. Measuring Inequality**]
+
+.left[
+## .orange[**2.1 Conceptual Issues**]
+## .gray[**2.2 Simple vs. Complex Measures**]
+## .gray[**2.3 Absolute and Relative Inequality**]
+## .gray[**2.4 Weighting**]
+## .gray[**2.5 Reference Points**]
+]
+
+---
+## Why monitor health inequalities?
+.pull-left[
+### Surveillance
+
+- Natural complement to monitoring overall health
+
+- Essential for detecting important changes in risk
+]
+
+--
+
+.pull-right[
+### Impact
+
+- Opportunity to evaluate etiological explanations for health inequalities
+
+- Evaluating the distributional impacts of public health interventions and medical innovations
+
+- Crucial for measuring the responsiveness of health care systems to those most in need
+]
+
+
+---
+class: center, top, inverse
+# .orange[**Break!**] `r emo::ji("coffee")`
+```{r, echo=F}
+countdown(minutes = 15, 
+          left = 0, right = 0, bottom = "15%", top = "15%",
+          padding = "50px",
+          margin = "5%",
+          font_size = "7em",
+          color_text= '#f5bc6c')
+```
