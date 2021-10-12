@@ -33,7 +33,6 @@ class: center, middle, inverse, title-slide
 class: center, top, inverse
 # .orange[**3. Decomposition**]
 
---
 .left[
 ## .orange[**3.1 Life Table Decomposition**]
 ## .orange[**3.2 Concentration Index Decomposition**]
@@ -44,7 +43,6 @@ class: center, top, inverse
 class: center, top, inverse
 # .orange[**3. Decomposition**]
 
---
 .left[
 ## .orange[**3.1 Life Table Decomposition**]
 ## .gray[**3.2 Concentration Index Decomposition**]
@@ -57,7 +55,7 @@ class: center, top, inverse
 ## Today:
 - Life table decomposition
 - Inequality decomposition: Concentration Index
-- Decomposing two-group differences: Blinder-Oaxaca
+- Decomposing two-group differences: Kitagawa-Blinder-Oaxaca
 ]
 
 .pull-right[
@@ -97,6 +95,86 @@ class: center, top, inverse
 
 
 ---
+## Decomposing changes in life expectancy
+.right-column[
+Uses age- and cause-specific mortality rate differences between two (or more) populations to estimate the contribution of specific age groups and causes of death to changes in life expectancy.
+
+Not causal.
+
+Can provide a means of evaluating 'explanations' for changes in mortality.
+
+Between countries, genders, ethnic groups, social classes, etc.
+]
+
+---
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-papers.png" width="80%" height="80%" /&gt;
+]
+
+---
+### Example from recent events
+.pull-left[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/case-deaton-cover.png" width="60%" height="60%" /&gt;
+]
+
+.pull-right[
+&gt;Over the last century, Americans’ life expectancy at birth has risen from 49 to 77. Yet in recent years, that rise has faltered. Among white people age 45-54 — or a time many view as the prime of life — deaths have risen. .red[Especially vulnerable are white men without a four-year bachelor’s degree]. Curiously, midlife deaths have not climbed in other rich countries, nor, for the most part, have they risen for American Hispanics or blacks.
+
+&gt; NY Times Book Review, March 17, 2020
+
+]
+
+---
+## Specific causes are a key part of this narrative
+
+.right-column[
+ &gt;Although the surge in deaths in America is what we might see during the ravages of an infectious disease, like the Great Influenza Pandemic of 1918, this is an epidemic that is not carried by a virus or a bacterium, nor is it caused by an external agent, such as poisoning of the air or the fallout from a nuclear accident. Instead, people are doing this to themselves. .red[They are drinking themselves to death, or poisoning themselves with drugs, or shooting or hanging themselves].
+
+&gt; Case and Deaton (2019, p38)
+]
+
+---
+## Example of using life table decomposition
+.pull-left[
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/arph-title.png" width="100%" height="100%" /&gt;
+]]
+
+.pull-right[
+Decompose the decline in life expectancy in the US between 2014 and 2017
+- By age
+
+- By cause of death
+
+- For 8 race-ethnic groups
+]
+
+---
+.left-column[
+### Trends in life expectancy
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-trends-race-sex.png" width="100%" height="100%" /&gt;
+]
+
+---
+.center[
+What are we explaining?
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-estimates.png" width="80%" height="80%" /&gt;
+]
+
+Declines evident for all men and for most women 
+
+Largest for black men
+
+---
+.center[
+.blue[Remember what a life table is?]
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/life-table-example.png" width="70%" height="70%" /&gt;
+]
+
+---
 ## Decomposing between 2 groups
 .footnote[Arriaga (1984)]
 - E.g., between 2 time periods (2014 and 2017), the general formula is:
@@ -106,7 +184,7 @@ class: center, top, inverse
 - Indirect effect happens because differences in the direct effect means more survivors at subsequent ages.
 
 ---
-## Life tables for Black Men
+## Partial life tables for black men
 .footnote[Source: Harper et al. 2020]
 Our aim is to *decompose* the 0.7 year decline in life expectancy at birth that happened between 2014 and 2017 by age.
 
@@ -135,6 +213,7 @@ Age | lx    | Tx    |  Lx     | ex
 ]
 
 ---
+.center[Plug in values to estimate, e.g., contribution of 1-4 age group]
 .pull-left[
 .center[Black Men, 2014]
 
@@ -160,9 +239,9 @@ Age | lx    | Tx    |  Lx     | ex
 ]
 
 .white[x]
-`$$_{n}\Delta_{x}=\left[98799/100000\times\left(\dfrac{7167826}{98828}-\dfrac{7102662}{98799}\right)\right]+\left[\dfrac{985394}{98649}\times\dfrac{{\dfrac{98799\times98649}{98828}-98629}}{100000}\right]$$`
+`$$_{4}\Delta_{1}=\left[98799/100000\times\left(\dfrac{7167826}{98828}-\dfrac{7102662}{98799}\right)\right]+\left[\dfrac{985394}{98649}\times\dfrac{{\dfrac{98799\times98649}{98828}-98629}}{100000}\right]$$`
 .left[ 
-`\(_{n}\Delta_{x}=-0.01\)` years 
+`\(_{4}\Delta_{1}=-0.01\)` years 
 ]
 
 ---
@@ -177,7 +256,7 @@ Age | lx    | Tx    |  Lx     | ex
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-age.png" width="90%" height="90%" /&gt;
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-age-arph.png" width="90%" height="90%" /&gt;
 ]
 
 ---
@@ -197,38 +276,50 @@ age-cause components:
 `$$\sum_{i}{}_{n}\Delta_{x}^{i}={}_{n}\Delta_{x},\:\textrm{and}\:e_{0}^{2014}-e_{0}^{2017}=\sum_{x}{}_{n}\Delta_{x}=\sum_{x}\sum_{i}{}_{n}\Delta_{x}^{i}$$`
 
 ---
+### Results by cause: Men
 .footnote[Harper et al. 2020]
 .left-column[
-### Results by cause
-
 - Opioids (unintentional overdoses) played a large part.
 
 - Homicide for black men
 
-- Cancer mortality improved.
+- Little role for suicide or alcohol.
 
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-cause-men.png" width="100%" height="100%" /&gt;
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-cause-men.png" width="100%" height="100%" /&gt;
 ]
 
 ---
+### Results by cause: Women
 .footnote[Harper et al. 2020]
 .left-column[
-### Results by cause
+- Opioids, but also Alzheimer's.
 
-- Opioids (unintentional overdoses) played a large part.
-
-- Homicide for black men
+- Variations by race-ethnicity
 
 - Cancer mortality improved.
 
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-cause-women.png" width="100%" height="100%" /&gt;
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-cause-women.png" width="100%" height="100%" /&gt;
 ]
+
+---
+## Summary
+.right-column[
+Life table decomposition useful for understanding links between proximal risks and mortality, and how they may 'explain' changing patterns of life expectancy.
+
+Minimal assumptions, but not causal.
+
+Example showing how the 'Deaths of Despair' narrative is hard to reconcile with diverse mortality patterns:
+  - Declines have affected all race-ethnic groups.
+  - Most of the decline due to opioid overdoses, homicide, and Alzheimer’s disease.
+  - Deaths from suicide and alcohol-related causes have risen but explain little of America’s stagnating life expectancy trends.
+]
+
 ---
 class: center, top, inverse
 # .orange[**3. Decomposition**]
@@ -241,16 +332,26 @@ class: center, top, inverse
 
 ---
 # The 'usual' approach
+.pull-left[
 Conventional methods for “explaining” effects of social exposures
-Estimate crude or demographic-adjusted effect (logit, hazard)
-Add “conventional” risk factors (physiological, behavioural)
-Add “novel” risk factors (flavour-of-the-week)
-Interpret accordingly
+- Estimate crude or demographic-adjusted effect (logit, hazard)
+- Add “conventional” risk factors (physiological, behavioural)
+- Add “novel” risk factors (flavour-of-the-week)
+- Interpret accordingly
+]
 
+--
+
+.pull-right[
 Limitations of conventional approach
-Often fail to consider entire socioeconomic distribution (typically low vs. high only) in the context of “explanation”
-Often ignore absolute risk
-Typically do not provide estimates of the specific contributions of other factors to the “explained” proportion
+- Often fail to consider entire socioeconomic distribution (typically low vs. high only) in the context of “explanation”
+- Often ignore absolute risk
+- Typically do not provide estimates of the specific contributions of other factors to the “explained” proportion
+]
+
+---
+We want to understand this
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/income-health-DAG.png" width="80%" height="80%" /&gt;
 
 ---
 ## Formula for calculating the RCI
@@ -588,7 +689,7 @@ class: center, middle, inverse
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-18-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -602,7 +703,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -695,7 +796,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-31-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -711,7 +812,7 @@ When used properly, decomposition techniques can help to provide key evidence on
 ---
 class: center, top, inverse
 # .orange[**Break!**] ☕
-<div class="countdown" id="timer_6165f1bf" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<div class="countdown" id="timer_6166056b" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
