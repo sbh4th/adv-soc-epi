@@ -1,0 +1,607 @@
+---
+title: "Overview of Quasi-Experimental Designs"
+subtitle: "Advanced Social Epidemiology PhD Course"  
+author: "Sam Harper"
+institute: " <br> </br>"
+date: "University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [xaringan-themer.css, style.css]
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(here)
+library(DiagrammeR)
+library(xaringan)
+library(leaflet)
+library(ggplot2)
+library(emojifont)
+library(emo) # devtools::install_github("hadley/emo")
+xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
+```
+
+```{r, include=FALSE}
+pdf2png = function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) return(path)
+  path2 = xfun::with_ext(path, "png")
+  img = magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
+```
+
+class: center, top, inverse
+# .orange[**4. Dissemination Solutions**]
+
+--
+.left[
+## .orange[**4.1. Replication Files**]
+## .orange[**4.2 Sharing**]
+]
+
+---
+class: center, top, inverse
+name: replication
+# .orange[**4. Dissemination Solutions**]
+
+.left[
+## .orange[**4.1. Replication Files**]
+## .gray[**4.2 Sharing**]
+]
+
+---
+## What's the problem?
+
+-   We are mainly (though not exclusively) interested in causal effects.
+
+-   We want to know:
+
+    -   Did the program work? If so, for whom? If not, why not?
+
+    -   If we implement the program elsewhere, should we expect the same
+        result?
+
+-   These questions involve counterfactuals about what would happen
+    **if** we intervened to do something.
+
+-   These are causal questions.
+
+---
+## Causation, Association, and Confounding
+
+-   **Causal effect**: Do individuals randomly
+    [assigned]{style="color: red"} (i.e., SET) to treatment have better
+    outcomes?
+
+    $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)$$
+
+-   **Association**: Do individuals who [happen to
+    be]{style="color: red"} treated have better outcomes?
+
+    $$E\left(Y|Treated\right)-E(Y|Untreated)$$
+
+-   **Confounding**:
+    $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)\neq E\left(Y|Treated\right)-E\left(Y|Untreated\right)$$
+
+---
+## Randomized Trials vs. Observational Studies
+
+RCTs, Defined
+
+An RCT is characterized by: (1) compares treated and control groups; (2)
+the treatment assignment is randomized; and (3) investigator does the
+randomizing.
+
+-   In an RCT, treatment/exposure is [assigned]{style="color: red"} by
+    the investigator
+
+-   In observational studies, exposed/unexposed groups
+    [exist]{style="color: red"} in the source population and are
+    selected by the investigator.
+
+-   Good natural experiments do (1) and (2), but not (3).
+
+-   Because there is no control over assignment, the credibility of
+    natural experiments hinges on how good "as-if random" approximates
+    (2).
+
+---
+## Benefits of randomization
+
+-   Recall that randomization means that we can generally estimate the
+    causal effect without bias.
+
+-   Randomization guarantees exchangeability on measured and unmeasured
+    factors.
+
+---
+## Randomize if you can.
+
+-   Randomization leads to:
+
+    -   balance on measured factors.
+
+    -   balance on unmeasured factors.
+
+-   Unmeasured factors cannot bias the estimate of the exposure effect.
+
+-   Example from Home Injury Prevention Intervention cluster RCT (Keall
+    et al. 2015[@Keall:2015aa])
+
+![image](keall-lancet-t1.png){width="0.8\\columnwidth"}
+
+---
+## Consequences of non-randomized treatment assignment
+
+-   If we are not controlling treatment assignment, then who is?
+
+-   Policy programs do not typically select people to treat at random.
+
+    -   Programs may target those that they think are most likely to
+        benefit.
+
+    -   Programs implemented decisively non-randomly (e.g., states
+        passing drunk driving laws in response to high-profile
+        accidents).
+
+    -   Governments deciding to tax (or negatively tax) certain goods.
+
+-   People do not choose to participate in programs at random.
+
+    -   Welfare programs, health screening programs, etc.
+
+    -   People who believe they are likely to benefit from the program.
+
+---
+## What's the problem?
+
+-   We are mainly (though not exclusively) interested in causal effects.
+
+-   Randomization is generally great for answering whether treatment
+    assignment $Z$ affects $Y$.
+
+    -   treatment assignment (Z) is independent of potential outcomes
+        and all measured and [unmeasured]{style="color: red"}
+        pre-treatment variables.
+
+    -   Effect of $Z$ on $Y$ is unconfounded ($Z\rightarrow Y$)
+
+-   But RCTs have serious limitations.
+
+---
+## Problem of Social Exposures
+
+-   Many social exposures/programs cannot be randomized by
+    investigators:
+
+    -   Unethical (poverty, parental social class, job loss)
+
+    -   Impossible (ethnic background, place of birth)
+
+    -   Expensive (neighborhood environments)
+
+-   Some exposures are hypothesized to have long latency periods (many
+    years before outcomes are observable).
+
+-   Effects may be produced by complex, intermediate pathways.
+
+-   We need alternatives to RCTs.
+
+---
+## Illustration of the problem
+
+-   Non-randomized designs typically start with observing treated and
+    untreated groups, so more assumptions are necessary.
+
+-   In particular we should be worried about unmeasured (or mismeasured)
+    factors that may lead to bias:
+
+---
+## Unmeasured confounding is a [serious]{style="color: red"} challenge
+
+-   We often compare socially advantaged and disadvantaged on health.
+
+-   Key problem: people choose/end up in treated or untreated group for
+    reasons that are difficult to measure and that may be correlated
+    with their outcomes.
+
+-   So\...**adjust.**
+
+    -   Measure and adjust (regression) for $X$ confounding factors.
+
+    -   Conditional on $X$, we are supposed to believe assignment is "as
+        good as random" = causal.
+
+---
+## Key issue is credibility
+
+-   If we have a good design and assume that we have measured all of the
+    confounders, then regression can give us exactly what we want: an
+    estimate of the causal effect of exposure to $T$.
+
+-   Core issue: How credible is this assumption?
+
+![image](wishful-thinking-veley.jpg){width="0.9\\columnwidth"}
+
+Ex: Education and CVD incidence in Australia[^1]
+
+Many low p-values.
+
+![image](beauchamp-table1.png){height="0.75\\textheight"}
+
+Ex: SEP and CVD in Netherlands[^2]
+
+Many observed differences.
+
+![image](van-lenthe-t2.png){width="0.9\\paperwidth"}
+
+---
+## Ex: Neighborhood block parties and health in Philadelphia
+
+-   What kind of neighborhoods have block parties? At random?[^3]
+
+![image](block-t1.pdf){height="0.7\\textheight"}
+
+---
+## Is credibility is getting harder to sell?
+
+-   Another example: Does breastfeeding increase child IQ?
+
+-   Several observational studies show higher IQs for breastfed
+    children.
+
+    -   "The authors of this and other studies claim to find effects of
+        breastfeeding because even once they adjust for the differences
+        they see across women, the effects persist. But this assumes
+        that the adjustments they do are able to remove all of the
+        differences across women. This is extremely unlikely to be the
+        case."
+
+    -   "I would argue that in the case of breastfeeding, this issue is
+        impossible to ignore and therefore [any study that simply
+        compares breast-fed to formula-fed infants is deeply
+        flawed.]{.alert} That doesn't mean the results from such studies
+        are necessarily wrong, just that we can't learn much from them."
+
+
+
+
+---
+## Why we worry about observational studies
+
+-   Recent evaluation of "Workplace Wellness" program in US state of
+    Illinois[^5]
+
+-   Treatment: biometric health screening; online health risk
+    assessment, access to a wide variety of wellness activities (e.g.,
+    smoking cessation, stress management, and recreational classes).
+
+-   Randomized evaluation:
+
+    -   3,300 individuals assigned treated group.
+
+    -   1,534 assigned to control (could not access the program).
+
+-   Also analyzed as an observational study:
+
+    -   comparing "participants" vs. non-participants in treated group.
+
+---
+![image](/Users/samharper/Dropbox/work/research/projects/Erasmus/2018-10-visit/kickoff/kickoff-talk/carroll-nyt-wellness.png){width="0.9\\paperwidth"}[^6]
+
+---
+## How can natural experiments help?
+
+-   Natural experiments mimic RCTs.
+
+-   Usually not "natural", and they are observational studies, not
+    experiments.
+
+-   Typically "accidents of chance" that create:
+
+    1.  Comparable treated and control units
+
+    2.  Random or "as-if" random assignment to treatment.
+
+---
+## Natural experiments and quasi-experiments
+
+-   These lines are a little blurry, and the terms are sometimes used
+    interchangeably. Dunning [@Dunning:2012kx] makes a clear distinction
+    between the two.
+
+\<2-\>Natural experiments
+
+Treatment groups are random or "as if" randomly assigned, but not by the
+investigator.
+
+-   Ex: lotteries, arbitrary treatment discontinuities, weather shocks.
+
+\<3-\>Quasi-experiments
+
+Treatment groups are not random or "as if" random. Usually require more
+controls and assumptions for "as if" random.
+
+-   Assignment clearly not random, but may make a convincing case with
+    added design features.
+
+---
+## Selection on "observables" and "unobservables"
+
+-   Observables: Things you measured or can measure
+
+-   Unobservables: Things you can't measure (e.g., innate abilities)
+
+-   Exogenous variation: predicts exposure but (**we assume**)
+    [not]{style="color: red"} associated with anything else \[mimicking
+    random assignment\].
+
+---
+## Strategies based on observables and unobservables
+
+-   Most observational study designs control for *measured* factors
+    using:
+
+    -   Stratification
+
+    -   Adjustment
+
+    -   Matching
+
+-   Quasi-experimental strategies [aim]{style="color: red"} to control
+    for some *unmeasured* factors using:
+
+    -   Interrupted time series (ITS)
+
+    -   Difference-in-differences (DD)
+
+    -   Synthetic controls (SC)
+
+    -   Instrumental variables (IV)
+
+    -   Regression discontinuity (RD)
+
+-   Selecting on "unobservables" = natural experiments
+
+---
+## Some *potential* sources of natural experiments
+
+-   Differential distance to care (people rarely choose neighborhood
+    based on health care services).
+
+-   Law changes (unlikely to be influenced or chosen by participants).
+
+-   Eligibility for social programs (thresholds are arbitrary).
+
+-   Genes (segregation of alleles during meiosis is random).
+
+-   Weather events (hard to predict).
+
+-   Clinical guidelines (arbitrary thresholds).
+
+-   Historical geographic features of environment (can't be chosen by
+    current residents).
+
+---
+## Example: impact of parental leave
+
+---
+## Problem of purely observation approaches
+
+-   It is hard (or maybe impossible?) to randomize new parents to
+    different durations of leave after giving birth.
+
+-   Hundreds of studies have compared outcomes for parents who took
+    different quantities of leave after the birth of a child.
+
+-   These studies rely on the unverifiable assumption that we can
+    adequately measure all confounders that explain why people take
+    different quantities of leave, and also affect the outcome.
+
+-   Thus, methods that only address observables, such as regression
+    adjustment or matching, are at high risk of confounding bias.
+
+---
+## What if we consider parental leave policies?
+
+---
+## We might be interested in the "ITT" effect
+
+---
+## Pre-post and ITS approaches
+
+Essence of ITS studies
+
+Interrupted time series studies use routine data collected at equally
+spaced intervals of time before and after an intervention, and do not
+necessarily require a control group.
+
+![image](/Users/samharper/Dropbox/causal/dd/thyer-fig4.1.png){width="0.5\\paperwidth"}[^7]
+
+![image](ekberg.pdf){width="0.9\\paperwidth"}
+
+---
+## Adding unaffected control group: Difference-in-differences
+
+![image](gertler-dd.pdf){width="0.9\\paperwidth"}
+
+![image](nandi-plosmed.pdf){width="0.9\\paperwidth"}
+
+---
+## Changes in paid leave policies across countries
+
+![image](nandi-fig1.png){width="0.9\\paperwidth"}
+
+---
+## Synthetic control methods
+
+-   Inference from comparative case studies is limited if we cannot
+    identify a control to represent the counterfactual scenario.
+
+-   Abadie and Gardeazabel [@Abadie:2003aa] pioneered the synthetic
+    control method to examine the economic impact of terrorism in the
+    Basque country, using other Spanish regions as control groups.
+
+-   The synthetic control method uses a data driven approach to compare
+    the trend of an outcome in a treated unit with the trend in a
+    synthetic composite area (the "synthetic control").
+
+-   The method is gaining popularity in social sciences (i.e., political
+    science), but hasn't taken root in epidemiology as of yet.
+
+![image](stearns.pdf){width="0.9\\paperwidth"}
+
+![image](stearns-states.pdf){width="0.9\\paperwidth"}
+
+---
+## Regression discontinuity
+
+RD measures the difference in post-intervention outcomes between units
+near the cutoffthose units that were just above the threshold (to
+receive more generous paid leave benefits)
+
+![image](rd-gertler.pdf){width="0.7\\paperwidth"}
+
+![image](rasmussen.pdf){width="0.9\\paperwidth"}
+
+![image](rasmussen-fig5.pdf){width="0.9\\paperwidth"}
+
+---
+## Maybe we want the effect of treatment
+
+---
+## Instrumental variables
+
+-   Remember that quasi-experimental designs and natural experiments are
+    trying to mimic an RCT as closely as possible.
+
+-   In an RCT, the randomized assignment to treatment meets all those
+    criteria.
+
+-   Can we find some variable in our real-world data that mimics
+    randomized treatment assignment?
+
+![image](baker.pdf){width="0.9\\paperwidth"}
+
+---
+## What are natural experiments good for?[^8]
+
+1.  To understand the effect of exposures *[induced by
+    policies]{style="color: red"}* on health, e.g., Policy $\rightarrow$
+    Exposure $\rightarrow$ Health:
+
+    -   Environmental exposures.
+
+    -   Education/income/financial resources.
+
+    -   Access to health care.
+
+    -   Health behaviors.
+
+2.  To understand the effect of policies on health, e.g., Policy
+    $\rightarrow$ Health:
+
+    -   Taxes, wages.
+
+    -   Environmental legislation.
+
+    -   Food policy.
+
+    -   Employment policy.
+
+    -   Civil rights legislation.
+
+---
+## Are natural experiments always more credible?
+
+-   Not necessarily, but probably.
+
+-   Key is "as-if" randomization of treatment:
+
+    -   If this is credible, it is a much stronger **design** than most
+        observational studies.
+
+    -   Should eliminate self-selection in to exposure groups.
+
+-   Allows for simple, transparent analysis of average differences
+    between groups.
+
+-   Allows us to rely on weaker assumptions.
+
+---
+## Assumptions still matter!
+
+-   Quasi-experimental studies are still observational.
+
+-   Most credible if they create unconditional randomized treatment
+    groups (e.g., lottery).
+
+-   Credibility is continuous, not binary.
+
+-   I worry about the cognitive impact of the "quasi-experimental"
+    label.
+
+---
+## Potential drawbacks of quasi-experimental approaches
+
+-   How good is "as-if" random? (need "shoe-leather")
+
+-   Credibility of additional (modeling) assumptions.
+
+-   Relevance of the intervention.
+
+-   Relevance of population.
+
+---
+## How can we capitalize on natural experiments?
+
+-   Take "as-if random" seriously in [all]{style="color: red"} study
+    designs.
+
+-   Find them.
+
+-   Teach them.
+
+-   Create them (aka increase dialogue with policymakers):
+
+    -   Challenges of observational evidence.
+
+    -   Great value of ("as-if") randomization.
+
+    -   Policy roll-out with evaluation in mind.
+
+---
+## Back to basics: assumptions and costs
+
+-   Major benefit of randomized evaluations are that few assumptions are
+    needed to estimate a causal effect.
+
+-   Necessary assumptions can often be checked.
+
+-   Non-randomization means more assumptions, more possibility for
+    assumptions to be violated.
+
+-   Should lead us to spend lots of time trying to test the credibility
+    of these assumptions.
+
+    -   How good is "as-if random"?
+
+    -   Are there compelling non-causal alternative explanations for the
+        observed results?
+
+-   All non-randomized designs are not created equal.

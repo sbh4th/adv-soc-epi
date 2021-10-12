@@ -146,6 +146,7 @@ where $\mu$ is the mean of $y_{i}$ (e.g., smoking status), $R_{i}$ is the fracti
 
 The Absolute Concentration Index multiplies *RCI* by the mean smoking rate:
 $$ACI=\mu*RCI$$
+
 ---
 ## Decomposition of the RCI
 .footnote[Wagstaff et al. *J Econometrics* 2003]
