@@ -92,9 +92,143 @@ class: center, top, inverse
 ---
 ## Why does life expectancy go up and down?
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-trends.png" width="100%" height="100%" /&gt;
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-trends.png" width="80%" height="80%" /&gt;
 ]
 
+
+---
+## Decomposing between 2 groups
+.footnote[Arriaga (1984)]
+- E.g., between 2 time periods (2014 and 2017), the general formula is:
+`$$_{n}\Delta_{x}=\left[\underbrace{l_{x}^{2017}/l_{0}^{2017}}_{\textrm{fraction of survivors}}\times\overbrace{\left(\dfrac{_{n}L_{x}^{2014}}{l_{x}^{2014}}-\dfrac{_{n}L_{x}^{2017}}{l_{x}^{2017}}\right)}^{\textrm{direct effect}}\right]+\overbrace{\left[\dfrac{T_{x+n}^{2014}}{l_{x+n}^{2014}}\times\dfrac{\dfrac{l_{x}^{2017}l_{x+n}^{2014}}{l_{x}^{2014}}-l_{x+n}^{2017}}{l_{0}^{2017}}\right]}^{\textrm{indirect effect + interaction}}$$`
+
+- Direct effect multiplies the fraction of survivors at each age by the difference between the 2 groups in 'temporary life expectancy' at a given age.
+- Indirect effect happens because differences in the direct effect means more survivors at subsequent ages.
+
+---
+## Life tables for Black Men
+.footnote[Source: Harper et al. 2020]
+Our aim is to *decompose* the 0.7 year decline in life expectancy at birth that happened between 2014 and 2017 by age.
+
+.pull-left[
+.center[Black Men, 2014]
+
+Age | lx    | Tx     | Lx       | ex  
+----|-------|---------|---------|-----
+0-1 |	100000 |	98945	| 7266771 |	.red[72.7]
+1-4	| 98828	 | 394953 |	7167826	| 72.5
+5-14 |	98649 |	985394 |	6772872 |	68.7
+...| | | |
+85+ |	27676 |	204278 |	204278 |	7.4
+]
+
+.pull-right[
+.center[Black Men, 2017]
+
+Age | lx    | Tx    |  Lx     | ex
+----|-------|---------|---------|----
+0-1 |	100000	| 98919 |	7201581 | .red[72.0]
+1-4	| 98799	| 394856 | 7102662 |71.9
+5-14 | 98629 | 985064 |	6707806 |	68.0
+...| | | |
+85+ |	27104	| 205713 | 205713 |	7.6
+]
+
+---
+.pull-left[
+.center[Black Men, 2014]
+
+Age | lx    | Tx     | Lx       | ex  
+----|-------|---------|---------|-----
+0-1 |	100000 |	98945	| 7266771 |	.red[72.7]
+1-4	| 98828	 | 394953 |	7167826	| 72.5
+5-14 |	98649 |	985394 |	6772872 |	68.7
+...| | | |
+85+ |	27676 |	204278 |	204278 |	7.4
+]
+
+.pull-right[
+.center[Black Men, 2017]
+
+Age | lx    | Tx    |  Lx     | ex
+----|-------|---------|---------|----
+0-1 |	100000	| 98919 |	7201581 | .red[72.0]
+1-4	| 98799	| 394856 | 7102662 |71.9
+5-14 | 98629 | 985064 |	6707806 |	68.0
+...| | | |
+85+ |	27104	| 205713 | 205713 |	7.6
+]
+
+.white[x]
+`$$_{n}\Delta_{x}=\left[98799/100000\times\left(\dfrac{7167826}{98828}-\dfrac{7102662}{98799}\right)\right]+\left[\dfrac{985394}{98649}\times\dfrac{{\dfrac{98799\times98649}{98828}-98629}}{100000}\right]$$`
+.left[ 
+`\(_{n}\Delta_{x}=-0.01\)` years 
+]
+
+---
+.footnote[Harper et al. 2020]
+.left-column[
+### Results by age
+
+- Black men lost the most years.
+
+- Mostly worsening mortality among the young (15-44)
+
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-age.png" width="90%" height="90%" /&gt;
+]
+
+---
+## Decomposing life expectancy differences by cause
+The contribution `\(_{n}\Delta_{x}^{i}\)` of each cause of death `\(i\)`
+within a given age group is a function of the difference between the
+two time periods in the proportion of deaths due to a given cause: 
+
+`$$_{n}\Delta_{x}^{i}={}_{n}\Delta_{x}\times\dfrac{\overbrace{\left(_{n}p_{x}^{i,2014}\times{}_{n}r_{x}^{2014}\right)-\left(_{n}p_{x}^{i,2017}\times{}_{n}r_{x}^{2017}\right)}^{\textrm{difference in share of deaths for cause}\,i}}{\underbrace{_{n}r_{x}^{2014}-_{n}r_{x}^{2017}}_{\textrm{overall mortality rate difference}}}$$`
+
+where `\(_{n}\Delta_{x}\)` is the total contribution for an age group,
+`\(_{n}p_{x}^{i}\)` is the proportion of deaths within age group `\(x\)`
+due to cause `\(i\)`, and `\(_{n}r_{x}\)` is the overall age-specific death
+rate. The total difference in life expectancy is the net sum of the
+age-cause components:
+
+`$$\sum_{i}{}_{n}\Delta_{x}^{i}={}_{n}\Delta_{x},\:\textrm{and}\:e_{0}^{2014}-e_{0}^{2017}=\sum_{x}{}_{n}\Delta_{x}=\sum_{x}\sum_{i}{}_{n}\Delta_{x}^{i}$$`
+
+---
+.footnote[Harper et al. 2020]
+.left-column[
+### Results by cause
+
+- Opioids (unintentional overdoses) played a large part.
+
+- Homicide for black men
+
+- Cancer mortality improved.
+
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-cause-men.png" width="100%" height="100%" /&gt;
+]
+
+---
+.footnote[Harper et al. 2020]
+.left-column[
+### Results by cause
+
+- Opioids (unintentional overdoses) played a large part.
+
+- Homicide for black men
+
+- Cancer mortality improved.
+
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-cause-women.png" width="100%" height="100%" /&gt;
+]
 ---
 class: center, top, inverse
 # .orange[**3. Decomposition**]
@@ -197,6 +331,7 @@ background-image: url(../../images/iran-decomp.png)
 background-size: contain
 .footnote[Hosseinpoor et al. IJE 2005]
 
+
 ---
 &lt;img src="/Users/samharper/git/adv-soc-epi/images/iran-decomp.png" width="100%" height="100%" /&gt;
 
@@ -204,6 +339,70 @@ background-size: contain
 background-image: url(../../images/can-usa-decomp.png)
 background-size: contain
 .footnote[McGrail et al. AJPH 2007]
+
+---
+.left-column[
+### Concentration curve for smoking
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/cc-smoking.png" width="100%" height="100%" /&gt;
+]
+
+---
+## Estimation for a specific factor: Education
+.right-column[
+Recall the decomposition formula:
+
+`$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
+Estimated `\(\beta\)` coeff on education (logit scale): -.0389 (OR = 0.96)
+
+Marginal effect on probability/absolute scale: -.0051 (0.5 pct points)
+
+Mean education: 8.9 yrs
+Mean smoking rate: 17.5%
+
+With these parameters, the elasticity of smoking with respect to education is: (-.0051 * 8.9 / .175) = -.2582
+
+Interpretation: a 1% increase in education decreases smoking by 26% (not percentage points!). What about the RCI for education?
+]
+
+---
+.left-column[
+### Concentration curve for education
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/rci-educ.png" width="100%" height="100%" /&gt;
+]
+
+---
+## Estimation for a specific factor: Education
+.right-column[
+Recall the decomposition formula:
+
+`$$RCI=\sum{(\color{red}{\beta_{k}\bar{x}_{k}/\mu})\color{blue}{RCI_{k}}}+gRCI_{e}/\mu$$`
+
+
+So the .red[elasticity of smoking] (from the previous slide) with respect to education is (-.0051 * 8.9 / .175) = -.2582
+
+Now we have the .blue[RCI for education] = 0.156
+
+So now we can calculate the contribution of education as:
+`\(\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04\)`
+
+Thus education accounts for -.04/ -.0939 = 41.6% 
+]
+
+---
+## Caveats for decomposing the RCI
+.right-column[
+Decomposition results will be sensitive to the choice of determinants included (i.e., how well-specified the model is for predicting y).
+
+The regression equations are predictive and not causal models.
+
+Main utility is not in estimating the potential impact on y of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
+]
 
 ---
 # Recent extensions
@@ -306,7 +505,7 @@ whereas, in the second, the differences in the x’s are weighted by the coeffic
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-6-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-11-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -320,7 +519,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-7-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-12-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -406,7 +605,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-11-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-16-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -422,7 +621,7 @@ When used properly, decomposition techniques can help to provide key evidence on
 ---
 class: center, top, inverse
 # .orange[**Break!**] ☕
-<div class="countdown" id="timer_6165591e" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<div class="countdown" id="timer_6165df32" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>

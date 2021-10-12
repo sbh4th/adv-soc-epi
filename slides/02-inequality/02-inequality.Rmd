@@ -162,7 +162,7 @@ Different measures of inequality emphasize different concepts.
 ## Measuring inequality: Some issues to consider
 .left-column[
 ```{r, echo=F, out.height="100%", out.width="100%"}
-ggplot() + geom_fontawesome("fa-tasks", color='steelblue') + theme_void()
+ggplot() + geom_fontawesome("fa-list", color='steelblue') + theme_void()
 ```
 ]
 
@@ -377,7 +377,7 @@ knitr::include_graphics(here("images", "bw-liver-ineq.png"))
 ---
 .footnote[King, Harper, Young *BMJ* (2012)]
 .left-column[
-The prior examples are not cherry-picked.
+The prior examples are not isolated.
 
 Guidance from WHO and researchers to report **both** absolute and relative inequalities since the 1990s.
 
@@ -592,14 +592,6 @@ knitr::include_graphics(here("images", "women-smoking-ineq.png"))
 ]]
 
 ---
-background-image: url(../../images/rci-bra-dom.png)
-background-size: contain
-
----
-background-image: url(../../images/aci-bra-dom.png)
-background-size: contain
-
----
 .left-column[
 ### Slope and Relative Index of Inequality
 
@@ -688,12 +680,18 @@ Interpreted as the ratio of health for the bottom vs. the top of the socioeconom
 ]
 
 ---
+.footnote[Hosseinpoor (2013)]
+
+.left-column[
 ## The measure may matter!
+]
+
+.right-column[
 .center[
-```{r, echo=F, out.height="70%", out.width="70%"}
+```{r, echo=F, out.height="100%", out.width="100%"}
 knitr::include_graphics(here("images", "hosseinpoor-quote.png"))
 ```
-]
+]]
 
 ---
 ## Two mechanisms for changing inequality
@@ -731,14 +729,82 @@ knitr::include_graphics(here("images", "three-groups.png"))
 
 
 ---
-### How to summarize this variation by ethnicity?
+.footnote[Quach et al. (2012)]
+.left-column[
+No way to 'rank' ethnicity
+
+Groups differ in size
+
+Should we account for it?
+]
+
+.right-column[
+.center[
+How to summarize this variation by ethnicity?
 ```{r, echo=F, out.height="100%", out.width="100%"}
 knitr::include_graphics(here("images", "ethnicity-vaccination.png"))
 ```
+]]
+
+---
+### Index of Disparity
+.footnote[Pearcy and Keppel (1999)]
+
+.pull-left[
+Measures the mean deviation of the group rates from some reference point as a proportion of that reference point
+
+$$ID = \sum_{j=1}^{J}(|y_{j} - y_{ref}|/n)/y_{ref}$$
+Where $y_{j}$ is the rate in group $j$, $y_{ref}$ is the rate for the reference point, and $J$ is the number of groups, or the number of groups minus 1 if one of the groups is the reference point.
+]
+
+.pull-right[
+Note that ID has a few important but potentially modifiable characteristics:
+- Measures relative inequality
+- Does not account for population size of groups
+- Uses best observed health as reference level
+
+Interpretation is also a little awkward: the average deviation across social groups as a proportion of the reference level
+
+Are there alternatives?
+]
 
 ---
 .left-column[
-"There was a .red[steady increase in mortality inequality] across the US counties between 1983 and 1999, resulting from stagnation or increase in mortality among the worst-off segment of the population."
+### Inequality as 'Disproportionality'
+
+Compares shares of health or disease with shares of the population.
+
+Perfect equality: 
+%pop = %health
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="90%", out.width="90%"}
+knitr::include_graphics(here("images", "disproportionality-figure.png"))
+```
+]]
+
+---
+.left-column[
+Alternative: Mean Log Deviation
+- weights by pop
+- measures difference in log shares
+
+Sensitive to 'transfers' at different points of health distribution.
+]
+
+.right-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "mld-idisp.png"))
+```
+]
+
+---
+.left-column[
+Does it matter?
+
+Ezzati et al.: "There was a .red[steady increase in mortality inequality] across the US counties between 1983 and 1999, resulting from stagnation or increase in mortality among the worst-off segment of the population."
 ]
 
 .right-column[
@@ -749,13 +815,77 @@ knitr::include_graphics(here("images", "ezzati-trends.png"))
 ]]
 
 ---
+.footnote[Harper et al. (2010)]
+.left-column[
+Compared weighted to unweighted inequality measures
+
+Across:
+ - counties
+ - states
+ - regions
+ 
+]
+
+.right-column[
 .center[
-```{r, echo=F, out.height="80%", out.width="80%"}
+```{r, echo=F, out.height="90%", out.width="90%"}
 knitr::include_graphics(here("images", "weighting-milbank.png"))
+```
+]]
+
+
+---
+class: center, top, inverse
+# .orange[**2. Measuring Inequality**]
+
+.left[
+## .gray[**2.1 Conceptual Issues**]
+## .gray[**2.2 Absolute and Relative Inequality**]
+## .gray[**2.3 Simple vs. Complex Measures**]
+## .gray[**2.4 Weighting**]
+## .orange[**2.5 Reference Points**]
+]
+
+---
+.center[
+```{r, echo=F, out.height="75%", out.width="75%"}
+knitr::include_graphics(here("images", "diff-reference.png"))
 ```
 ]
 
+---
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "obesity-trends.png"))
+```
+]
 
+---
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "obesity-ineq.png"))
+```
+]
+
+---
+## Conclusions
+.left-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+ggplot() + geom_fontawesome("fa-shopping-basket", color='steelblue') + theme_void()
+```
+]
+.right-column[
+Measures of health inequality are not value neutral.
+- Scale of measurement (absolute/relative)
+- Weighting: how much and to whom?
+- Reference points: different from what standard?
+
+The choices above have an important impact on our judgments of both the magnitude of health inequality and whether health inequalities are worsening or improving.
+
+Monitoring health inequalities requires both precise measurement and value judgments—they are inseparable.
+
+A suite of health inequality measures is likely necessary to provide a complete description of the magnitude of inequality.
+]
 
 ---
 class: center, top, inverse
