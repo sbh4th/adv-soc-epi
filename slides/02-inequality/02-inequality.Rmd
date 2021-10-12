@@ -94,6 +94,310 @@ class: center, top, inverse
 - Crucial for measuring the responsiveness of health care systems to those most in need
 ]
 
+---
+.footnote[Gakidou et al. *Lancet* (2006)]
+
+>"inequalities in composite coverage [of interventions] have been greatly reduced over the past 5 years, since coverage has increased the most in the poorest states and for the poorest deciles of the population."
+
+.center[
+```{r, echo=F, out.height="70%", out.width="70%"}
+knitr::include_graphics(here("images", "gakidou-lancet-figure.png"))
+```
+]
+
+---
+## Inequalities in health are based on *observations*
+.right-column[
+### .red[We are relatively good at measuring inequalities.]
+
+- Poor people die younger than rich people
+
+- Low social class infants have lower birth weight
+
+- Smokers get more lung cancer than non-smokers
+
+- Women live longer than men
+]
+
+---
+## Inequities in health are based on *ethical judgements*
+.right-column[
+### .red[Inequities are much harder to measure]
+
+- Should poor people die younger than rich people?
+
+- Should low social class infants have lower birth weight?
+
+- Should smokers get more lung cancer than non-smokers?
+
+- Should women live longer than men?
+]
+
+---
+.footnote[Adapted from McGuire et al. *Health Services Research* 2006]
+
+.left-column[
+### Anatomy of an Inequality
+- How much of inequality is *unfair*?
+
+- How would you know?
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "mcguire-inequity.png"))
+```
+]]
+---
+# Inequality is an ambiguous concept
+Different measures of inequality emphasize different concepts.
+.right-column[
+>“If a concept has some basic ambiguity, then a precise representation of that ambiguous concept must preserve that ambiguity…This issue is quite central to the need for descriptive accuracy in inequality measurement, which has to be distinguished from fully ranked, unambiguous assertions.”
+
+> Amartya Sen, On Economic Inequality, 1997
+]
+
+---
+## Measuring inequality: Some issues to consider
+.left-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+ggplot() + geom_fontawesome("fa-tasks", color='steelblue') + theme_void()
+```
+]
+
+.right-column[
+1. What to measure? Total vs. Social Group Inequality
+
+1. Simple or complex measures of health inequality?
+
+1. Scale: Is inequality relative or absolute?
+
+1. Weighting: Who counts, and for how much?
+
+1. Weighing lives: Do we care where changes in health inequality come from?
+
+1. Reference points for measuring inequality: Different from what?
+]
+
+---
+## What should we measure?
+.pull-left[
+### Total Health Inequality
+- complement to measurement of average health
+- measured across all individuals
+- avoids normative choice of social groups
+- facilitates unambiguous comparisons over time/place
+]
+
+.pull-right[
+### Social Group Differences in Health
+- measured across normatively important social groups
+- particular social groups chosen a priori
+- provide insights into causal processes linking health and social position
+]
+
+---
+.footnote[Asada 2002]
+
+.left-column[
+### Health Inequality Between Whom?
+
+- Which society has more inequality?
+
+- Which one is worse from the perspective of inequality?
+]
+.right-column[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "asada-distribution.png"))
+```
+]
+
+---
+```{r, echo=F, out.height="40%", out.width="40%"}
+knitr::include_graphics(here("images", "van-ralte-title.png"))
+```
+
+.right-column[
+- Life-span variation reflects uncertainty in the risk (timing) of death.
+- People are generally willing to pay to reduce uncertainty.
+
+- Heterogeneity is crucial for accurate forecasts in insurance and annuity markets, and should be measured.
+- Monitoring life-span variation may facilitate early detection of adverse  mortality developments and warrant social interventions at younger ages.
+]
+
+---
+.footnote[van Raalte (2018)]
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "van-ralte-figure.png"))
+```
+]
+
+---
+class: center, top, inverse
+# .orange[**2. Measuring Inequality**]
+
+.left[
+## .gray[**2.1 Conceptual Issues**]
+## .orange[**2.2 Simple vs. Complex Measures**]
+## .gray[**2.3 Absolute and Relative Inequality**]
+## .gray[**2.4 Weighting**]
+## .gray[**2.5 Reference Points**]
+]
+
+---
+
+.footnote[Source: Data2010]
+.left-column[
+### Pairwise comparisons work well for a few groups
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "two-groups.png"))
+```
+]]
+
+---
+.footnote[Source: Data2010]
+.left-column[
+### Additional groups make summary measures appealing
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "multiple-groups.png"))
+```
+]]
+
+---
+
+.footnote[Ezzati et al. (2008)]
+.left-column[
+### Summary measures definitely needed
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "ezzati-counties.png"))
+```
+]]
+
+---
+## Range-type measures: ignore the entire distribution
+.left-column[
+### .white[x]
+
+- Does A or B have 'more' inequality?
+
+- Do you have a preference for A or B?
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "range-measure.png"))
+```
+]]
+
+---
+.left-column[
+### Moving beyond simple comparisons
+
+- More complex measures look at the entire distribution.
+
+- E.g., Lorenz curve for income, health, or any X:
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "lorenz.png"))
+```
+]]
+
+---
+## Consequences for interpretation
+.footnote[Arsenault, Harper et al. (2017)]
+.pull-left[
+- Compared country ranks for magnitude of wealth-related inequalities in vaccination using extreme groups vs. whole-pop measures.
+
+- Mostly similar, however, some serious inconsistencies:
+  - Armenia had highest inequality using poor vs. non-poor, but 34th using whole pop measure.
+  
+  - Moldova ranks 10th using pairwise measure but 38th using whole pop measure.
+]
+
+.pull-right[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "arsenault-figure.png"))
+```
+]]
+
+---
+# Moving Beyond Binary Comparisons
+
+.center[
+Distribution of Socioeconomic Position in a Hypothetical Population
+]
+
+ Education Level |	%	| Cumul% |	Range | 	Midpoint
+------------------|---|--------|--------|-----------
+ None |	11.93	| 11.93	 | 0.0 – 11.93	| 5.97 
+ <Primary school |	15.04 |	26.97 |	11.93 – 26.97 |	19.45 
+ Primary school |	26.86 |	53.83 |	26.97 – 53.83 | 	40.40
+ Secondary school |	16.05	| 69.88 | 53.83 – 69.88 |	61.86
+ Beyond Secondary |	30.12 |	100	| 69.88 – 100.0 |	84.94 
+
+
+---
+.left-column[
+### Summarizing across SEP: Relative Concentration Curve
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "cc-cumulative.png"))
+```
+]]
+
+---
+.left-column[
+### Summarizing across SEP: Relative Concentration Curve
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "cc-both.png"))
+```
+]]
+
+---
+.left-column[
+### Summarizing across SEP: Relative Concentration Curve
+]
+
+.right-column[
+.center[
+```{r, echo=F, out.height="100%", out.width="100%"}
+knitr::include_graphics(here("images", "cc-index.png"))
+```
+]]
+
+---
+background-image: url(../../images/rci-bra-dom.png)
+background-size: contain
+
+---
+background-image: url(../../images/aci-bra-dom.png)
+background-size: contain
 
 ---
 class: center, top, inverse
