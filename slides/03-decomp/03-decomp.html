@@ -341,6 +341,19 @@ background-size: contain
 .footnote[McGrail et al. AJPH 2007]
 
 ---
+class: center, middle, inverse
+# Example: Decomposing Socioeconomic Inequality in Current Smoking
+
+---
+.left-column[
+### Smoking by income quintile
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/smoking-quintiles.png" width="100%" height="100%" /&gt;
+]
+
+---
 .left-column[
 ### Concentration curve for smoking
 ]
@@ -350,17 +363,17 @@ background-size: contain
 ]
 
 ---
-## Estimation for a specific factor: Education
+.left-column[
+### Estimation for a specific factor: Education
+]
 .right-column[
 Recall the decomposition formula:
 
 `$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
-Estimated `\(\beta\)` coeff on education (logit scale): -.0389 (OR = 0.96)
-
-Marginal effect on probability/absolute scale: -.0051 (0.5 pct points)
-
-Mean education: 8.9 yrs
-Mean smoking rate: 17.5%
+- Estimated `\(\beta\)` coeff on education (logit scale): -.0389 (OR = 0.96)
+- Marginal effect on probability scale: -.0051 (0.5 pct points)
+- Mean education: 8.9 yrs
+- Mean smoking rate: 17.5%
 
 With these parameters, the elasticity of smoking with respect to education is: (-.0051 * 8.9 / .175) = -.2582
 
@@ -377,7 +390,10 @@ Interpretation: a 1% increase in education decreases smoking by 26% (not percent
 ]
 
 ---
-## Estimation for a specific factor: Education
+.left-column[
+### Estimation for a specific factor: Education
+]
+
 .right-column[
 Recall the decomposition formula:
 
@@ -389,9 +405,36 @@ So the .red[elasticity of smoking] (from the previous slide) with respect to edu
 Now we have the .blue[RCI for education] = 0.156
 
 So now we can calculate the contribution of education as:
-`\(\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04\)`
+
+`$$\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04$$`
 
 Thus education accounts for -.04/ -.0939 = 41.6% 
+]
+
+---
+.left-column[
+Decomposition of Income-Related Inequality in Smoking: Americas region
+
+Overall RCI = -0.094
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-table-determinants.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+Contrasting components of income-related inequality
+
+Education:
+- Elasticity stronger in W Pacific
+- `\(RCI_{ed}\)` stronger in Americas
+
+- Implications for intervention?
+]
+
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-contrast.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -403,9 +446,6 @@ The regression equations are predictive and not causal models.
 
 Main utility is not in estimating the potential impact on y of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
 ]
-
----
-# Recent extensions
 
 
 ---
@@ -505,7 +545,7 @@ whereas, in the second, the differences in the x’s are weighted by the coeffic
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-11-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-14-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -519,7 +559,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-12-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -605,7 +645,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-16-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -621,7 +661,7 @@ When used properly, decomposition techniques can help to provide key evidence on
 ---
 class: center, top, inverse
 # .orange[**Break!**] ☕
-<div class="countdown" id="timer_6165df32" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<div class="countdown" id="timer_6165e2d0" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
