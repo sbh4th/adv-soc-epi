@@ -326,7 +326,6 @@ That is, use each determinant as the “outcome” and estimate a CI for age, CI
 A few examples
 
 ---
----
 background-image: url(../../images/iran-decomp.png)
 background-size: contain
 .footnote[Hosseinpoor et al. IJE 2005]
@@ -459,21 +458,34 @@ class: center, top, inverse
 ]
 
 ---
-# Idea
+# Idea for Decomposition of Means
+.right-column[
 The core idea is to explain the distribution of the outcome variable in question by a set of factors that vary systematically with exposure status.
 
-Thus, we want to know, on average, why the mean level of health or disease differs between exposed and unexposed groups.
+Thus, we want to know, on average, **why the mean level of health or disease differs between exposed and unexposed groups**.
 
 Since, for most health outcomes there are multiple determinants, we may want to know which of these determinants plays more or less important roles in explaining the difference in average outcomes.
 
 “Unpacking” or “decomposing” difference.
+]
 
 ---
 # Origins
+.left-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/kitagawa-title.png" width="100%" height="100%" /&gt;
+]
 
+.right-column[
+Evelyn Kitagawa was sociologist and demographer who devised a non-parametric method (1955) for decomposing differences between rates, refined by Prithwis das Gupta in 1978.
+- Focused on understanding group contributions to rate differences.
+
+Studies by Oaxaca (1973) and Blinder (1973) applied regression-based decomposition methods to analyze the wage gap between men and women and between whites and blacks in the USA.
+- Focused on how much of wage gap was 'explained' by differences in observable characteristics
+]
 
 ---
 ## Brief note on interpretation
+.right-column[
 Decomposition methods are based on regression analyses, and thus all of the usual caveats about good specification apply
 
 If regressions are purely descriptive, they reveal the associations that characterize the health inequality
@@ -481,8 +493,13 @@ Then inequality is explained in a statistical sense but implications for policie
 
 If data allow identification of causal effects, then the factors that generate the inequality are identified
 Then one can (potentially) draw conclusions about how policies would impact on inequality
+]
 
 .footnote[O'Donnell 2008]
+
+---
+background-image: url(../../images/decomp-ex-spain.png)
+background-size: contain
 
 ---
 # Kitagawa-Blinder-Oaxaca: Basic Idea
@@ -497,13 +514,28 @@ Then one can (potentially) draw conclusions about how policies would impact on i
 ]
 
 ---
-background-image: url(../../images/decomp-ex-spain.png)
-background-size: contain
+.left-column[
+Think of 2 regressions for a given determinant `\(X\)`:
+1. Exposed
+2. Unexposed
+
+Each generates its own coefficient and uses its own mean.
+
+Use these to generate counterfactuals.
+]
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-idea.png" width="100%" height="100%" /&gt;
+]]
 
 ---
-.right-column[
+### Two ways of expressing the mean difference in `\(y\)`
 
-] url(../../images/decomp-ex-spain.png)
+.right-column[
+The overall gap between exposed and unexposed can be written as a function of differences the respective beta coefficients, evaluated at the mean for each group:
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-two-ways.png" width="100%" height="100%" /&gt;
+]
 
 ---
 .left-column[
@@ -536,16 +568,27 @@ background-size: contain
 ---
 ## The two methods are equally valid
 .right-column[
-In the first,the differences in the x’s are weighted by the coefficients of the unexposed group and the differences in the coefficients are weighted by the x’s of the exposed group: 
+In the first,the differences in the x’s are weighted by the .red[coefficients of the unexposed group] and the differences in the coefficients are weighted by the x’s of the exposed group: 
 `$$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{unexp}-\Delta\beta x^{exp}$$`
 
-whereas, in the second, the differences in the x’s are weighted by the coefficients of the exposed group and the differences in the coefficients are weighted by the x’s of the unexposed group: 
+whereas, in the second, the differences in the x’s are weighted by the .blue[coefficients of the exposed group] and the differences in the coefficients are weighted by the x’s of the unexposed group: 
 `$$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{exp}-\Delta\beta x^{unexp}$$`
 ]
+
+---
+General decomposition formula shows the mean gap as deriving from a difference in endowments (E), a gap in coefficients (C), and .red[a gap arising from the interaction of endowments and coefficients] (CE):
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-interaction.png" width="80%" height="80%" /&gt;
+]
+
+---
+class: center, middle, inverse
+# Example: Decomposing Educational Differences in Blood Pressure
+
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-14-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-18-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -559,7 +602,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-15-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -639,13 +682,20 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ]
 
 ---
+.footnote[Jackson (2021)]
+.left-column[
 ## Methods frontier
+- Attempting to reconcile the non-causal framework of KBO with mediation methods, new estimators.
+]
 
+.right-column[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/jackson-epid-title.png" width="100%" height="100%" /&gt;
+]
 
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-19-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -661,7 +711,7 @@ When used properly, decomposition techniques can help to provide key evidence on
 ---
 class: center, top, inverse
 # .orange[**Break!**] ☕
-<div class="countdown" id="timer_6165e2d0" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
+<div class="countdown" id="timer_6165f1bf" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
