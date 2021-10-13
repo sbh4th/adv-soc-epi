@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Sam Harper" />
     <script src="libs/header-attrs/header-attrs.js"></script>
-    <link href="libs/countdown/countdown.css" rel="stylesheet" />
-    <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
@@ -261,6 +259,7 @@ Age | lx    | Tx    |  Lx     | ex
 
 ---
 ## Decomposing life expectancy differences by cause
+.footnote[Arriaga (1989)]
 The contribution `\(_{n}\Delta_{x}^{i}\)` of each cause of death `\(i\)`
 within a given age group is a function of the difference between the
 two time periods in the proportion of deaths due to a given cause: 
@@ -351,25 +350,44 @@ Limitations of conventional approach
 
 ---
 We want to understand this
+.center[
 &lt;img src="/Users/samharper/git/adv-soc-epi/images/income-health-DAG.png" width="80%" height="80%" /&gt;
+]
 
 ---
-## Formula for calculating the RCI
-.footnote[Kakwani et al. 1997]
-One way of writing the RCI is:
+.left-column[
+## Relative Concentration Curve
+]
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/conc-curve.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Formula for writing the Concentration Index
+.footnote[Kakwani et al. (1997)]
+.pull-left[
+Recall that we can write the CI as:
+
 `$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$`
 where `\(\mu\)` is the mean of `\(y_{i}\)` (e.g., smoking status), `\(R_{i}\)` is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
+]
 
-The Absolute Concentration Index multiplies *RCI* by the mean smoking rate:
-`$$ACI=\mu*RCI$$`
+
+.pull-right[
+The basic idea here is to develop a model for predicting `\(y\)` using several determinants, then plug that model back into the equation for the `\(RCI\)`
+]
 
 ---
 ## Decomposition of the RCI
 .footnote[Wagstaff et al. *J Econometrics* 2003]
-If we can write the *RCI* as a function of a health variable `\((y_{i})\)` and a socioeconomic rank variable `\((R_{i})\)`, i.e.
+Since the `\(RCI\)` is a function of a health variable `\((y_{i})\)` and a socioeconomic rank variable `\((R_{i})\)`, i.e.
 `$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}{\color{red}{y_{i}}}R_{i}-1$$`
+
 --
-Suppose that one can write a regression equation expressing the health outcome of interest `\((y_{i})\)` as a function of several `\(k_{i}\)` determinants (e.g., age, gender, urban/rural status):
+
+Then suppose that one can write a regression equation expressing the health outcome of interest `\((y_{i})\)` as a function of several `\(k_{i}\)` determinants (e.g., age, gender, urban/rural status):
 `$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
 
 ---
@@ -380,65 +398,83 @@ Where
  - `\(\mu\)` is the mean of *y*, 
  - `\(\bar{x}_{k}\)` is the mean of `\(x_{k}\)`, 
  - `\(\beta_{k}\)` is the regression coefficient for `\(x_{k}\)`, and 
- - RCIk is the concentration index for xk.
+ - `\(RCI_{k}\)` is the concentration index for `\(x_{k}\)`.
 
-The basic idea: how much of the overall inequality is due to other factors that are both differentially distributed by income and affect smoking?
+The basic idea: how much of the overall inequality is due to other factors that are both differentially distributed by `\(x\)` (income) and also affect `\(y\)` (e.g., smoking)?
 
 ---
 ## Explained and unexplained components
 This equation results in 2 components of socioeconomic inequality:
-One part that is due to the association between income and other factors that predict health
-The other part is ‘unexplained’, i.e., inequality that cannot be explained by systematic variation across income groups in the determinants of health.
+`$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
+.pull-left[
+One part `\((\beta_{k}\bar{x}_{k}/\mu)RCI_{k}\)` that is due to the association between income and other factors that predict health
+]
+
+.pull-right[
+The other part `\((gRCI_{e}/\mu)\)` is ‘unexplained’, i.e., inequality that cannot be explained by systematic variation across income groups in the determinants of health.
+]
 
 ---
 ## Two types of 'explained' components
-.right-column[
-### The influence of determinants depends on 2 things:
+.pull-left[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/income-health-DAG.png" width="100%" height="100%" /&gt;
+]
+.pull-right[
+The influence of determinants depends on 2 things:
 
 ### `\(\color{blue}{RCI_{k}}\)`
-#### the strength of the relationship between each factor and income (the concentration index for each determinant)
+#### the strength of the relationship between each factor and income `\((C_{k})\)`
 
 ### `\(\color{blue}{\beta_{k}\bar{x}_{k}/\mu}\)`
-#### the strength of the relationship between each factor and health, and its prevalence in the population (also referred to as the ‘elasticity’ of each factor with respect to health).
+#### the strength of the relationship between each factor and health, and its prevalence in the population (elasticity).
 ]
 
 ---
 ## Procedure for decomposing the Concentration Index
-1 Estimate a regression equation predicting y (‘health’) from its determinants (βk):
+1 Estimate a regression equation predicting `\(y\)` (‘health’) from its determinants `\((\beta_{k}x_{k})\)`:
 
 `$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
 
-2 Calculate the mean of y (μ) and of each of the determinants (e.g., education, age)
+2 Calculate the mean of `\(y\)` `\((\mu)\)` and of each of the determinants (e.g., education, age)
 
-3 Calculate the Concentration Index for the health variable (C) each determinant in the equation predicting health (Ck).
-That is, use each determinant as the “outcome” and estimate a CI for age, CI for education, etc.
+3 Calculate the Concentration Index for the health variable (C) *and* for each determinant in the equation predicting health `\((C_{k})\)`.
+
+- That is, use each determinant `\(x_{k}\)` as the "outcome" and estimate a CI for age, CI for education, etc.
 
 ---
 ## Procedure for decomposing the Concentration Index
 
-4 Calculate the absolute contribution of each determinant by multiplying its ‘elasticity’ by its C:
+4 Calculate the absolute contribution of each determinant by multiplying its ‘elasticity’ by its concentration index `\((C_{k})\)`:
 
-
+`$$(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}$$`
 
 
 5 Calculate the percentage contribution of each determinant:
 
----
-A few examples
-
----
-background-image: url(../../images/iran-decomp.png)
-background-size: contain
-.footnote[Hosseinpoor et al. IJE 2005]
+`$$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$`
 
 
 ---
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/iran-decomp.png" width="100%" height="100%" /&gt;
+.footnote[Hosseinpoor et al. IJE (2005)]
+.left-column[
+### A few examples...
+]
+
+
+.right-column[
+.center[
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/iran-decomp.png" width="90%" height="90%" /&gt;
+]]
 
 ---
 background-image: url(../../images/can-usa-decomp.png)
 background-size: contain
-.footnote[McGrail et al. AJPH 2007]
+.footnote[McGrail et al. AJPH (2007)]
+
+---
+.footnote[McKinnon et al. (2011)]
+&lt;img src="/Users/samharper/git/adv-soc-epi/images/mckinnon-cervical.png" width="90%" height="90%" /&gt;
+
 
 ---
 class: center, middle, inverse
@@ -477,12 +513,16 @@ Recall the decomposition formula:
 
 With these parameters, the elasticity of smoking with respect to education is: (-.0051 * 8.9 / .175) = -.2582
 
-Interpretation: a 1% increase in education decreases smoking by 26% (not percentage points!). What about the RCI for education?
+Interpretation: a 1% increase in education decreases smoking by 26% (not percentage points!). 
+
+What about the RCI for education?
 ]
 
 ---
 .left-column[
 ### Concentration curve for education
+
+Note the y-axis is cumulative share of *education*
 ]
 
 .right-column[
@@ -508,7 +548,7 @@ So now we can calculate the contribution of education as:
 
 `$$\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04$$`
 
-Thus education accounts for -.04/ -.0939 = 41.6% 
+Thus education accounts for -.04/ -.0939 = 41.6% of the overall `\(RCI\)`
 ]
 
 ---
@@ -689,7 +729,7 @@ class: center, middle, inverse
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-28-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -703,7 +743,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-29-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -796,7 +836,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-31-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-34-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -809,12 +849,7 @@ All of these techniques make assumptions that need to be evaluated in the course
 
 When used properly, decomposition techniques can help to provide key evidence on why health inequalities exist and change over time.
 ]
----
-class: center, top, inverse
-# .orange[**Break!**] ☕
-<div class="countdown" id="timer_6166056b" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

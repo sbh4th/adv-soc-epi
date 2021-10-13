@@ -169,13 +169,11 @@ ggplot() + geom_fontawesome("fa-list", color='steelblue') + theme_void()
 .right-column[
 1. What to measure? Total vs. Social Group Inequality
 
-1. Simple or complex measures of health inequality?
-
 1. Scale: Is inequality relative or absolute?
 
-1. Weighting: Who counts, and for how much?
+1. Simple or complex measures of health inequality?
 
-1. Weighing lives: Do we care where changes in health inequality come from?
+1. Weighting: Who counts, and for how much?
 
 1. Reference points for measuring inequality: Different from what?
 ]
