@@ -1,0 +1,441 @@
+---
+title: "Counterfactuals and Causal Policy Effects"
+subtitle: "Advanced Social Epidemiology PhD Course"  
+author: "Sam Harper"
+institute: " <br> </br>"
+date: "University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [xaringan-themer.css, style.css]
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(here)
+library(DiagrammeR)
+library(xaringan)
+library(leaflet)
+library(ggplot2)
+library(emojifont)
+library(emo) # devtools::install_github("hadley/emo")
+library(icons)
+library(kableExtra)
+xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
+```
+
+```{r, include=FALSE}
+pdf2png = function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) return(path)
+  path2 = xfun::with_ext(path, "png")
+  img = magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
+```
+
+class: center, top, inverse
+# .orange[**Causal Policy Effects**]
+
+.left[
+## .orange[**I. "What-If" Questions and Counterfactuals**]
+## .orange[**II. Causal Parameters**]
+## .orange[**III. Causal Assumptions**]
+]
+
+---
+class: center, top, inverse
+# .orange[**Causal Policy Effects**]
+
+.left[
+## .orange[**I. "What-If" Questions and Counterfactuals**]
+## .gray[**II. Causal Parameters**]
+## .gray[**III. Causal Assumptions**]
+]
+
+---
+### "What-ifs" and counterfactuals
+
+.left-column[
+
+![](/images/counterfactual-image.png)
+]
+
+.right-column[
+- Questions about the impact of an intervention (the change that can be causally attributed to the program) are about what-ifs
+
+- Prospectively, we can think about how the world would be different if we intervened to change the status quo
+
+- Retrospectively, we can think about what would have been had we not implemented a particular policy or program
+
+- These alternative causal states are known as counterfactuals
+
+- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines!
+
+]
+
+---
+## "Normal" etiological science in social epidemiology
+.right-column[
+1.  Follow-up of individuals in different social groups for various
+    health outcomes (incidence, mortality, risk factors)
+
+2.  Adjustment for various confounders/mediators (are inequalities
+    "explained" by\....A, B, C?).
+
+-   "Our results demonstrate that"\...we should:
+
+    -   *raise* education levels
+    -   *increase* economic assistance to the poor
+    -   *remove* noxious exposures from the environment
+    -   *reduce* psychosocial workplace hazards
+    -   *eliminate* hierarchies, and the like.
+
+-   These statements are based on making **causal** inferences.
+]
+
+---
+## Potential Outcomes Framework
+
+.right-column[
+
+- What-if or counterfactual questions are about hypotheticals—*so how can we answer them*?
+
+- The potential outcomes framework provides us with a guide for posing and answering counterfactual questions; it is the common language for impact evaluation in the social sciences
+
+- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what would have been under an alternative counterfactual scenario
+
+]
+
+---
+.footnote[Collier (2009)]
+
+.left-column[
+James Lind is credited with introducing the concept of control and experimental groups; he is considered the father of clinical trials
+]
+
+.right-column[
+.center[
+![:scale 90% ](/images/lind.jpg)
+]]
+
+---
+## Alternative treatment states
+
+.pull-left[
+Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
+
+When only two alternative treatments are being considered they can be called the treatment and control states
+]
+
+.pull-right[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "gray")
+```
+Individual $i$
+
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
+If "treated" $T_{i}=1$
+
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
+If "control" $T_{i}=0$
+]
+
+---
+## Alternative treatment states
+
+- Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
+
+- When only two alternative treatments are being considered they can be called the treatment and control states
+
+.column-1[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "gray")
+```
+Individual $i$
+]
+
+.column-2[
+.pull-left[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
+If "treated" $T_{i}=1$
+]
+
+.pull-right[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
+If "control" $T_{i}=0$
+]
+]
+
+---
+## Potential Outcomes
+
+- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states--each individual has a potential outcome under both the treatment and control states  
+
+- With a binary treatment, the potential outcomes are given by the random variables $Y^{1}$ and $Y^{0}$; we assume that each individual in the population has a potential outcome under both states
+
+.column-1[
+Potential outcomes $Y_{i}:$
+]
+
+.column-2[
+.pull-left[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
+$y_{i}^{1}$
+]
+
+.pull-right[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
+$y_{i}^{0}$
+]
+]
+
+
+---
+## 
+
+.left-column[
+### Potential Outcomes
+]
+
+.right-column[
+```{r echo=F}
+po <- tibble(
+  ID = 1:8,
+  di = rep(c(1,0), each = 4),
+  yi1 = c(21, 18, 19, 22, 23, 19, 17, 21),
+  yi0 = c(18, 15, 15, 20, 22, 19, 15, 20)
+)
+
+kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)"), format = "html", escape = F,
+      align=rep('c', 4), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 30) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2))
+```
+]
+
+---
+## The individual causal effect
+
+.pull-left[
+
+Potential outcomes $Y_{i}:$
+
+.pull-left[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
+$y_{i}^{1}$
+]
+
+.pull-right[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
+$y_{i}^{0}$
+]
+]
+
+.pull-right[
+
+- The individual causal effect is the difference in outcomes for the same individual with and without the intervention.
+
+- A causal effect implies that the individual would have experienced the outcome if treated, but not untreated (or vice versa).
+
+]
+
+Causal effect:
+
+$\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
+
+---
+## 
+
+.left-column[
+### Individual causal effects
+]
+
+.right-column[
+```{r echo=F}
+po <- po %>% mutate(ci = yi1 - yi0)
+
+kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 30) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
+
+---
+## 
+
+.left-column[
+### Individual causal effects
+]
+
+.right-column[
+```{r echo=F}
+po <- po %>% mutate(ci = yi1 - yi0)
+
+po$yi1 = cell_spec(po$yi1,
+  color = ifelse(po$di == 1, "red", "black"))
+po$yi0 = cell_spec(po$yi0,
+  color = ifelse(po$di == 0, "red", "black"))
+
+kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 30) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
+
+---
+## A missing data problem
+
+---
+## The Average Treatment Effect (ATE)
+
+---
+## True (unobserved) impact of an intervention
+
+---
+## The average treatment effect
+
+---
+## Fundamental problem of causal inference
+
+---
+## Fundamental problem of causal inference
+
+---
+## Fundamental problem of causal inference
+
+---
+## Fundamental problem of causal inference
+
+---
+## Naive estimate of the ATE
+
+---
+## Estimated (observed) impact of the program
+
+---
+## The selection problem
+
+---
+## Recovering causal effects
+
+---
+## What are randomized experiments
+
+---
+## RCTs and exchangeability
+
+---
+## RCTs and exchangeability
+
+---
+## 'Quasi'-experiments
+
+---
+class: center, top, inverse
+# .orange[**Causal Policy Effects**]
+
+.left[
+## .gray[**I. "What-If" Questions and Counterfactuals**]
+## .orange[**II. Causal Parameters**]
+## .gray[**III. Causal Assumptions**]
+]
+
+---
+## Treatment effects
+
+---
+## Average Treatment Effect on the Treated (ATT)
+
+---
+## Calculate the ATE and the ATT
+
+---
+## Calculate the ATE
+
+---
+## Calculate the ATT
+
+---
+## More on the ATE vs. the ATT
+
+---
+## Average Treatment Effect on the Controls (ATC)
+
+---
+## Calculate the ATC
+
+---
+## Relation between ATE, ATT, and ATC
+
+---
+## Simple example
+
+---
+class: center, top, inverse
+# .orange[**Causal Policy Effects**]
+
+.left[
+## .gray[**I. "What-If" Questions and Counterfactuals**]
+## .gray[**II. Causal Parameters**]
+## .orange[**III. Causal Assumptions**]
+]
+
+---
+## Exchangeability
+
+---
+## Stable Unit Treatment Value Assumption (SUTVA)
+
+---
+## Consistency
+
+---
+## Positivity
+
+---
+## Further reading
+

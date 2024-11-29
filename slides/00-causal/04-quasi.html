@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Overview of Quasi-Experimental Designs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Overview of Quasi-Experimental Designs
+]
+.subtitle[
+## Advanced Social Epidemiology PhD Course
+]
+.author[
+### Sam Harper
+]
+.institute[
+### <br> </br>
+]
+.date[
+### University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>
+]
+
+---
+
+
+
+
+
+
+
+
+class: center, top, inverse
+# .orange[**4. Quasi-Experiments**]
+
+.left[
+## .orange[**4.1. Motivation**]
+## .orange[**4.2. Randomization and Observation**]
+## .orange[**4.2 Quasi-Experimental Designs**]
+]
+
+---
+class: center, top, inverse
+# .orange[**4. Quasi-Experiments**]
+
+.left[
+## .orange[**4.1. Motivation**]
+## .gray[**4.2. Randomization and Observation**]
+## .gray[**4.2 Quasi-Experimental Designs**]
+]
+
+---
+### Stylized "forms" of questions asked in social epidemiology
+
+.right-column[
+What question do most studies in social epidemiology answer?
+
+-   Do individuals who are disadvantaged with respect to social position
+    have worse health than those who are advantaged?
+
+
+Other kinds of questions that could be asked:
+
+-   .red[Would] individuals who are disadvantaged with respect to social position have better health .red[if they were to become advantaged]?
+
+-   .red[Would] individuals who are advantaged with respect to social position have worse health .red[if they were to become disadvantaged]?
+
+These are **causal** questions.
+]
+
+---
+### "Normal" etiological science in social epidemiology
+.right-column[
+1.  Follow-up of individuals in different social groups for various
+    health outcomes (incidence, mortality, risk factors)
+
+2.  Adjustment for various confounders/mediators (are inequalities
+    "explained" by\....A, B, C?).
+
+-   "Our results demonstrate that"\...we should:
+
+    -   *raise* education levels
+    -   *increase* economic assistance to the poor
+    -   *remove* noxious exposures from the environment
+    -   *reduce* psychosocial workplace hazards
+    -   *eliminate* hierarchies, and the like.
+
+-   These statements are based on making **causal** inferences.
+]
+
+---
+### What's the problem?
+.right-column[
+-   We are mainly (though not exclusively) interested in causal effects.
+
+-   We want to know:
+
+    -   Should we intervene to reduce exposure to `\(X\)`?, or
+    -   Did the program work? If so, for whom? If not, why not?, or
+    -   If we implement the program elsewhere, should we expect the same
+        result?
+
+-   These questions involve counterfactuals about what would happen
+    **if** we intervened to do something.
+
+-   These are causal questions.
+]
+
+---
+### Causation, Association, and Confounding
+-   **Causal effect**: Do individuals randomly .red[assigned] (i.e., SET) to treatment have better
+    outcomes?
+
+    `$$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)$$`
+
+-   **Association**: Do individuals who .red[happen to be] treated have better outcomes?
+
+    `$$E\left(Y|Treated\right)-E(Y|Untreated)$$`
+
+-   **Confounding**:
+
+    `$$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)\neq E\left(Y|Treated\right)-E\left(Y|Untreated\right)$$`
+
+---
+class: center, top, inverse
+# .orange[**4. Quasi-Experiments**]
+
+.left[
+## .gray[**4.1. Motivation**]
+## .orange[**4.2. Randomization and Observation**]
+## .gray[**4.2 Quasi-Experimental Designs**]
+]
+
+
+---
+## Randomized Trials vs. Observational Studies
+
+.pull-left[
+### RCTs, Defined
+
+RCTs involve: 
+1. comparing treated and control groups;
+2. the
+treatment assignment is random; 
+3. investigator does the randomizing.
+
+In an RCT, treatment/exposure is .red[assigned] by the investigator
+]
+
+--
+
+.pull-right[
+-   In observational studies, exposed/unexposed groups .red[exist] in the source population and are selected by the investigator.
+
+-   Good natural experiments do (1) and (2), but not (3).
+
+-   Because there is no control over assignment, the credibility of
+    natural experiments hinges on how good "as-if random" approximates
+    (2).
+]
+
+---
+### Strength of randomized treatment allocation
+
+-   Recall that randomization means that we can generally estimate the
+    causal effect without bias.
+
+-   Randomization guarantees exchangeability on measured and unmeasured
+    factors.
+    
+.center[
+&lt;img src="../../images/rct-dag.png" width="80%" height="80%" /&gt;
+]  
+    
+---
+.footnote[(Keall et al. 2015)]
+.pull-left[
+### Randomize if you can
+-   Randomization leads to:
+
+    -   balance on measured factors.
+    -   balance on unmeasured factors.
+
+-   Unmeasured factors cannot bias the estimate of the exposure effect.
+
+-   Example from Home Injury Prevention Intervention cluster RCT
+
+- What do you notice about Table 1?
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/keall-lancet-t1.png" width="80%" height="80%" /&gt;
+]]
+
+---
+### What's the problem?
+.pull-left[
+We are mainly (though not exclusively) interested in causal effects.
+
+Randomization is generally great for answering whether treatment
+    assignment `\(Z\)` affects `\(Y\)`.
+- treatment assignment (Z) is independent of potential outcomes and all measured and .red[unmeasured] pre-treatment variables.
+
+- Effect of `\(Z\)` on `\(Y\)` is unconfounded
+]
+
+.pull-right[
+### RCTs have serious limitations.
+- Non-compliance.
+
+-   Attrition.
+
+-   Spillovers.
+
+-   Blinding (esp. in clinical trials).
+]
+
+---
+## Problem of Social Exposures
+.right-column[
+-   Many social exposures cannot be randomized by investigators:
+
+    -   Unethical (poverty, parental social class, job loss)
+
+    -   Impossible (ethnic background, place of birth)
+
+    -   Expensive (neighborhood environments)
+
+-   Some exposures are hypothesized to have long latency periods (many
+    years before outcomes are observable).
+
+-   Effects may be produced by complex, intermediate pathways.
+
+-   We need alternatives to RCTs.
+]
+
+---
+### How to interpret statistical associations of health inequality?
+.right-column[
+We have lots of statistical associations between social exposures
+    and health.
+
+`$$X---Y$$`
+
+Some possible situations *consistent* with statistical associations:
+
+1.  Causal `\(X\rightarrow Y\)`
+
+2.  Heterogeneity `\(X_{a}\;\;Y_{a}\)` vs. `\(X_{b}\rightarrow Y_{b}\)`
+
+3.  Reverse causation `\(Y\rightarrow X\)`
+
+4.  Confounding `\(X\leftarrow C\rightarrow Y\)`
+
+5.  Selection bias `\(X\rightarrow S\leftarrow Y\)`
+]
+
+---
+### Unmeasured confounding is a .red[serious] challenge
+.right-column[
+-   We often compare socially advantaged and disadvantaged on health.
+
+-   Key problem: people choose/end up in treated or untreated group for
+    reasons that are difficult to measure and that may be correlated
+    with their outcomes.
+
+-   So\...**adjust.**
+
+    -   Measure and adjust (regression) for `\(C\)` confounding factors.
+
+    -   Conditional on `\(C\)`, we are supposed to believe assignment is "as
+        good as random" = causal.
+]
+
+---
+.pull-left[
+## Key issue is credibility
+-   If we have a good design and assume that we have measured all of the
+    confounders, then regression can give us exactly what we want: an
+    estimate of the causal effect of exposure to `\(T\)`.
+
+-   Core issue: How credible is this assumption?
+]
+
+.pull-right[
+&lt;img src="../../images/wishful-thinking-veley.jpg" width="90%" height="90%" /&gt;
+]
+
+---
+.footnote[Beauchamp et al. (2010)]
+
+.center[
+SEP and CVD in Australia. .red[Many low p-values]
+&lt;img src="../../images/beauchamp-t1r.png" width="90%" height="90%" /&gt;
+]
+
+---
+### Is observational credibility is getting harder to sell?
+.footnote[http://fivethirtyeight.com/features/everybody-calm-down-about-breastfeeding/]
+
+Another example: Does breastfeeding increase child IQ?
+
+Several observational studies show higher IQs for breastfed
+    children.
+
+&gt; "The authors of this and other studies claim to find effects of breastfeeding because even once they adjust for the differences they see across women, the effects persist. But this assumes that the adjustments they do are able to remove all of the differences across women. This is extremely unlikely to be the case."
+
+&gt; "I would argue that in the case of breastfeeding, this issue is impossible to ignore and therefore .red[any study that simply compares breastfed to formula-fed infants is deeply flawed.] That doesn't mean the results from such studies are necessarily wrong, just that we can't learn much from them."
+
+&gt; Oster (2015)
+
+---
+### Why we worry about observational studies
+.footnote[Jones et al. (2018)]
+.right-column[
+Recent evaluation of "Workplace Wellness" program in US state of Illinois
+
+Treatment: biometric health screening; online health risk
+    assessment, access to a wide variety of wellness activities (e.g.,
+    smoking cessation, stress management, and recreational classes).
+
+Randomized evaluation:
+- 3,300 individuals assigned treated group.
+- 1,534 assigned to control (could not access the program).
+
+Also analyzed as an observational study comparing "participants" vs. non-participants in treated group.
+]
+
+---
+.footnote[Carroll, New York Times, Aug 6, 2018.]
+.center[
+&lt;img src="../../images/carroll-nyt-wellness.png" width="80%" height="80%" /&gt;
+]
+
+---
+class: center, top, inverse
+# .orange[**4. Quasi-Experiments**]
+
+.left[
+## .gray[**4.1. Motivation**]
+## .gray[**4.2. Randomization and Observation**]
+## .orange[**4.2 Quasi-Experimental Designs**]
+]
+
+---
+## How can quasi-experiments help?
+.right-column[
+-   Quasi-experiments aim to mimic RCTs.
+
+-   "Accidents of chance" that create:
+
+    1.  Comparable treated and control units
+
+    2.  Random or "as-if" random assignment to treatment.
+
+-   Control for (some) sources of bias that cannot be adequately
+    controlled using regression adjustment.
+
+-   More credible designs also help us to understand the relevance of
+    other factors that may be implicated in generating inequalities.
+]
+
+---
+## Selection on "observables" and "unobservables"
+.pull-left[
+-   Observables: Things you measured or can measure
+
+-   Unobservables: Things you can't measure (e.g., innate abilities)
+
+-   Exogenous variation: predicts exposure but (**we assume**) .red[not] associated with anything else [mimicking random assignment].
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/qe-dag.png" width="100%" height="100%" /&gt;
+]]
+
+---
+### Strategies based on observables and unobservables
+
+.pull-left[
+-   Most observational study designs control for *measured* factors
+    using:
+
+    -   Stratification
+
+    -   Regression adjustment
+
+    -   Matching (propensity scores, etc.)
+]
+
+--
+
+.pull-right[
+-   Quasi-experimental strategies .red[aim] to control
+    for some *unmeasured* factors using:
+
+    -   Interrupted time series (ITS)
+
+    -   Difference-in-differences (DD)
+
+    -   Synthetic controls (SC)
+
+    -   Instrumental variables (IV)
+
+    -   Regression discontinuity (RD)
+]
+
+---
+## Some *potential* sources of natural experiments
+
+.right-column[
+-   Law changes
+-   Eligibility for social programs (roll-outs)
+-   Lotteries
+-   Genes
+-   Weather shocks (rainfall, disasters)
+-   Arbitrary policy or clinical guidelines (thresholds)
+-   Business / factory closures
+-   Historical legacies (physical environment)
+-   Seasonality
+]
+
+---
+class: center, middle, inverse
+# Difference-in-Differences
+
+---
+### Difference-in-Differences: Basic Idea
+.right-column[
+In the simplest DD setting, outcomes are observed for units in two groups and in two time periods.
+
+Treated:
+- only units in one of the two groups are exposed to a treatment, in the second time period.
+
+Control:
+- Never observed to be exposed to the treatment.
+]
+
+---
+### Difference-in-Differences: Basic Idea
+.right-column[
+The average .blue[change] over time in the non-exposed (control) group is .blue[subtracted] from the gain over time in the exposed (treatment) group.
+    
+These are our two 'differences'.
+
+Double differencing removes biases in second period comparisons
+    between the treatment and control group that could be the result
+    from 
+- permanent differences between those groups
+- secular trends affecting both groups.
+]
+
+---
+## Visual Intuition of DD
+.footnote[Gertler et al. (2011]
+.center[
+&lt;img src="../../images/gertler1.png" width="60%" height="60%" /&gt;
+]
+
+---
+### Difference-in-Differences without Regression
+
+DD is just differences in means! Let `\(\mu_{it}=E(Y_{it})\)`
+
+-   `\(i=0\)` is control group, `\(i=1\)` is treatment.
+-   `\(t=0\)` is pre-period, `\(t=1\)` is post-period.
+
+-   One 'difference' estimate of causal effect is:
+    `\(\mu_{11}—\mu_{10}\)`
+    (pre-post in treated)
+-   Differences-in-Differences estimate of causal effect is:
+    `\((\mu_{11}-\mu_{10})-(\mu_{01}-\mu_{00})\)`
+
+
+
+Area  |      Before   |    After  | Difference (A - B)
+---------| ---------------| -------| :--------------------:
+Treated   |     135   |      100    |       -35
+Control   |     80   |       60     |       -20
+T - C    |     55   |       40      |      **-15**
+
+---
+## A social epidemiology example
+
+.center[
+&lt;img src="../../images/mccormick-title.png" width="80%" height="80%" /&gt;
+]
+
+-   Evaluated impact of MA reform on inequalities in hospital
+    admissions.
+
+-   Compared MA to nearby states: NY, NJ, PA.
+
+-   Intervention "worked": % uninsured halved (12% to 6%) from 2004-06
+    to 2008-09.
+
+---
+.pull-left[
+### Evaluating pre-intervention trends
+
+-   Adds credibility to assumption that post-intervention trends .red[would have been similar] in the absence of the intervention.
+
+-   "Null" results help focus on alternative mechanisms linking
+    disadvantage to hospital admissions.
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/mccormick-fig.png" width="80%" height="80%" /&gt;
+]]
+
+---
+class: center, middle, inverse
+# Synthetic Controls
+
+---
+## Synthetic control methods
+.right-column[
+-   Inference from comparative case studies is limited if we cannot
+    identify a control to represent the counterfactual scenario.
+
+-   Abadie and Gardeazabel [@Abadie:2003aa] pioneered the synthetic
+    control method to examine the economic impact of terrorism in the
+    Basque country, using other Spanish regions as control groups.
+
+-   The synthetic control method uses a data driven approach to compare
+    the trend of an outcome in a treated unit with the trend in a
+    synthetic composite area (the "synthetic control").
+
+-   The method is gaining popularity in social sciences (i.e., political
+    science), but hasn't taken root in epidemiology as of yet.
+]
+
+---
+.footnote[Stearns (2015)]
+.center[
+&lt;img src="../../images/stearns-title.png" width="80%" height="80%" /&gt;
+]
+
+---
+.footnote[Stearns (2015)]
+.center[
+&lt;img src="../../images/stearns-figure.png" width="80%" height="80%" /&gt;
+]
+---
+class: center, middle, inverse
+# Instrumental Variables
+
+---
+### Challenge of conventional observation study (again)
+.pull-left[
+-   WHO: "Educational attainment is linked to improved health outcomes."
+
+-   But what about unmeasured confounding? Unmeasured factors such as
+    personality traits, cognitive ability, etc. may be predictive of
+    both education and disease.
+-   Failure to measure such factors will falsely attribute their effects
+    to education.
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/ed-confounded-dag.png" width="100%" height="100%" /&gt;
+]]
+
+---
+### Possible solution: Quasi-experiment
+
+"Instrumental variable": predicts education but .red[not] associated with anything else [mimicking random assignment].
+
+.center[
+&lt;img src="../../images/qe-educ-comp.png" width="100%" height="100%" /&gt;
+]
+
+---
+### Non-randomized instrument creates additional issues
+
+-   In an RCT we know the treatment assignment is not associated
+    directly with the outcome or with other unmeasured common causes.
+
+-   This assumption is less credible when our "instrument" is
+    non-randomized.
+
+.center[
+&lt;img src="../../images/iv-bias-dag.png" width="70%" height="70%" /&gt;
+]
+
+---
+### Non-randomized examples of IV: Policies
+.footnote[Leigh and Schembri (2004)]
+
+-   Does smoking affect physical functioning ?
+
+-   **Instrument**: changes in cigarette prices [mimicking random
+    assignment].
+
+.center[
+&lt;img src="../../images/prices-dag.png" width="70%" height="70%" /&gt;
+]
+
+---
+### Non-randomized examples of IV: Policies
+.footnote[Glymour et al. (2008)]
+-   Does education affect cognitive functioning?
+
+-   **Instrument**: changes in compulsory schooling laws [mimicking
+    random assignment].
+    
+.center[
+&lt;img src="../../images/csl-dag.png" width="70%" height="70%" /&gt;
+]
+
+---
+
+.footnote[The lower line shows the proportion of British-born adults aged 32 to 64 from the 1983 to 1998 General Household Surveys who report leaving
+full-time education at or before age 14 from 1935 to 1965. The upper
+line shows the same, but for age 15. The minimum school-leaving age in
+Great Britain changed in 1947 from 14 to 15 [Oreopoulos (2006)]]
+
+.left-column[
+### What does a quasi-experiment look like?
+Fraction left full-time education by year aged 14 and 15 (Great Britain)
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/uk-education.png" width="90%" height="90%" /&gt;
+]]
+
+---
+.left-column[
+Average schooling increases by exactly half a year between the cohorts
+that were age 14 in 1946 and in 1948.
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/oreo.png" width="90%" height="90%" /&gt;
+]]
+
+---
+## Quasi Experiments: Education and Mortality
+
+-   Changes in education due to national or state-level changes in laws
+    regarding compulsory schooling.
+
+-   Differ from the usual approach by attempting to focus on plausibly random .red[changes] in education, rather than comparing those .blue[achieving] high vs. low education.
+
+-   Findings are heterogenous, in contrast to much of the evidence from
+    observational studies:
+ -   USA (Lleras-Muney, 2005): IV (yes), RD (no)   
+ -   UK (Oreopolous 2008, Clark 2010): RD (no)
+ -   France (Albouy 2009): RD (no)
+ -   Also positive and negative evidence for other health outcomes in Denmark, Sweden, Germany, Italy, Netherlands
+
+-   Importance of explicitly trying to mimic an RCT for education
+
+---
+background-image: url(../../images/hamad-title.png)
+background-size: contain
+
+---
+background-image: url(../../images/hamad-smoking.png)
+background-size: contain
+
+---
+class: center, middle, inverse
+# Regression Discontinuity
+
+---
+## RD: Basic Idea
+.pull-left[
+-   Take advantage of arbitrary thresholds that sometimes assign
+    treatment to individuals.
+
+-   When an administrative or rule-based cutoff in a continuous variable
+    (present in your data) predicts treatment assignment, being on one
+    side or the other of this cutoff determines, or predicts, treatment
+    received.
+]
+
+--
+
+.pull-right[
+-   The continuous variable is called the "assignment" or "forcing"
+    variable.
+
+-   Groups just on either side are the threshold considered "as good as
+    randomly" assigned to treatment.
+]
+
+---
+### RD: Motivating example
+
+.right-column[
+-   Suppose we want to estimate the impact of a cash transfer program on
+    daily food expenditure of poor households.
+
+-   Poverty is measured by a continuous score between 0 and 100 that is
+    used to rank households from poorest to richest.
+
+-   Poverty is the assignment variable, `\(Z\)`, that determines eligibility
+    for the cash transfer program.
+
+-   The outcome of interest, daily food expenditure, is denoted by `\(Y\)`.
+]
+
+---
+.footnote[Gertler (2011)]
+.left-column[
+At baseline, you might expect poorer households to spend less on food,
+on average, than richer ones, which might look like this]
+
+.right-column[
+.center[
+&lt;img src="../../images/gertler-rd1.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.footnote[Gertler (2011)]
+.left-column[
+Under the program's rules, only households with a poverty score, `\(Z\)`,
+below 50 are eligible for the cash payment
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/gertler-rd3.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.footnote[Gertler (2011)]
+As we approach the cutoff value from above and below, the individuals in
+both groups become more and more alike, on both measured and unobserved
+characteristics---in a small area around the threshold, the only
+difference is in treatment assignment
+
+.center[
+&lt;img src="../../images/gertler-rd6.png" width="70%" height="70%" /&gt;
+]
+
+---
+### Applied example: HPV vaccine and sexual behaviors
+.footnote[Smith et al. (2015)]
+-   Does getting the HPV vaccine affect sexual behaviors?
+-   Vaccine policy: predicts vaccine receipt but (**we assume**)
+    .red[not] associated with anything else [mimicking
+    random assignment].
+
+.center[
+&lt;img src="../../images/hpv-dag.png" width="70%" height="70%" /&gt;
+]
+
+---
+.footnote[Smith et al. (2015)]
+.left-column[
+### Does the cutoff predict treatment?
+-   Girls "assigned" to HPV program by quarter of birth.
+
+-   Pr(vaccine) jumps discontinuously at cutoff
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/smith-treatment.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.footnote[Smith et al. (2015)]
+.left-column[
+### What does a credible natural experiment look like?
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/smith-t1.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.footnote[Smith et al. (2015)]
+.left-column[
+### Note little impact of adjustment
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/smith-t3.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.footnote[Carpenter (2017)]
+.left-column[
+### Another recent example: US drinking age
+Minimum legal drinking age and non-fatal injuries
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/carpenter-edvisits-men.png" width="100%" height="100%" /&gt;
+]]
+
+
+---
+### Issues related to generalizability
+.right-column[
+-   RD estimates local average impacts around the eligibility cutoff
+    where treated and control units are most similar and results cannot
+    be generalized to units whose scores are further away from the
+    cutoff (unless we assume treatment heterogeneity).
+
+-   If the goal is to answer whether the program should exist or not,
+    then RD is likely not the appropriate methodology.
+
+-   However, if the question is whether the program should be cut or
+    expanded at the margin, then it produces the local estimate of
+    interest to inform this policy decision
+]
+
+---
+### Be careful, and skeptical
+
+.pull-left[
+-   Correlations between social factors and health are easy to find.
+
+-   They do not necessarily reflect **causal** relationships.
+
+-   Need to search hard for alternative explanations.
+
+-   Important to consider the strength of evidence in considering
+    interventions.
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/feynman-fool.jpeg" width="100%" height="100%" /&gt;
+]]
+
+---
+## Are natural experiments always more credible?
+.right-column[
+-   Not necessarily, but probably.
+
+-   Key is "as-if" randomization of treatment:
+
+    -   If this is credible, it is a much stronger **design** than most
+        observational studies.
+
+    -   Should eliminate self-selection in to exposure groups.
+
+-   Allows for simple, transparent analysis of average differences
+    between groups.
+
+-   Allows us to rely on weaker assumptions.
+]
+
+---
+## Assumptions still matter!
+.pull-left[
+-   Quasi-experimental studies are still observational.
+
+-   Most credible if they create unconditional randomized treatment
+    groups (e.g., lottery).
+
+-   Credibility is continuous, not binary.
+
+-   I worry about the cognitive impact of the "quasi-experimental"
+    label.
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/qe-confounded-dag.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Potential drawbacks of quasi-experimental approaches
+.right-column[
+-   How good is "as-if" random? (need "shoe-leather")
+
+-   Credibility of additional (modeling) assumptions.
+
+-   Relevance of the intervention.
+
+-   Relevance of population.
+]
+
+---
+.pull-left[
+### But potential benefits!
+
+&gt;However, this year’s Laureates have shown that it is
+possible to answer these and similar questions using
+natural experiments. The key is to use situations in which
+chance events or policy changes result in groups of people
+being treated differently, in a way that resembles clinical
+trials in medicine.
+
+&gt; Royal Swedish Academy of Sciences (2021)
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/nobel-2021.png" width="100%" height="100%" /&gt;
+]]
+
+---
+### Back to basics: assumptions and costs
+.right-column[
+-   Major benefit of randomized evaluations are that few assumptions are
+    needed to estimate a causal effect.
+
+-   Necessary assumptions can often be checked.
+
+-   Non-randomization means more assumptions, more possibility for
+    assumptions to be violated.
+
+-   Should lead us to spend lots of time trying to test the credibility
+    of these assumptions.
+
+    -   How good is "as-if random"?
+    -   Are there compelling non-causal alternative explanations for the
+        observed results?
+
+-   All non-randomized designs are not created equal.
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
