@@ -1,7 +1,7 @@
 ---
 title: "Counterfactuals and Causal Policy Effects"
 subtitle: "Advanced Social Epidemiology PhD Course"  
-author: "Sam Harper"
+author: "Sam Harper, Arijit Nandi"
 institute: " <br> </br>"
 date: "University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>"
 output:
@@ -28,6 +28,7 @@ library(emojifont)
 library(emo) # devtools::install_github("hadley/emo")
 library(icons)
 library(kableExtra)
+library(janitor)
 xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
 ```
 
@@ -70,16 +71,17 @@ class: center, top, inverse
 ### "What-ifs" and counterfactuals
 
 .left-column[
-
-![](/images/counterfactual-image.png)
+```{r, echo=FALSE}
+knitr::include_graphics(here("images", "counterfactual-image.png"))
+```
 ]
 
 .right-column[
 - Questions about the impact of an intervention (the change that can be causally attributed to the program) are about what-ifs
 
-- Prospectively, we can think about how the world would be different if we intervened to change the status quo
+- Prospectively, we can think about how the world would be different *if we intervened* to change the status quo
 
-- Retrospectively, we can think about what would have been had we not implemented a particular policy or program
+- Retrospectively, we can think about what *would have been* had we not implemented a particular policy or program
 
 - These alternative causal states are known as counterfactuals
 
@@ -88,27 +90,51 @@ class: center, top, inverse
 ]
 
 ---
-## "Normal" etiological science in social epidemiology
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "dk-tax.png"))
+```
+
+---
+
+.left-column[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "great-danes.jpeg"))
+```
+]
+
 .right-column[
-1.  Follow-up of individuals in different social groups for various
-    health outcomes (incidence, mortality, risk factors)
 
-2.  Adjustment for various confounders/mediators (are inequalities
-    "explained" by\....A, B, C?).
+<br>
+<br>
 
--   "Our results demonstrate that"\...we should:
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "dk-mortgage-quote.png"))
+```
+]
 
-    -   *raise* education levels
-    -   *increase* economic assistance to the poor
-    -   *remove* noxious exposures from the environment
-    -   *reduce* psychosocial workplace hazards
-    -   *eliminate* hierarchies, and the like.
+---
 
--   These statements are based on making **causal** inferences.
+.pull-left[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "dk-wrecking.png"))
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "dk-wrecking-quote.png"))
+```
 ]
 
 ---
 ## Potential Outcomes Framework
+
+.left-column[
+```{r, echo=FALSE}
+knitr::include_graphics(here("images", "counterfactual-image.png"))
+```
+]
 
 .right-column[
 
@@ -128,15 +154,19 @@ James Lind is credited with introducing the concept of control and experimental 
 ]
 
 .right-column[
+.smaller[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]
 .center[
-![:scale 90% ](/images/lind.jpg)
-]]
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics(here("images", "lind.jpg"))
+```
+]
+]
 
 ---
 ## Alternative treatment states
 
 .pull-left[
-Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
+Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
 
 When only two alternative treatments are being considered they can be called the treatment and control states
 ]
@@ -161,9 +191,11 @@ If "control" $T_{i}=0$
 ---
 ## Alternative treatment states
 
-- Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
+.right-column[
+- Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
 
 - When only two alternative treatments are being considered they can be called the treatment and control states
+]
 
 .column-1[
 ```{r, echo=FALSE}
@@ -191,7 +223,9 @@ If "control" $T_{i}=0$
 ---
 ## Potential Outcomes
 
-- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states--each individual has a potential outcome under both the treatment and control states  
+- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states
+
+- *Each individual has a potential outcome under both the treatment and control states*  
 
 - With a binary treatment, the potential outcomes are given by the random variables $Y^{1}$ and $Y^{0}$; we assume that each individual in the population has a potential outcome under both states
 
@@ -221,6 +255,7 @@ $y_{i}^{0}$
 
 .left-column[
 ### Potential Outcomes
+
 ]
 
 .right-column[
@@ -266,7 +301,7 @@ $y_{i}^{0}$
 
 .pull-right[
 
-- The individual causal effect is the difference in outcomes for the same individual with and without the intervention.
+- The **individual causal effect** is the difference in outcomes *for the same individual* with and without the intervention.
 
 - A causal effect implies that the individual would have experienced the outcome if treated, but not untreated (or vice versa).
 
@@ -307,14 +342,14 @@ kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)
 
 .right-column[
 ```{r echo=F}
-po <- po %>% mutate(ci = yi1 - yi0)
+poh <- po %>% mutate(ci = yi1 - yi0)
 
-po$yi1 = cell_spec(po$yi1,
-  color = ifelse(po$di == 1, "red", "black"))
-po$yi0 = cell_spec(po$yi0,
-  color = ifelse(po$di == 0, "red", "black"))
+poh$yi1 = cell_spec(poh$yi1,
+  color = ifelse(poh$di == 1, "red", "black"))
+poh$yi0 = cell_spec(poh$yi0,
+  color = ifelse(poh$di == 0, "red", "black"))
 
-kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+kable(poh, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
   format = "html", escape = F,
   align=rep('c', 5), booktabs=T) %>%
   kable_styling(full_width = F, font_size = 30) %>%
@@ -329,50 +364,451 @@ kable(po, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)
 ---
 ## A missing data problem
 
+| Observed exposure  | $Y^{1}$ |  $Y^{0}$  |
+| ------------- |:-------------:| -----:|
+| Treatment group | Observable as $Y$ | Counterfactual |
+| Control group     | Counterfactual      | Observable as $Y$ |
+
+<br>
+
+.left-column[
+```{r, echo=FALSE, out.width="40%"}
+knitr::include_graphics(here("images", "half.png"))
+```
+]
+
+.right-column[
+- Although $Y_{i}^{1}$ and $Y_{i}^{0}$ exist in theory, in practice we cannot directly observe the same person simultaneously in two different states, which prevents direct calculation of individual causal effects 
+]
+
 ---
 ## The Average Treatment Effect (ATE)
 
----
-## True (unobserved) impact of an intervention
+.left-column[
+<br>
+<br>
+<br>
+<br>
+Potential outcomes $E(Y_{i})$: 
+]
+
+.right-column[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+```
+
+Our target population
+]
+.pull-left[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+```
+
+$E(y_{i}^{1})$
+]]
+
+.pull-right[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+```
+
+$E(y_{i}^{0})$
+]
+]
+
+- The causal effect is $X$
+
+- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented 
+
+]
 
 ---
-## The average treatment effect
+## 
+
+.left-column[
+### True (unobserved) impact of an intervention
+]
+
+.right-column[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "true-impact-graph.png"))
+```
+]
+
+---
+## 
+.left-column[
+### The average treatment effect
+]
+
+.right-column[
+```{r, echo=FALSE}
+pom <- po %>% adorn_totals(name = "Mean") %>%
+  mutate(across(where(is.numeric), 
+    ~ replace(., n(), .[n()]/(n()-1))))
+
+pom$ci = cell_spec(pom$ci,
+  color = ifelse(pom$di == 0.5, "red", "black"))
+  
+kable(pom, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 30) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  row_spec(9, bold=TRUE) %>%
+  
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a “naïve” estimate of the ATE
+]
+
+
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+.gray[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a “naïve” estimate of the ATE
+]
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="120%"}
+knitr::include_graphics(here("images", "pre-post-graph.png"))
+```
+
+- We could observe the same group at different time periods (pre-post), but other things may have changed since the intervention
+
+]
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+.gray[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a “naïve” estimate of the ATE
+
+]
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="120%"}
+knitr::include_graphics(here("images", "treat-control-graph.png"))
+```
+
+- Alternatively, we can observe a different group that was unexposed
+
+]
 
 ---
 ## Fundamental problem of causal inference
+.center[
+### These substitutes are not good counterfactuals
+]
+
+.pull-left[
+
+- Pre-post ignores “secular trends” (changes in other factors influencing the outcome since the intervention)
+
+<br>
+
+- Treated vs. control neglects unmeasured differences between the groups
+]
+
+
+.pull-right[
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics(here("images", "pre-post-graph.png"))
+```
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics(here("images", "treat-control-graph.png"))
+```
+]
+
 
 ---
 ## Naive estimate of the ATE
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+```
 
+Population showing actual treatment status, $D_{i}$
+]
+
+.left-column[
+Observed outcomes $E(Y_{i}|D_{i})$: 
+]
+
+.right-column[
+.pull-left[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+```
+
+$E(y_{i} | d_{i}=1)$
+]
+]
+
+.pull-right[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+```
+
+$E(y_{i} | d_{i}=0)$
+
+]]]
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Naive estimate is: $E(\delta_{i, naive}) = E(y_{i} | d_{i}=1) - E(y_{i} | d_{i}=0)$
+
+- The naïve estimate of the ATE compares the outcomes for those observed to receive the treatment vs. the control condition 
+ 
 ---
-## Estimated (observed) impact of the program
+## 
+.left-column[
+### Estimated (observed) impact of the program
+]
+
+.right-column[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "naive-estimate.png"))
+```
+]
 
 ---
 ## The selection problem
 
+.right-column[
+The naïve estimator rarely yields an unbiased treatment effect
+
+Why? Because treatment and control groups are rarely exchangeable (i.e., programs/policies are selectively placed in different areas and the decision to participate is often voluntary)
+
+These differences could affect potential outcomes, creating bias
+
+Economist call this selection or omitted variable bias
+
+In epidemiology, the effect of these pre-existing differences between groups is commonly called confounding bias
+]
+
 ---
 ## Recovering causal effects
+
+.left-column[
+.center[
+
+<br>
+
+```{r, echo=F}
+icon_style(fontawesome("pencil-ruler", style = "solid"), scale=4, fill = "steelblue") 
+```
+]]
+
+.right-column[
+Without a credible substitute for the unobserved potential outcomes, causal impact cannot be established.
+
+The key is to generate groups of individuals that are statistically indistinguishable from one another in the absence of an intervention—we must somehow mimic the counterfactual
+
+We can use experimental or quasi-experimental techniques to attempt to recover the causal effect
+]
+
 
 ---
 ## What are randomized experiments
 
----
-## RCTs and exchangeability
+> the word experiment is used in a quite precise sense to mean an investigation where the system under study is under the control of the investigator. This means that the individuals or material investigated, the nature of the treatments or manipulations under study and the measurement procedures used are all selected, in their important features at least, by the investigator. (Cox, 2000)
+
+Randomized experiments are experiments “in which units are assigned to receive the treatment or an alternative condition by a random process such as the toss of a coin.” (Shadish, 2002)
+
 
 ---
 ## RCTs and exchangeability
+
+.right-column[
+If treatment is assigned randomly, it is said to be exogenous 
+
+Comparison groups are the same with respect to measured and unmeasured characteristics (no unmeasured confounding or omitted variable bias) and each unit’s potential outcomes are independent of actual treatment assignment, $(Y_{i}^{1}, Y_{i}^{0} | D)$
+
+Under these conditions, the treatment and control groups are exchangeable, which implies that the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated (and vice versa)
+
+Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
+]
+
+
+---
+## RCTs and exchangeability
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Font_Awesome_5_solid_equals.svg"
+     width="50px" height="50px"
+     style="position:absolute; right:450px; top:475px;">
+
+.left-column[
+Target population
+
+<br>
+Randomization
+
+<br>
+
+Actual exposure
+]
+
+.right-column[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "gray")
+```
+<br>
+```{r, echo=FALSE}
+icon_style(fontawesome("arrow-down", style = "solid"), scale=2) 
+```
+<br>
+```{r, echo=FALSE}
+icon_style(fontawesome("dice", style = "solid"), scale=2) 
+```
+<br>
+<br>
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue")
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
+```
+]
+
+.pull-left[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+```
+$E(y_{i}^{1})$
+<br>
+vs
+
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+```
+$E(y_{i}^{0})$
+]]
+
+.pull-right[
+.center[
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
+```
+$E(y_{i} | d_{i}=1)$
+<br>
+vs
+
+```{r, echo=FALSE}
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red") 
+```
+$E(y_{i} | d_{i}=0)$
+]]
+]
 
 ---
 ## 'Quasi'-experiments
+
+.right-column[
+Oftentimes we do not have control over treatment assignment and must investigate how individuals end up in alternative states
+
+The term quasi-experiment refers to:
+>“experiments that have treatments, outcome measures, and experimental units, but do not use random assignment to create the comparisons from which treatment-caused change is inferred.”(Cook, 1979)
+
+Assignment is by self-selection, by which units choose treatment for themselves, or by means of administrator selection
+
+Consequently, unlike RCTs, comparison groups may differ in many systematic ways other than the presence of the treatment
+]
+
 
 ---
 class: center, top, inverse
@@ -387,32 +823,246 @@ class: center, top, inverse
 ---
 ## Treatment effects
 
+.left-column[
+.center[
+
+<br>
+
+```{r, echo=F}
+icon_style(fontawesome("question", style = "solid"), scale=4, fill = "steelblue") 
+```
+]]
+
+.right-column[
+So far we have discussed the average treatment effect or ATE
+
+The ATE might, however, not be the only quantity of interest
+
+The causal parameters we can estimate will depend on our research question, and the design of our evaluation study
+]
+
+
 ---
 ## Average Treatment Effect on the Treated (ATT)
 
----
-## Calculate the ATE and the ATT
+It might make sense to evaluate the impact for those who self-select into certain exposures/programs, in which case a conditional average treatment effect may be more relevant; the ATT is the most widely-used measure of average impact 
+
+The ATT is the average treatment effect for those who typically take the treatment: 
+
+$$E(\delta_{i}|d_{i}=1) = E(y_{i}^{1}|d_{i} = 1) - E(y_{i}^{0}|d_{i} = 1)$$ 
+
+Unbiased estimation requires: 
+
+$$E(y_{i}^{0}|d_{i} = 1) = E(y_{i}^{0}|d_{i} = 0)$$
+
+Thus, it relies on identification of one counterfactual, $E(y_{i}^{0}|d_{i} = 1)$
+
 
 ---
-## Calculate the ATE
+## 
+.left-column[
+### Calculate the ATE and the ATT
+]
+
+.right-column[
+```{r, echo=FALSE}
+po_1 <- po %>% filter(di==1) %>% adorn_totals(name = "Mean") %>%
+  mutate(across(where(is.numeric), 
+    ~ replace(., n(), .[n()]/(n()-1))))
+
+po_0 <- po %>% filter(di==0) %>% adorn_totals(name = "Mean") %>%
+  mutate(across(where(is.numeric), 
+    ~ replace(., n(), .[n()]/(n()-1))))
+
+pomt <- po %>% adorn_totals(name = "Mean") %>%
+  mutate(across(where(is.numeric), 
+    ~ replace(., n(), .[n()]/(n()-1)))) %>% filter(di==0.5)
+
+pate <- po_1 %>% bind_rows(po_0) %>% bind_rows(pomt)
+
+kable(pate, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 24) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  row_spec(c(5,10,11), bold=TRUE) %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
 
 ---
-## Calculate the ATT
+## 
+.left-column[
+### Calculate the ATE
+]
+
+.right-column[
+```{r, echo=FALSE}
+
+pate$yi1 = cell_spec(pate$yi1,
+  color = ifelse(pate$ID=="Mean" & pate$di!=0.5, 
+                 "black", "red"))
+
+pate$yi0 = cell_spec(pate$yi0,
+  color = ifelse(pate$ID=="Mean" & pate$di!=0.5, 
+                 "black", "red"))
+
+pate$ci = cell_spec(pate$ci,
+  color = ifelse(pate$ID=="Mean" & pate$di==0.5, 
+                 "red", "black"))
+
+kable(pate, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 24) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  row_spec(c(5,10,11), bold=TRUE) %>%
+  column_spec(c(3,4), color="red") %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
+
+---
+## 
+
+.left-column[
+### Calculate the ATT
+]
+
+.right-column[
+```{r, echo=FALSE}
+
+patt <- po_1 %>% bind_rows(po_0) %>% bind_rows(pomt)
+
+patt$yi1 = cell_spec(patt$yi1,
+  color = ifelse(patt$di==1, "red", "black"))
+
+patt$yi0 = cell_spec(patt$yi0,
+  color = ifelse(patt$di==1, "red", "black"))
+
+patt$ci = cell_spec(patt$ci,
+  color = ifelse(patt$ID=="Mean" & patt$di==1, 
+                 "red", "black"))
+
+kable(patt, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 24) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  row_spec(c(5,10,11), bold=TRUE) %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
 
 ---
 ## More on the ATE vs. the ATT
 
+.left-column[
+
+Example from a basic income program for the unemployed
+]
+
+.right-column[
+
+- The ATE is the expected what-if difference in the outcome if we could take *randomly selected* unemployed workers and compare their outcomes in both the program vs. not
+
+- The ATT is the expected what-if difference in the outcome if we could observe workers *enrolled* in the basic income program under two scenarios, a factual one in which they were enrolled and the other in which they were not
+
+- Thus, the ATT answers the question about whether the social program was beneficial specifically among those who were enrolled, whereas the ATE examines whether it was beneficial across all of the unemployed workers who could potentially enroll, including those who did and those who didn’t
+]
+
 ---
 ## Average Treatment Effect on the Controls (ATC)
 
+A less common contrast is given by the average treatment effect on the controls (ATC): $$E(\delta_{i}|d_{i}=0) = E(y_{i}^{1}|d_{i} = 0) - E(y_{i}^{0}|d_{i} = 0)$$ 
+
+The ATC answers the questions about whether the program is beneficial for those who are not enrolled (e.g., would a program that attempts to enroll nonparticipants be beneficial?
+
+Unbiased estimation requires: 
+$$E(y_{i}^{1}|d_{i} = 0) = E(y_{i}^{1}|d_{i} = 1)$$ 
+
+Thus, it relies on identification of one counterfactual, $E(y_{i}^{1} | d_{i}=0)$
+
+
 ---
-## Calculate the ATC
+## 
+
+.left-column[
+### Calculate the ATC
+]
+
+.right-column[
+```{r, echo=FALSE}
+
+patc <- po_1 %>% bind_rows(po_0) %>% bind_rows(pomt)
+
+patc$yi1 = cell_spec(patc$yi1,
+  color = ifelse(patc$di==0, "red", "black"))
+
+patc$yi0 = cell_spec(patc$yi0,
+  color = ifelse(patc$di==0, "red", "black"))
+
+patc$ci = cell_spec(patc$ci,
+  color = ifelse(patc$ID=="Mean" & patc$di==0, 
+                 "red", "black"))
+
+kable(patc, col.names = c("ID", "\\(d_{i}\\)", "\\(y_{i}^{1}\\)", "\\(y_{i}^{0}\\)", "\\(\\delta_{i}\\)"), 
+  format = "html", escape = F,
+  align=rep('c', 5), booktabs=T) %>%
+  kable_styling(full_width = F, font_size = 24) %>%
+  column_spec(1, width = "4em") %>%
+  column_spec(2, width = "4em") %>%
+  row_spec(c(5,10,11), bold=TRUE) %>%
+  add_header_above(c(" "=1, "Treatment" = 1,
+    "Potential Outcomes" = 2, "Effect" = 1))
+```
+]
 
 ---
 ## Relation between ATE, ATT, and ATC
 
+.right-column[
+
+- The ATE is the average of the ATT and ATC, weighted by the proportions who were treated ($\pi$) or control ($1-\pi$), respectively:
+$$ATE = \pi * E(\delta|D=1) + (1-\pi) * E(\delta|D=0)$$
+
+
+- In a RCT, the treatment effects should be the same among those randomized to treatment vs. control (ATE=ATT=ATC).
+
+- Why?
+
+]
+
 ---
 ## Simple example
+
+.left-column[
+
+]
+
+.right-column[
+Using the table and assuming $\pi = 0.3$, calculate the: 
+
+
+| Group | $E[Y^{1} \lvert.]$ |  $E[Y^{0} \lvert.]$  |
+| ------------- |:-------------:| -----:|
+| Treatment group $(D=1)$ | 10 | .blue[6] |
+| Control group $(D=0)$  | .blue[8] | 5 |
+
+
+- naïve estimate of the ATE,
+- the ATE 
+- the ATT 
+- the ATC
+
+]
+
 
 ---
 class: center, top, inverse
@@ -427,15 +1077,73 @@ class: center, top, inverse
 ---
 ## Exchangeability
 
+.pull-left[
+For the observed contrasts to represent causal effects, we need the proxies to represent the unobserved counterfactual outcomes
+
+If the average outcome in the control group equals the average outcome in the treated group had it been untreated (and vice versa) , the groups are exchangeable, i.e., for all $d$, 
+$E(Y_{i}^{d}) = E(Y_{i}|D=d)$
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here("images", "exchangeability.png"))
+```
+]
+
 ---
 ## Stable Unit Treatment Value Assumption (SUTVA)
+
+.left-column[
+```{r, echo=FALSE}
+knitr::include_graphics(here("images", "spillovers.png"))
+```
+]
+
+.right-column[
+The Stable Unit Treatment Value Assumption (SUTVA) assumes that an individual’s potential outcome is unaffected by the treatment status of other individuals 
+
+This assumption is most commonly violated when there is interference (an individual’s outcome depends on the treatment values of other individuals), or in the case of ecological treatments, if there are spillover effects
+
+Say we wanted to evaluate the impact of vaccine camps assigned to randomly selected villages on the incidence of the disease—what are some potential violations of SUTVA?
+]
 
 ---
 ## Consistency
 
+.left-column[]
+
+.right-column[
+Causal inference requires that a treatment is defined unambiguously, which a general concern in social epidemiology
+
+This vagueness of some potential treatments has led some to suggest that only the causal effects of treatments that can be hypothetically manipulated should be considered (i.e., Holland’s “no causation without manipulation”)
+
+However, consistency violations are less of a concern in impact evaluation (and guaranteed by experiments) since we are dealing with treatments that are, by definition, manipulable
+]
+
 ---
 ## Positivity
 
+.left-column[
+```{r, echo=FALSE}
+knitr::include_graphics(here("images", "positivity.png"))
+```
+]
+
+.right-column[
+ The positivity assumption states that there is a nonzero (ie, positive) probability of receiving every level of exposure for every combination of values of exposure and confounders that occur among individuals in the population
+
+Generally less of a concern for RCTs, non-positivity, sometimes called structural confounding, is a concern for observational designs that often rely on regression adjustment for confounders to achieve conditional exchangeability
+]
+
 ---
 ## Further reading
+
+Holland, Paul W. "Statistics and causal inference." Journal of the American statistical Association 81.396 (1986): 945-960.
+
+Morgan, Stephen L., and Christopher Winship. Counterfactuals and causal inference, Chapters 1 and 2. Cambridge University Press, 2007.
+
+William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. Experimental and quasi-experimental designs for generalized causal inference, Chapter 1. Wadsworth Cengage learning, 2002.
+
+Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." Annual review of sociology (1999): 659-706.
+
 

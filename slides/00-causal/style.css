@@ -11,6 +11,10 @@
 .white { color: #ffffff; }
 .gray { color: #737373}
 
+.smaller {
+  font-size: 0.8em;
+}
+
 /* define level 4 heading */
 h4 {
   display: block;

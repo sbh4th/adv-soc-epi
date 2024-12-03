@@ -3,7 +3,7 @@ title: "Overview of Quasi-Experimental Designs"
 subtitle: "Advanced Social Epidemiology PhD Course"  
 author: "Sam Harper"
 institute: " <br> </br>"
-date: "University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>"
+date: "University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -46,22 +46,22 @@ style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size 
 ```
 
 class: center, top, inverse
-# .orange[**4. Quasi-Experiments**]
+# .orange[**Quasi-Experiments**]
 
 .left[
-## .orange[**4.1. Motivation**]
-## .orange[**4.2. Randomization and Observation**]
-## .orange[**4.2 Quasi-Experimental Designs**]
+## .orange[**1. Motivation**]
+## .orange[**2. Randomization and Observation**]
+## .orange[**3. Quasi-Experimental Designs**]
 ]
 
 ---
 class: center, top, inverse
-# .orange[**4. Quasi-Experiments**]
+# .orange[**Quasi-Experiments**]
 
 .left[
-## .orange[**4.1. Motivation**]
-## .gray[**4.2. Randomization and Observation**]
-## .gray[**4.2 Quasi-Experimental Designs**]
+## .orange[**1. Motivation**]
+## .gray[**2. Randomization and Observation**]
+## .gray[**3. Quasi-Experimental Designs**]
 ]
 
 ---
@@ -138,12 +138,12 @@ These are **causal** questions.
 
 ---
 class: center, top, inverse
-# .orange[**4. Quasi-Experiments**]
+# .orange[**Quasi-Experiments**]
 
 .left[
-## .gray[**4.1. Motivation**]
-## .orange[**4.2. Randomization and Observation**]
-## .gray[**4.2 Quasi-Experimental Designs**]
+## .gray[**1. Motivation**]
+## .orange[**2. Randomization and Observation**]
+## .gray[**3. Quasi-Experimental Designs**]
 ]
 
 
@@ -178,7 +178,7 @@ In an RCT, treatment/exposure is .red[assigned] by the investigator
 ### Strength of randomized treatment allocation
 
 -   Recall that randomization means that we can generally estimate the
-    causal effect without bias.
+    causal effect *of being randomized* without bias.
 
 -   Randomization guarantees exchangeability on measured and unmeasured
     factors.
@@ -319,21 +319,6 @@ knitr::include_graphics(here("images", "beauchamp-t1r.png"))
 ]
 
 ---
-### Is observational credibility is getting harder to sell?
-.footnote[http://fivethirtyeight.com/features/everybody-calm-down-about-breastfeeding/]
-
-Another example: Does breastfeeding increase child IQ?
-
-Several observational studies show higher IQs for breastfed
-    children.
-
-> "The authors of this and other studies claim to find effects of breastfeeding because even once they adjust for the differences they see across women, the effects persist. But this assumes that the adjustments they do are able to remove all of the differences across women. This is extremely unlikely to be the case."
-
-> "I would argue that in the case of breastfeeding, this issue is impossible to ignore and therefore .red[any study that simply compares breastfed to formula-fed infants is deeply flawed.] That doesn't mean the results from such studies are necessarily wrong, just that we can't learn much from them."
-
-> Oster (2015)
-
----
 ### Why we worry about observational studies
 .footnote[Jones et al. (2018)]
 .right-column[
@@ -360,12 +345,12 @@ knitr::include_graphics(here("images", "carroll-nyt-wellness.png"))
 
 ---
 class: center, top, inverse
-# .orange[**4. Quasi-Experiments**]
+# .orange[**Quasi-Experiments**]
 
 .left[
-## .gray[**4.1. Motivation**]
-## .gray[**4.2. Randomization and Observation**]
-## .orange[**4.2 Quasi-Experimental Designs**]
+## .gray[**1. Motivation**]
+## .gray[**2. Randomization and Observation**]
+## .orange[**3 Quasi-Experimental Designs**]
 ]
 
 ---

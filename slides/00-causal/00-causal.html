@@ -3,7 +3,7 @@
   <head>
     <title>Counterfactuals and Causal Policy Effects</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Sam Harper" />
+    <meta name="author" content="Sam Harper, Arijit Nandi" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -21,7 +21,7 @@ class: center, middle, inverse, title-slide
 ## Advanced Social Epidemiology PhD Course
 ]
 .author[
-### Sam Harper
+### Sam Harper, Arijit Nandi
 ]
 .institute[
 ### <br> </br>
@@ -62,16 +62,15 @@ class: center, top, inverse
 ### "What-ifs" and counterfactuals
 
 .left-column[
-
-![](/images/counterfactual-image.png)
+&lt;img src="../../images/counterfactual-image.png" width="1600" /&gt;
 ]
 
 .right-column[
 - Questions about the impact of an intervention (the change that can be causally attributed to the program) are about what-ifs
 
-- Prospectively, we can think about how the world would be different if we intervened to change the status quo
+- Prospectively, we can think about how the world would be different *if we intervened* to change the status quo
 
-- Retrospectively, we can think about what would have been had we not implemented a particular policy or program
+- Retrospectively, we can think about what *would have been* had we not implemented a particular policy or program
 
 - These alternative causal states are known as counterfactuals
 
@@ -80,27 +79,39 @@ class: center, top, inverse
 ]
 
 ---
-## "Normal" etiological science in social epidemiology
+
+&lt;img src="../../images/dk-tax.png" width="100%" /&gt;
+
+---
+
+.left-column[
+&lt;img src="../../images/great-danes.jpeg" width="100%" /&gt;
+]
+
 .right-column[
-1.  Follow-up of individuals in different social groups for various
-    health outcomes (incidence, mortality, risk factors)
 
-2.  Adjustment for various confounders/mediators (are inequalities
-    "explained" by\....A, B, C?).
+&lt;br&gt;
+&lt;br&gt;
 
--   "Our results demonstrate that"\...we should:
+&lt;img src="../../images/dk-mortgage-quote.png" width="100%" /&gt;
+]
 
-    -   *raise* education levels
-    -   *increase* economic assistance to the poor
-    -   *remove* noxious exposures from the environment
-    -   *reduce* psychosocial workplace hazards
-    -   *eliminate* hierarchies, and the like.
+---
 
--   These statements are based on making **causal** inferences.
+.pull-left[
+&lt;img src="../../images/dk-wrecking.png" width="100%" /&gt;
+]
+
+.pull-right[
+&lt;img src="../../images/dk-wrecking-quote.png" width="100%" /&gt;
 ]
 
 ---
 ## Potential Outcomes Framework
+
+.left-column[
+&lt;img src="../../images/counterfactual-image.png" width="1600" /&gt;
+]
 
 .right-column[
 
@@ -120,15 +131,17 @@ James Lind is credited with introducing the concept of control and experimental 
 ]
 
 .right-column[
+.smaller[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]
 .center[
-![:scale 90% ](/images/lind.jpg)
-]]
+&lt;img src="../../images/lind.jpg" width="80%" /&gt;
+]
+]
 
 ---
 ## Alternative treatment states
 
 .pull-left[
-Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, `\(T_{i}\)` 
+Suppose that individuals `\(i\)` in a population can be simultaneously assigned to two (or more) alternative treatments, `\(T_{i}\)` 
 
 When only two alternative treatments are being considered they can be called the treatment and control states
 ]
@@ -147,9 +160,11 @@ If "control" `\(T_{i}=0\)`
 ---
 ## Alternative treatment states
 
-- Suppose that individuals i in a population can be simultaneously assigned to two (or more) alternative treatments, `\(T_{i}\)` 
+.right-column[
+- Suppose that individuals `\(i\)` in a population can be simultaneously assigned to two (or more) alternative treatments, `\(T_{i}\)` 
 
 - When only two alternative treatments are being considered they can be called the treatment and control states
+]
 
 .column-1[
 &lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:5em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -171,7 +186,9 @@ If "control" `\(T_{i}=0\)`
 ---
 ## Potential Outcomes
 
-- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states--each individual has a potential outcome under both the treatment and control states  
+- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states
+
+- *Each individual has a potential outcome under both the treatment and control states*  
 
 - With a binary treatment, the potential outcomes are given by the random variables `\(Y^{1}\)` and `\(Y^{0}\)`; we assume that each individual in the population has a potential outcome under both states
 
@@ -197,6 +214,7 @@ Potential outcomes `\(Y_{i}:\)`
 
 .left-column[
 ### Potential Outcomes
+
 ]
 
 .right-column[
@@ -287,7 +305,7 @@ Potential outcomes `\(Y_{i}:\)`
 
 .pull-right[
 
-- The individual causal effect is the difference in outcomes for the same individual with and without the intervention.
+- The **individual causal effect** is the difference in outcomes *for the same individual* with and without the intervention.
 
 - A causal effect implies that the individual would have experienced the outcome if treated, but not untreated (or vice versa).
 
@@ -470,50 +488,402 @@ Causal effect:
 ---
 ## A missing data problem
 
+| Observed exposure  | `\(Y^{1}\)` |  `\(Y^{0}\)`  |
+| ------------- |:-------------:| -----:|
+| Treatment group | Observable as `\(Y\)` | Counterfactual |
+| Control group     | Counterfactual      | Observable as `\(Y\)` |
+
+&lt;br&gt;
+
+.left-column[
+&lt;img src="../../images/half.png" width="40%" /&gt;
+]
+
+.right-column[
+- Although `\(Y_{i}^{1}\)` and `\(Y_{i}^{0}\)` exist in theory, in practice we cannot directly observe the same person simultaneously in two different states, which prevents direct calculation of individual causal effects 
+]
+
 ---
 ## The Average Treatment Effect (ATE)
 
----
-## True (unobserved) impact of an intervention
+.left-column[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+Potential outcomes `\(E(Y_{i})\)`: 
+]
+
+.right-column[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+Our target population
+]
+.pull-left[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+`\(E(y_{i}^{1})\)`
+]]
+
+.pull-right[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+`\(E(y_{i}^{0})\)`
+]
+]
+
+- The causal effect is `\(X\)`
+
+- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented 
+
+]
 
 ---
-## The average treatment effect
+## 
+
+.left-column[
+### True (unobserved) impact of an intervention
+]
+
+.right-column[
+&lt;img src="../../images/true-impact-graph.png" width="100%" /&gt;
+]
+
+---
+## 
+.left-column[
+### The average treatment effect
+]
+
+.right-column[
+&lt;table class="table" style="font-size: 30px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Treatment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Potential Outcomes&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Effect&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(d_{i}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{1}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{0}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(\delta_{i}\) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;4&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;0&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate `\(E(y_{i})\)` and calculate a “naïve” estimate of the ATE
+]
+
+
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+.gray[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate `\(E(y_{i})\)` and calculate a “naïve” estimate of the ATE
+]
+]
+
+.pull-right[
+&lt;img src="../../images/pre-post-graph.png" width="120%" /&gt;
+
+- We could observe the same group at different time periods (pre-post), but other things may have changed since the intervention
+
+]
 
 ---
 ## Fundamental problem of causal inference
+.pull-left[
+.gray[
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate `\(E(y_{i})\)` and calculate a “naïve” estimate of the ATE
+
+]
+]
+
+.pull-right[
+&lt;img src="../../images/treat-control-graph.png" width="120%" /&gt;
+
+- Alternatively, we can observe a different group that was unexposed
+
+]
 
 ---
 ## Fundamental problem of causal inference
+.center[
+### These substitutes are not good counterfactuals
+]
+
+.pull-left[
+
+- Pre-post ignores “secular trends” (changes in other factors influencing the outcome since the intervention)
+
+&lt;br&gt;
+
+- Treated vs. control neglects unmeasured differences between the groups
+]
+
+
+.pull-right[
+&lt;img src="../../images/pre-post-graph.png" width="80%" /&gt;
+
+&lt;img src="../../images/treat-control-graph.png" width="80%" /&gt;
+]
+
 
 ---
 ## Naive estimate of the ATE
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
 
+Population showing actual treatment status, `\(D_{i}\)`
+]
+
+.left-column[
+Observed outcomes `\(E(Y_{i}|D_{i})\)`: 
+]
+
+.right-column[
+.pull-left[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+`\(E(y_{i} | d_{i}=1)\)`
+]
+]
+
+.pull-right[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+`\(E(y_{i} | d_{i}=0)\)`
+
+]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+- Naive estimate is: `\(E(\delta_{i, naive}) = E(y_{i} | d_{i}=1) - E(y_{i} | d_{i}=0)\)`
+
+- The naïve estimate of the ATE compares the outcomes for those observed to receive the treatment vs. the control condition 
+ 
 ---
-## Estimated (observed) impact of the program
+## 
+.left-column[
+### Estimated (observed) impact of the program
+]
+
+.right-column[
+&lt;img src="../../images/naive-estimate.png" width="100%" /&gt;
+]
 
 ---
 ## The selection problem
 
+.right-column[
+The naïve estimator rarely yields an unbiased treatment effect
+
+Why? Because treatment and control groups are rarely exchangeable (i.e., programs/policies are selectively placed in different areas and the decision to participate is often voluntary)
+
+These differences could affect potential outcomes, creating bias
+
+Economist call this selection or omitted variable bias
+
+In epidemiology, the effect of these pre-existing differences between groups is commonly called confounding bias
+]
+
 ---
 ## Recovering causal effects
+
+.left-column[
+.center[
+
+&lt;br&gt;
+
+&lt;svg viewBox="0 0 512 512" style="position:relative;display:inline-block;top:.1em;fill:steelblue;height:4em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M109.46 244.04l134.58-134.56-44.12-44.12-61.68 61.68a7.919 7.919 0 0 1-11.21 0l-11.21-11.21c-3.1-3.1-3.1-8.12 0-11.21l61.68-61.68-33.64-33.65C131.47-3.1 111.39-3.1 99 9.29L9.29 99c-12.38 12.39-12.39 32.47 0 44.86l100.17 100.18zm388.47-116.8c18.76-18.76 18.75-49.17 0-67.93l-45.25-45.25c-18.76-18.76-49.18-18.76-67.95 0l-46.02 46.01 113.2 113.2 46.02-46.03zM316.08 82.71l-297 296.96L.32 487.11c-2.53 14.49 10.09 27.11 24.59 24.56l107.45-18.84L429.28 195.9 316.08 82.71zm186.63 285.43l-33.64-33.64-61.68 61.68c-3.1 3.1-8.12 3.1-11.21 0l-11.21-11.21c-3.09-3.1-3.09-8.12 0-11.21l61.68-61.68-44.14-44.14L267.93 402.5l100.21 100.2c12.39 12.39 32.47 12.39 44.86 0l89.71-89.7c12.39-12.39 12.39-32.47 0-44.86z"&gt;&lt;/path&gt;&lt;/svg&gt;
+]]
+
+.right-column[
+Without a credible substitute for the unobserved potential outcomes, causal impact cannot be established.
+
+The key is to generate groups of individuals that are statistically indistinguishable from one another in the absence of an intervention—we must somehow mimic the counterfactual
+
+We can use experimental or quasi-experimental techniques to attempt to recover the causal effect
+]
+
 
 ---
 ## What are randomized experiments
 
----
-## RCTs and exchangeability
+&gt; the word experiment is used in a quite precise sense to mean an investigation where the system under study is under the control of the investigator. This means that the individuals or material investigated, the nature of the treatments or manipulations under study and the measurement procedures used are all selected, in their important features at least, by the investigator. (Cox, 2000)
+
+Randomized experiments are experiments “in which units are assigned to receive the treatment or an alternative condition by a random process such as the toss of a coin.” (Shadish, 2002)
+
 
 ---
 ## RCTs and exchangeability
+
+.right-column[
+If treatment is assigned randomly, it is said to be exogenous 
+
+Comparison groups are the same with respect to measured and unmeasured characteristics (no unmeasured confounding or omitted variable bias) and each unit’s potential outcomes are independent of actual treatment assignment, `\((Y_{i}^{1}, Y_{i}^{0} | D)\)`
+
+Under these conditions, the treatment and control groups are exchangeable, which implies that the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated (and vice versa)
+
+Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
+]
+
+
+---
+## RCTs and exchangeability
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Font_Awesome_5_solid_equals.svg"
+     width="50px" height="50px"
+     style="position:absolute; right:450px; top:475px;"&gt;
+
+.left-column[
+Target population
+
+&lt;br&gt;
+Randomization
+
+&lt;br&gt;
+
+Actual exposure
+]
+
+.right-column[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;br&gt;
+&lt;svg viewBox="0 0 448 512" style="position:relative;display:inline-block;top:.1em;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;br&gt;
+&lt;svg viewBox="0 0 640 512" style="position:relative;display:inline-block;top:.1em;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+]
+
+.pull-left[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+`\(E(y_{i}^{1})\)`
+&lt;br&gt;
+vs
+
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+`\(E(y_{i}^{0})\)`
+]]
+
+.pull-right[
+.center[
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+`\(E(y_{i} | d_{i}=1)\)`
+&lt;br&gt;
+vs
+
+&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
+`\(E(y_{i} | d_{i}=0)\)`
+]]
+]
 
 ---
 ## 'Quasi'-experiments
+
+.right-column[
+Oftentimes we do not have control over treatment assignment and must investigate how individuals end up in alternative states
+
+The term quasi-experiment refers to:
+&gt;“experiments that have treatments, outcome measures, and experimental units, but do not use random assignment to create the comparisons from which treatment-caused change is inferred.”(Cook, 1979)
+
+Assignment is by self-selection, by which units choose treatment for themselves, or by means of administrator selection
+
+Consequently, unlike RCTs, comparison groups may differ in many systematic ways other than the presence of the treatment
+]
+
 
 ---
 class: center, top, inverse
@@ -528,32 +898,530 @@ class: center, top, inverse
 ---
 ## Treatment effects
 
+.left-column[
+.center[
+
+&lt;br&gt;
+
+&lt;svg viewBox="0 0 384 512" style="position:relative;display:inline-block;top:.1em;fill:steelblue;height:4em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"&gt;&lt;/path&gt;&lt;/svg&gt;
+]]
+
+.right-column[
+So far we have discussed the average treatment effect or ATE
+
+The ATE might, however, not be the only quantity of interest
+
+The causal parameters we can estimate will depend on our research question, and the design of our evaluation study
+]
+
+
 ---
 ## Average Treatment Effect on the Treated (ATT)
 
----
-## Calculate the ATE and the ATT
+It might make sense to evaluate the impact for those who self-select into certain exposures/programs, in which case a conditional average treatment effect may be more relevant; the ATT is the most widely-used measure of average impact 
+
+The ATT is the average treatment effect for those who typically take the treatment: 
+
+`$$E(\delta_{i}|d_{i}=1) = E(y_{i}^{1}|d_{i} = 1) - E(y_{i}^{0}|d_{i} = 1)$$` 
+
+Unbiased estimation requires: 
+
+`$$E(y_{i}^{0}|d_{i} = 1) = E(y_{i}^{0}|d_{i} = 0)$$`
+
+Thus, it relies on identification of one counterfactual, `\(E(y_{i}^{0}|d_{i} = 1)\)`
+
 
 ---
-## Calculate the ATE
+## 
+.left-column[
+### Calculate the ATE and the ATT
+]
+
+.right-column[
+&lt;table class="table" style="font-size: 24px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Treatment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Potential Outcomes&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Effect&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(d_{i}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{1}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{0}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(\delta_{i}\) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
 ---
-## Calculate the ATT
+## 
+.left-column[
+### Calculate the ATE
+]
+
+.right-column[
+&lt;table class="table" style="font-size: 24px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Treatment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Potential Outcomes&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Effect&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(d_{i}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{1}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{0}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(\delta_{i}\) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;4&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: black !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;23&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;0&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: black !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;color: red !important;"&gt; &lt;span style="     color: red !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+## 
+
+.left-column[
+### Calculate the ATT
+]
+
+.right-column[
+&lt;table class="table" style="font-size: 24px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Treatment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Potential Outcomes&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Effect&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(d_{i}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{1}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{0}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(\delta_{i}\) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;4&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;23&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;0&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
 ---
 ## More on the ATE vs. the ATT
 
+.left-column[
+
+Example from a basic income program for the unemployed
+]
+
+.right-column[
+
+- The ATE is the expected what-if difference in the outcome if we could take *randomly selected* unemployed workers and compare their outcomes in both the program vs. not
+
+- The ATT is the expected what-if difference in the outcome if we could observe workers *enrolled* in the basic income program under two scenarios, a factual one in which they were enrolled and the other in which they were not
+
+- Thus, the ATT answers the question about whether the social program was beneficial specifically among those who were enrolled, whereas the ATE examines whether it was beneficial across all of the unemployed workers who could potentially enroll, including those who did and those who didn’t
+]
+
 ---
 ## Average Treatment Effect on the Controls (ATC)
 
+A less common contrast is given by the average treatment effect on the controls (ATC): `$$E(\delta_{i}|d_{i}=0) = E(y_{i}^{1}|d_{i} = 0) - E(y_{i}^{0}|d_{i} = 0)$$` 
+
+The ATC answers the questions about whether the program is beneficial for those who are not enrolled (e.g., would a program that attempts to enroll nonparticipants be beneficial?
+
+Unbiased estimation requires: 
+`$$E(y_{i}^{1}|d_{i} = 0) = E(y_{i}^{1}|d_{i} = 1)$$` 
+
+Thus, it relies on identification of one counterfactual, `\(E(y_{i}^{1} | d_{i}=0)\)`
+
+
 ---
-## Calculate the ATC
+## 
+
+.left-column[
+### Calculate the ATC
+]
+
+.right-column[
+&lt;table class="table" style="font-size: 24px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;border-bottom:hidden;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Treatment&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Potential Outcomes&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Effect&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(d_{i}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{1}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(y_{i}^{0}\) &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; \(\delta_{i}\) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;4&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 1.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;3&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;23&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;22&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;0&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;17&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;15&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; "&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;21&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;span style="     color: black !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.0 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;19&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: red !important;"&gt;1&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; Mean &lt;/td&gt;
+   &lt;td style="text-align:center;width: 4em; font-weight: bold;"&gt; 0.5 &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;20&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;18&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;font-weight: bold;"&gt; &lt;span style="     color: black !important;"&gt;2&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
 ---
 ## Relation between ATE, ATT, and ATC
 
+.right-column[
+
+- The ATE is the average of the ATT and ATC, weighted by the proportions who were treated (`\(\pi\)`) or control (`\(1-\pi\)`), respectively:
+`$$ATE = \pi * E(\delta|D=1) + (1-\pi) * E(\delta|D=0)$$`
+
+
+- In a RCT, the treatment effects should be the same among those randomized to treatment vs. control (ATE=ATT=ATC).
+
+- Why?
+
+]
+
 ---
 ## Simple example
+
+.left-column[
+
+]
+
+.right-column[
+Using the table and assuming `\(\pi = 0.3\)`, calculate the: 
+
+
+| Group | `\(E[Y^{1} \lvert.]\)` |  `\(E[Y^{0} \lvert.]\)`  |
+| ------------- |:-------------:| -----:|
+| Treatment group `\((D=1)\)` | 10 | .blue[6] |
+| Control group `\((D=0)\)`  | .blue[8] | 5 |
+
+
+- naïve estimate of the ATE,
+- the ATE 
+- the ATT 
+- the ATC
+
+]
+
 
 ---
 class: center, top, inverse
@@ -568,17 +1436,69 @@ class: center, top, inverse
 ---
 ## Exchangeability
 
+.pull-left[
+For the observed contrasts to represent causal effects, we need the proxies to represent the unobserved counterfactual outcomes
+
+If the average outcome in the control group equals the average outcome in the treated group had it been untreated (and vice versa) , the groups are exchangeable, i.e., for all `\(d\)`, 
+`\(E(Y_{i}^{d}) = E(Y_{i}|D=d)\)`
+]
+
+.pull-right[
+&lt;img src="../../images/exchangeability.png" width="100%" /&gt;
+]
+
 ---
 ## Stable Unit Treatment Value Assumption (SUTVA)
+
+.left-column[
+&lt;img src="../../images/spillovers.png" width="2147" /&gt;
+]
+
+.right-column[
+The Stable Unit Treatment Value Assumption (SUTVA) assumes that an individual’s potential outcome is unaffected by the treatment status of other individuals 
+
+This assumption is most commonly violated when there is interference (an individual’s outcome depends on the treatment values of other individuals), or in the case of ecological treatments, if there are spillover effects
+
+Say we wanted to evaluate the impact of vaccine camps assigned to randomly selected villages on the incidence of the disease—what are some potential violations of SUTVA?
+]
 
 ---
 ## Consistency
 
+.left-column[]
+
+.right-column[
+Causal inference requires that a treatment is defined unambiguously, which a general concern in social epidemiology
+
+This vagueness of some potential treatments has led some to suggest that only the causal effects of treatments that can be hypothetically manipulated should be considered (i.e., Holland’s “no causation without manipulation”)
+
+However, consistency violations are less of a concern in impact evaluation (and guaranteed by experiments) since we are dealing with treatments that are, by definition, manipulable
+]
+
 ---
 ## Positivity
 
+.left-column[
+&lt;img src="../../images/positivity.png" width="2187" /&gt;
+]
+
+.right-column[
+ The positivity assumption states that there is a nonzero (ie, positive) probability of receiving every level of exposure for every combination of values of exposure and confounders that occur among individuals in the population
+
+Generally less of a concern for RCTs, non-positivity, sometimes called structural confounding, is a concern for observational designs that often rely on regression adjustment for confounders to achieve conditional exchangeability
+]
+
 ---
 ## Further reading
+
+Holland, Paul W. "Statistics and causal inference." Journal of the American statistical Association 81.396 (1986): 945-960.
+
+Morgan, Stephen L., and Christopher Winship. Counterfactuals and causal inference, Chapters 1 and 2. Cambridge University Press, 2007.
+
+William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. Experimental and quasi-experimental designs for generalized causal inference, Chapter 1. Wadsworth Cengage learning, 2002.
+
+Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." Annual review of sociology (1999): 659-706.
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
