@@ -12,11 +12,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Decomposition Techniques for Social Epidemiology
+]
+.subtitle[
 ## Advanced Social Epidemiology PhD Course
+]
+.author[
 ### Sam Harper
+]
+.institute[
 ### <br> </br>
-### University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>
+]
+.date[
+### University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>
+]
 
 ---
 
@@ -29,22 +39,22 @@ class: center, middle, inverse, title-slide
 
 
 class: center, top, inverse
-# .orange[**3. Decomposition**]
+# .orange[**Decomposition**]
 
 .left[
-## .orange[**3.1 Life Table Decomposition**]
-## .orange[**3.2 Concentration Index Decomposition**]
-## .orange[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
+## .orange[**1 Life Table Decomposition**]
+## .orange[**2 Concentration Index Decomposition**]
+## .orange[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
 
 ---
 class: center, top, inverse
-# .orange[**3. Decomposition**]
+# .orange[**Decomposition**]
 
 .left[
-## .orange[**3.1 Life Table Decomposition**]
-## .gray[**3.2 Concentration Index Decomposition**]
-## .gray[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
+## .orange[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
 
 ---
@@ -80,17 +90,10 @@ class: center, top, inverse
 # .orange[**3. Decomposition**]
 
 .left[
-## .orange[**3.1 Life Table Decomposition**]
-## .gray[**3.2 Concentration Index Decomposition**]
-## .gray[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
+## .orange[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
-
----
-## Why does life expectancy go up and down?
-.right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-trends.png" width="80%" height="80%" /&gt;
-]
-
 
 ---
 ## Decomposing changes in life expectancy
@@ -105,14 +108,20 @@ Between countries, genders, ethnic groups, social classes, etc.
 ]
 
 ---
-.center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-papers.png" width="80%" height="80%" /&gt;
+.footnote[See Arriaga (1984, 1989) for details.]
+
+.pull-left[
+&lt;img src="../../images/arriaga-1984.png" width="80%" /&gt;
+]
+
+.pull-right[
+&lt;img src="../../images/arriaga-1989.png" width="80%" /&gt;
 ]
 
 ---
 ### Example from recent events
 .pull-left[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/case-deaton-cover.png" width="60%" height="60%" /&gt;
+&lt;img src="../../images/case-deaton-cover.png" width="60%" height="60%" /&gt;
 ]
 
 .pull-right[
@@ -135,7 +144,7 @@ Between countries, genders, ethnic groups, social classes, etc.
 ## Example of using life table decomposition
 .pull-left[
 .center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/arph-title.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/arph-title.png" width="100%" height="100%" /&gt;
 ]]
 
 .pull-right[
@@ -148,131 +157,14 @@ Decompose the decline in life expectancy in the US between 2014 and 2017
 ]
 
 ---
-.left-column[
-### Trends in life expectancy
-]
-
-.right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-trends-race-sex.png" width="100%" height="100%" /&gt;
-]
-
----
 .center[
 What are we explaining?
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-estimates.png" width="80%" height="80%" /&gt;
+&lt;img src="../../images/le-estimates.png" width="80%" height="80%" /&gt;
 ]
 
 Declines evident for all men and for most women 
 
 Largest for black men
-
----
-.center[
-.blue[Remember what a life table is?]
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/life-table-example.png" width="70%" height="70%" /&gt;
-]
-
----
-## Decomposing between 2 groups
-.footnote[Arriaga (1984)]
-- E.g., between 2 time periods (2014 and 2017), the general formula is:
-`$$_{n}\Delta_{x}=\left[\underbrace{l_{x}^{2017}/l_{0}^{2017}}_{\textrm{fraction of survivors}}\times\overbrace{\left(\dfrac{_{n}L_{x}^{2014}}{l_{x}^{2014}}-\dfrac{_{n}L_{x}^{2017}}{l_{x}^{2017}}\right)}^{\textrm{direct effect}}\right]+\overbrace{\left[\dfrac{T_{x+n}^{2014}}{l_{x+n}^{2014}}\times\dfrac{\dfrac{l_{x}^{2017}l_{x+n}^{2014}}{l_{x}^{2014}}-l_{x+n}^{2017}}{l_{0}^{2017}}\right]}^{\textrm{indirect effect + interaction}}$$`
-
-- Direct effect multiplies the fraction of survivors at each age by the difference between the 2 groups in 'temporary life expectancy' at a given age.
-- Indirect effect happens because differences in the direct effect means more survivors at subsequent ages.
-
----
-## Partial life tables for black men
-.footnote[Source: Harper et al. 2020]
-Our aim is to *decompose* the 0.7 year decline in life expectancy at birth that happened between 2014 and 2017 by age.
-
-.pull-left[
-.center[Black Men, 2014]
-
-Age | lx    | Tx     | Lx       | ex  
-----|-------|---------|---------|-----
-0-1 |	100000 |	98945	| 7266771 |	.red[72.7]
-1-4	| 98828	 | 394953 |	7167826	| 72.5
-5-14 |	98649 |	985394 |	6772872 |	68.7
-...| | | |
-85+ |	27676 |	204278 |	204278 |	7.4
-]
-
-.pull-right[
-.center[Black Men, 2017]
-
-Age | lx    | Tx    |  Lx     | ex
-----|-------|---------|---------|----
-0-1 |	100000	| 98919 |	7201581 | .red[72.0]
-1-4	| 98799	| 394856 | 7102662 |71.9
-5-14 | 98629 | 985064 |	6707806 |	68.0
-...| | | |
-85+ |	27104	| 205713 | 205713 |	7.6
-]
-
----
-.center[Plug in values to estimate, e.g., contribution of 1-4 age group]
-.pull-left[
-.center[Black Men, 2014]
-
-Age | lx    | Tx     | Lx       | ex  
-----|-------|---------|---------|-----
-0-1 |	100000 |	98945	| 7266771 |	.red[72.7]
-1-4	| 98828	 | 394953 |	7167826	| 72.5
-5-14 |	98649 |	985394 |	6772872 |	68.7
-...| | | |
-85+ |	27676 |	204278 |	204278 |	7.4
-]
-
-.pull-right[
-.center[Black Men, 2017]
-
-Age | lx    | Tx    |  Lx     | ex
-----|-------|---------|---------|----
-0-1 |	100000	| 98919 |	7201581 | .red[72.0]
-1-4	| 98799	| 394856 | 7102662 |71.9
-5-14 | 98629 | 985064 |	6707806 |	68.0
-...| | | |
-85+ |	27104	| 205713 | 205713 |	7.6
-]
-
-.white[x]
-`$$_{4}\Delta_{1}=\left[98799/100000\times\left(\dfrac{7167826}{98828}-\dfrac{7102662}{98799}\right)\right]+\left[\dfrac{985394}{98649}\times \dfrac{ {\dfrac{98799\times98649}{98828} - 98629}}{100000}\right]$$`
-.left[ 
-`\(_{4}\Delta_{1}=-0.01\)` years 
-]
-
----
-.footnote[Harper et al. 2020]
-.left-column[
-### Results by age
-
-- Black men lost the most years.
-
-- Mostly worsening mortality among the young (15-44)
-
-]
-
-.right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-age-arph.png" width="90%" height="90%" /&gt;
-]
-
----
-## Decomposing life expectancy differences by cause
-.footnote[Arriaga (1989)]
-The contribution `\(_{n}\Delta_{x}^{i}\)` of each cause of death `\(i\)`
-within a given age group is a function of the difference between the
-two time periods in the proportion of deaths due to a given cause: 
-
-`$$_{n}\Delta_{x}^{i}={}_{n}\Delta_{x}\times\dfrac{\overbrace{\left(_{n}p_{x}^{i,2014}\times{}_{n}r_{x}^{2014}\right)-\left(_{n}p_{x}^{i,2017}\times{}_{n}r_{x}^{2017}\right)}^{\textrm{difference in share of deaths for cause}\,i}}{\underbrace{_{n}r_{x}^{2014}-_{n}r_{x}^{2017}}_{\textrm{overall mortality rate difference}}}$$`
-
-where `\(_{n}\Delta_{x}\)` is the total contribution for an age group,
-`\(_{n}p_{x}^{i}\)` is the proportion of deaths within age group `\(x\)`
-due to cause `\(i\)`, and `\(_{n}r_{x}\)` is the overall age-specific death
-rate. The total difference in life expectancy is the net sum of the
-age-cause components:
-
-`$$\sum_{i}{}_{n}\Delta_{x}^{i}={}_{n}\Delta_{x},\:\textrm{and}\:e_{0}^{2014}-e_{0}^{2017}=\sum_{x}{}_{n}\Delta_{x}=\sum_{x}\sum_{i}{}_{n}\Delta_{x}^{i}$$`
 
 ---
 ### Results by cause: Men
@@ -287,7 +179,7 @@ age-cause components:
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-cause-men.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/decomp-cause-men.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -303,7 +195,7 @@ age-cause components:
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/le-decomp-cause-women.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/le-decomp-cause-women.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -321,37 +213,29 @@ Example showing how the 'Deaths of Despair' narrative is hard to reconcile with 
 
 ---
 class: center, top, inverse
-# .orange[**3. Decomposition**]
+# .orange[**Decomposition**]
 
 .left[
-## .gray[**3.1 Life Table Decomposition**]
-## .orange[**3.2 Concentration Index Decomposition**]
-## .gray[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
-]
-
----
-# The 'usual' approach
-.pull-left[
-Conventional methods for “explaining” effects of social exposures
-- Estimate crude or demographic-adjusted effect (logit, hazard)
-- Add “conventional” risk factors (physiological, behavioural)
-- Add “novel” risk factors (flavour-of-the-week)
-- Interpret accordingly
-]
-
---
-
-.pull-right[
-Limitations of conventional approach
-- Often fail to consider entire socioeconomic distribution (typically low vs. high only) in the context of “explanation”
-- Often ignore absolute risk
-- Typically do not provide estimates of the specific contributions of other factors to the “explained” proportion
+## .gray[**1 Life Table Decomposition**]
+## .orange[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
 
 ---
 We want to understand this
 .center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/income-health-DAG.png" width="80%" height="80%" /&gt;
+&lt;img src="../../images/inc-health-dag.png" width="60%" /&gt;
+]
+
+---
+We want to understand this:
+.center[
+&lt;img src="../../images/inc-health-dag.png" width="60%" /&gt;
+]
+
+By estimating something like this:
+.center[
+&lt;img src="../../images/rci-arrows.png" width="70%" /&gt;
 ]
 
 ---
@@ -361,7 +245,7 @@ We want to understand this
 
 .right-column[
 .center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/conc-curve.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/conc-curve.png" width="100%" height="100%" /&gt;
 ]]
 
 ---
@@ -382,13 +266,14 @@ The basic idea here is to develop a model for predicting `\(y\)` using several d
 ---
 ## Decomposition of the RCI
 .footnote[Wagstaff et al. *J Econometrics* 2003]
-Since the `\(RCI\)` is a function of a health variable `\((y_{i})\)` and a socioeconomic rank variable `\((R_{i})\)`, i.e.
-`$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}{\color{red}{y_{i}}}R_{i}-1$$`
 
---
+.right-column[
+Since the `\(RCI\)` is a function of health `\((y_{i})\)` and a socioeconomic rank variable `\((R_{i})\)`, i.e.
+`$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}{\color{red}{y_{i}}}R_{i}-1$$`
 
 Then suppose that one can write a regression equation expressing the health outcome of interest `\((y_{i})\)` as a function of several `\(k_{i}\)` determinants (e.g., age, gender, urban/rural status):
 `$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
+]
 
 ---
 ## Decomposition of the RCI
@@ -417,20 +302,26 @@ The other part `\((gRCI_{e}/\mu)\)` is ‘unexplained’, i.e., inequality that 
 ---
 ## Two types of 'explained' components
 .pull-left[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/income-health-DAG.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/inc-health-dag.png" width="80%" /&gt;
+
+&lt;br&gt;
+
+&lt;img src="../../images/rci-arrows-color.png" width="80%" /&gt;
 ]
 .pull-right[
-The influence of determinants depends on 2 things:
+The influence of determinants depends on two things:
 
 ### `\(\color{blue}{RCI_{k}}\)`
 #### the strength of the relationship between each factor and income `\((C_{k})\)`
 
-### `\(\color{blue}{\beta_{k}\bar{x}_{k}/\mu}\)`
+### `\(\color{red}{\beta_{k}\bar{x}_{k}/\mu}\)`
 #### the strength of the relationship between each factor and health, and its prevalence in the population (elasticity).
 ]
 
 ---
 ## Procedure for decomposing the Concentration Index
+
+.right-column[
 1 Estimate a regression equation predicting `\(y\)` (‘health’) from its determinants `\((\beta_{k}x_{k})\)`:
 
 `$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
@@ -440,10 +331,12 @@ The influence of determinants depends on 2 things:
 3 Calculate the Concentration Index for the health variable (C) *and* for each determinant in the equation predicting health `\((C_{k})\)`.
 
 - That is, use each determinant `\(x_{k}\)` as the "outcome" and estimate a CI for age, CI for education, etc.
+]
 
 ---
 ## Procedure for decomposing the Concentration Index
 
+.right-column[
 4 Calculate the absolute contribution of each determinant by multiplying its ‘elasticity’ by its concentration index `\((C_{k})\)`:
 
 `$$(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}$$`
@@ -452,29 +345,7 @@ The influence of determinants depends on 2 things:
 5 Calculate the percentage contribution of each determinant:
 
 `$$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$`
-
-
----
-.footnote[Hosseinpoor et al. IJE (2005)]
-.left-column[
-### A few examples...
 ]
-
-
-.right-column[
-.center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/iran-decomp.png" width="90%" height="90%" /&gt;
-]]
-
----
-background-image: url(../../images/can-usa-decomp.png)
-background-size: contain
-.footnote[McGrail et al. AJPH (2007)]
-
----
-.footnote[McKinnon et al. (2011)]
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/mckinnon-cervical.png" width="90%" height="90%" /&gt;
-
 
 ---
 class: center, middle, inverse
@@ -486,7 +357,7 @@ class: center, middle, inverse
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/smoking-quintiles.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/smoking-quintiles.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -495,12 +366,12 @@ class: center, middle, inverse
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/cc-smoking.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/cc-smoking.png" width="100%" height="100%" /&gt;
 ]
 
 ---
 .left-column[
-### Estimation for a specific factor: Education
+### Estimation for a specific factor: **Education**
 ]
 .right-column[
 Recall the decomposition formula:
@@ -526,7 +397,7 @@ Note the y-axis is cumulative share of *education*
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/rci-educ.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/rci-educ.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -559,22 +430,7 @@ Overall RCI = -0.094
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-table-determinants.png" width="100%" height="100%" /&gt;
-]
-
----
-.left-column[
-Contrasting components of income-related inequality
-
-Education:
-- Elasticity stronger in W Pacific
-- `\(RCI_{ed}\)` stronger in Americas
-
-- Implications for intervention?
-]
-
-.right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-contrast.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/decomp-table-determinants.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -613,7 +469,7 @@ Since, for most health outcomes there are multiple determinants, we may want to 
 ---
 # Origins
 .left-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kitagawa-title.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kitagawa-title.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -667,7 +523,7 @@ Use these to generate counterfactuals.
 
 .right-column[
 .center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-idea.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-idea.png" width="100%" height="100%" /&gt;
 ]]
 
 ---
@@ -675,7 +531,7 @@ Use these to generate counterfactuals.
 
 .right-column[
 The overall gap between exposed and unexposed can be written as a function of differences the respective beta coefficients, evaluated at the mean for each group:
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-two-ways.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-two-ways.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -689,7 +545,7 @@ The overall gap between exposed and unexposed can be written as a function of di
 .right-column[
 .center[
 `\(y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{unexp}-\Delta\beta x^{exp}\)`
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-first-method.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-first-method.png" width="100%" height="100%" /&gt;
 ]]
 
 ---
@@ -703,7 +559,7 @@ The overall gap between exposed and unexposed can be written as a function of di
 .right-column[
 .center[
 `\(y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{exp}-\Delta\beta x^{unexp}\)`
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-second-method.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-second-method.png" width="100%" height="100%" /&gt;
 ]]
 
 ---
@@ -719,7 +575,7 @@ whereas, in the second, the differences in the x’s are weighted by the .blue[c
 ---
 General decomposition formula shows the mean gap as deriving from a difference in endowments (E), a gap in coefficients (C), and .red[a gap arising from the interaction of endowments and coefficients] (CE):
 .center[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-interaction.png" width="80%" height="80%" /&gt;
+&lt;img src="../../images/kbo-interaction.png" width="80%" height="80%" /&gt;
 ]
 
 ---
@@ -729,7 +585,7 @@ class: center, middle, inverse
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-28-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -743,7 +599,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-29-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -772,7 +628,7 @@ background-size: contain
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-means.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-means.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -784,7 +640,7 @@ background-size: contain
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/kbo-coefs.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/kbo-coefs.png" width="100%" height="100%" /&gt;
 ]
 
 
@@ -819,7 +675,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/decomp-stata.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/decomp-stata.png" width="100%" height="100%" /&gt;
 ]
 
 ---
@@ -830,13 +686,13 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ]
 
 .right-column[
-&lt;img src="/Users/samharper/git/adv-soc-epi/images/jackson-epid-title.png" width="100%" height="100%" /&gt;
+&lt;img src="../../images/jackson-epid-title.png" width="100%" height="100%" /&gt;
 ]
 
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-34-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-31-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -899,6 +755,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

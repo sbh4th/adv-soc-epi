@@ -1,0 +1,16 @@
+\begin{tikzpicture}[transform shape, line width=1pt]
+\tikzstyle{every node} = [rectangle, fill=white, draw=none]
+\node (inc) at (1,0) {Income};
+%\node (ed) at (0,2) {Education};
+%\node (ur) at (5,2) {Urban/rural};
+%\node (age) at (0,-2) {Age};
+%\node (g) at (2.5,-1.5) {Gender};
+\node (y) at (7,0) {Health};
+\foreach \from/\to in {inc/y, ur/inc, ur/y, age/inc, g/inc, g/y}
+\draw [->] (\from) -- (\to);
+\draw [->] (age.east) to [bend right=45] (y.south);
+\foreach \from/\to in {ed/inc}
+\draw [->, color=blue] (\from) -- (\to);
+\foreach \from/\to in {ed/y}
+\draw [->, color=red] (\from) -- (\to);
+\end{tikzpicture}

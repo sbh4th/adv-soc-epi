@@ -3,7 +3,7 @@ title: "Measuring Social Inequality"
 subtitle: "Advanced Social Epidemiology PhD Course"  
 author: "Sam Harper"
 institute: " <br> </br>"
-date: "University of Copenhagen <br> 2021-10-11 to 2021-10-15 </br>"
+date: "University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -45,31 +45,27 @@ library(xaringanthemer)
 style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
 ```
 
-class: center, middle, inverse
-# .orange[**Part 2: Measuring the "Inequality" in Social Inequality**]
-
----
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .orange[**2.1 Conceptual Issues**]
-## .orange[**2.2 Absolute and Relative Inequality**]
-## .orange[**2.3 Simple vs. Complex Measures**]
-## .orange[**2.4 Weighting**]
-## .orange[**2.5 Reference Points**]
+## .orange[**1 Conceptual Issues**]
+## .orange[**2 Absolute and Relative Inequality**]
+## .orange[**3 Simple vs. Complex Measures**]
+## .orange[**4 Weighting**]
+## .orange[**5 Reference Points**]
 ]
 
 ---
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .orange[**2.1 Conceptual Issues**]
-## .gray[**2.2 Absolute and Relative Inequality**]
-## .gray[**2.3 Simple vs. Complex Measures**]
-## .gray[**2.4 Weighting**]
-## .gray[**2.5 Reference Points**]
+## .orange[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
 ]
 
 ---
@@ -92,17 +88,6 @@ class: center, top, inverse
 - Evaluating the distributional impacts of public health interventions and medical innovations
 
 - Crucial for measuring the responsiveness of health care systems to those most in need
-]
-
----
-.footnote[Gakidou et al. *Lancet* (2006)]
-
->"inequalities in composite coverage [of interventions] have been greatly reduced over the past 5 years, since coverage has increased the most in the poorest states and for the poorest deciles of the population."
-
-.center[
-```{r, echo=F, out.height="70%", out.width="70%"}
-knitr::include_graphics(here("images", "gakidou-lancet-figure.png"))
-```
 ]
 
 ---
@@ -152,7 +137,9 @@ knitr::include_graphics(here("images", "mcguire-inequity.png"))
 ---
 # Inequality is an ambiguous concept
 Different measures of inequality emphasize different concepts.
+
 .right-column[
+
 >“If a concept has some basic ambiguity, then a precise representation of that ambiguous concept must preserve that ambiguity…This issue is quite central to the need for descriptive accuracy in inequality measurement, which has to be distinguished from fully ranked, unambiguous assertions.”
 
 > Amartya Sen, On Economic Inequality, 1997
@@ -225,23 +212,15 @@ knitr::include_graphics(here("images", "van-ralte-title.png"))
 ]
 
 ---
-.footnote[van Raalte (2018)]
-.center[
-```{r, echo=F, out.height="80%", out.width="80%"}
-knitr::include_graphics(here("images", "van-ralte-figure.png"))
-```
-]
-
----
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .gray[**2.1 Conceptual Issues**]
-## .orange[**2.2 Absolute and Relative Inequality**]
-## .gray[**2.3 Simple vs. Complex Measures**]
-## .gray[**2.4 Weighting**]
-## .gray[**2.5 Reference Points**]
+## .gray[**1 Conceptual Issues**]
+## .orange[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
 ]
 
 ---
@@ -342,58 +321,6 @@ knitr::include_graphics(here("images", "bw-hiv-ineq.png"))
 ```
 ]
 
----
-.footnote[Source: US NCI SEER*Stat Database]
-.left-column[
-What if underlying rates are increasing rather than decreasing?
-
-Does this also present similar problems for interpreting inequality trends?
-]
-
-.right-column[
-```{r, echo=F, out.height="90%", out.width="90%"}
-knitr::include_graphics(here("images", "bw-liver-trends.png"))
-```
-]
-
----
-.footnote[Source: US NCI SEER*Stat Database]
-.left-column[
-What if underlying rates are increasing rather than decreasing?
-
-Does this also present similar problems for interpreting inequality trends?
-
-### Yes
-]
-
-.right-column[
-```{r, echo=F, out.height="90%", out.width="90%"}
-knitr::include_graphics(here("images", "bw-liver-ineq.png"))
-```
-]
-
----
-.footnote[King, Harper, Young *BMJ* (2012)]
-.left-column[
-The prior examples are not isolated.
-
-Guidance from WHO and researchers to report **both** absolute and relative inequalities since the 1990s.
-
-We found systematic biases toward reporting only relative measures.
-]
-
-.right-column[
-```{r, echo=F, out.height="100%", out.width="100%"}
-knitr::include_graphics(here("images", "king-reporting-bmj.png"))
-```
-]
-
----
-class: center, middle, inverse
-
-# Question for Discussion:
-
-# Are absolute or relative inequalities more important?
 
 ---
 # Inequality is an ambiguous concept
@@ -405,14 +332,14 @@ class: center, middle, inverse
 
 ---
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .gray[**2.1 Conceptual Issues**]
-## .gray[**2.2 Absolute and Relative Inequality**]
-## .orange[**2.3 Simple vs. Complex Measures**]
-## .gray[**2.4 Weighting**]
-## .gray[**2.5 Reference Points**]
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .orange[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
 ]
 
 ---
@@ -492,7 +419,7 @@ knitr::include_graphics(here("images", "lorenz.png"))
 ---
 # Moving Beyond Binary Comparisons
 
-### Let's rank each education group by where they stand in the population distribution
+### Rank each education group by position in the population distribution
 
 .center[
 Distribution of Socioeconomic Position in a Hypothetical Population
@@ -596,85 +523,15 @@ knitr::include_graphics(here("images", "women-smoking-ineq.png"))
 - Conceptually similar to CI
 
 - Correlation between SEP rank and health.
+
+- SII: Absolute difference
+- RII: Relative difference (or ratio)
 ]
 
 .right-column[
 ```{r, echo=F, out.height="100%", out.width="100%"}
 knitr::include_graphics(here("images", "sii-graph.png"))
 ```
-]
-
----
-### Relationship between rank-based measures
-
-.pull-left[
-### Calculating SII
-Regress health outcome (e.g., smoking) on midpoint of socioeconomic categories, weighted by proportion in the population:
-
-$$y = \beta_{0} + \beta_{1}Rank + \epsilon$$ 
-
-Slope Index of Inequality = $\beta_{1}$
-
-Measures the average expected change in $y$ when moving from the bottom (0) to the top (1) of the SEP rank distribution.
-]
-
---
-
-.pull-right[
-### Relation to the RCI
-There is a specific parallel with the RCI. 
-
-If we transform the outcome variable from $y$ to $2\sigma^{2}_{Rank}*(y/\mu)$ and run the following regression:
-
-$$2\sigma^{2}_{Rank}*(y/\mu) = \beta_{0} + \beta_{1}Rank + \epsilon$$
-Then $\beta_{1}$ = Relative Concentration Index.
-]
-
----
-### Example (Stata) for calculating SII and RII
-.center[
-```{r, echo=F, out.height="80%", out.width="80%"}
-knitr::include_graphics(here("images", "stata-data.png"))
-```
-]
-
---
-
-```{stata, eval=F}
-/* regress smoking rate on rank */
-reg rate rank [fw=pop], cformat(%4.3f)
-------------------------------------------------------------------------------
-        rate |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        rank |     -0.166      0.003   -48.73   0.000       -0.173      -0.160
-       _cons |      0.274      0.002   140.41   0.000        0.270       0.278
-------------------------------------------------------------------------------
-```
-
-The coefficient on the “rank” variable is the estimated change in the rate of illness (e.g., smoking) as one moves from the bottom to the top of the class distribution (decreases by 17 percentage points).
-
-
----
-## Relative Index of Inequality (RII)
-.footnote[Pamuk (1985), Kunst and Mackenbach (1995)]
-.pull-left[
-### 'Original' RII
-$RII = \beta_{1} / \bar{y}$
-
-$RII$ = -16.6 / 19.1 = -87%
-
-This indicates that as one moves from the bottom (0) to the top (1) of SEP distribution the outcome (smoking) decreases by 87%
-]
-
---
-
-.pull-right[
-### Kunst-Mackenbach modification
-$RII_{KM} = \beta_{0} / (\beta_{0} + \beta_{1})$
-
-$RII_{KM}$ = 27.4 / 10.8 = 2.5
-
-Interpreted as the ratio of health for the bottom vs. the top of the socioeconomic distribution (analogous to more traditional RR used in epidemiologic studies).
 ]
 
 ---
@@ -704,14 +561,14 @@ knitr::include_graphics(here("images", "renard-sii.png"))
 
 ---
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .gray[**2.1 Conceptual Issues**]
-## .gray[**2.2 Absolute and Relative Inequality**]
-## .gray[**2.3 Simple vs. Complex Measures**]
-## .orange[**2.4 Weighting**]
-## .gray[**2.5 Reference Points**]
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .orange[**4 Weighting**]
+## .gray[**5 Reference Points**]
 ]
 
 ---
@@ -834,14 +691,14 @@ knitr::include_graphics(here("images", "weighting-milbank.png"))
 
 ---
 class: center, top, inverse
-# .orange[**2. Measuring Inequality**]
+# .orange[**Measuring Inequality**]
 
 .left[
-## .gray[**2.1 Conceptual Issues**]
-## .gray[**2.2 Absolute and Relative Inequality**]
-## .gray[**2.3 Simple vs. Complex Measures**]
-## .gray[**2.4 Weighting**]
-## .orange[**2.5 Reference Points**]
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .orange[**5 Reference Points**]
 ]
 
 ---
@@ -884,6 +741,10 @@ Monitoring health inequalities requires both precise measurement and value judgm
 
 A suite of health inequality measures is likely necessary to provide a complete description of the magnitude of inequality.
 ]
+
+---
+background-image: url(../../images/who-launch.png)
+background-size: contain
 
 ---
 class: center, top, inverse
