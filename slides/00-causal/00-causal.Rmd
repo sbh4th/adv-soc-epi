@@ -153,22 +153,6 @@ knitr::include_graphics(here("images", "counterfactual-image.png"))
 ]
 
 ---
-.footnote[Collier (2009)]
-
-.left-column[
-James Lind is credited with introducing the concept of control and experimental groups; he is considered the father of clinical trials
-]
-
-.right-column[
-.smaller[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]
-.center[
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics(here("images", "lind.jpg"))
-```
-]
-]
-
----
 ## Alternative treatment states
 
 .right-column[
@@ -197,6 +181,22 @@ If "treated" $T_{i}=1$
 icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
 ```
 If "control" $T_{i}=0$
+]
+]
+
+---
+.footnote[Collier (2009)]
+
+.left-column[
+James Lind is credited with introducing the concept of control and experimental groups; he is considered the father of clinical trials
+]
+
+.right-column[
+.smaller[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]
+.center[
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics(here("images", "lind.jpg"))
+```
 ]
 ]
 
