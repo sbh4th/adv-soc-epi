@@ -3,7 +3,7 @@ title: "Counterfactuals and Causal Policy Effects"
 subtitle: "Advanced Social Epidemiology PhD Course"  
 author: "Sam Harper, Arijit Nandi"
 institute: " <br> </br>"
-date: "University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>"
+date: "University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -29,6 +29,7 @@ library(emo) # devtools::install_github("hadley/emo")
 library(icons)
 library(kableExtra)
 library(janitor)
+library(countdown)
 xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
 ```
 
@@ -85,17 +86,19 @@ knitr::include_graphics(here("images", "counterfactual-image.png"))
 
 - These alternative causal states are known as counterfactuals
 
-- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines!
+- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines...
 
 ]
 
 ---
+.footnote[Source: https://www.nytimes.com/2024/11/26/climate/denmark-methane-farm-animal-tax.html]
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics(here("images", "dk-tax.png"))
 ```
 
 ---
+.footnote[Source: https://www.economist.com/leaders/2023/08/31/to-fix-broken-mortgage-markets-look-to-denmark]
 
 .left-column[
 ```{r, echo=FALSE, out.width="100%"}
@@ -104,16 +107,19 @@ knitr::include_graphics(here("images", "great-danes.jpeg"))
 ]
 
 .right-column[
-
+.center[
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics(here("images", "dk-mortgage-effect.png"))
+```
 <br>
-<br>
 
-```{r, echo=FALSE, out.width="100%"}
+```{r, echo=FALSE, out.width="80%"}
 knitr::include_graphics(here("images", "dk-mortgage-quote.png"))
 ```
 ]
-
+]
 ---
+.footnote[Source: https://www.nytimes.com/2023/10/26/world/europe/denmark-housing.html]
 
 .pull-left[
 ```{r, echo=FALSE, out.width="100%"}
@@ -142,7 +148,7 @@ knitr::include_graphics(here("images", "counterfactual-image.png"))
 
 - The potential outcomes framework provides us with a guide for posing and answering counterfactual questions; it is the common language for impact evaluation in the social sciences
 
-- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what would have been under an alternative counterfactual scenario
+- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what **would have been** under an alternative counterfactual scenario
 
 ]
 
@@ -160,32 +166,6 @@ James Lind is credited with introducing the concept of control and experimental 
 knitr::include_graphics(here("images", "lind.jpg"))
 ```
 ]
-]
-
----
-## Alternative treatment states
-
-.pull-left[
-Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$ 
-
-When only two alternative treatments are being considered they can be called the treatment and control states
-]
-
-.pull-right[
-```{r, echo=FALSE}
-icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "gray")
-```
-Individual $i$
-
-```{r, echo=FALSE}
-icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
-```
-If "treated" $T_{i}=1$
-
-```{r, echo=FALSE}
-icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
-```
-If "control" $T_{i}=0$
 ]
 
 ---
@@ -223,7 +203,7 @@ If "control" $T_{i}=0$
 ---
 ## Potential Outcomes
 
-- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states
+- The potential outcomes for each individual are defined as the **true values** of the outcome that would result from exposure to well-defined, alternative causal states
 
 - *Each individual has a potential outcome under both the treatment and control states*  
 
@@ -440,11 +420,12 @@ $E(y_{i}^{0})$
 ]
 ]
 
-- The causal effect is $X$
-
-- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented 
 
 ]
+
+- Causal effect is $\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
+
+- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented.
 
 ---
 ## 
@@ -537,7 +518,7 @@ knitr::include_graphics(here("images", "treat-control-graph.png"))
 ]
 
 ---
-## Fundamental problem of causal inference
+## 
 .center[
 ### These substitutes are not good counterfactuals
 ]
@@ -671,7 +652,7 @@ We can use experimental or quasi-experimental techniques to attempt to recover t
 
 
 ---
-## What are randomized experiments
+## What are randomized experiments?
 
 > the word experiment is used in a quite precise sense to mean an investigation where the system under study is under the control of the investigator. This means that the individuals or material investigated, the nature of the treatments or manipulations under study and the measurement procedures used are all selected, in their important features at least, by the investigator. (Cox, 2000)
 
@@ -681,19 +662,24 @@ Randomized experiments are experiments “in which units are assigned to receive
 ---
 ## RCTs and exchangeability
 
+.left-column[
+```{r, echo=FALSE}
+icon_style(fontawesome("dice", style = "solid"), scale=4) 
+```
+]
+
 .right-column[
 If treatment is assigned randomly, it is said to be exogenous 
 
 Comparison groups are the same with respect to measured and unmeasured characteristics (no unmeasured confounding or omitted variable bias) and each unit’s potential outcomes are independent of actual treatment assignment, $(Y_{i}^{1}, Y_{i}^{0} | D)$
 
-Under these conditions, the treatment and control groups are exchangeable, which implies that the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated (and vice versa)
+Under these conditions, the treatment and control groups are exchangeable, which implies that **the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated** (and vice versa)
 
 Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
 ]
 
-
 ---
-## RCTs and exchangeability
+## 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Font_Awesome_5_solid_equals.svg"
      width="50px" height="50px"
@@ -746,6 +732,7 @@ icon_style(fontawesome("female", style = "solid"), scale=2, fill = "red")
 
 .pull-left[
 .center[
+Causation
 ```{r, echo=FALSE}
 icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
 icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
@@ -775,6 +762,7 @@ $E(y_{i}^{0})$
 
 .pull-right[
 .center[
+Association
 ```{r, echo=FALSE}
 icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
 icon_style(fontawesome("female", style = "solid"), scale=2, fill = "blue") 
@@ -802,6 +790,7 @@ $E(y_{i} | d_{i}=0)$
 Oftentimes we do not have control over treatment assignment and must investigate how individuals end up in alternative states
 
 The term quasi-experiment refers to:
+
 >“experiments that have treatments, outcome measures, and experimental units, but do not use random assignment to create the comparisons from which treatment-caused change is inferred.”(Cook, 1979)
 
 Assignment is by self-selection, by which units choose treatment for themselves, or by means of administrator selection
@@ -1104,15 +1093,21 @@ The Stable Unit Treatment Value Assumption (SUTVA) assumes that an individual’
 
 This assumption is most commonly violated when there is interference (an individual’s outcome depends on the treatment values of other individuals), or in the case of ecological treatments, if there are spillover effects
 
-Say we wanted to evaluate the impact of vaccine camps assigned to randomly selected villages on the incidence of the disease—what are some potential violations of SUTVA?
+Say we wanted to evaluate the impact of an education intervention assigned to randomly selected children in classrooms on substance use—what are some potential violations of SUTVA?
 ]
 
 ---
 ## Consistency
+.footnote[See Cole and Frangakis (2009)]
 
-.left-column[]
+.left-column[
+$Y_{j}^{obs}=Y_{j}(x)$
+if $x=X_{j}$
+]
 
 .right-column[
+> individual $j$'s potential outcome $Y_{j}(x)$ under exposure $x$ as the outcome that would have been observed if individual $j$ had received exposure $x$
+
 Causal inference requires that a treatment is defined unambiguously, which a general concern in social epidemiology
 
 This vagueness of some potential treatments has led some to suggest that only the causal effects of treatments that can be hypothetically manipulated should be considered (i.e., Holland’s “no causation without manipulation”)
@@ -1145,5 +1140,17 @@ Morgan, Stephen L., and Christopher Winship. Counterfactuals and causal inferenc
 William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. Experimental and quasi-experimental designs for generalized causal inference, Chapter 1. Wadsworth Cengage learning, 2002.
 
 Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." Annual review of sociology (1999): 659-706.
+
+---
+class: center, top, inverse
+# .orange[**Break!**] `r emo::ji("coffee")`
+```{r, echo=F}
+countdown(minutes = 15, 
+          left = 0, right = 0, bottom = "15%", top = "15%",
+          padding = "50px",
+          margin = "5%",
+          font_size = "7em",
+          color_text= '#f5bc6c')
+```
 
 

@@ -7,6 +7,8 @@
     <script src="libs/header-attrs/header-attrs.js"></script>
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
@@ -27,7 +29,7 @@ class: center, middle, inverse, title-slide
 ### <br> </br>
 ]
 .date[
-### University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>
+### University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>
 ]
 
 ---
@@ -74,29 +76,32 @@ class: center, top, inverse
 
 - These alternative causal states are known as counterfactuals
 
-- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines!
+- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines...
 
 ]
 
 ---
+.footnote[Source: https://www.nytimes.com/2024/11/26/climate/denmark-methane-farm-animal-tax.html]
 
 &lt;img src="../../images/dk-tax.png" width="100%" /&gt;
 
 ---
+.footnote[Source: https://www.economist.com/leaders/2023/08/31/to-fix-broken-mortgage-markets-look-to-denmark]
 
 .left-column[
 &lt;img src="../../images/great-danes.jpeg" width="100%" /&gt;
 ]
 
 .right-column[
-
+.center[
+&lt;img src="../../images/dk-mortgage-effect.png" width="70%" /&gt;
 &lt;br&gt;
-&lt;br&gt;
 
-&lt;img src="../../images/dk-mortgage-quote.png" width="100%" /&gt;
+&lt;img src="../../images/dk-mortgage-quote.png" width="80%" /&gt;
 ]
-
+]
 ---
+.footnote[Source: https://www.nytimes.com/2023/10/26/world/europe/denmark-housing.html]
 
 .pull-left[
 &lt;img src="../../images/dk-wrecking.png" width="100%" /&gt;
@@ -119,7 +124,7 @@ class: center, top, inverse
 
 - The potential outcomes framework provides us with a guide for posing and answering counterfactual questions; it is the common language for impact evaluation in the social sciences
 
-- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what would have been under an alternative counterfactual scenario
+- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what **would have been** under an alternative counterfactual scenario
 
 ]
 
@@ -135,26 +140,6 @@ James Lind is credited with introducing the concept of control and experimental 
 .center[
 &lt;img src="../../images/lind.jpg" width="80%" /&gt;
 ]
-]
-
----
-## Alternative treatment states
-
-.pull-left[
-Suppose that individuals `\(i\)` in a population can be simultaneously assigned to two (or more) alternative treatments, `\(T_{i}\)` 
-
-When only two alternative treatments are being considered they can be called the treatment and control states
-]
-
-.pull-right[
-&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:gray;height:5em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
-Individual `\(i\)`
-
-&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:5em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
-If "treated" `\(T_{i}=1\)`
-
-&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:red;height:5em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
-If "control" `\(T_{i}=0\)`
 ]
 
 ---
@@ -186,7 +171,7 @@ If "control" `\(T_{i}=0\)`
 ---
 ## Potential Outcomes
 
-- The potential outcomes for each individual are defined as the true values of the outcome that would result from exposure to well-defined, alternative causal states
+- The potential outcomes for each individual are defined as the **true values** of the outcome that would result from exposure to well-defined, alternative causal states
 
 - *Each individual has a potential outcome under both the treatment and control states*  
 
@@ -535,11 +520,12 @@ Our target population
 ]
 ]
 
-- The causal effect is `\(X\)`
-
-- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented 
 
 ]
+
+- Causal effect is `\(\delta_{i} = y_{i}^{1} - y_{i}^{0}\)` or `\(\delta_{i} = y_{i}^{1} / y_{i}^{0}\)`
+
+- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented.
 
 ---
 ## 
@@ -689,7 +675,7 @@ Our target population
 ]
 
 ---
-## Fundamental problem of causal inference
+## 
 .center[
 ### These substitutes are not good counterfactuals
 ]
@@ -796,7 +782,7 @@ We can use experimental or quasi-experimental techniques to attempt to recover t
 
 
 ---
-## What are randomized experiments
+## What are randomized experiments?
 
 &gt; the word experiment is used in a quite precise sense to mean an investigation where the system under study is under the control of the investigator. This means that the individuals or material investigated, the nature of the treatments or manipulations under study and the measurement procedures used are all selected, in their important features at least, by the investigator. (Cox, 2000)
 
@@ -806,19 +792,22 @@ Randomized experiments are experiments “in which units are assigned to receive
 ---
 ## RCTs and exchangeability
 
+.left-column[
+&lt;svg viewBox="0 0 640 512" style="position:relative;display:inline-block;top:.1em;height:4em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+]
+
 .right-column[
 If treatment is assigned randomly, it is said to be exogenous 
 
 Comparison groups are the same with respect to measured and unmeasured characteristics (no unmeasured confounding or omitted variable bias) and each unit’s potential outcomes are independent of actual treatment assignment, `\((Y_{i}^{1}, Y_{i}^{0} | D)\)`
 
-Under these conditions, the treatment and control groups are exchangeable, which implies that the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated (and vice versa)
+Under these conditions, the treatment and control groups are exchangeable, which implies that **the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated** (and vice versa)
 
 Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
 ]
 
-
 ---
-## RCTs and exchangeability
+## 
 
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Font_Awesome_5_solid_equals.svg"
      width="50px" height="50px"
@@ -849,6 +838,7 @@ Actual exposure
 
 .pull-left[
 .center[
+Causation
 &lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
 `\(E(y_{i}^{1})\)`
 &lt;br&gt;
@@ -860,6 +850,7 @@ vs
 
 .pull-right[
 .center[
+Association
 &lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 256 512" style="position:relative;display:inline-block;top:.1em;fill:blue;height:2em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128 0c35.346 0 64 28.654 64 64s-28.654 64-64 64c-35.346 0-64-28.654-64-64S92.654 0 128 0m119.283 354.179l-48-192A24 24 0 0 0 176 144h-11.36c-22.711 10.443-49.59 10.894-73.28 0H80a24 24 0 0 0-23.283 18.179l-48 192C4.935 369.305 16.383 384 32 384h56v104c0 13.255 10.745 24 24 24h32c13.255 0 24-10.745 24-24V384h56c15.591 0 27.071-14.671 23.283-29.821z"&gt;&lt;/path&gt;&lt;/svg&gt;
 `\(E(y_{i} | d_{i}=1)\)`
 &lt;br&gt;
@@ -877,6 +868,7 @@ vs
 Oftentimes we do not have control over treatment assignment and must investigate how individuals end up in alternative states
 
 The term quasi-experiment refers to:
+
 &gt;“experiments that have treatments, outcome measures, and experimental units, but do not use random assignment to create the comparisons from which treatment-caused change is inferred.”(Cook, 1979)
 
 Assignment is by self-selection, by which units choose treatment for themselves, or by means of administrator selection
@@ -1459,15 +1451,21 @@ The Stable Unit Treatment Value Assumption (SUTVA) assumes that an individual’
 
 This assumption is most commonly violated when there is interference (an individual’s outcome depends on the treatment values of other individuals), or in the case of ecological treatments, if there are spillover effects
 
-Say we wanted to evaluate the impact of vaccine camps assigned to randomly selected villages on the incidence of the disease—what are some potential violations of SUTVA?
+Say we wanted to evaluate the impact of an education intervention assigned to randomly selected children in classrooms on substance use—what are some potential violations of SUTVA?
 ]
 
 ---
 ## Consistency
+.footnote[See Cole and Frangakis (2009)]
 
-.left-column[]
+.left-column[
+`\(Y_{j}^{obs}=Y_{j}(x)\)`
+if `\(x=X_{j}\)`
+]
 
 .right-column[
+&gt; individual `\(j\)`'s potential outcome `\(Y_{j}(x)\)` under exposure `\(x\)` as the outcome that would have been observed if individual `\(j\)` had received exposure `\(x\)`
+
 Causal inference requires that a treatment is defined unambiguously, which a general concern in social epidemiology
 
 This vagueness of some potential treatments has led some to suggest that only the causal effects of treatments that can be hypothetically manipulated should be considered (i.e., Holland’s “no causation without manipulation”)
@@ -1498,6 +1496,14 @@ Morgan, Stephen L., and Christopher Winship. Counterfactuals and causal inferenc
 William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. Experimental and quasi-experimental designs for generalized causal inference, Chapter 1. Wadsworth Cengage learning, 2002.
 
 Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." Annual review of sociology (1999): 659-706.
+
+---
+class: center, top, inverse
+# .orange[**Break!**] ☕
+<div class="countdown" id="timer_18ed2dc2" data-update-every="1" tabindex="0" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 
 
     </textarea>

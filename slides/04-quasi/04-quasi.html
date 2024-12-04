@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### <br> </br>
 ]
 .date[
-### University of Copenhagen <br> 2024-02-02 to 2024-02-06 </br>
+### University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>
 ]
 
 ---
@@ -44,6 +44,7 @@ class: center, top, inverse
 ## .orange[**1. Motivation**]
 ## .orange[**2. Randomization and Observation**]
 ## .orange[**3. Quasi-Experimental Designs**]
+## .orange[**4. Final Thoughts**]
 ]
 
 ---
@@ -54,6 +55,7 @@ class: center, top, inverse
 ## .orange[**1. Motivation**]
 ## .gray[**2. Randomization and Observation**]
 ## .gray[**3. Quasi-Experimental Designs**]
+## .gray[**4. Final Thoughts**]
 ]
 
 ---
@@ -68,9 +70,9 @@ What question do most studies in social epidemiology answer?
 
 Other kinds of questions that could be asked:
 
--   .red[Would] individuals who are disadvantaged with respect to social position have better health .red[if they were to become advantaged]?
+-   .orange[Would] individuals who are disadvantaged with respect to social position have better health .orange[if they were to become advantaged]?
 
--   .red[Would] individuals who are advantaged with respect to social position have worse health .red[if they were to become disadvantaged]?
+-   .orange[Would] individuals who are advantaged with respect to social position have worse health .orange[if they were to become disadvantaged]?
 
 These are **causal** questions.
 ]
@@ -114,19 +116,25 @@ These are **causal** questions.
 ]
 
 ---
-### Causation, Association, and Confounding
--   **Causal effect**: Do individuals randomly .red[assigned] (i.e., SET) to treatment have better
-    outcomes?
+### How to interpret statistical associations of health inequality?
+.right-column[
+We have lots of statistical associations between social exposures
+    and health.
 
-    `$$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)$$`
+`$$X---Y$$`
 
--   **Association**: Do individuals who .red[happen to be] treated have better outcomes?
+Some possible situations *consistent* with statistical associations:
 
-    `$$E\left(Y|Treated\right)-E(Y|Untreated)$$`
+1.  Causal `\(X\rightarrow Y\)`
 
--   **Confounding**:
+2.  Heterogeneity `\(X_{a}\;\;Y_{a}\)` vs. `\(X_{b}\rightarrow Y_{b}\)`
 
-    `$$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)\neq E\left(Y|Treated\right)-E\left(Y|Untreated\right)$$`
+3.  Reverse causation `\(Y\rightarrow X\)`
+
+4.  Confounding `\(X\leftarrow C\rightarrow Y\)`
+
+5.  Selection bias `\(X\rightarrow S\leftarrow Y\)`
+]
 
 ---
 class: center, top, inverse
@@ -135,7 +143,8 @@ class: center, top, inverse
 .left[
 ## .gray[**1. Motivation**]
 ## .orange[**2. Randomization and Observation**]
-## .gray[**3 Quasi-Experimental Designs**]
+## .gray[**3. Quasi-Experimental Designs**]
+## .gray[**4. Final Thoughts**]
 ]
 
 
@@ -170,7 +179,7 @@ In an RCT, treatment/exposure is .red[assigned] by the investigator
 ### Strength of randomized treatment allocation
 
 -   Recall that randomization means that we can generally estimate the
-    causal effect without bias.
+    causal effect *of being randomized* without bias.
 
 -   Randomization guarantees exchangeability on measured and unmeasured
     factors.
@@ -201,19 +210,10 @@ In an RCT, treatment/exposure is .red[assigned] by the investigator
 ]]
 
 ---
-### What's the problem?
+## Or maybe don't randomize?
+
 .pull-left[
-We are mainly (though not exclusively) interested in causal effects.
-
-Randomization is generally great for answering whether treatment
-    assignment `\(Z\)` affects `\(Y\)`.
-- treatment assignment (Z) is independent of potential outcomes and all measured and .red[unmeasured] pre-treatment variables.
-
-- Effect of `\(Z\)` on `\(Y\)` is unconfounded
-]
-
-.pull-right[
-### RCTs have serious limitations.
+### RCT limitations
 - Non-compliance.
 
 -   Attrition.
@@ -223,48 +223,22 @@ Randomization is generally great for answering whether treatment
 -   Blinding (esp. in clinical trials).
 ]
 
----
-## Problem of Social Exposures
-.right-column[
--   Many social exposures cannot be randomized by investigators:
+--
 
-    -   Unethical (poverty, parental social class, job loss)
+.pull-right[
+### Other trial challenges:
 
-    -   Impossible (ethnic background, place of birth)
-
-    -   Expensive (neighborhood environments)
-
--   Some exposures are hypothesized to have long latency periods (many
-    years before outcomes are observable).
-
--   Effects may be produced by complex, intermediate pathways.
-
--   We need alternatives to RCTs.
+-   Unethical (poverty, parental social class, job loss)  
+-   Impossible (ethnic background, place of birth)  
+-   Expensive (neighborhood environments)  
+-   Long latency periods (many years before outcomes are observable).  
+-   Effects may be produced by complex, intermediate pathways.  
+&lt;br&gt;
+-   We need alternatives to RCTs.  
 ]
 
 ---
-### How to interpret statistical associations of health inequality?
-.right-column[
-We have lots of statistical associations between social exposures
-    and health.
-
-`$$X---Y$$`
-
-Some possible situations *consistent* with statistical associations:
-
-1.  Causal `\(X\rightarrow Y\)`
-
-2.  Heterogeneity `\(X_{a}\;\;Y_{a}\)` vs. `\(X_{b}\rightarrow Y_{b}\)`
-
-3.  Reverse causation `\(Y\rightarrow X\)`
-
-4.  Confounding `\(X\leftarrow C\rightarrow Y\)`
-
-5.  Selection bias `\(X\rightarrow S\leftarrow Y\)`
-]
-
----
-### Unmeasured confounding is a .red[serious] challenge
+### Unmeasured confounding is a .orange[serious] challenge
 .right-column[
 -   We often compare socially advantaged and disadvantaged on health.
 
@@ -283,9 +257,8 @@ Some possible situations *consistent* with statistical associations:
 ---
 .pull-left[
 ## Key issue is credibility
--   If we have a good design and assume that we have measured all of the
-    confounders, then regression can give us exactly what we want: an
-    estimate of the causal effect of exposure to `\(T\)`.
+
+-   If we have a good design and assume that we have measured all of the confounders, then regression can give us exactly what we want: an estimate of the causal effect of exposure to `\(T\)`.
 
 -   Core issue: How credible is this assumption?
 ]
@@ -303,23 +276,9 @@ SEP and CVD in Australia. .red[Many low p-values]
 ]
 
 ---
-### Is observational credibility is getting harder to sell?
-.footnote[http://fivethirtyeight.com/features/everybody-calm-down-about-breastfeeding/]
-
-Another example: Does breastfeeding increase child IQ?
-
-Several observational studies show higher IQs for breastfed
-    children.
-
-&gt; "The authors of this and other studies claim to find effects of breastfeeding because even once they adjust for the differences they see across women, the effects persist. But this assumes that the adjustments they do are able to remove all of the differences across women. This is extremely unlikely to be the case."
-
-&gt; "I would argue that in the case of breastfeeding, this issue is impossible to ignore and therefore .red[any study that simply compares breastfed to formula-fed infants is deeply flawed.] That doesn't mean the results from such studies are necessarily wrong, just that we can't learn much from them."
-
-&gt; Oster (2015)
-
----
 ### Why we worry about observational studies
 .footnote[Jones et al. (2018)]
+
 .right-column[
 Recent evaluation of "Workplace Wellness" program in US state of Illinois
 
@@ -347,7 +306,8 @@ class: center, top, inverse
 .left[
 ## .gray[**1. Motivation**]
 ## .gray[**2. Randomization and Observation**]
-## .orange[**3 Quasi-Experimental Designs**]
+## .orange[**3. Quasi-Experimental Designs**]
+## .gray[**4. Final Thoughts**]
 ]
 
 ---
@@ -373,7 +333,7 @@ class: center, top, inverse
 .pull-left[
 -   Observables: Things you measured or can measure
 
--   Unobservables: Things you can't measure (e.g., innate abilities)
+-   Unobservables: Things you can't measure (e.g., innate abilities, motivation)
 
 -   Exogenous variation: predicts exposure but (**we assume**) .red[not] associated with anything else [mimicking random assignment].
 ]
@@ -417,6 +377,10 @@ class: center, top, inverse
 ---
 ## Some *potential* sources of natural experiments
 
+.left-column[
+&lt;img src="../../images/dunning.jpeg" width="100%" height="100%" /&gt;
+]
+
 .right-column[
 -   Law changes
 -   Eligibility for social programs (roll-outs)
@@ -447,7 +411,12 @@ Control:
 
 ---
 ### Difference-in-Differences: Basic Idea
-.right-column[
+
+.pull-left[
+&lt;img src="../../images/ddfig.png" width="100%" /&gt;
+]
+
+.pull-right[
 The average .blue[change] over time in the non-exposed (control) group is .blue[subtracted] from the gain over time in the exposed (treatment) group.
     
 These are our two 'differences'.
@@ -461,7 +430,7 @@ Double differencing removes biases in second period comparisons
 
 ---
 ## Visual Intuition of DD
-.footnote[Gertler et al. (2011]
+.footnote[Gertler et al. (2011)]
 .center[
 &lt;img src="../../images/gertler1.png" width="60%" height="60%" /&gt;
 ]
@@ -524,33 +493,92 @@ class: center, middle, inverse
 
 ---
 ## Synthetic control methods
+.footnote[Abadie and Gardeazabel (2003)]
+
 .right-column[
 -   Inference from comparative case studies is limited if we cannot
     identify a control to represent the counterfactual scenario.
 
--   Abadie and Gardeazabel [@Abadie:2003aa] pioneered the synthetic
+-   Abadie and Gardeazabel (2003) pioneered the synthetic
     control method to examine the economic impact of terrorism in the
     Basque country, using other Spanish regions as control groups.
 
--   The synthetic control method uses a data driven approach to compare
-    the trend of an outcome in a treated unit with the trend in a
-    synthetic composite area (the "synthetic control").
+-   The synthetic control method uses a data driven approach to compare the trend of an outcome in a treated unit with the trend in a synthetic composite area (the "synthetic control").
 
--   The method is gaining popularity in social sciences (i.e., political
-    science), but hasn't taken root in epidemiology as of yet.
 ]
 
 ---
-.footnote[Stearns (2015)]
-.center[
-&lt;img src="../../images/stearns-title.png" width="80%" height="80%" /&gt;
+## What is a synthetic control?
+
+.right-column[
+- A synthetic control is a weighted average of available control units that approximates the most relevant characteristics of the treated unit prior to the treatment
+
+- The synthetic control mimics the values of the predictors of the outcome, including pre-intervention values of the outcome, for the treated unit before the intervention occurred
+
+- The synthetic control represents the counterfactual scenario for a treated unit in the absence of the intervention under scrutiny
+
+- Intuition: A weighted combination of comparison units (the “synthetic control”) provides a better comparison for the treated
+unit than any single comparison unit alone
 ]
 
 ---
-.footnote[Stearns (2015)]
-.center[
-&lt;img src="../../images/stearns-figure.png" width="80%" height="80%" /&gt;
+.footnote[McLelland (2017)]
+
+.left-column[
+### Example of 1999 cigarette sales tax in California
+
+- No control state looks like a good 'match'.
+
+- SC creates a weighted control.
 ]
+
+.right-column[
+&lt;img src="../../images/pre-ca.png" width="1605" /&gt;
+]
+
+---
+.footnote[McLelland (2017)]
+
+.left-column[
+### Example of 1999 cigarette sales tax in California
+
+- No control state looks like a good 'match'.
+
+- SC creates a weighted control.
+]
+
+.right-column[
+&lt;img src="../../images/synthetic-ca.png" width="1605" /&gt;
+]
+
+
+
+---
+.footnote[Spruk and Kovac (2020)]
+.center[
+&lt;img src="../../images/dk-trans.png" width="70%" /&gt;
+]
+
+---
+.footnote[Spruk and Kovac (2020)]
+
+.pull-left[
+
+- 'Synthetic' DK mostly SWE, ITA, USA, and FIN.
+
+- Also declines in CVD mortality.
+
+- Robustness checks:
+
+&gt; By deliberately assigning TFA policy to wrong dates and other countries, we show the effect of the 2001 TFA policy intervention is specific to Denmark and does not appear to be driven by alternative dates
+
+]
+
+.pull-right[
+.center[
+&lt;img src="../../images/dk-syn-aobesity.png" width="100%" /&gt;
+]]
+
 ---
 class: center, middle, inverse
 # Instrumental Variables
@@ -596,19 +624,6 @@ class: center, middle, inverse
 
 ---
 ### Non-randomized examples of IV: Policies
-.footnote[Leigh and Schembri (2004)]
-
--   Does smoking affect physical functioning ?
-
--   **Instrument**: changes in cigarette prices [mimicking random
-    assignment].
-
-.center[
-&lt;img src="../../images/prices-dag.png" width="70%" height="70%" /&gt;
-]
-
----
-### Non-randomized examples of IV: Policies
 .footnote[Glymour et al. (2008)]
 -   Does education affect cognitive functioning?
 
@@ -648,29 +663,17 @@ that were age 14 in 1946 and in 1948.
 ]]
 
 ---
-## Quasi Experiments: Education and Mortality
+## 
 
--   Changes in education due to national or state-level changes in laws
-    regarding compulsory schooling.
+.left-column[
+### Ex: Education and HIV
+]
 
--   Differ from the usual approach by attempting to focus on plausibly random .red[changes] in education, rather than comparing those .blue[achieving] high vs. low education.
+.right-column[
+.center[
+&lt;img src="../../images/bor.png" width="100%" /&gt;
+]]
 
--   Findings are heterogenous, in contrast to much of the evidence from
-    observational studies:
- -   USA (Lleras-Muney, 2005): IV (yes), RD (no)   
- -   UK (Oreopolous 2008, Clark 2010): RD (no)
- -   France (Albouy 2009): RD (no)
- -   Also positive and negative evidence for other health outcomes in Denmark, Sweden, Germany, Italy, Netherlands
-
--   Importance of explicitly trying to mimic an RCT for education
-
----
-background-image: url(../../images/hamad-title.png)
-background-size: contain
-
----
-background-image: url(../../images/hamad-smoking.png)
-background-size: contain
 
 ---
 class: center, middle, inverse
@@ -796,18 +799,6 @@ difference is in treatment assignment
 &lt;img src="../../images/smith-t3.png" width="100%" height="100%" /&gt;
 ]]
 
----
-.footnote[Carpenter (2017)]
-.left-column[
-### Another recent example: US drinking age
-Minimum legal drinking age and non-fatal injuries
-]
-
-.right-column[
-.center[
-&lt;img src="../../images/carpenter-edvisits-men.png" width="100%" height="100%" /&gt;
-]]
-
 
 ---
 ### Issues related to generalizability
@@ -823,6 +814,17 @@ Minimum legal drinking age and non-fatal injuries
 -   However, if the question is whether the program should be cut or
     expanded at the margin, then it produces the local estimate of
     interest to inform this policy decision
+]
+
+---
+class: center, top, inverse
+# .orange[**Quasi-Experiments**]
+
+.left[
+## .gray[**1. Motivation**]
+## .gray[**2. Randomization and Observation**]
+## .gray[**3. Quasi-Experimental Designs**]
+## .orange[**4. Final Thoughts**]
 ]
 
 ---
@@ -882,37 +884,6 @@ Minimum legal drinking age and non-fatal injuries
 ]]
 
 ---
-## Potential drawbacks of quasi-experimental approaches
-.right-column[
--   How good is "as-if" random? (need "shoe-leather")
-
--   Credibility of additional (modeling) assumptions.
-
--   Relevance of the intervention.
-
--   Relevance of population.
-]
-
----
-.pull-left[
-### But potential benefits!
-
-&gt;However, this year’s Laureates have shown that it is
-possible to answer these and similar questions using
-natural experiments. The key is to use situations in which
-chance events or policy changes result in groups of people
-being treated differently, in a way that resembles clinical
-trials in medicine.
-
-&gt; Royal Swedish Academy of Sciences (2021)
-]
-
-.pull-right[
-.center[
-&lt;img src="../../images/nobel-2021.png" width="100%" height="100%" /&gt;
-]]
-
----
 ### Back to basics: assumptions and costs
 .right-column[
 -   Major benefit of randomized evaluations are that few assumptions are
@@ -930,7 +901,7 @@ trials in medicine.
     -   Are there compelling non-causal alternative explanations for the
         observed results?
 
--   All non-randomized designs are not created equal.
+-   Not all non-randomized designs are created equal.
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
