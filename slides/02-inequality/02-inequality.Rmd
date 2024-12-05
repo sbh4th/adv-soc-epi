@@ -357,17 +357,14 @@ knitr::include_graphics(here("images", "two-groups.png"))
 ]]
 
 ---
-.footnote[Source: Data2010]
-.left-column[
-### Additional groups make summary measures appealing
-]
+## Additional groups make summary measures appealing
 
-.right-column[
+.footnote[Source: Persmark (2020)]
 .center[
 ```{r, echo=F, out.height="100%", out.width="100%"}
-knitr::include_graphics(here("images", "multiple-groups.png"))
+knitr::include_graphics(here("images", "persmark-2020-ann.png"))
 ```
-]]
+]
 
 ---
 
