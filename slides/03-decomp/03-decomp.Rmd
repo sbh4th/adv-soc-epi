@@ -245,7 +245,7 @@ class: center, top, inverse
 ]
 
 ---
-We want to understand this
+We want to understand this:
 .center[
 ```{r, echo=F, out.width="60%"}
 knitr::include_graphics(here("images", "inc-health-dag.png"))
@@ -489,12 +489,12 @@ Main utility is not in estimating the potential impact on y of changing the dist
 
 ---
 class: center, top, inverse
-# .orange[**3. Decomposition**]
+# .orange[**Decomposition**]
 
 .left[
-## .gray[**3.1 Life Table Decomposition**]
-## .gray[**3.2 Concentration Index Decomposition**]
-## .orange[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
+## .gray[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .orange[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
 
 ---
@@ -534,6 +534,7 @@ If regressions are purely descriptive, they reveal the associations that charact
 Then inequality is explained in a statistical sense but implications for policies to reduce inequality are limited
 
 If data allow identification of causal effects, then the factors that generate the inequality are identified
+
 Then one can (potentially) draw conclusions about how policies would impact on inequality
 ]
 
@@ -551,8 +552,8 @@ background-size: contain
 ### 1. Means
 #### Differences in the prevalence of determinants of outcome
 
-### 2. Effects
-#### Differences in the effect of a given determinant on the outcome (i.e., effect measure modification)
+### 2. Coefficients
+#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
 ]
 
 ---
@@ -623,14 +624,6 @@ $$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{unexp}-\Delta\beta x^{exp}$$
 
 whereas, in the second, the differences in the x’s are weighted by the .blue[coefficients of the exposed group] and the differences in the coefficients are weighted by the x’s of the unexposed group: 
 $$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{exp}-\Delta\beta x^{unexp}$$
-]
-
----
-General decomposition formula shows the mean gap as deriving from a difference in endowments (E), a gap in coefficients (C), and .red[a gap arising from the interaction of endowments and coefficients] (CE):
-.center[
-```{r, echo=F, out.height="80%", out.width="80%"}
-knitr::include_graphics(here("images", "kbo-interaction.png"))
-```
 ]
 
 ---
@@ -712,23 +705,46 @@ background-image: url(../../images/kbo-margins.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp.png)
+background-image: url(../../images/kbo-decomp-r.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp-means.png)
+background-image: url(../../images/kbo-decomp-means-r.png)
+background-size: contain
+
+
+--
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+```{r, echo=F, out.width="50%"}
+knitr::include_graphics(here("images", "kbo-means.png"))
+```
+
+---
+background-image: url(../../images/kbo-decomp-coefs-r.png)
+background-size: contain
+
+--
+
+```{r, echo=F, out.width="50%"}
+knitr::include_graphics(here("images", "kbo-coefs.png"))
+```
+
+---
+background-image: url(../../images/kbo-decomp-coefs2-r.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp-coefs.png)
-background-size: contain
-
----
-background-image: url(../../images/kbo-decomp-coefs2.png)
-background-size: contain
-
----
-background-image: url(../../images/kbo-decomp-pooled.png)
+background-image: url(../../images/kbo-decomp-pooled-r.png)
 background-size: contain
 
 ---

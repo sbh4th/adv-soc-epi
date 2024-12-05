@@ -222,7 +222,7 @@ class: center, top, inverse
 ]
 
 ---
-We want to understand this
+We want to understand this:
 .center[
 &lt;img src="../../images/inc-health-dag.png" width="60%" /&gt;
 ]
@@ -446,12 +446,12 @@ Main utility is not in estimating the potential impact on y of changing the dist
 
 ---
 class: center, top, inverse
-# .orange[**3. Decomposition**]
+# .orange[**Decomposition**]
 
 .left[
-## .gray[**3.1 Life Table Decomposition**]
-## .gray[**3.2 Concentration Index Decomposition**]
-## .orange[**3.3 Kitagawa-Blinder-Oaxaca Decomposition**]
+## .gray[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .orange[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
 ]
 
 ---
@@ -489,6 +489,7 @@ If regressions are purely descriptive, they reveal the associations that charact
 Then inequality is explained in a statistical sense but implications for policies to reduce inequality are limited
 
 If data allow identification of causal effects, then the factors that generate the inequality are identified
+
 Then one can (potentially) draw conclusions about how policies would impact on inequality
 ]
 
@@ -506,8 +507,8 @@ background-size: contain
 ### 1. Means
 #### Differences in the prevalence of determinants of outcome
 
-### 2. Effects
-#### Differences in the effect of a given determinant on the outcome (i.e., effect measure modification)
+### 2. Coefficients
+#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
 ]
 
 ---
@@ -573,19 +574,13 @@ whereas, in the second, the differences in the x’s are weighted by the .blue[c
 ]
 
 ---
-General decomposition formula shows the mean gap as deriving from a difference in endowments (E), a gap in coefficients (C), and .red[a gap arising from the interaction of endowments and coefficients] (CE):
-.center[
-&lt;img src="../../images/kbo-interaction.png" width="80%" height="80%" /&gt;
-]
-
----
 class: center, middle, inverse
 # Example: Decomposing Educational Differences in Blood Pressure
 
 ---
 # Basic question
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
@@ -599,7 +594,7 @@ Any residual difference is due to educational differences in the associations of
 ---
 # Example data
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
 ]
 .right-column[
 US NHANES follow up survey (1988-2006), baseline data
@@ -649,23 +644,42 @@ background-image: url(../../images/kbo-margins.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp.png)
+background-image: url(../../images/kbo-decomp-r.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp-means.png)
+background-image: url(../../images/kbo-decomp-means-r.png)
+background-size: contain
+
+
+--
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;img src="../../images/kbo-means.png" width="50%" /&gt;
+
+---
+background-image: url(../../images/kbo-decomp-coefs-r.png)
+background-size: contain
+
+--
+
+&lt;img src="../../images/kbo-coefs.png" width="50%" /&gt;
+
+---
+background-image: url(../../images/kbo-decomp-coefs2-r.png)
 background-size: contain
 
 ---
-background-image: url(../../images/kbo-decomp-coefs.png)
-background-size: contain
-
----
-background-image: url(../../images/kbo-decomp-coefs2.png)
-background-size: contain
-
----
-background-image: url(../../images/kbo-decomp-pooled.png)
+background-image: url(../../images/kbo-decomp-pooled-r.png)
 background-size: contain
 
 ---
@@ -692,7 +706,7 @@ Adding gender increases the “explained” component (i.e., “endowments”) f
 ---
 # Summary
 .left-column[
-&lt;img src="03-decomp_files/figure-html/unnamed-chunk-31-1.png" width="100%" height="100%" /&gt;
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-32-1.png" width="100%" height="100%" /&gt;
 ]
 
 .right-column[
