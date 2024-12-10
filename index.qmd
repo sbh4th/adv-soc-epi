@@ -2,7 +2,9 @@
 title: "Advanced Social Epidemiology PhD Course Materials"
 subtitle: "University of Copenhagen"
 author: "Sam Harper"
-format: html
+format: 
+  html:
+    theme: materia
 ---
 
 ```{r setup, include=FALSE}
