@@ -36,3 +36,7 @@ vignettes/*.pdf
 *.knit.md
 
 .DS_Store
+
+# Ignored output for publishing
+/.quarto/
+/_site/

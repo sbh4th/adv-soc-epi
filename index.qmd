@@ -1,0 +1,22 @@
+---
+title: "Advanced Social Epidemiology PhD Course Materials"
+subtitle: "University of Copenhagen"
+author: "Sam Harper"
+format: html
+---
+
+```{r setup, include=FALSE}
+library(here)
+```
+
+## 0. Counterfactuals and Causal Policy Effects ([lecture](slides/00-causal/00-causal.html))
+
+## 1. Measuring the 'Social' in Social Inequality ([lecture](slides/01-social/01-social.html))
+
+## 2. Measuring the 'Inequality' in Social Inequality ([lecture](slides/02-inequality/02-inequality.html))
+
+## 3. Decomposition Techniquest ([lecture](slides/04-decomp/04-decomp.html))
+
+## 4. Quasi-Experimental Designs ([lecture](slides/04-quasi/04-quasi.html))
+
+Materials are here: https://github.com/sbh4th/adv-soc-epi
