@@ -37,6 +37,13 @@ vignettes/*.pdf
 
 .DS_Store
 
+# ESS raw data — too large for git; download from https://ess-search.nsd.no
+# (ESS Round 11, Integrated file, Edition 4.1, CSV format)
+# Then run data/make-slim-ess.R once to produce data/ESS11_slim.csv
+data/ESS11e04_1.csv
+data/ESS11e04_1 codebook.html
+
 # Ignored output for publishing
 /.quarto/
 /_site/
+.positai
