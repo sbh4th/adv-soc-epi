@@ -1,5 +1,9 @@
 project:
   title: "adv-soc-epi"
+  render:
+    - "**/*.qmd"
+  resources:
+    - "**/*.Rmd"
 
 
 

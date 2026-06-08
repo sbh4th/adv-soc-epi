@@ -1,0 +1,104 @@
+/*-- scss:defaults --*/
+$theme-blue: #0000ff;
+$theme-red: #ff0000;
+$theme-gray: #cccccc;
+
+/*-- scss:rules --*/
+
+.blue {
+  color: $theme-blue;
+}
+
+.red {
+  color: $theme-red;
+}
+
+.gray {
+  color: $theme-gray;
+}
+
+.black {
+  color: #000000;
+}
+
+.smaller {
+  font-size: 0.8em;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 1em;
+  font-size: 0.55em;
+  color: #555;
+}
+
+/* tables */
+
+.reveal .table td, .reveal .table th {
+  border-color: black;
+}
+
+.reveal .table tbody td {
+  border-bottom: none;
+}
+
+.reveal .table tbody tr:last-child td {
+  border-bottom: 1px solid black;
+}
+
+.reveal .table thead tr:first-child th {
+  border-bottom: none;
+}
+
+.reveal .table thead tr:last-child th {
+  border-bottom: 1px solid black;
+}
+
+/* footnotes — hide numbers, keep content */
+
+/* Hide the superscript number in the slide body */
+.reveal a.footnote-ref,
+.reveal [role="doc-noteref"] {
+  display: none !important;
+}
+
+.reveal sup:has(a.footnote-ref),
+.reveal sup:has([role="doc-noteref"]) {
+  display: none !important;
+}
+
+/* Remove "1." numbering from footnote list at slide bottom.
+   RevealJS wraps footnotes in <aside class="footnotes">;
+   ::marker controls the list counter. */
+.reveal .footnotes ol,
+.reveal aside.footnotes ol,
+.reveal section.footnotes ol {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.reveal .footnotes li::marker,
+.reveal aside.footnotes li::marker,
+.reveal section.footnotes li::marker {
+  content: "" !important;
+}
+
+/* Hide the back-arrow ↩ link */
+.reveal a.footnote-back,
+.reveal [role="doc-backlink"] {
+  display: none !important;
+}
+
+/* Style the footnote text itself */
+.reveal .footnotes,
+.reveal aside.footnotes {
+  font-size: 0.5em;
+  color: #555;
+}
+
+/* alignment */
+
+.h2center h2 {
+  text-align: center;
+}
