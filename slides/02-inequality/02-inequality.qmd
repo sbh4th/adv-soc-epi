@@ -1,8 +1,8 @@
 ---
-title: "Measuring Social Inequality"
-subtitle: "Advanced Social Epidemiology PhD Course"
+title: "Measuring Social Inequalities in Health"
+subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
 author: "Sam Harper"
-date: 2026-06-02
+date: 2026-06-10
 date-format: iso
 format:
   revealjs:
@@ -11,7 +11,14 @@ format:
     height: 900
     slide-number: true
     html-math-method: mathjax
+    embed-resources: true
+    auto-stretch: false
+title-slide-attributes:
+    data-background-image: "../../images/mcgill-epi-logo.png"
+    data-background-size: 30%
+    data-background-position: 50% 90%
 editor: source
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -27,27 +34,23 @@ knitr::opts_chunk$set(
 
 ## Overview {.h2center}
 
-### Conceptual Issues
+<br>
+
+### [Conceptual Issues]{.black}
 
 <br>
 
-### Absolute and Relative Inequality
+### [Absolute and Relative Inequality]{.black}
 
 <br>
 
-### Simple vs. Complex Measures
-
-<br>
-
-### Weighting
-
-<br>
-
-### Reference Points
+### [Simple vs. Complex Measures]{.black}
 
 ## Overview {.h2center}
 
-### Conceptual Issues
+<br>
+
+### [Conceptual Issues]{.black}
 
 <br>
 
@@ -57,179 +60,174 @@ knitr::opts_chunk$set(
 
 ### [Simple vs. Complex Measures]{.gray}
 
-<br>
-
-### [Weighting]{.gray}
-
-<br>
-
-### [Reference Points]{.gray}
-
 ## Why monitor health inequalities?
 
-::: {.columns}
-::: {.column width="50%"}
+:::: columns
+::: {.column width="45%"}
+<br>
+
 ### Surveillance
 
-- Natural complement to monitoring overall health
+-   Natural complement to monitoring overall health
 
-- Essential for detecting important changes in risk
+-   Essential for detecting important changes in risk
+
+-   Identifying new and emerging health inequalities
 :::
 
-::: {.column width="50%"}
+::: {.column width = "5%"}
+::::
 
-. . .
+::: {.column width="45%"}
+<br>
 
 ### Impact
 
-- Opportunity to evaluate etiological explanations for health inequalities
+-   Opportunity to evaluate etiological explanations for health inequalities
 
-- Evaluating the distributional impacts of public health interventions and medical innovations
+-   Evaluating the distributional impacts of public health interventions and medical innovations
 
-- Crucial for measuring the responsiveness of health care systems to those most in need
+-   Crucial for measuring the responsiveness of health care systems to those most in need
 :::
+
 :::
 
 ## Inequalities in health are based on *observations*
 
-::: {.columns}
+<br>
+
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
 ### [We are relatively good at measuring inequalities.]{.red}
 
-- Poor people die younger than rich people
+-   Poor people die younger than rich people
 
-- Low social class infants have lower birth weight
+-   Low social class infants have lower birth weight
 
-- Smokers get more lung cancer than non-smokers
+-   Smokers get more lung cancer than non-smokers
 
-- Women live longer than men
+-   Women live longer than men
 :::
-:::
+:::::
 
 ## Inequities in health are based on *ethical judgements*
 
-::: {.columns}
+<br>
+
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
 ### [Inequities are much harder to measure]{.red}
 
-- Should poor people die younger than rich people?
+-   Should poor people die younger than rich people?
 
-- Should low social class infants have lower birth weight?
+-   Should low social class infants have lower birth weight?
 
-- Should smokers get more lung cancer than non-smokers?
+-   Should smokers get more lung cancer than non-smokers?
 
-- Should women live longer than men?
+-   Should women live longer than men?
 :::
+:::::
+
+------------------------------------------------------------------------
+
+::: footnote
+Adapted from @McGuire2006
 :::
 
----
-
-::: {.footnote}
-Adapted from McGuire et al. *Health Services Research* 2006
-:::
-
-::: {.columns}
+:::::: columns
 ::: {.column width="25%"}
 ### Anatomy of an Inequality
-- How much of inequality is *unfair*?
 
-- How would you know?
+-   How much of inequality is *unfair*?
+
+-   How would you know?
 :::
-::: {.column width="75%"}
-::: {.r-stretch}
+
+:::: {.column width="75%"}
+::: r-stretch
 ```{r}
 knitr::include_graphics(here("images", "mcguire-inequity.png"))
 ```
 :::
-:::
-:::
+::::
+::::::
 
 ## Inequality is an ambiguous concept
 
 Different measures of inequality emphasize different concepts.
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
 > "If a concept has some basic ambiguity, then a precise representation of that ambiguous concept must preserve that ambiguity…This issue is quite central to the need for descriptive accuracy in inequality measurement, which has to be distinguished from fully ranked, unambiguous assertions."
 
 > Amartya Sen, *On Economic Inequality*, 1997
 :::
-:::
-
-## Measuring inequality: Some issues to consider
-
-1. What to measure? Total vs. Social Group Inequality
-
-1. Scale: Is inequality relative or absolute?
-
-1. Simple or complex measures of health inequality?
-
-1. Weighting: Who counts, and for how much?
-
-1. Reference points for measuring inequality: Different from what?
+:::::
 
 ## What should we measure?
 
-::: {.columns}
-::: {.column width="50%"}
+::: pull-left
+<br>
+
 ### Total Health Inequality
-- complement to measurement of average health
-- measured across all individuals
-- avoids normative choice of social groups
-- facilitates unambiguous comparisons over time/place
+
+-   complement to measurement of average health
+-   measured across all individuals
+-   avoids normative choice of social groups
+-   facilitates unambiguous comparisons over time/place
 :::
-::: {.column width="50%"}
+
+::: pull-right
+<br>
+
 ### Social Group Differences in Health
-- measured across normatively important social groups
-- particular social groups chosen a priori
-- provide insights into causal processes linking health and social position
-:::
-:::
 
----
-
-::: {.footnote}
-Asada 2002
+-   measured across normatively important social groups
+-   particular social groups chosen a priori
+-   provide insights into causal processes linking health and social position
 :::
 
-::: {.columns}
+## 
+
+::: footnote
+@Asada2002
+:::
+
+::::: columns
 ::: {.column width="25%"}
 ### Health Inequality Between Whom?
 
-- Which society has more inequality?
+-   Which society has more inequality?
 
-- Which one is worse from the perspective of inequality?
+-   Which one is worse from the perspective of inequality?
 :::
+
 ::: {.column width="75%"}
 ```{r}
-knitr::include_graphics(here("images", "asada-distribution.png"))
+knitr::include_graphics(here("images",  "asada-distribution.png"))
 ```
 :::
+:::::
+
+## 
+
+::: footnote
+Source: @harper2017
 :::
 
----
-
-```{r}
-knitr::include_graphics(here("images", "van-ralte-title.png"))
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", 
+  "mse2-fig1b.png"))
 ```
-
-::: {.columns}
-::: {.column width="25%"}
-:::
-::: {.column width="75%"}
-- Life-span variation reflects uncertainty in the risk (timing) of death.
-- People are generally willing to pay to reduce uncertainty.
-
-- Heterogeneity is crucial for accurate forecasts in insurance and annuity markets, and should be measured.
-- Monitoring life-span variation may facilitate early detection of adverse mortality developments and warrant social interventions at younger ages.
-:::
-:::
 
 ## Overview {.h2center}
 
@@ -237,139 +235,89 @@ knitr::include_graphics(here("images", "van-ralte-title.png"))
 
 <br>
 
-### Absolute and Relative Inequality
+### [Absolute and Relative Inequality]{.black}
 
 <br>
 
 ### [Simple vs. Complex Measures]{.gray}
 
-<br>
+## 
 
-### [Weighting]{.gray}
-
-<br>
-
-### [Reference Points]{.gray}
-
----
-
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Easy case
 
 Evidence of clear progress
 :::
+
 ::: {.column width="75%"}
 Trends in infant mortality, Brazil and Colombia, 1980-2006
+
 ```{r}
 knitr::include_graphics(here("images", "bra-col-trends.png"))
 ```
 :::
-:::
+:::::
 
----
+## 
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Easy case
 
 Evidence of clear progress
 :::
+
 ::: {.column width="75%"}
 Trends in infant mortality, Brazil and Colombia, 1980-2006
+
 ```{r}
 knitr::include_graphics(here("images", "bra-col-ineq.png"))
 ```
 :::
-:::
+:::::
 
----
+## 
 
-::: {.footnote}
+::: footnote
 Source: US NCI SEER\*Stat Database
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Harder case
 
 Are black-white inequalities in prostate cancer mortality increasing or decreasing?
 :::
+
 ::: {.column width="75%"}
 Black and White Prostate Cancer Mortality Rates
+
 ```{r}
 knitr::include_graphics(here("images", "bw-prostate-trends.png"))
 ```
 :::
-:::
+:::::
 
----
+## 
 
-::: {.footnote}
-DeLancey (2008)
-:::
-
-::: {.r-stack}
-```{r}
-knitr::include_graphics(here("images", "delancey-prostate-figure.png"))
-```
-:::
-
----
-
-::: {.footnote}
+::: footnote
 Source: US NCI SEER\*Stat Database
 :::
 
-::: {.r-stack}
-```{r}
+```{r, out.width = "70%"}
 knitr::include_graphics(here("images", "bw-prostate-ineq.png"))
 ```
+
+## 
+
+::: footnote
+@DeLancey2008
 :::
 
----
-
-::: {.footnote}
-Chapin-Bardales et al. 2017
-:::
-
-::: {.columns}
-::: {.column width="25%"}
-"Racial disparities rose sharply from 1984 to the early 2000s for Blacks...concerningly, we documented a significant increase from 2006 to 2013."
-
-On what scale?
-:::
-::: {.column width="75%"}
-New AIDS diagnoses by race/ethnicity, USA 1984-2013
-```{r}
-knitr::include_graphics(here("images", "sullivan-hiv-trends.png"))
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "delancey-prostate-figure.png"))
 ```
-:::
-:::
-
----
-
-::: {.columns}
-::: {.column width="50%"}
-### Failure to consider the scale on which inequalities are measured can have dramatic impacts on study conclusions.
-- Steep declines on absolute scale.
-- Increases on relative scale.
-
-### This also has broad implications for thinking about explanations for inequality trends.
-- Did the introduction of antiretrovirals exacerbate or mitigate inequalities?
-:::
-::: {.column width="50%"}
-```{r}
-knitr::include_graphics(here("images", "bw-hiv-ineq.png"))
-```
-:::
-:::
-
-## Inequality is an ambiguous concept
-
-> ### "There is no economic theory that tells us that inequality is relative, not absolute. It is not that one concept is right and the other wrong. Nor are they two ways of measuring the same thing. Rather, they are two different concepts."
-
-> ### Martin Ravallion, World Bank Economist, 2004
 
 ## Overview {.h2center}
 
@@ -381,186 +329,262 @@ knitr::include_graphics(here("images", "bw-hiv-ineq.png"))
 
 <br>
 
-### Simple vs. Complex Measures
+### [Simple vs. Complex Measures]{.black}
 
-<br>
+## 
 
-### [Weighting]{.gray}
-
-<br>
-
-### [Reference Points]{.gray}
-
----
-
-::: {.footnote}
+::: footnote
 Source: Data2010
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Pairwise comparisons work well for a few groups
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "two-groups.png"))
 ```
 :::
+:::::
+
+## 
+
+::: footnote
+Source: @harper2017
 :::
+
+::::: columns
+::: {.column width="25%"}
+### Somewhat more challenging
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", 
+  "mse2-fig2.png"))
+```
+:::
+:::::
 
 ## Additional groups make summary measures appealing
 
-::: {.footnote}
-Source: Persmark (2020)
+::: footnote
+Source: @persmark2019
 :::
 
 ```{r}
 knitr::include_graphics(here("images", "persmark-2020-ann.png"))
 ```
 
----
+## 
 
-::: {.footnote}
+::: footnote
 Ezzati et al. (2008)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Summary measures definitely needed
+
+-   Life expectancy inequality across \~3,000 US counties
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "ezzati-counties.png"))
 ```
 :::
-:::
+:::::
 
 ## Range-type measures: ignore the entire distribution
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
+-   Does A or B have 'more' inequality?
 
-- Does A or B have 'more' inequality?
-
-- Do you have a preference for A or B?
+-   Do you have a preference for A or B?
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "range-measure.png"))
 ```
 :::
+:::::
+
+## 
+
+::: left-column
+### Is the amount of inequality the same in these two societies?
 :::
 
----
+::: right-column
+```{r, echo=F, out.height="80%", out.width="80%"}
+knitr::include_graphics(here("images", "three-groups.png"))
+```
+:::
 
-::: {.columns}
-::: {.column width="25%"}
+## 
+
+```{r, out.width = "90%"}
+knitr::include_graphics(here("images", "ess-education.png"))
+```
+
+## 
+
+:::: columns
+::: {.column width="20%"}
 ### Moving beyond simple comparisons
 
-- More complex measures look at the entire distribution.
+-   More complex measures look at the entire distribution.
 
-- E.g., Lorenz curve for income, health, or any X:
+-   E.g., Lorenz curve for income, health, or any X:
 :::
+
+::: {.column width = "5%"}
+::::
+
 ::: {.column width="75%"}
 Relative Concentration Curve
+
 ```{r}
 knitr::include_graphics(here("images", "lorenz.png"))
 ```
 :::
+
 :::
 
 ## Moving Beyond Binary Comparisons
 
+<br>
+
 ### Rank each education group by position in the population distribution
+
+<br>
 
 Distribution of Socioeconomic Position in a Hypothetical Population
 
-| Education Level | % | Cumulative % | Range | Midpoint |
-|:----------------|--:|:------------:|:-----:|---------:|
-| None | 11.93 | 11.93 | 00.00 – 11.93 | 5.97 |
-| \<Primary school | 15.04 | 26.97 | 11.93 – 26.97 | 19.45 |
-| Primary school | 26.86 | 53.83 | 26.97 – 53.83 | 40.40 |
-| Secondary school | 16.05 | 69.88 | 53.83 – 69.88 | 61.86 |
-| Beyond Secondary | 30.12 | 100 | 69.88 – 100.0 | 84.94 |
+| Education Level  |    \% | Cumulative % |     Range     | Midpoint |
+|:-----------------|------:|:------------:|:-------------:|---------:|
+| None             | 11.93 |    11.93     | 00.00 – 11.93 |     5.97 |
+| \<Primary school | 15.04 |    26.97     | 11.93 – 26.97 |    19.45 |
+| Primary school   | 26.86 |    53.83     | 26.97 – 53.83 |    40.40 |
+| Secondary school | 16.05 |    69.88     | 53.83 – 69.88 |    61.86 |
+| Beyond Secondary | 30.12 |     100      | 69.88 – 100.0 |    84.94 |
 
----
+------------------------------------------------------------------------
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Summarizing across SEP
 
-- First rank the population by SEP
+-   First rank the population by distribution of SEP
 
-- Then count up the proportion of disease each group accounts for.
+-   Then count up the proportion of disease each group accounts for.
 :::
+
 ::: {.column width="75%"}
 Relative Concentration Curve
+
 ```{r}
 knitr::include_graphics(here("images", "cc-cumulative.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Summarizing across SEP
 
-- Diagonal = no inequality
+-   Diagonal = no inequality
 
-- Curve above diagonal: ill-health concentrated among poorer.
-- Curve below diagonal: ill-health concentrated among richer.
+-   Curve above diagonal: ill-health concentrated among poorer.
+
+-   Curve below diagonal: ill-health concentrated among richer.
 :::
+
 ::: {.column width="75%"}
 Relative Concentration Curve
+
 ```{r}
 knitr::include_graphics(here("images", "cc-both.png"))
 ```
 :::
-:::
+:::::
 
----
+## 
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Summarizing across SEP
 
-- Concentration Index measures the extent to which disease is 'concentrated' among different SEP groups.
+-   Concentration Index measures the extent to which disease is 'concentrated' among different SEP groups.
 :::
+
 ::: {.column width="75%"}
 Concentration Index
+
 ```{r}
 knitr::include_graphics(here("images", "cc-index.png"))
 ```
 :::
-:::
+:::::
 
 ## Formula for writing the Concentration Index
 
-::: {.footnote}
-Kakwani et al. (1997)
+::: footnote
+See @kakwani1997
 :::
 
-::: {.columns}
-::: {.column width="50%"}
-One way of writing the CI is:
-$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$
-where $\mu$ is the mean of $y_{i}$ (e.g., smoking status), $R_{i}$ is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
+::: pull-left
+<br>
+
+One way of writing the CI is: $$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$ where $\mu$ is the mean of $y_{i}$ (e.g., smoking status), $R_{i}$ is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
 :::
 
-::: {.column width="50%"}
+::: pull-right
+<br>
 
-. . .
-
-The Absolute Concentration Index multiplies *RCI* by the mean smoking rate:
-$$ACI=\mu*RCI$$
-:::
+The Absolute Concentration Index multiplies *RCI* by the mean smoking rate: $$ACI=\mu*RCI$$
 :::
 
----
+## Bounds of the Concentration Index
 
-::: {.columns}
+::: footnote
+@wagstaff2005; @erreygers2009; @wagstaff2009
+:::
+
+::: pull-left
+<br>
+
+For a **continuous** outcome the RCI is bounded $[-1, 1]$, but for a **binary** outcome (e.g., smoking, disease) the bounds depend on the mean $\mu$:
+
+$$-(1-\mu) \leq RCI \leq \mu$$
+
+E.g., an outcome with a mean of 15%, the maximum *pro-rich* concentration is only $+0.15$, not $+1$.
+
+Makes comparisons across outcomes or populations misleading.
+:::
+
+:::: pull-right
+::: fragment
+<br>
+
+**Wagstaff normalisation** rescales the index to restore $[-1, 1]$ bounds:
+
+$$CI_W = \frac{RCI}{1 - \mu}$$
+
+**Note:** The correction is contested. @erreygers2009 proposed an alternative absolute index $E = 4\mu(1-\mu) \times CI$ with different normative properties; the choice affects interpretation and cross-study comparisons.
+:::
+::::
+
+## 
+
+::::: columns
 ::: {.column width="25%"}
 ### Example of Relative and Absolute CI
 
@@ -568,261 +592,198 @@ $$ACI=\mu*RCI$$
 
 2003: Smoking decreases with education = - RCI
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "women-smoking-ineq.png"))
 ```
 :::
+:::::
+
+## Example: Relative CI in health utility across select European countries
+
+::: footnote
+Source: @doorslaer2004
 :::
 
----
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", 
+  "van-doorslaer-ci-europe.png"))
+```
 
-::: {.columns}
+## 
+
+::::: columns
 ::: {.column width="25%"}
 ### Slope and Relative Index of Inequality
 
-- Conceptually similar to CI
+-   Conceptually similar to CI
 
-- Correlation between SEP rank and health.
+-   Correlation between SEP rank and health.
 
-- SII: Absolute difference
-- RII: Relative difference (or ratio)
+-   SII: Absolute difference
+
+-   RII: Relative difference (or ratio)
 :::
+
 ::: {.column width="75%"}
 ```{r}
-knitr::include_graphics(here("images", "sii-graph.png"))
+knitr::include_graphics(here("images", 
+  "sii-graph.png"))
 ```
 :::
+:::::
+
+## SII: Calculation
+
+::: pull-left
+Regress health outcome on the **midpoint rank** of socioeconomic categories, [weighted]{.red} by population share:
+
+$$y = \beta_0 + \beta_1(\text{Rank}) + \varepsilon$$
+
+$\hat{\beta}_1$ = estimated change in the outcome moving from the **very bottom** (rank = 0) to the **very top** (rank = 1) of the socioeconomic distribution
+
+-   **SII**: absolute change (e.g., percentage points)
+-   **RII** $= \hat{\beta}_1 / \bar{y}$: proportional change
+-   **RII**$_{KM}$ $= \hat{\alpha} / (\hat{\alpha} + \hat{\beta}_1)$: ratio of bottom-to-top (analogous to a risk ratio)
 :::
 
----
+::: pull-right
+There is a specific parallel with the RCI by transforming the health variable:
 
-::: {.footnote}
-Hosseinpoor (2013)
+$$2\hat{\sigma}^2_{\text{rank}} \cdot (y/\mu) = \beta_0 + \beta_1(\text{Rank}) + \varepsilon$$
+
+**Relative Concentration Index** $= \hat{\beta}_1$
 :::
 
-::: {.columns}
+::: footnote
+@kunst1994
+:::
+
+## R example: SII
+
+::: footnote
+SII $= \hat{\beta}_1$ from weighted OLS of smoking rate on cumulative rank.
+:::
+
+::: pull-left
+```{r}
+#| echo: true
+#| code-line-numbers: false
+sii_dat <- tribble(
+  ~class,       ~rate,  ~pop,
+  "I (low)",    0.32,   170,
+  "II",         0.24,   250,
+  "III",        0.20,   300,
+  "IV",         0.14,   180,
+  "V (high)",   0.08,   100
+) |>
+  mutate(
+    cum_pop = cumsum(pop),
+    rank = (lag(cum_pop, default = 0) + cum_pop) / 2 / sum(pop)
+  )
+
+fit <- lm(rate ~ rank, data = sii_dat, weights = pop)
+round(coef(fit), 3)
+```
+
+The coefficient on rank is the SII: smoking falls by `r abs(round(coef(fit)["rank"]*100, 1))` percentage points from bottom to top, i.e., when `rank` goes from 0 to 1.
+:::
+
+::: pull-right
+```{r, fig.width=5.5, fig.height=6, echo=F}
+ggplot(sii_dat, aes(rank, rate)) +
+  geom_point(aes(size = pop), colour = "#2166ac") +
+  geom_smooth(method = "lm", aes(weight = pop),
+              se = TRUE, colour = "#d6604d",
+              fill = "#d6604d", alpha = 0.2,
+              linewidth = 1) +
+  scale_y_continuous(labels = scales::percent_format(1),
+                     limits = c(0, 0.4)) +
+  scale_x_continuous(limits = c(0, 1)) +
+  labs(x = "Rank in cumulative distribution",
+       y = "Smoking rate") +
+  theme_minimal(base_size = 18) +
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank())
+```
+:::
+
+## Relative Index of Inequality: Example
+
+::: footnote
+@kunst1994; @Mackenbach1997
+:::
+
+::: pull-left
+RII $= \hat{\beta}_1 ;/; \bar{y}$
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+mu  <- weighted.mean(sii_dat$rate, sii_dat$pop)
+sii <- coef(fit)["rank"]
+rii <- sii / mu
+round(c(mean = mu, SII = sii, RII = rii), 3)
+```
+
+Moving from bottom to top of the SEP distribution, smoking decreases by `r abs(round(rii * 100))`% relative to the mean.
+:::
+
+::: pull-right
+RII$_{KM}$ [@kunst1994]: $\hat{\alpha} ;/; (\hat{\alpha} + \hat{\beta}_1)$
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+alpha  <- coef(fit)[["(Intercept)"]]
+beta   <- coef(fit)[["rank"]]
+rii_km <- alpha / (alpha + beta)
+round(c(bottom = alpha,
+        top    = alpha + beta,
+        RII_KM = rii_km), 3)
+```
+
+Smoking at the bottom is `r round(rii_km, 1)` × the rate at the top — analogous to a risk ratio across the full SEP distribution.
+:::
+
+## Two mechanisms for changing inequality
+
+::: footnote
+@Renard2019
+:::
+
+Size of social groups will also change SII/RII without any health change. Increasing the size of higher educated groups (e.g., larger share with higher education) increases inequality:
+
+```{r, out.width="90%"}
+knitr::include_graphics(here("images", "renard-sii.png"))
+```
+
+## 
+
+::: footnote
+@world2013handbook
+:::
+
+::::: columns
 ::: {.column width="25%"}
 ### The measure may matter!
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "hosseinpoor-quote.png"))
 ```
 :::
-:::
-
-## Two mechanisms for changing inequality
-
-::: {.footnote}
-Renard (2019)
-:::
-
-Size of social groups will also change SII/RII without mortality change. Increasing the size of higher educated groups (e.g., larger share with higher education) increases inequality:
-
-```{r}
-knitr::include_graphics(here("images", "renard-sii.png"))
-```
-
-## Overview {.h2center}
-
-### [Conceptual Issues]{.gray}
-
-<br>
-
-### [Absolute and Relative Inequality]{.gray}
-
-<br>
-
-### [Simple vs. Complex Measures]{.gray}
-
-<br>
-
-### Weighting
-
-<br>
-
-### [Reference Points]{.gray}
-
----
-
-::: {.columns}
-::: {.column width="25%"}
-### Is the amount of inequality the same in these two societies?
-:::
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "three-groups.png"))
-```
-:::
-:::
-
----
-
-::: {.footnote}
-Quach et al. (2012)
-:::
-
-::: {.columns}
-::: {.column width="25%"}
-No way to 'rank' ethnicity
-
-Groups differ in size
-
-Should we account for it?
-:::
-::: {.column width="75%"}
-How to summarize this variation by ethnicity?
-```{r}
-knitr::include_graphics(here("images", "ethnicity-vaccination.png"))
-```
-:::
-:::
-
-## Index of Disparity
-
-::: {.footnote}
-Pearcy and Keppel (1999)
-:::
-
-::: {.columns}
-::: {.column width="50%"}
-Measures the mean deviation of the group rates from some reference point as a proportion of that reference point
-
-$$ID = \sum_{j=1}^{J}(|y_{j} - y_{ref}|/n)/y_{ref}$$
-
-Where $y_{j}$ is the rate in group $j$, $y_{ref}$ is the rate for the reference point, and $J$ is the number of groups, or the number of groups minus 1 if one of the groups is the reference point.
-:::
-::: {.column width="50%"}
-Note that ID has a few important but potentially modifiable characteristics:
-- Measures relative inequality
-- Does not account for population size of groups
-- Uses best observed health as reference level
-
-Interpretation is also a little awkward: the average deviation across social groups as a proportion of the reference level
-
-Are there alternatives?
-:::
-:::
-
----
-
-::: {.columns}
-::: {.column width="25%"}
-### Inequality as 'Disproportionality'
-
-Compares shares of health or disease with shares of the population.
-
-Perfect equality:
-%pop = %health
-:::
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "disproportionality-figure.png"))
-```
-:::
-:::
-
----
-
-::: {.columns}
-::: {.column width="25%"}
-Alternative: Mean Log Deviation
-- weights by pop
-- measures difference in log shares
-
-Sensitive to 'transfers' at different points of health distribution.
-:::
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "mld-idisp.png"))
-```
-:::
-:::
-
----
-
-::: {.columns}
-::: {.column width="25%"}
-Does it matter?
-
-Ezzati et al.: "There was a [steady increase in mortality inequality]{.red} across the US counties between 1983 and 1999, resulting from stagnation or increase in mortality among the worst-off segment of the population."
-:::
-::: {.column width="75%"}
-Geographic inequalities in life expectancy
-```{r}
-knitr::include_graphics(here("images", "ezzati-trends.png"))
-```
-:::
-:::
-
----
-
-::: {.footnote}
-Harper et al. (2010)
-:::
-
-::: {.columns}
-::: {.column width="25%"}
-Compared weighted to unweighted inequality measures
-
-Across:
-- counties
-- states
-- regions
-:::
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "weighting-milbank.png"))
-```
-:::
-:::
-
-## Overview {.h2center}
-
-### [Conceptual Issues]{.gray}
-
-<br>
-
-### [Absolute and Relative Inequality]{.gray}
-
-<br>
-
-### [Simple vs. Complex Measures]{.gray}
-
-<br>
-
-### [Weighting]{.gray}
-
-<br>
-
-### Reference Points
-
----
-
-```{r}
-knitr::include_graphics(here("images", "diff-reference.png"))
-```
-
----
-
-```{r}
-knitr::include_graphics(here("images", "obesity-trends.png"))
-```
-
----
-
-```{r}
-knitr::include_graphics(here("images", "obesity-ineq.png"))
-```
+:::::
 
 ## Conclusions
 
 Measures of health inequality are not value neutral.
 
-- Scale of measurement (absolute/relative)
-- Weighting: how much and to whom?
-- Reference points: different from what standard?
+-   Individual vs. social group inequality
+-   Absolute vs. relative scales
+-   Weighting: how much and to whom?
 
 The choices above have an important impact on our judgments of both the magnitude of health inequality and whether health inequalities are worsening or improving.
 
@@ -830,6 +791,7 @@ Monitoring health inequalities requires both precise measurement and value judgm
 
 A suite of health inequality measures is likely necessary to provide a complete description of the magnitude of inequality.
 
-## {background-image="../../images/who-launch.png" background-size="contain"}
+## References
 
-## Break! {.center}
+::: {#refs}
+:::

@@ -1,75 +1,115 @@
 /*-- scss:defaults --*/
-$theme-blue: #0000ff;
-$theme-red: #ff0000;
-$theme-gray: #cccccc;
+
+// Body: Lucida Sans (system font, no download needed)
+$font-family-sans-serif: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+$presentation-font-size-root: 32px;
+
+// Core colors
+$body-color:  #000000;
+$link-color:  #0000ee;
+
+// Utility color variables
+$theme-blue:  #0000ff;
+$theme-red:   #ff0000;
+$theme-gray:  #cccccc;
 
 /*-- scss:rules --*/
 
-.blue {
-  color: $theme-blue;
+// ── Header font: Source Sans Pro (bundled with RevealJS) ──────────────────────
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/source-sans-pro/source-sans-pro-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/source-sans-pro/source-sans-pro-italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/source-sans-pro/source-sans-pro-semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
 }
 
-.red {
-  color: $theme-red;
-}
-
-.gray {
-  color: $theme-gray;
-}
-
-.black {
+// ── Body text: Lucida Sans, black ─────────────────────────────────────────────
+.reveal,
+.reveal p,
+.reveal li,
+.reveal td,
+.reveal th,
+.reveal .slides section {
+  font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif !important;
   color: #000000;
 }
 
-.smaller {
-  font-size: 0.8em;
+// ── Headers: Source Sans Pro, gray, lighter weight ───────────────────────────
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: "Source Sans Pro", sans-serif !important;
+  color: #737373;
+  font-weight: 300;
 }
 
-.footnote {
+// ── Links ─────────────────────────────────────────────────────────────────────
+.reveal a {
+  color: #0000ee !important;
+}
+.reveal a:hover {
+  color: #0000cc !important;
+}
+
+// ── Title slide: white background, all text black ────────────────────────────
+.reveal .slides section.title-slide {
+  background-color: #ffffff;
+}
+.reveal .slides section.title-slide h1,
+.reveal .slides section.title-slide h2,
+.reveal .slides section.title-slide p,
+.reveal .slides section.title-slide .author,
+.reveal .slides section.title-slide .date {
+  color: #000000 !important;
+}
+
+// ── Inline code: orange on light gray ────────────────────────────────────────
+.reveal code:not(pre code) {
+  color: #fa9302;
+  background-color: #f0f0f0;
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+// ── Footnotes (.footnote div, used with ::: {.footnote}) ─────────────────────
+.reveal .footnote {
   position: absolute;
   bottom: 1em;
-  font-size: 0.55em;
-  color: #555;
+  font-size: 0.75em;
+  color: #999 !important;
 }
 
-/* tables */
-
-.reveal .table td, .reveal .table th {
-  border-color: black;
+// ── Slide numbers ─────────────────────────────────────────────────────────────
+.reveal .slide-number,
+.reveal .slide-number a {
+  color: #999 !important;
+  background-color: transparent;
+  font-size: 0.75em;
 }
 
-.reveal .table tbody td {
-  border-bottom: none;
-}
-
-.reveal .table tbody tr:last-child td {
-  border-bottom: 1px solid black;
-}
-
-.reveal .table thead tr:first-child th {
-  border-bottom: none;
-}
-
-.reveal .table thead tr:last-child th {
-  border-bottom: 1px solid black;
-}
-
-/* footnotes — hide numbers, keep content */
-
-/* Hide the superscript number in the slide body */
+// ── Pandoc/Quarto citation footnotes — hide ref numbers, keep content ─────────
 .reveal a.footnote-ref,
 .reveal [role="doc-noteref"] {
   display: none !important;
 }
-
 .reveal sup:has(a.footnote-ref),
 .reveal sup:has([role="doc-noteref"]) {
   display: none !important;
 }
-
-/* Remove "1." numbering from footnote list at slide bottom.
-   RevealJS wraps footnotes in <aside class="footnotes">;
-   ::marker controls the list counter. */
 .reveal .footnotes ol,
 .reveal aside.footnotes ol,
 .reveal section.footnotes ol {
@@ -77,27 +117,69 @@ $theme-gray: #cccccc;
   padding-left: 0 !important;
   margin-left: 0 !important;
 }
-
 .reveal .footnotes li::marker,
 .reveal aside.footnotes li::marker,
 .reveal section.footnotes li::marker {
   content: "" !important;
 }
-
-/* Hide the back-arrow ↩ link */
 .reveal a.footnote-back,
 .reveal [role="doc-backlink"] {
   display: none !important;
 }
-
-/* Style the footnote text itself */
 .reveal .footnotes,
 .reveal aside.footnotes {
   font-size: 0.5em;
-  color: #555;
+  color: #999;
 }
 
-/* alignment */
+// ── Tables ────────────────────────────────────────────────────────────────────
+.reveal .table td, .reveal .table th {
+  border-color: black;
+}
+.reveal .table tbody td {
+  border-bottom: none;
+}
+.reveal .table tbody tr:last-child td {
+  border-bottom: 1px solid black;
+}
+.reveal .table thead tr:first-child th {
+  border-bottom: none;
+}
+.reveal .table thead tr:last-child th {
+  border-bottom: 1px solid black;
+}
+
+// ── Column helpers (xaringan-style) ──────────────────────────────────────────
+// 50/50 split — no wrapper div needed
+.reveal .pull-left {
+  float: left;
+  width: 47%;
+}
+.reveal .pull-right {
+  float: right;
+  width: 47%;
+}
+// 25/75 split
+.reveal .left-column {
+  float: left;
+  width: 23%;
+}
+.reveal .right-column {
+  float: right;
+  width: 74%;
+}
+// Clear floats for content after a split
+.reveal .pull-left ~ *:not(.pull-right),
+.reveal .left-column ~ *:not(.right-column) {
+  clear: both;
+}
+
+// ── Utility classes ───────────────────────────────────────────────────────────
+.blue    { color: $theme-blue; }
+.red     { color: $theme-red;  }
+.gray    { color: $theme-gray; }
+.black   { color: #000000;     }
+.smaller { font-size: 0.8em;   }
 
 .h2center h2 {
   text-align: center;

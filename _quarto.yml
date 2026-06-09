@@ -5,6 +5,7 @@ project:
   resources:
     - "**/*.Rmd"
     - "slides/**/*.html"
+    - "images/**"
 
 
 

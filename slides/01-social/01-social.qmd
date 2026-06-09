@@ -12,6 +12,7 @@ format:
     slide-number: true
     html-math-method: mathjax
     auto-stretch: false
+    embed-resources: true
 editor: source
 ---
 
