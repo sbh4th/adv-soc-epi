@@ -200,17 +200,17 @@ plot_endow_detail <- function() {
 
 <br>
 
-### Concentration Index Decomposition
+### [Concentration Index Decomposition]{.black}
 
 <br>
 
-### Kitagawa-Blinder-Oaxaca Decomposition
+### [Kitagawa-Blinder-Oaxaca Decomposition]{.black}
 
 ## Overview {.h2center}
 
 <br>
 
-### [Concentration Index Decomposition]
+### [Concentration Index Decomposition]{.black}
 
 <br>
 
@@ -219,14 +219,23 @@ plot_endow_detail <- function() {
 ## Overview of Decomposition Techniques
 
 ::::: columns
-::: {.column width="50%"}
+:::{.column width="45%"}
+
+<br>
+
 ### Today:
 
 -   Inequality decomposition: Concentration Index
 -   Decomposing two-group differences: Kitagawa-Blinder-Oaxaca
 :::
 
-::: {.column width="50%"}
+:::{.column width="5%"}
+:::
+
+:::{.column width="50%"}
+
+<br>
+
 ### Not covered here:
 
 -   Life table decomposition
@@ -237,6 +246,8 @@ plot_endow_detail <- function() {
 :::::
 
 ## Moving from Description to Explanation
+
+<br>
 
 ::::: columns
 ::: {.column width="25%"}
@@ -257,8 +268,6 @@ plot_endow_detail <- function() {
 
 ## Overview {.h2center}
 
-### Life Table Decomposition
-
 <br>
 
 ### [Concentration Index Decomposition]{.gray}
@@ -269,11 +278,9 @@ plot_endow_detail <- function() {
 
 ## Overview {.h2center}
 
-### [Life Table Decomposition]{.gray}
-
 <br>
 
-### Concentration Index Decomposition
+### [Concentration Index Decomposition]{.black}
 
 <br>
 
@@ -326,7 +333,7 @@ knitr::include_graphics(here("images", "conc-curve.png"))
 
 <br>
 
-Recall^[@kakwani1997] that we can write the CI as:
+Recall that we can write the CI as:
 
 $$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$
 
@@ -336,7 +343,11 @@ The basic idea here is to develop a model for predicting $y$ using several deter
 :::
 :::::
 
-## Decomposition of the RCI^[@wagstaff2003]
+:::{.footnote}
+@kakwani1997
+:::
+
+## Decomposition of the RCI
 
 ::::: columns
 ::: {.column width="25%"}
@@ -349,8 +360,17 @@ Then suppose that one can write a regression equation expressing the health outc
 :::
 :::::
 
+:::{.footnote}
+@wagstaff2003
+:::
+
 ## Decomposition of the RCI
 
+:::{.left-column}
+
+:::
+
+:::{.right-column}
 Since *RCI* is a function of $y_{i}$ and socioeconomic rank, one can then re-express the concentration index as:
 
 $$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$
@@ -363,6 +383,8 @@ Where
 -   $RCI_{k}$ is the concentration index for $x_{k}$.
 
 The basic idea: how much of the overall inequality is due to other factors that are both differentially distributed by $x$ (income) and also affect $y$ (e.g., smoking)?
+
+:::
 
 ## Explained and unexplained components
 
@@ -411,7 +433,9 @@ The influence of determinants depends on two things:
 :::::
 
 ## Procedure for decomposing the Concentration Index
-
+ 
+ <br>
+ 
 ::::: columns
 ::: {.column width="25%"}
 :::
@@ -430,6 +454,8 @@ $$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$
 :::::
 
 ## Procedure for decomposing the Concentration Index
+
+<br>
 
 ::::: columns
 ::: {.column width="25%"}
@@ -456,7 +482,7 @@ ess_smk <- readRDS(here("data", "ess11-smk.rds"))
 
 ess_smk |>
   set_variable_labels(
-    smoke    = "Ever smoker",
+    smoke    = "Current smoker",
     inc_dec  = "Income decile",
     age      = "Age (years)",
     low_ed   = "Low education (ISCED 1–4)",
@@ -510,6 +536,8 @@ Source: Author's calculations
 ### Concentration curve for smoking
 
 Overall CI = -0.20
+
+The poorest 50% of the population accounts for around 70% of current smokers.
 :::
 
 ::: {.column width="75%"}
@@ -620,26 +648,30 @@ This is Step (1): Estimate a regression equation predicting $y$ ('health') from 
 ## Should we include income in the regression?
 
 ::::: columns
-::: {.column width="50%"}
-Note that income decile — the **ranking variable** — is excluded from the regression.
 
-This is deliberate. @kessels2013 show that including the ranking variable (or any proxy strongly correlated with it) is **misleading**:
+::: {.column width = "20%"}
+:::
+
+::: {.column width="80%"}
+Note that income decile (the *ranking variable*) is excluded from the regression.
+
+This is deliberate, since including it can be **misleading**:
 
 > "the residual component will be zero, or close to zero, suggesting that we have explained all or most of the variation in the Concentration Index"
 
-A near-zero residual would be a false result — an artefact of circularity, not a sign of a well-specified model.
-:::
+Excluding it means the residual will:
 
-::: {.column width="50%"}
-The large residual in our decomposition is therefore **honest**:
+- Capture unexplained income-related variation
+- Allow for a direct income → smoking pathway
+- Not artificially inflate the "explained" share
 
-- It captures unexplained income-related variation
-- It leaves room for a direct income → smoking pathway
-- It does not artificially inflate the "explained" share
-
-The appropriate interpretation is that the covariates in the model account for part of the income gradient in smoking, and the rest remains either directly attributable to income or unexplained by the observed determinants.^[@kessels2013; @erreygers2016]
+The appropriate interpretation is that the covariates in the model account for part of the income gradient in smoking, and the rest remains either directly attributable to income or unexplained by the observed determinants.
 :::
 :::::
+
+::: {.footnote}
+See @kessels2013 and @erreygers2016
+:::
 
 ## Estimation for a specific factor: Education
 
@@ -738,7 +770,7 @@ So now we can calculate the contribution of education as:
 
 $$\text{Elasticity}\times RCI_{ed} = 0.148 * -0.265 = -.039$$
 
-#### Thus education accounts for -.039/ -0.203 = 19% of the overall $RCI$
+**Thus education accounts for -.039/ -0.203 = 19% of the overall $RCI$**
 :::
 :::::
 
@@ -749,6 +781,9 @@ $$\text{Elasticity}\times RCI_{ed} = 0.148 * -0.265 = -.039$$
 Decomposition of Income-Related Inequality in Smoking: Sweden
 
 Overall RCI = -0.203
+
+Contributions of each factor can be positive or negative
+
 :::
 
 ::: {.column width="75%"}
@@ -767,6 +802,10 @@ tt(ci_decomp, digits = 3,
   style_tt(j = 1, align = "l") |>
   style_tt(j = 2:5, align = "r")
 ```
+
+- Binge drinking negative since it increases smoking but is more common among higher income.
+- Married is positive since it decreases smoking but is more common among higher income.
+
 :::
 :::::
 
@@ -799,11 +838,11 @@ knitr::include_graphics(
 :::
 
 ::: {.column width="75%"}
-Decomposition results will be sensitive to the choice of determinants included (i.e., how well-specified the model is for predicting y).
+Decomposition results will be sensitive to the choice of determinants included (i.e., how well-specified the model is for predicting $y$).
 
 The regression equations are predictive and not causal models.
 
-Main utility is not in estimating the potential impact on y of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
+Main utility is not in estimating the potential impact on $ y$ of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
 :::
 :::::
 
