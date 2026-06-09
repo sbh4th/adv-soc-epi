@@ -943,15 +943,20 @@ knitr::include_graphics(here("images",
 :::
 
 ::: {.column width="75%"}
-### Two potential sources of mean differences in outcomes
+
+<br>
+
+### [Two potential sources of mean differences in outcomes]{.black}
 
 ### 1. Means
 
-#### Differences in the prevalence of determinants of outcome
+#### [Differences in the prevalence of determinants of outcome]{.black}
+
+<br>
 
 ### 2. Coefficients
 
-#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
+#### [Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)]{.black}
 :::
 :::::
 
@@ -1079,7 +1084,7 @@ pA + pB
 ```
 
 ::: {.footnote}
-Left:  Right: the gap in group means decomposes into **endowments** (different $\bar{x}$, same coefficients — grey triangle to blue dot) and **coefficients** (same $\bar{x}$, different slopes/intercepts — grey triangle to red dot).
+Left: OLS regression line always passes through $(\bar{x}, \bar{y})$ because residuals sum to zero. Right: the gap in group means decomposes into **endowments** (different $\bar{x}$, same coefficients — grey triangle to blue dot) and **coefficients** (same $\bar{x}$, different slopes/intercepts — grey triangle to red dot).
 :::
 
 ##
