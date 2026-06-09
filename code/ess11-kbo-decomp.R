@@ -128,7 +128,16 @@ means_df <- ess_kbo |>
   pivot_longer(-grp, names_to = "variable", values_to = "mean") |>
   mutate(variable = factor(variable, levels = COVARIATES, labels = cov_labels))
 
-plot_means <- ggplot(means_df,
+pct_vars <- c("Female", "Current smoker", "Binge drinking (monthly+)", "Married")
+
+plot_df <- means_df |>
+    mutate(
+      mean     = if_else(variable %in% pct_vars, mean * 100, mean),
+      variable = if_else(variable %in% pct_vars,
+                         paste0(variable, " (%)"), variable)
+    )
+
+plot_means <- ggplot(plot_df,
                      aes(x = mean, y = variable, colour = grp, shape = grp)) +
   geom_line(aes(group = variable), colour = "grey70", linewidth = 0.6) +
   geom_point(size = 4) +

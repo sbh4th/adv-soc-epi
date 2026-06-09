@@ -147,7 +147,14 @@ plot_bmi_density <- function() {
 }
 
 plot_kbo_means <- function() {
-  ggplot(means_df, aes(x = mean, y = variable, colour = grp, shape = grp)) +
+  pct_vars <- c("Female", "Current smoker", "Binge drinking (monthly+)", "Married")
+  plot_df <- means_df |>
+    mutate(
+      mean     = if_else(variable %in% pct_vars, mean * 100, mean),
+      variable = if_else(variable %in% pct_vars,
+                         paste0(variable, " (%)"), variable)
+    )
+  ggplot(plot_df, aes(x = mean, y = variable, colour = grp, shape = grp)) +
     geom_line(aes(group = variable), colour = "grey70", linewidth = 0.6) +
     geom_point(size = 4) +
     scale_colour_manual(values = grp_colors) +
@@ -1172,24 +1179,30 @@ Potential determinants (the Xs):
 -   married (1 = currently married)
 -   income decile (1–10)
 
-## BMI distribution by education
+## BMI distribution by education (High ed = 23.6  |  Low ed: 25.2)
 
 ```{r fig.height=5}
-plot_bmi_density()
+knitr::include_graphics(
+  here("slides", "03-decomp", "figs", 
+       "ess11_IT_bmi_low_ed_density.png")
+)
 ```
 
 ## Differences in determinants
 
 ::::: columns
-::: {.column width="30%"}
+::: {.column width="20%"}
 -   Low-educated Italians differ from high-educated on several covariates
 
 -   These differences could explain part of the BMI gap
 :::
 
-::: {.column width="70%"}
+::: {.column width="80%"}
 ```{r fig.height=5}
-plot_kbo_means()
+knitr::include_graphics(
+  here("slides", "03-decomp", "figs", 
+       "ess11_IT_bmi_low_ed_means.png")
+)
 ```
 :::
 :::::
@@ -1197,20 +1210,23 @@ plot_kbo_means()
 ## Differences in coefficients
 
 ::::: columns
-::: {.column width="30%"}
+::: {.column width="20%"}
 -   Each covariate may have a different association with BMI by education
 
 -   Differences in *returns* form the unexplained component
 :::
 
-::: {.column width="70%"}
+::: {.column width="80%"}
 ```{r fig.height=5}
-plot_kbo_coefs()
+knitr::include_graphics(
+  here("slides", "03-decomp", "figs", 
+       "ess11_IT_bmi_low_ed_coefs.png")
+)
 ```
 :::
 :::::
 
-## Decomposition results: the gap
+## Decomposition results: the gap {visibility="hidden"}
 
 ```{r}
 #| fig-height: 6
@@ -1219,7 +1235,7 @@ tt_decomp(show_cols = 1, hi_section = "overall")
 
 `r GROUP_2` BMI = `r round(ybar_2, 2)` kg/m², `r GROUP_1` BMI = `r round(ybar_1, 2)` kg/m², **gap = `r round(gap, 2)`**
 
-## Decomposition results: `r GROUP_2` betas
+## Decomposition results: `r GROUP_2` betas {visibility="hidden"}
 
 ```{r}
 tt_decomp(show_cols = 1, hi_section = "endow")
@@ -1227,7 +1243,7 @@ tt_decomp(show_cols = 1, hi_section = "endow")
 
 Using `r GROUP_2` betas as reference — endowments account for **`r round(100 * decomp_tbl$g2_est[decomp_tbl$section == "endow_tot"] / gap, 1)`%** of the gap
 
-## Decomposition results: adding `r GROUP_1` betas
+## Decomposition results: adding `r GROUP_1` betas {visibility="hidden"}
 
 ```{r}
 tt_decomp(show_cols = 2, hi_section = "endow")
@@ -1235,7 +1251,7 @@ tt_decomp(show_cols = 2, hi_section = "endow")
 
 Endowments shift slightly with choice of reference betas — the difference between columns **is** the interaction
 
-## Decomposition results: coefficients
+## Decomposition results: coefficients {visibility="hidden"}
 
 ```{r}
 tt_decomp(show_cols = 2, hi_section = "coef")
@@ -1243,7 +1259,7 @@ tt_decomp(show_cols = 2, hi_section = "coef")
 
 Coefficients component is larger than endowments — most of the BMI gap reflects differences in *associations*, not just composition
 
-## Decomposition results: pooled
+## Decomposition results: pooled {visibility="hidden"}
 
 ```{r}
 tt_decomp(show_cols = 3, hi_section = NULL)
@@ -1252,6 +1268,7 @@ tt_decomp(show_cols = 3, hi_section = NULL)
 Pooled (Cotton) betas give a symmetric reference — no interaction term; the three columns bracket the range of plausible decompositions
 
 ## Decomposition results: variable contributions
+Endowments: 38%; Coefficients: 62%
 
 ```{r}
 #| label: decomp-wide-table
