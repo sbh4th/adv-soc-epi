@@ -1,9 +1,10 @@
 project:
   title: "adv-soc-epi"
   render:
-    - "**/*.qmd"
+    - "index.qmd"
   resources:
     - "**/*.Rmd"
+    - "slides/**/*.html"
 
 
 

@@ -284,11 +284,11 @@ knitr::include_graphics(here("images", "keall-lancet-t1.png"))
 :::
 :::
 
----
+##
 
 ::: {.columns}
 ::: {.column width="50%"}
-## Key issue is credibility
+### Key issue is credibility
 
 - If we have a good design and assume that we have measured all of the confounders, then regression can give us exactly what we want: an estimate of the causal effect of exposure to $T$.
 
@@ -301,7 +301,7 @@ knitr::include_graphics(here("images", "wishful-thinking-veley.jpg"))
 :::
 :::
 
----
+##
 
 ::: {.footnote}
 Beauchamp et al. (2010)
@@ -309,7 +309,7 @@ Beauchamp et al. (2010)
 
 SEP and CVD in Australia. [Many low p-values]{.red}
 
-```{r, out.width="90%"}
+```{r, fig.height=4, fig.width=7}
 knitr::include_graphics(here("images", "beauchamp-t1r.png"))
 ```
 
