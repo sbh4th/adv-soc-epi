@@ -1,6 +1,6 @@
 ---
 title: "Decomposition Techniques for Social Epidemiology"
-subtitle: "Advanced Social Epidemiology PhD Course"
+subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
 author: "Sam Harper"
 date: 2026-06-10
 date-format: iso
@@ -12,6 +12,11 @@ format:
     slide-number: true
     html-math-method: mathjax
     auto-stretch: false
+    embed-resources: true
+title-slide-attributes:
+    data-background-image: "../../images/mcgill-epi-logo.png"
+    data-background-size: 30%
+    data-background-position: 50% 90%
 editor: source
 bibliography: references.bib
 ---
@@ -25,6 +30,7 @@ library(rineq)
 library(ggplot2)
 library(modelsummary)
 library(tinytable)
+library(patchwork)
 `%||%` <- function(a, b) if (!is.null(a)) a else b
 knitr::opts_chunk$set(
   echo = FALSE,
@@ -313,15 +319,19 @@ knitr::include_graphics(here("images", "conc-curve.png"))
 ## Formula for writing the Concentration Index
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width = "20%"}
+:::
+
+::: {.column width = "80%"}
+
+<br>
+
 Recall^[@kakwani1997] that we can write the CI as:
 
 $$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$
 
 where $\mu$ is the mean of $y_{i}$ (e.g., smoking status), $R_{i}$ is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
-:::
 
-::: {.column width="50%"}
 The basic idea here is to develop a model for predicting $y$ using several determinants, then plug that model back into the equation for the $RCI$
 :::
 :::::
@@ -407,13 +417,13 @@ The influence of determinants depends on two things:
 :::
 
 ::: {.column width="75%"}
-1 Estimate a regression equation predicting $y$ ('health') from its determinants $(\beta_{k}x_{k})$:
+1. Estimate a regression equation predicting $y$ ('health') from its determinants $(\beta_{k}x_{k})$:
 
 $$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$
 
-2 Calculate the mean of $y$ $(\mu)$ and of each of the determinants (e.g., education, age)
+2. Calculate the mean of $y$ $(\mu)$ and of each of the determinants (e.g., education, age)
 
-3 Calculate the Concentration Index for the health variable (C) *and* for each determinant in the equation predicting health $(C_{k})$.
+3. Calculate the Concentration Index for the health variable (C) *and* for each determinant in the equation predicting health $(C_{k})$.
 
 -   That is, use each determinant $x_{k}$ as the "outcome" and estimate a CI for age, CI for education, etc.
 :::
@@ -426,11 +436,11 @@ $$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$
 :::
 
 ::: {.column width="75%"}
-4 Calculate the absolute contribution of each determinant by multiplying its 'elasticity' by its concentration index $(C_{k})$:
+4. Calculate the absolute contribution of each determinant by multiplying its 'elasticity' by its concentration index $(C_{k})$:
 
 $$(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}$$
 
-5 Calculate the percentage contribution of each determinant:
+5. Calculate the percentage contribution of each determinant:
 
 $$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$
 :::
@@ -440,7 +450,7 @@ $$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$
 
 ## Data: European Social Survey Round 11: Sweden
 
-::: {style="font-size: 0.7em"}
+::: {style="font-size: 0.8em"}
 ```{r}
 ess_smk <- readRDS(here("data", "ess11-smk.rds"))
 
@@ -603,6 +613,34 @@ tt(smoke_model,
   style_tt(i = 3,   bold = TRUE)
 ```
 
+::: {.footnote}
+This is Step (1): Estimate a regression equation predicting $y$ ('health') from its determinants $(\beta_{k}x_{k})$
+:::
+
+## Should we include income in the regression?
+
+::::: columns
+::: {.column width="50%"}
+Note that income decile — the **ranking variable** — is excluded from the regression.
+
+This is deliberate. @kessels2013 show that including the ranking variable (or any proxy strongly correlated with it) is **misleading**:
+
+> "the residual component will be zero, or close to zero, suggesting that we have explained all or most of the variation in the Concentration Index"
+
+A near-zero residual would be a false result — an artefact of circularity, not a sign of a well-specified model.
+:::
+
+::: {.column width="50%"}
+The large residual in our decomposition is therefore **honest**:
+
+- It captures unexplained income-related variation
+- It leaves room for a direct income → smoking pathway
+- It does not artificially inflate the "explained" share
+
+The appropriate interpretation is that the covariates in the model account for part of the income gradient in smoking, and the rest remains either directly attributable to income or unexplained by the observed determinants.^[@kessels2013; @erreygers2016]
+:::
+:::::
+
 ## Estimation for a specific factor: Education
 
 ::::: columns
@@ -635,6 +673,8 @@ What about the RCI for education?
 ### Concentration curve for education
 
 Note the y-axis is cumulative share of *education*
+
+The poorest 50% account for roughly 60% of the share of low educated.
 :::
 
 ::: {.column width="75%"}
@@ -679,8 +719,6 @@ ggplot(educ_curve_data,
 :::::
 
 
-------------------------------------------------------------------------
-
 ##
 ::::: columns
 ::: {.column width="25%"}
@@ -692,31 +730,15 @@ Recall the decomposition formula:
 
 $$RCI=\sum{(\color{red}{\beta_{k}\bar{x}_{k}/\mu})\color{blue}{RCI_{k}}}+gRCI_{e}/\mu$$
 
-So the [elasticity of smoking]{.red} (from the previous slide) with respect to education is (-.0051 \* 8.9 / .175) = -.2582
+So the [elasticity of smoking]{.red} (from the previous slide) with respect to education is (0.024 * 0.452 / .073) = 0.148
 
-Now we have the [RCI for education]{.blue} = 0.156
+Now we have the [RCI for education]{.blue} = -0.265
 
 So now we can calculate the contribution of education as:
 
-$$\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04$$
+$$\text{Elasticity}\times RCI_{ed} = 0.148 * -0.265 = -.039$$
 
-Thus education accounts for -.04/ -.0939 = 41.6% of the overall $RCI$
-:::
-:::::
-
-##
-
-::::: columns
-::: {.column width="25%"}
-Decomposition of Income-Related Inequality in Smoking: Americas region
-
-Overall RCI = -0.094
-:::
-
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "decomp-table-determinants.png"))
-```
+#### Thus education accounts for -.039/ -0.203 = 19% of the overall $RCI$
 :::
 :::::
 
@@ -726,7 +748,7 @@ knitr::include_graphics(here("images", "decomp-table-determinants.png"))
 ::: {.column width="25%"}
 Decomposition of Income-Related Inequality in Smoking: Sweden
 
-Overall RCI = -0.096
+Overall RCI = -0.203
 :::
 
 ::: {.column width="75%"}
@@ -813,6 +835,134 @@ Since, for most health outcomes there are multiple determinants, we may want to 
 "Unpacking" or "decomposing" difference.
 :::
 :::::
+
+## Regression reproduces the mean
+
+```{r, fig.width=14, fig.height=5}
+set.seed(42)
+n <- 120
+
+# Two groups with different x means AND different slopes
+x1 <- rnorm(n, mean = 3.5, sd = 1)
+y1 <- 1.0 + 0.5 * x1 + rnorm(n, sd = 0.8)
+
+x2 <- rnorm(n, mean = 5.5, sd = 1)
+y2 <- 0.5 + 0.9 * x2 + rnorm(n, sd = 0.8)
+
+df_sim <- bind_rows(
+  tibble(x = x1, y = y1, group = "Unexposed"),
+  tibble(x = x2, y = y2, group = "Exposed")
+)
+
+fits <- df_sim |>
+  group_by(group) |>
+  group_modify(~ broom::tidy(lm(y ~ x, data = .x))) |>
+  select(group, term, estimate) |>
+  pivot_wider(names_from = term, values_from = estimate) |>
+  rename(alpha = `(Intercept)`, beta = x)
+
+means <- df_sim |>
+  group_by(group) |>
+  summarise(xbar = mean(x), ybar = mean(y), .groups = "drop") |>
+  left_join(fits, by = "group")
+
+grp_colors <- c("Unexposed" = "#4393c3", "Exposed" = "#d6604d")
+
+# Panel A: single group showing (x̄, ȳ) on the line
+df1 <- filter(df_sim, group == "Unexposed")
+m1  <- filter(means,  group == "Unexposed")
+
+pA <- ggplot(df1, aes(x, y)) +
+  geom_point(alpha = 0.3, size = 2, colour = "#4393c3") +
+  geom_smooth(method = "lm", se = FALSE,
+              colour = "#4393c3", linewidth = 1.2) +
+  geom_segment(aes(x = m1$xbar, xend = m1$xbar,
+                   y = min(df1$y) - 0.2, yend = m1$ybar),
+               linetype = "dashed", colour = "grey30", linewidth = 0.7) +
+  geom_segment(aes(x = min(df1$x) - 0.2, xend = m1$xbar,
+                   y = m1$ybar, yend = m1$ybar),
+               linetype = "dashed", colour = "grey30", linewidth = 0.7) +
+  geom_point(aes(x = m1$xbar, y = m1$ybar),
+             size = 5, colour = "#d6604d") +
+  annotate("text", x = m1$xbar, y = min(df1$y) - 0.35,
+           label = "bar(x)", parse = TRUE,
+           colour = "grey30", size = 5.5, fontface = "bold") +
+  annotate("text", x = min(df1$x) - 0.15, y = m1$ybar,
+           label = "bar(y)", parse = TRUE,
+           colour = "grey30", size = 5.5, fontface = "bold", hjust = 1) +
+  annotate("label", x = m1$xbar + 0.2, y = m1$ybar + 0.6,
+           label = "bar(y)==hat(alpha)+hat(beta)*bar(x)",
+           parse = TRUE, colour = "#d6604d", size = 4.5,
+           label.size = 0.3, fill = "white") +
+  labs(title = "OLS line passes through (x̄, ȳ)",
+       x = "x", y = "y") +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+
+# Panel B: two groups — endowments vs coefficients
+pred_line <- bind_rows(
+  tibble(group = "Unexposed",
+         x = seq(min(x1) - 0.5, max(x2) + 0.5, length.out = 100)) |>
+    mutate(y = filter(fits, group == "Unexposed")$alpha +
+               filter(fits, group == "Unexposed")$beta * x),
+  tibble(group = "Exposed",
+         x = seq(min(x1) - 0.5, max(x2) + 0.5, length.out = 100)) |>
+    mutate(y = filter(fits, group == "Exposed")$alpha +
+               filter(fits, group == "Exposed")$beta * x)
+)
+
+# Counterfactual: unexposed coefficients evaluated at exposed x̄
+m_exp <- filter(means, group == "Exposed")
+m_unexp <- filter(means, group == "Unexposed")
+y_cf <- m_unexp$alpha + m_unexp$beta * m_exp$xbar   # unexposed betas, exposed means
+
+pB <- ggplot(df_sim, aes(x, y, colour = group)) +
+  geom_point(alpha = 0.2, size = 2) +
+  geom_line(data = pred_line, aes(x, y, colour = group), linewidth = 1.2) +
+  # vertical lines at each group's x̄
+  geom_vline(xintercept = m_unexp$xbar, linetype = "dashed",
+             colour = grp_colors["Unexposed"], linewidth = 0.7) +
+  geom_vline(xintercept = m_exp$xbar,   linetype = "dashed",
+             colour = grp_colors["Exposed"],   linewidth = 0.7) +
+  # actual group means on their own lines
+  geom_point(data = means, aes(x = xbar, y = ybar, colour = group),
+             size = 5, show.legend = FALSE) +
+  # counterfactual point
+  geom_point(aes(x = m_exp$xbar, y = y_cf),
+             colour = "grey30", size = 4, shape = 17) +
+  # arrows showing decomposition
+  annotate("segment",
+           x = m_exp$xbar + 0.05, xend = m_exp$xbar + 0.05,
+           y = y_cf, yend = m_exp$ybar,
+           arrow = arrow(length = unit(0.2, "cm"), ends = "both"),
+           colour = "#9e3a14", linewidth = 0.8) +
+  annotate("segment",
+           x = m_exp$xbar + 0.05, xend = m_exp$xbar + 0.05,
+           y = m_unexp$ybar, yend = y_cf,
+           arrow = arrow(length = unit(0.2, "cm"), ends = "both"),
+           colour = "#1a5276", linewidth = 0.8) +
+  annotate("label", x = m_exp$xbar + 0.25, y = (y_cf + m_exp$ybar) / 2,
+           label = "Coefficients", colour = "#9e3a14",
+           size = 4, label.size = 0.3, fill = "white", hjust = 0) +
+  annotate("label", x = m_exp$xbar + 0.25, y = (m_unexp$ybar + y_cf) / 2,
+           label = "Endowments", colour = "#1a5276",
+           size = 4, label.size = 0.3, fill = "white", hjust = 0) +
+  scale_colour_manual(values = grp_colors) +
+  labs(title = "Gap = endowments + coefficients",
+       x = "x", y = "y", colour = NULL) +
+  theme_minimal(base_size = 14) +
+  theme(plot.title  = element_text(face = "bold"),
+        panel.grid.minor = element_blank(),
+        legend.position = "top")
+
+pA + pB
+```
+
+::: {.footnote}
+Left: OLS regression line always passes through $(\bar{x}, \bar{y})$ because residuals sum to zero. Right: the gap in group means decomposes into **endowments** (different $\bar{x}$, same coefficients — grey triangle to blue dot) and **coefficients** (same $\bar{x}$, different slopes/intercepts — grey triangle to red dot).
+:::
+
 
 ## Origins
 
