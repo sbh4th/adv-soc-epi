@@ -5,6 +5,7 @@ author: "Sam Harper"
 format: 
   html:
     theme: materia
+    embed-resources: true
 ---
 
 ```{r setup, include=FALSE}
