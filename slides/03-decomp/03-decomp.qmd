@@ -19,6 +19,9 @@ bibliography: references.bib
 ```{r setup, include=FALSE}
 library(here)
 library(tidyverse)
+library(labelled)
+library(modelsummary)
+library(rineq)
 library(ggplot2)
 library(tinytable)
 `%||%` <- function(a, b) if (!is.null(a)) a else b
@@ -434,19 +437,27 @@ $$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$
 
 ## Example: Decomposing Socioeconomic Inequality in Current Smoking {.center .h2center}
 
-------------------------------------------------------------------------
+## Data: European Social Survey Round 11: Sweden
 
-::::: columns
-::: {.column width="25%"}
-### Smoking by income quintile
-:::
-
-::: {.column width="75%"}
+::: {style="font-size: 0.7em"}
 ```{r}
-knitr::include_graphics(here("images", "smoking-quintiles.png"))
+ess_smk <- readRDS(here("data", "ess11-smk.rds"))
+
+ess_smk |>
+  set_variable_labels(
+    smoke    = "Ever smoker",
+    inc_dec  = "Income decile",
+    age      = "Age (years)",
+    low_ed   = "Low education (ISCED 1–4)",
+    female   = "Female",
+    binge_mo = "Binge drinking (monthly+)",
+    hi_bmi   = "Obese (BMI ≥ 30)",
+    married  = "Married",
+    wt       = "Survey weight"
+  ) |>
+  datasummary_skim()
 ```
 :::
-:::::
 
 ## 
 ```{r}
@@ -480,16 +491,81 @@ ggplot(smoke_by_dec,
 Source: Author's calculations
 :::
 
-------------------------------------------------------------------------
 
+##
 ::::: columns
 ::: {.column width="25%"}
 ### Concentration curve for smoking
+
+Overall CI = -0.20
 :::
 
 ::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "cc-smoking.png"))
+```{r, fig.width=8.5, fig.height=6}
+ci_obj <- ci(
+  ineqvar = ess_smk$inc_dec,
+  outcome  = ess_smk$smoke,
+  weights  = ess_smk$wt,
+  type     = "CIw"
+)
+
+ci_val  <- ci_obj$concentration_index   # scalar CI estimate
+ci_bounds <- confint(ci_obj)
+ci_lo   <- ci_bounds[1]                 # 95% CI lower
+ci_hi   <- ci_bounds[2]                 # 95% CI upper
+
+# Build the concentration curve data manually:
+#   rank respondents by income decile (weighted fractional rank)
+#   then compute cumulative share of smoking vs. cumulative share of population
+curve_data <- ess_smk |>
+  arrange(inc_dec) |>
+  mutate(
+    # Weighted fractional rank: cumulative weight up to midpoint of observation
+    r = (cumsum(wt) - wt / 2) / sum(wt)
+  ) |>
+  arrange(r) |>
+  mutate(
+    cum_pop   = cumsum(wt) / sum(wt),
+    cum_smoke = cumsum(smoke * wt) / sum(smoke * wt)
+  ) |>
+  bind_rows(tibble(cum_pop = 0, cum_smoke = 0, r = NA_real_)) |>
+  arrange(cum_pop)
+
+# CI annotation label
+ci_label <- sprintf(
+  "CIw = %.3f\n(95%% CI: %.3f, %.3f)",
+  ci_val, ci_lo, ci_hi
+)
+
+ggplot(curve_data, aes(x = cum_pop, y = cum_smoke)) +
+  # Line of equality
+  geom_abline(slope = 1, intercept = 0,
+              colour = "grey50", linetype = "dashed", linewidth = 0.6) +
+  # Concentration curve
+  geom_line(colour = "#2166ac", linewidth = 1.1) +
+  # Shade area between curve and diagonal
+  geom_ribbon(aes(ymin = cum_smoke, ymax = cum_pop),
+              fill = "#2166ac", alpha = 0.12) +
+  # CI text annotation
+  annotate("text", x = 0.2, y = 0.85,
+           label = ci_label, hjust = 0, size = 4.2,
+           colour = "#2166ac", fontface = "bold", family = "sans") +
+  scale_x_continuous(labels = scales::percent_format(),
+                     breaks = seq(0, 1, 0.25), expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::percent_format(),
+                     breaks = seq(0, 1, 0.25), expand = c(0, 0)) +
+  labs(
+    title    = "Concentration Curve: Current Smoking by Income Decile",
+    subtitle = glue::glue("ESS Round 11 · SE · n = {nrow(ess_smk)}"),
+    x        = "Cumulative share of population (ranked by income decile)",
+    y        = "Cumulative share of smokers"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title    = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    aspect.ratio  = 1
+  )
 ```
 :::
 :::::
@@ -508,14 +584,19 @@ smoke_model <- tribble(
   "Binge drinking (monthly+)", 1.463,   0.921,  2.323,  "0.107",
   "Obese (BMI ≥ 30)",          1.640,   0.900,  2.988,  "0.106"
 ) |>
-  mutate(ci = sprintf("(%.2f, %.2f)", CI_lo, CI_hi)) |>
-  select(Variable, OR, ci, p)
+  mutate(
+    beta = log(OR),
+    ci   = sprintf("(%.2f, %.2f)", CI_lo, CI_hi)
+  ) |>
+  select(Variable, beta, OR, ci, p)
+
+colnames(smoke_model) <- c("Variable", "β", 
+  "OR", "95% CI", "p")
 
 tt(smoke_model,
-   col.names = c("Variable", "OR", "95% CI", "p"),
    width = 0.9) |>
-  format_tt(j = 2, digits = 2, num_fmt = "decimal") |>
-  style_tt(j = 2:4, align = "r") |>
+  format_tt(j = 2:3, digits = 3, num_fmt = "decimal") |>
+  style_tt(j = 2:5, align = "r") |>
   style_tt(j = 1,   align = "l") |>
   style_tt(i = 3,   bold = TRUE)
 ```
@@ -594,6 +675,7 @@ ggplot(educ_curve_data,
 ```
 :::
 :::::
+
 
 ------------------------------------------------------------------------
 

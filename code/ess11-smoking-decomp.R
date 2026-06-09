@@ -76,6 +76,12 @@ message(glue::glue(
   "({round(100*mean(ess$smoke),1)}%)"
 ))
 
+ess_smk <- ess %>%
+  select(smoke, inc_dec, age, low_ed, female, 
+    binge_mo, hi_bmi, married, wt) 
+
+saveRDS(ess_smk, here("data", "ess11-smk.rds"))
+
 # ── 2. Concentration curve ────────────────────────────────────────────────────
 
 # ci() ranks by inc_dec; outcome = smoke; CIw = Wagstaff correction for binary
@@ -248,71 +254,124 @@ plot_educ_curve <- ggplot(educ_curve_data,
 
 print(plot_educ_curve)
 
-# ── 3. WDW decomposition ──────────────────────────────────────────────────────
+# ── 3. WDW decomposition via logistic regression + average marginal effects ────
+#
+# Using logistic regression is more principled for a binary outcome than the
+# LPM; we substitute average marginal effects (AMEs) for the LPM coefficients
+# in the WDW formula: elasticity_k = AME_k * mean(x_k) / mean(ŷ).
+# See Hosseinpoor, van Doorslaer & Speybroeck (2006, IJE) for this approach.
 
-# Linear probability model is conventional for WDW decomposition;
-# rineq uses predicted values to compute the CI when type = "CIw".
-# We include education as a factor to capture non-linearity across ISCED levels.
+library(marginaleffects)
 
-fit <- lm(
+vars <- c("age", "female", "low_ed", "married", "binge_mo", "hi_bmi")
+
+var_labels <- c(
+  age      = "Age",
+  female   = "Female",
+  low_ed   = "Low education",
+  married  = "Married",
+  binge_mo = "Binge drinker",
+  hi_bmi   = "Obese"
+)
+
+fit_logit <- glm(
   smoke ~ age + female + low_ed + married + binge_mo + hi_bmi,
-  data = ess,
-  weights = wt
+  data = ess, family = binomial, weights = wt
 )
 
-decomp <- contribution(
-  object     = fit,
-  ranker     = ess$inc_dec,
-  correction = FALSE,       # no sign-correction: keep raw estimates
-  type       = "CIw"
-)
+# Average marginal effects on probability scale
+ame_df <- avg_slopes(fit_logit) |>
+  filter(term %in% vars) |>
+  select(term, estimate) |>
+  as_tibble()
 
-decomp_summary <- summary(decomp)
+# Weighted mean of fitted probabilities (denominator for elasticities)
+mu_hat <- weighted.mean(fitted(fit_logit), ess$wt)
 
-# ── 4. Build tidy decomposition table ─────────────────────────────────────────
+# CI_k: concentration index of each predictor ranked by income
+ci_k_df <- map_dfr(vars, function(v) {
+  obj <- ci(ineqvar = ess$inc_dec, outcome = ess[[v]],
+            weights = ess$wt, type = "CIw")
+  tibble(term = v, ci_k = obj$concentration_index)
+})
 
-# summary(decomp) returns a matrix; actual column names are:
-#   "Contribution (%)", "Contribution (Abs)", "Elasticity",
-#   "Concentration Index", "lower 5%", "upper 5%", "Corrected"
-decomp_mat <- as.data.frame(decomp_summary) |>
-  rownames_to_column("term") |>
-  rename(
-    pct_contrib  = `Contribution (%)`,
-    abs_contrib  = `Contribution (Abs)`,
-    elasticity   = Elasticity,
-    ci_k         = `Concentration Index`,
-    ci_k_lo      = `lower 5%`,
-    ci_k_hi      = `upper 5%`
+# Weighted means of predictors
+means_df <- ess |>
+  summarise(across(all_of(vars), \(x) weighted.mean(x, wt))) |>
+  pivot_longer(everything(), names_to = "term", values_to = "mean_x")
+
+# Assemble WDW contributions
+decomp_manual <- ame_df |>
+  left_join(means_df, by = "term") |>
+  left_join(ci_k_df,  by = "term") |>
+  mutate(
+    elasticity  = estimate * mean_x / mu_hat,
+    abs_contrib = elasticity * ci_k,
+    pct_contrib = 100 * abs_contrib / ci_val
   )
 
-# Collapse education factor levels into one "Education (ISCED)" row
-decomp_tidy <- decomp_mat |>
-  mutate(
-    group = case_when(
-      term == "age"              ~ "Age",
-      term == "low_ed"           ~ "Low education",
-      term == "married"           ~ "Married",
-      term == "female"           ~ "Female",
-      term == "binge_mo"         ~ "Binge drinker",
-      term == "hi_bmi"           ~ "Obese",
-      term == "residual"         ~ "Residual",
-      TRUE                       ~ term
-    )
-  ) |>
-  group_by(group) |>
-  summarise(
-    elasticity   = sum(elasticity,  na.rm = TRUE),
-    # CI_k for collapsed factor groups is reported as the contribution-weighted mean;
-    # for single-variable groups (age, female) this equals the variable's own CI.
-    ci_k = if (sum(!is.na(ci_k)) == 0) NA_real_
-      else sum(abs_contrib * replace_na(ci_k, 0), na.rm = TRUE) /
-                        (sum(abs_contrib, na.rm = TRUE) + 1e-15),
-    abs_contrib  = sum(abs_contrib, na.rm = TRUE),
-    pct_contrib  = sum(pct_contrib, na.rm = TRUE),
-    .groups = "drop"
-  ) 
+residual_abs <- ci_val - sum(decomp_manual$abs_contrib)
+residual_pct <- 100 * residual_abs / ci_val
 
-# ── 5. Plot decomposition bar chart ───────────────────────────────────────────
+decomp_tidy <- decomp_manual |>
+  mutate(group = var_labels[term]) |>
+  select(group, elasticity, ci_k, abs_contrib, pct_contrib) |>
+  bind_rows(tibble(
+    group       = "Residual",
+    elasticity  = NA_real_,
+    ci_k        = NA_real_,
+    abs_contrib = residual_abs,
+    pct_contrib = residual_pct
+  ))
+
+# ── 4. Bootstrap 95% CIs on % contributions ───────────────────────────────────
+
+set.seed(2025)
+B <- 500
+
+boot_pct <- replicate(B, {
+  idx <- sample(nrow(ess), replace = TRUE)
+  b   <- ess[idx, ]
+
+  fit_b <- tryCatch(
+    suppressWarnings(
+      glm(smoke ~ age + female + low_ed + married + binge_mo + hi_bmi,
+          data = b, family = binomial, weights = wt)
+    ),
+    error = function(e) NULL
+  )
+  if (is.null(fit_b)) return(rep(NA_real_, length(vars)))
+
+  mu_b  <- weighted.mean(fitted(fit_b), b$wt)
+  ci_b  <- ci(ineqvar = b$inc_dec, outcome = b$smoke,
+               weights = b$wt, type = "CIw")$concentration_index
+
+  ame_b <- tryCatch(
+    avg_slopes(fit_b, newdata = b) |>
+      as_tibble() |>
+      filter(term %in% vars) |>
+      arrange(match(term, vars)) |>
+      pull(estimate),
+    error = function(e) rep(NA_real_, length(vars))
+  )
+
+  ci_k_b  <- map_dbl(vars, \(v) ci(ineqvar = b$inc_dec, outcome = b[[v]],
+                                    weights = b$wt, type = "CIw")$concentration_index)
+  mean_b  <- map_dbl(vars, \(v) weighted.mean(b[[v]], b$wt))
+
+  100 * (ame_b * mean_b / mu_b) * ci_k_b / ci_b
+}, simplify = TRUE)   # length(vars) × B matrix
+
+boot_lo <- apply(boot_pct, 1, quantile, probs = 0.025, na.rm = TRUE)
+boot_hi <- apply(boot_pct, 1, quantile, probs = 0.975, na.rm = TRUE)
+
+decomp_tidy <- decomp_tidy |>
+  left_join(
+    tibble(group = var_labels[vars], boot_lo, boot_hi),
+    by = "group"
+  )
+
+# ── 5. Plot decomposition bar chart with 95% bootstrap CIs ────────────────────
 
 decomp_plot_data <- decomp_tidy |>
   filter(group != "Residual") |>
@@ -324,19 +383,23 @@ decomp_plot_data <- decomp_tidy |>
 plot_decomp <- ggplot(decomp_plot_data,
                       aes(x = pct_contrib, y = group, fill = fill_col)) +
   geom_col(width = 0.6, show.legend = FALSE) +
+  geom_errorbarh(aes(xmin = boot_lo, xmax = boot_hi),
+                 height = 0.25, linewidth = 0.7, colour = "grey30") +
   geom_vline(xintercept = 0, colour = "grey30", linewidth = 0.5) +
-  geom_text(aes(label = sprintf("%.1f%%", pct_contrib),
+  geom_text(aes(x     = if_else(pct_contrib >= 0, boot_hi, boot_lo),
+                label = sprintf("%.1f%%", pct_contrib),
                 hjust = if_else(pct_contrib >= 0, -0.15, 1.15)),
             size = 4.2) +
   scale_fill_manual(values = c("pro-inequality" = "#d6604d",
                                 "pro-equality"   = "#4393c3")) +
   scale_x_continuous(labels = scales::label_number(suffix = "%"),
-                     expand = expansion(mult = 0.2)) +
+                     expand = expansion(mult = 0.25)) +
   labs(
     title    = "Decomposition of Smoking Inequality by Income",
     subtitle = glue::glue(
       "CIw = {round(ci_val, 3)}  |  ESS Round 11 · {COUNTRY} · n = {nrow(ess)}"
     ),
+    caption  = "Error bars: 95% bootstrap CI (B = 500, logistic regression + AME)",
     x = "% contribution to CIw",
     y = NULL
   ) +
@@ -351,7 +414,7 @@ print(plot_decomp)
 
 # ── 6. Print decomposition table ──────────────────────────────────────────────
 
-cat("\n── WDW Decomposition: Smoking Inequality by Income ──────────────────────\n")
+cat("\n── WDW Decomposition: Smoking Inequality by Income (logistic + AME) ─────\n")
 cat(sprintf("Country: %s   N = %d   Smokers: %d (%.1f%%)\n",
             COUNTRY, nrow(ess), sum(ess$smoke), 100*mean(ess$smoke)))
 cat(sprintf("Overall CIw = %.4f  (95%% CI: %.4f, %.4f)\n\n", ci_val, ci_lo, ci_hi))
@@ -359,11 +422,13 @@ cat(sprintf("Overall CIw = %.4f  (95%% CI: %.4f, %.4f)\n\n", ci_val, ci_lo, ci_h
 decomp_tidy |>
   mutate(across(where(is.numeric), \(x) round(x, 4))) |>
   rename(
-    "Variable"       = group,
-    "Elasticity"     = elasticity,
-    "CI_k"           = ci_k,
-    "Contribution"   = abs_contrib,
-    "% of total"     = pct_contrib
+    "Variable"     = group,
+    "Elasticity"   = elasticity,
+    "CI_k"         = ci_k,
+    "Contribution" = abs_contrib,
+    "% of total"   = pct_contrib,
+    "Boot 2.5%"    = boot_lo,
+    "Boot 97.5%"   = boot_hi
   ) |>
   print(n = Inf)
 
@@ -378,7 +443,7 @@ ggsave(file.path(out_dir, "ess11_concentration_curve.png"),
        plot_curve,      width = 6, height = 6, dpi = 200, bg = "white")
 
 ggsave(file.path(out_dir, "ess11_decomp_bar.png"),
-       plot_decomp,     width = 7, height = 4, dpi = 200, bg = "white")
+       plot_decomp,     width = 7, height = 4.5, dpi = 200, bg = "white")
 
 ggsave(file.path(out_dir, "ess11_smoke_by_decile.png"),
        plot_smoke_dec,  width = 8, height = 5, dpi = 200, bg = "white")
@@ -387,43 +452,3 @@ ggsave(file.path(out_dir, "ess11_educ_curve.png"),
        plot_educ_curve, width = 6, height = 6, dpi = 200, bg = "white")
 
 message("Figures saved to: ", out_dir)
-
-
-
-
-
-
-
-
-
-
-
-library(broom)
-
-predictors <- c("age", "female", "low_ed", "no_alc", "binge_mo", "hi_bmi", "married")  # etc.
-
-results <- ess |>
-  pivot_longer(cols = all_of(predictors), 
-               names_to = "variable", 
-               values_to = "value") |>
-  group_by(variable) |>
-  nest() |>
-  mutate(
-    # logistic for binary smoke
-    mod_smoke = map(data, \(d) glm(smoke ~ value, data = d, family = binomial)),
-    # linear for income decile
-    mod_inc   = map(data, \(d) lm(inc_dec ~ value, data = d)),
-    # tidy up
-    tidy_smoke = map(mod_smoke, \(m) tidy(m, exponentiate = TRUE, conf.int = TRUE)),
-    tidy_inc   = map(mod_inc,   \(m) tidy(m, conf.int = TRUE))
-  ) |>
-  select(variable, tidy_smoke, tidy_inc)
-
-# Pull out just the predictor row (not intercept)
-smoke_results <- results |>
-  unnest(tidy_smoke) |>
-  filter(term == "value")
-
-inc_results <- results |>
-  unnest(tidy_inc) |>
-  filter(term == "value")

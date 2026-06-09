@@ -1,0 +1,16 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+::::: {.columns style="column-gap: 5rem;"}
+
+::: {.column width="25%"}
+Left content
+:::
+
+::: {.column width="75%"}
+Right content
+:::
+
+:::::
