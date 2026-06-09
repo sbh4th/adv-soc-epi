@@ -1,0 +1,1183 @@
+---
+title: "Measuring Social Inequality"
+subtitle: "Advanced Social Epidemiology PhD Course"
+author: "Sam Harper"
+date: 2026-06-10
+date-format: iso
+format:
+  revealjs:
+    theme: [default, ../custom.scss]
+    width: 1600
+    height: 900
+    slide-number: true
+    html-math-method: mathjax
+    auto-stretch: false
+editor: source
+---
+
+```{r setup, include=FALSE}
+library(here)
+library(ggplot2)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  out.width = "100%"
+)
+```
+
+## {background-color="#404040"}
+
+<br>
+
+### **Part 1: Measuring the "Social" in Social Inequality**
+
+## Overview {.h2center}
+
+<br>
+
+### **1. Measuring Social Position**
+
+<br>
+
+### 1.1 Clarifying the Question
+
+### 1.2 Individual Social Position
+
+### 1.3 Aggregate Social Position
+
+### 1.4 Residual Confounding
+
+## Overview {.h2center}
+
+<br>
+
+### **1. Measuring Social Position**
+
+<br>
+
+### **1.1 Clarifying the Question**
+
+### [1.2 Individual Social Position]{.gray}
+
+### [1.3 Aggregate Social Position]{.gray}
+
+### [1.4 Residual Confounding]{.gray}
+
+## Why should we care?
+
+::::: columns
+::: {.column width="50%"}
+### Because we are epidemiologists, and exposure measurement matters!
+
+### Ethical importance of social inequalities in health.
+:::
+
+::: {.column width="50%"}
+As with other exposures, we need to think about:
+
+- specific links between the elements of exposure and outcome of interest
+- intensity
+- duration
+- cumulative vs. transient effects
+- thresholds or dose-response
+- direct or indirect effects of exposure
+:::
+:::::
+
+. . .
+
+## The need for accuracy
+
+**(1)** Interest in social position as an EXPOSURE:
+
+- Modifiable exposures and counterfactual causation. Individual causal effect of social position (X), for disease/outcome Y=1:
+
+$$Pr[Y = 1 | Set(X = x1)] \hspace{1em} vs. \hspace{1em} Pr[Y = 1 | Set(X = x2)]$$
+
+- Difference (or ratio) of between average risks of Y if assigned to differing levels of X (e.g., x1 vs. x2)
+
+. . .
+
+**(2)** Need to control for CONFOUNDING by social position:
+
+- Social position correlated with many disease risks and exposures
+- Poor measurement of confounders = misclassification
+- Potential to bias your effect measure of interest
+
+## Position vs. Status
+
+::::: columns
+::: {.column width="50%"}
+- We usually think of socioeconomic indicators as "fixed" characteristics of individuals (i.e., status), at least analytically, but…
+
+- Theoretically more useful to consider them as markers of location (i.e., position) in the social structure that may vary over time and with local context.
+
+- "Position" implies that a given status takes place in the context of an overarching structure.
+:::
+
+::: {.column width="50%"}
+Annual earnings of teachers/non-teachers
+
+```{r}
+knitr::include_graphics(here("images", "teacher-salaries.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Source: hamiltonproject.org
+:::
+
+## Key ideas: SEP measures are context dependent
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+> "There is no single best indicator of SEP suitable for all study aims and applicable at all time points in all settings. Each indicator measures different, often related aspects of socioeconomic stratification and may be more or less relevant to different health outcomes and at different stages in the life course.
+>
+> The choice of SEP measure(s) should ideally be informed by consideration of the specific research question and the proposed mechanisms linking SEP to the outcome."
+>
+> — Galobardes (2004)
+:::
+:::::
+
+## {.center .h2center}
+
+### Question for Discussion
+
+#### Suppose it's your job to measure and track health inequalities in Copenhagen.
+
+##### What social indicator(s) would you choose? Why?
+
+## Theoretical basis for measuring the 'social'
+
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "mccartney-model.png"))
+```
+
+::: {.footnote}
+McCartney et al. 2019
+:::
+
+## Potential equity 'stratifiers'
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+### Also called "dimensions of inequality"
+
+PROGRESS scheme used by WHO:
+
+- **P**lace of residence (rural, urban, etc.)
+- **R**ace or ethnicity
+- **O**ccupation
+- **G**ender
+- **R**eligion
+- **E**ducation
+- **S**ocioeconomic status
+- **S**ocial capital or resources
+:::
+:::::
+
+::: {.footnote}
+WHO 2013
+:::
+
+## Which indicator to use? When?
+
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "galobardes-figure.png"))
+```
+
+::: {.footnote}
+Galobardes et al. 2007
+:::
+
+## Tombstone height and life expectancy in Glasgow (1801–1920)
+
+::::: columns
+::: {.column width="50%"}
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", "gds-stones.png"))
+```
+:::
+
+::: {.column width="50%"}
+. . .
+
+Sometimes you need to be creative...
+
+```{r}
+knitr::include_graphics(here("images", "gds-stones-graph.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Davey Smith 1992
+:::
+
+## Tombstone height revisited in Canada (1820–1992)
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "auger-height.png"))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "auger-volume.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Auger et al. *Eur J Epid* 2021
+:::
+
+## Overview {.h2center}
+
+<br>
+
+### **1. Measuring Social Position**
+
+<br>
+
+### [1.1 Clarifying the Question]{.gray}
+
+### **1.2 Individual Social Position**
+
+### [1.3 Aggregate Social Position]{.gray}
+
+### [1.4 Residual Confounding]{.gray}
+
+## Individual-level measures: Occupation
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- Relevant exposure period? (current vs. longest held job)
+- Relations to workplace and means of production
+
+### Interpretation
+
+- May reflect both material resources and a measure of prestige/social standing
+- Influences living conditions and represents a link between education and income.
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- Individual vs. household exposure status
+- Comparability over time with changing societal norms
+- Often country-specific, so limited comparability
+- Need to make specific links to exposures encountered in occupational setting
+:::
+:::::
+
+## Example: Smoking and class in Denmark
+
+### How to locate Danish 15-year olds in social class?
+
+Holstein et al. (2019) used parents' occupational social class.
+
+"…defined by the occupational skills and competencies necessary for the job as well as the power and control associated with the position"
+
+> "The participants reported their father's and mother's occupation and the research group coded this information into OSC from I (highest) to V (lowest). We added OSC VI to include economically inactive parents who receive unemployment benefits, disability pension, or other kinds of transfer income."
+
+Each schoolchild was categorised by the [highest ranking parent]{.red} into high (I–II), middle (III–IV) and low (V–VI) OSC.
+
+##
+
+::::: columns
+::: {.column width="25%"}
+### (Some) Danish Occupational Class Definitions
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "christensen-table1.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Christensen et al., 2014
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+### (Some) Danish Occupational Class Definitions
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "christensen-table2.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Christensen et al., 2014
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+### Smoking and occupational class
+
+- Substantial reductions everywhere.
+
+- Absolute inequality declined.
+
+- Relative inequality increased.
+:::
+
+::: {.column width="75%"}
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "holstein-figure.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Holstein et al., 2019
+:::
+
+## Individual measures: Education
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- Continuous (years of accumulated education)
+- Milestones/achievement categories (e.g., university degree)
+
+### Interpretation
+
+- What is the relevant exposure?
+- Accumulated intellectual resources?
+- Cognitive skills?
+- Unmeasured non-cognitive skills (e.g., persistence, discipline)?
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- Potentially confounded by cohort effects
+- Does quality matter?
+- Comparable between populations?
+:::
+:::::
+
+## {background-image="../../images/mackenbach-obesity.png" background-size="contain"}
+
+::: {.footnote}
+Mackenbach et al. NEJM 2010
+:::
+
+## {background-image="../../images/mackenbach-smoking.png" background-size="contain"}
+
+::: {.footnote}
+Mackenbach et al. NEJM 2010
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+### Exercise caution with education groups
+
+- Bias/variance trade-offs in grouping.
+
+- Careful with heterogeneous subpopulations.
+:::
+
+::: {.column width="75%"}
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "furey-abstract.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Furey (2021)
+:::
+
+## Dynamic nature of SEP across place and time
+
+::::: columns
+::: {.column width="25%"}
+- Do the health advantages of a college degree depend on when it is obtained?
+:::
+
+::: {.column width="75%"}
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", "goldin-education.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Goldin and Katz (2007)
+:::
+
+##
+
+```{r, out.width="50%"}
+knitr::include_graphics(here("images", "tavernise-headline-2012.png"))
+```
+
+> "In terms of mortality risk, those excluded from high school in the early part of the 20th century [are not comparable]{.red} with those excluded from high school a generation later, because those left behind by the high school expansions in mid century likely had childhoods that were more disadvantaged along many dimensions, and so were at higher mortality risk all along. Describing differences between these two subgroups as a 'decline' in the life expectancy of high school non-completers simply because they were born at different times almost certainly reflects \[lagged selection bias\]."
+>
+> — Dowd and Hamoudi, *Int J Epid* 2014
+
+## Individual measures: household income
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+Do you think that income per se is causally related to health?
+
+If not, why do we measure it?
+
+How would you test it?
+
+Potential pathways involving income:
+
+- Material conditions (Housing quality, food, clothing, medical care, opportunities for recreation, etc.)
+- Psychosocial factors (financial insecurity, etc.)
+- Health behaviors
+- These factors often travel together (residual confounding).
+:::
+:::::
+
+## Individual measures: household income
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- Continuous is ideal, but often much missing data
+- Categories may be some improvement, but how to adjust for inflation?
+- Some novel study designs to get more data (links to tax records, reporting above or below thresholds)
+:::
+
+::: {.column width="50%"}
+### Interpretation
+
+Difficult, since it is unlikely that income itself is the causal exposure
+
+### Challenges
+
+Consumption may be better linked to resources that affect health, but very expensive (both time and \$) to measure (e.g. World Bank's LSMS)
+:::
+:::::
+
+## Questions about income
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+Household or individual income?
+
+Absolute amount or categorical?
+
+Threshold or gradient?
+
+What about in-kind benefits?
+
+Public assistance?
+
+What about reverse causation?
+:::
+:::::
+
+## What are you trying to measure?
+
+::::: columns
+::: {.column width="50%"}
+- Is it 'just' income?
+
+- Should we account for 'in-kind' support when trying to measure socioeconomic position?
+
+- Would ignoring benefits lead to misclassification across countries?
+:::
+
+::: {.column width="50%"}
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", "oecd-spending-childhood.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Source: nytimes.com, 2021
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Broadly similar patterns for all countries
+
+- Note stronger gradients for men than women
+:::
+
+::: {.column width="75%"}
+Age standardized mortality for 2003 (solid) and 1995 (dashed)
+
+```{r, out.width="70%"}
+knitr::include_graphics(here("images", "mortensen-figure.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Mortensen et al. 2015
+:::
+
+## Specificity of income effects: mechanisms matter
+
+::::: columns
+::: {.column width="50%"}
+- Differ by gender
+
+- Differ by cause
+
+<br>
+
+```{r}
+knitr::include_graphics(here("images", "rehkopf-cvd.png"))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "rehkopf-cancer-injuries.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Rehkopf et al. (2008)
+:::
+
+## Individual measures: Ethnic background
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- No gold standard
+- Self-reported typical
+- Genetic markers of geographic ancestry exist, but limited.
+
+### Interpretation
+
+- Potentially measured with less error, but encompasses wide range of possible historical factors
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- Changes in arbitrary categories over time (e.g., North American countries are bad at this)
+- Assigned at birth?
+:::
+:::::
+
+## Why might ethnicity affect health?
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+- May be associated with living conditions such as safe housing, freedom from violence, and access to health enhancing resources.
+
+- In some countries, ethnic background shows strong associations with important behavioural and biological risk factors, but there is wide variation.
+
+- Certain ethnic groups may be victims of overt and covert discrimination that can affect their health through multiple channels.
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Measuring 'exposure' by 'distance' relative to Western diet.
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "marmot-chd-1976.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Marmot and Syme, *Am J Epidemiol* 1976
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- More 'direct' measures of diet according to following 'traditional' based on country of origin.
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "marmot-assimilation-1976.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Marmot and Syme, *Am J Epidemiol* 1976
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Diabetes among migrants in Denmark
+
+- Incidence, mortality, and prevalence based on a longitudinal register study of the entire Danish population
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "andersen-diabetes.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Andersen et al. 2016
+:::
+
+## Individual measures: Housing
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- Conditions (specific exposures, e.g., lead, pathogens)
+- Ownership (i.e., prestige or status indicator)
+- Specific household assets (e.g., computers, heating)
+
+### Interpretation
+
+- More direct measures of material circumstances, but need to consider why those circumstances may be linked to specific health outcomes
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- Comparability, potential expense in data collection
+- Good example of a modifiable social exposure
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+Indicators of wealth and tuberculosis mortality in arrondissements of Paris, 1858–1902
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "murphy-tb.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Murphy & Egger, *Int J Epidemiol* 2002
+:::
+
+##
+
+```{r, out.width="75%"}
+knitr::include_graphics(here("images", "dunn-housing-2002.png"))
+```
+
+::: {.footnote}
+Dunn 2002
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Note variation with self-reported health across different dimensions of housing
+:::
+
+::: {.column width="75%"}
+```{r, out.width="90%"}
+knitr::include_graphics(here("images", "dunn-fig2.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Dunn 2002
+:::
+
+## Is 'Objective' Social Position the Gold Standard?
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+Increased emphasis in recent years on measuring and estimating the effects of subjective social status (SSS)
+
+Idea is that perceived social status may be associated with stress responses, negative emotions, psycho-neuroendocrine pathways that may lead to poorer health
+
+Across several large samples, SSS was found to be correlated both with income (r = 0.39–0.58) and education (r = 0.30–0.40) (Dunn et al., 2005; Operario et al., 2004; Singh-Manoux et al., 2003)
+:::
+:::::
+
+## Measuring subjective position
+
+::::: columns
+::: {.column width="50%"}
+- MacArthur Scale of Subjective Social Status (ladder measurement scale)
+
+- May be applied to specific dimensions of SEP (education, income) or defined by users as the ladder at right
+
+- Thought to capture residual variation in social position and perceptions of status
+
+- "Insofar as social standing has beneficial effects on biological processes related to health, standing on the community ladder may be as important as standing on the SES ladder." (Adler & Stewart, 2007)
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "social-ladder.png"))
+```
+:::
+:::::
+
+## {background-image="../../images/adler-subjective.png" background-size="contain"}
+
+## {background-image="../../images/sherman-nyt-title.png" background-size="contain"}
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- As always, consider 'relative' to what when making comparisons between exposed and unexposed groups.
+
+- Applies equally to subjective measures.
+:::
+
+::: {.column width="75%"}
+```{r, out.width="90%"}
+knitr::include_graphics(here("images", "sherman-nyt-quote.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Source: nytimes.com, 2017
+:::
+
+## What about SEP in poorer countries?
+
+Potential difficulties:
+
+- Large peasant classes
+- Informal economic sector
+- Remittances from family members working abroad
+- Geographic differences
+
+Ideally, measure consumption expenditures (the purchase of goods and services), but questionnaires are lengthy (World Bank's Living Standards Measurement Survey takes about 1 hr to complete)
+
+Current approaches attempt to measure household assets:
+
+- What people own
+- Not a proxy for current consumption
+- Idea is to try and capture a household's long run economic status
+
+## Overview {.h2center}
+
+<br>
+
+### **1. Measuring Social Position**
+
+<br>
+
+### [1.1 Clarifying the Question]{.gray}
+
+### [1.2 Individual Social Position]{.gray}
+
+### **1.3 Aggregate Social Position**
+
+### [1.4 Residual Confounding]{.gray}
+
+## Area-based measures of SEP
+
+::::: columns
+::: {.column width="50%"}
+### Measurement
+
+- Often aggregates of individual attributes (e.g., neighbourhood income or education)
+- Importance of defining the "area" of exposure
+- Typically composite indicators or derived indices (e.g. Townsend, Carstairs in the UK, Pampalon in Canada)
+:::
+
+::: {.column width="50%"}
+### Interpretation
+
+- Especially challenging for a composite index of SEP (how to define the causal effect?)
+- "Independent" effects are of enormous interest
+
+### Challenges
+
+- Often used as imperfect proxies for "missing" individual-level data
+- How to deal with selection into and out of areas by individuals of different SEP
+:::
+:::::
+
+## Area-based measures in Canada
+
+Pampalon Index
+
+- Census dissemination areas (DAs), approx. 400–700 persons. Why?
+
+Components:
+
+- the proportion of those 15 years and older with no high school diploma;
+- the employment/population ratio of people aged 15 years and older;
+- the average income of people aged 15 years and older;
+- the proportion of individuals aged 15 years and older living alone;
+- the proportion of individuals aged 15 years and older who are separated, divorced or widowed;
+- and the proportion of single-parent families.
+
+Some data manipulation (smoothing, age-sex standardization)
+
+Principal components analysis (PCA) with varimax rotation
+
+## {background-image="../../images/pampalon-mortality.png" background-size="contain"}
+
+## Use of Area-Based Measures Typically 'Flattens' Gradients
+
+::::: columns
+::: {.column width="25%"}
+- Area-level SEP as a proxy for individual-level indicators generates misclassification.
+
+- In general, the larger the area, the greater the underestimate is likely to be.
+:::
+
+::: {.column width="75%"}
+Life expectancy at age 25 in Canada
+
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", "pampalon-le.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Pampalon 2009
+:::
+
+## {background-image="../../images/meijer-abstract.png" background-size="contain"}
+
+## {background-image="../../images/meijer-housing-map.png" background-size="contain"}
+
+## {background-image="../../images/meijer-sep-map.png" background-size="contain"}
+
+##
+
+::::: columns
+::: {.column width="25%"}
+### Context matters
+
+- Aggregate measures also need to be put into context
+
+- Measuring 'structural' racism requires a different approach than aggregate SEP.
+
+- Start with epidemiologic question!
+:::
+
+::: {.column width="75%"}
+```{r, out.width="60%"}
+knitr::include_graphics(here("images", "ponce-abstract.png"))
+```
+:::
+:::::
+
+## Overview {.h2center}
+
+<br>
+
+### **1. Measuring Social Position**
+
+<br>
+
+### [1.1 Clarifying the Question]{.gray}
+
+### [1.2 Individual Social Position]{.gray}
+
+### [1.3 Aggregate Social Position]{.gray}
+
+### **1.4 Residual Confounding**
+
+## Residual Confounding
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+### Do measures of socioeconomic position have the same "meaning" for all groups in the population?
+
+### Would you expect those with similar education to have *identical* distributions of other measures of SEP?
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- What are the consequences of unmeasured confounders for SEP?
+
+- Likely effect is an over-estimate of the effect of SEP on health.
+:::
+
+::: {.column width="75%"}
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", "residual-confounding.png"))
+```
+:::
+:::::
+
+## Residual confounding is plausible…if you look for it
+
+::::: columns
+::: {.column width="50%"}
+> We are not aware of any instance of a robust positive association between stress and objective physical disease being reported from a population where either stress was associated with social advantage (but disease was not) or disease was associated with social advantage (but stress was not).
+>
+> — Macleod and Davey Smith, *Am J Epid* 2005
+:::
+
+::: {.column width="50%"}
+. . .
+
+> Because of the narrow range of socioeconomic status in the Nurses' Health Study, we have a unique data set in which to examine associations of stress with health outcomes, [without the strong potential influence of residual confounding by socioeconomic status]{.red}.
+>
+> — Kroenke, Kawachi et al. *Am J Epid* 2005
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+*Among* Nurses:
+
+- Strong gradient in neighborhood SEP
+
+- Strong gradient in postsecondary education
+
+- Strong gradient in husband's education
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "kim-kawachi.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Kim, Kawachi et al. *Cancer* (2010)
+:::
+
+## Key idea: we need multiple measures
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+> "Furthermore, while a single measure of SEP may show an association with a health outcome, it will not encompass the entirety of the effect of SEP on health. This issue is of particular importance when SEP is a potential confounding factor.
+>
+> Multiple SEP indicators, preferably measured across the life course, will be needed to avoid residual confounding by unmeasured socioeconomic circumstances."
+>
+> — Galobardes (2004)
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Multiple measures also applies to 'intersecting' positions:
+- Ethnicity AND gender
+- Gender AND race
+- Etc…
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "braveman-ses-multiple.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Braveman et al. (2005)
+:::
+
+## Life course socioeconomic position
+
+::::: columns
+::: {.column width="50%"}
+We do not magically become 'exposed' to a particular social position as adults.
+
+Thinking about social exposures over the entire life course is useful for understanding how social conditions at different times in life may lead to health inequalities in adulthood.
+:::
+
+::: {.column width="50%"}
+Important methodological challenges:
+
+- subjective vs. objective measures of early life social conditions
+- how well can you recall your parents' education? occupation? income?
+- how to combine measures to model socioeconomic trajectories over time
+:::
+:::::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Example of potential influences on cardiovascular disease
+
+- Note links to mechanisms.
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "lynch-lifecourse-chd.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Lynch and Kaplan, 2000
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Differences between RCT and observational studies
+
+- Could residual confounding by SEP play a role?
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "lawlor-confounded.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Lawlor et al. (2004)
+:::
+
+##
+
+::::: columns
+::: {.column width="25%"}
+- Systematic relationships between health behaviors and measures of SEP
+
+- Across the life course
+
+- How well can you 'adjust' for it?
+:::
+
+::: {.column width="75%"}
+```{r}
+knitr::include_graphics(here("images", "lawlor-vitc-confounding.png"))
+```
+:::
+:::::
+
+::: {.footnote}
+Lawlor et al. (2004)
+:::
+
+## Recommendations
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+1. Have a hypothesis about SEP and disease mechanisms.
+
+2. Tailor your indicator to capture presumed etiologic effects.
+
+3. Use several indicators.
+
+4. Consider your specific population, birth-cohort, time period.
+
+5. Consider area-based as well as individual-based measures.
+
+6. Think about specificity in interpreting your findings.
+
+7. Comparability between subgroups (e.g., gender, ethnicity).
+:::
+:::::
+
+::: {.footnote}
+Galobardes 2004
+:::
+
+## Broad challenges for measuring the 'social'
+
+::::: columns
+::: {.column width="50%"}
+### Measuring
+
+- Importance of considering the life course.
+- Social position is always contextual.
+- Multiple measures almost certainly necessary.
+:::
+
+::: {.column width="50%"}
+### Interpreting effects
+
+- Reverse causation
+  - Impact of health shocks on income and labour force status in adulthood (downward selection)
+  - Impact of health in childhood/adolescence on future socioeconomic trajectories, including education
+- Residual confounding, residual confounding, residual confounding…
+:::
+:::::
+
+## {.center .h2center}
+
+### Next Up:
+
+#### Measuring the 'Inequality' in Social Inequality

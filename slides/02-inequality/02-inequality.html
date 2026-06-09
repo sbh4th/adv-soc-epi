@@ -1,1402 +1,818 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<script src="02-inequality_files/libs/clipboard/clipboard.min.js"></script>
-<script src="02-inequality_files/libs/quarto-html/tabby.min.js"></script>
-<script src="02-inequality_files/libs/quarto-html/popper.min.js"></script>
-<script src="02-inequality_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="02-inequality_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="02-inequality_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02-inequality_files/libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.30">
+<html lang="" xml:lang="">
+  <head>
+    <title>Measuring Social Inequality</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
 
-  <meta name="author" content="Sam Harper">
-  <meta name="dcterms.date" content="2024-12-02">
-  <title>Measuring Social Inequality</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="02-inequality_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="02-inequality_files/libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="02-inequality_files/libs/revealjs/dist/theme/quarto-1e3e060f35deffe52b0052a93530646b.css">
-  <link href="02-inequality_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="02-inequality_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="02-inequality_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="02-inequality_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
-</head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
+.title[
+# Measuring Social Inequality
+]
+.subtitle[
+## Advanced Social Epidemiology PhD Course
+]
+.author[
+### Sam Harper
+]
+.institute[
+### <br> </br>
+]
+.date[
+### University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>
+]
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Measuring Social Inequality</h1>
-  <p class="subtitle">Advanced Social Epidemiology PhD Course</p>
-
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Sam Harper 
-</div>
-</div>
-</div>
-
-  <p class="date">2024-12-02</p>
-</section>
-<section id="overview" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues">Conceptual Issues</h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality">Absolute and Relative Inequality</h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures">Simple vs.&nbsp;Complex Measures</h3>
-<p><br></p>
-<h3 id="weighting">Weighting</h3>
-<p><br></p>
-<h3 id="reference-points">Reference Points</h3>
-</section>
-<section id="overview-1" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues-1">Conceptual Issues</h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality-1"><span class="gray">Absolute and Relative Inequality</span></h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures-1"><span class="gray">Simple vs.&nbsp;Complex Measures</span></h3>
-<p><br></p>
-<h3 id="weighting-1"><span class="gray">Weighting</span></h3>
-<p><br></p>
-<h3 id="reference-points-1"><span class="gray">Reference Points</span></h3>
-</section>
-<section id="why-monitor-health-inequalities" class="slide level2">
-<h2>Why monitor health inequalities?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="surveillance">Surveillance</h3>
-<ul>
-<li><p>Natural complement to monitoring overall health</p></li>
-<li><p>Essential for detecting important changes in risk</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p>. . .</p>
-<h3 id="impact">Impact</h3>
-<ul>
-<li><p>Opportunity to evaluate etiological explanations for health inequalities</p></li>
-<li><p>Evaluating the distributional impacts of public health interventions and medical innovations</p></li>
-<li><p>Crucial for measuring the responsiveness of health care systems to those most in need</p></li>
-</ul>
-</div></div>
-</section>
-<section id="inequalities-in-health-are-based-on-observations" class="slide level2">
-<h2>Inequalities in health are based on <em>observations</em></h2>
-<div class="columns">
-<div class="column" style="width:25%;">
-
-</div><div class="column" style="width:75%;">
-<h3 id="we-are-relatively-good-at-measuring-inequalities."><span class="red">We are relatively good at measuring inequalities.</span></h3>
-<ul>
-<li><p>Poor people die younger than rich people</p></li>
-<li><p>Low social class infants have lower birth weight</p></li>
-<li><p>Smokers get more lung cancer than non-smokers</p></li>
-<li><p>Women live longer than men</p></li>
-</ul>
-</div></div>
-</section>
-<section id="inequities-in-health-are-based-on-ethical-judgements" class="slide level2">
-<h2>Inequities in health are based on <em>ethical judgements</em></h2>
-<div class="columns">
-<div class="column" style="width:25%;">
-
-</div><div class="column" style="width:75%;">
-<h3 id="inequities-are-much-harder-to-measure"><span class="red">Inequities are much harder to measure</span></h3>
-<ul>
-<li><p>Should poor people die younger than rich people?</p></li>
-<li><p>Should low social class infants have lower birth weight?</p></li>
-<li><p>Should smokers get more lung cancer than non-smokers?</p></li>
-<li><p>Should women live longer than men?</p></li>
-</ul>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Adapted from McGuire et al.&nbsp;<em>Health Services Research</em> 2006</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="anatomy-of-an-inequality">Anatomy of an Inequality</h3>
-<ul>
-<li><p>How much of inequality is <em>unfair</em>?</p></li>
-<li><p>How would you know?</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<div class="r-stretch">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/mcguire-inequity.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="inequality-is-an-ambiguous-concept" class="slide level2">
-<h2>Inequality is an ambiguous concept</h2>
-<p>Different measures of inequality emphasize different concepts.</p>
-<div class="columns">
-<div class="column" style="width:25%;">
-
-</div><div class="column" style="width:75%;">
-<blockquote>
-<p>“If a concept has some basic ambiguity, then a precise representation of that ambiguous concept must preserve that ambiguity…This issue is quite central to the need for descriptive accuracy in inequality measurement, which has to be distinguished from fully ranked, unambiguous assertions.”</p>
-</blockquote>
-<blockquote>
-<p>Amartya Sen, <em>On Economic Inequality</em>, 1997</p>
-</blockquote>
-</div></div>
-</section>
-<section id="measuring-inequality-some-issues-to-consider" class="slide level2">
-<h2>Measuring inequality: Some issues to consider</h2>
-<ol type="1">
-<li><p>What to measure? Total vs.&nbsp;Social Group Inequality</p></li>
-<li><p>Scale: Is inequality relative or absolute?</p></li>
-<li><p>Simple or complex measures of health inequality?</p></li>
-<li><p>Weighting: Who counts, and for how much?</p></li>
-<li><p>Reference points for measuring inequality: Different from what?</p></li>
-</ol>
-</section>
-<section id="what-should-we-measure" class="slide level2">
-<h2>What should we measure?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="total-health-inequality">Total Health Inequality</h3>
-<ul>
-<li>complement to measurement of average health</li>
-<li>measured across all individuals</li>
-<li>avoids normative choice of social groups</li>
-<li>facilitates unambiguous comparisons over time/place</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<h3 id="social-group-differences-in-health">Social Group Differences in Health</h3>
-<ul>
-<li>measured across normatively important social groups</li>
-<li>particular social groups chosen a priori</li>
-<li>provide insights into causal processes linking health and social position</li>
-</ul>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Asada 2002</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="health-inequality-between-whom">Health Inequality Between Whom?</h3>
-<ul>
-<li><p>Which society has more inequality?</p></li>
-<li><p>Which one is worse from the perspective of inequality?</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/asada-distribution.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
+---
 
 
-<img data-src="../../images/van-ralte-title.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="columns">
-<div class="column" style="width:25%;">
-
-</div><div class="column" style="width:75%;">
-<ul>
-<li><p>Life-span variation reflects uncertainty in the risk (timing) of death.</p></li>
-<li><p>People are generally willing to pay to reduce uncertainty.</p></li>
-<li><p>Heterogeneity is crucial for accurate forecasts in insurance and annuity markets, and should be measured.</p></li>
-<li><p>Monitoring life-span variation may facilitate early detection of adverse mortality developments and warrant social interventions at younger ages.</p></li>
-</ul>
-</div></div>
-</section>
-<section id="overview-2" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues-2"><span class="gray">Conceptual Issues</span></h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality-2">Absolute and Relative Inequality</h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures-2"><span class="gray">Simple vs.&nbsp;Complex Measures</span></h3>
-<p><br></p>
-<h3 id="weighting-2"><span class="gray">Weighting</span></h3>
-<p><br></p>
-<h3 id="reference-points-2"><span class="gray">Reference Points</span></h3>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="easy-case">Easy case</h3>
-<p>Evidence of clear progress</p>
-</div><div class="column" style="width:75%;">
-<p>Trends in infant mortality, Brazil and Colombia, 1980-2006</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/bra-col-trends.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="easy-case-1">Easy case</h3>
-<p>Evidence of clear progress</p>
-</div><div class="column" style="width:75%;">
-<p>Trends in infant mortality, Brazil and Colombia, 1980-2006</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/bra-col-ineq.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Source: US NCI SEER*Stat Database</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="harder-case">Harder case</h3>
-<p>Are black-white inequalities in prostate cancer mortality increasing or decreasing?</p>
-</div><div class="column" style="width:75%;">
-<p>Black and White Prostate Cancer Mortality Rates</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/bw-prostate-trends.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>DeLancey (2008)</p>
-</div>
-<div class="r-stack">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/delancey-prostate-figure.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Source: US NCI SEER*Stat Database</p>
-</div>
-<div class="r-stack">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/bw-prostate-ineq.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Chapin-Bardales et al.&nbsp;2017</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<p>“Racial disparities rose sharply from 1984 to the early 2000s for Blacks…concerningly, we documented a significant increase from 2006 to 2013.”</p>
-<p>On what scale?</p>
-</div><div class="column" style="width:75%;">
-<p>New AIDS diagnoses by race/ethnicity, USA 1984-2013</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/sullivan-hiv-trends.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="failure-to-consider-the-scale-on-which-inequalities-are-measured-can-have-dramatic-impacts-on-study-conclusions.">Failure to consider the scale on which inequalities are measured can have dramatic impacts on study conclusions.</h3>
-<ul>
-<li>Steep declines on absolute scale.</li>
-<li>Increases on relative scale.</li>
-</ul>
-<h3 id="this-also-has-broad-implications-for-thinking-about-explanations-for-inequality-trends.">This also has broad implications for thinking about explanations for inequality trends.</h3>
-<ul>
-<li>Did the introduction of antiretrovirals exacerbate or mitigate inequalities?</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/bw-hiv-ineq.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="inequality-is-an-ambiguous-concept-1" class="slide level2">
-<h2>Inequality is an ambiguous concept</h2>
-<blockquote>
-<h3 id="there-is-no-economic-theory-that-tells-us-that-inequality-is-relative-not-absolute.-it-is-not-that-one-concept-is-right-and-the-other-wrong.-nor-are-they-two-ways-of-measuring-the-same-thing.-rather-they-are-two-different-concepts.">“There is no economic theory that tells us that inequality is relative, not absolute. It is not that one concept is right and the other wrong. Nor are they two ways of measuring the same thing. Rather, they are two different concepts.”</h3>
-</blockquote>
-<blockquote>
-<h3 id="martin-ravallion-world-bank-economist-2004">Martin Ravallion, World Bank Economist, 2004</h3>
-</blockquote>
-</section>
-<section id="overview-3" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues-3"><span class="gray">Conceptual Issues</span></h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality-3"><span class="gray">Absolute and Relative Inequality</span></h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures-3">Simple vs.&nbsp;Complex Measures</h3>
-<p><br></p>
-<h3 id="weighting-3"><span class="gray">Weighting</span></h3>
-<p><br></p>
-<h3 id="reference-points-3"><span class="gray">Reference Points</span></h3>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Source: Data2010</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="pairwise-comparisons-work-well-for-a-few-groups">Pairwise comparisons work well for a few groups</h3>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/two-groups.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="additional-groups-make-summary-measures-appealing" class="slide level2">
-<h2>Additional groups make summary measures appealing</h2>
-<div class="footnote">
-<p>Source: Persmark (2020)</p>
-</div>
-
-<img data-src="../../images/persmark-2020-ann.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Ezzati et al.&nbsp;(2008)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="summary-measures-definitely-needed">Summary measures definitely needed</h3>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/ezzati-counties.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="range-type-measures-ignore-the-entire-distribution" class="slide level2">
-<h2>Range-type measures: ignore the entire distribution</h2>
-<div class="columns">
-<div class="column" style="width:25%;">
-<ul>
-<li><p>Does A or B have ‘more’ inequality?</p></li>
-<li><p>Do you have a preference for A or B?</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/range-measure.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="moving-beyond-simple-comparisons">Moving beyond simple comparisons</h3>
-<ul>
-<li><p>More complex measures look at the entire distribution.</p></li>
-<li><p>E.g., Lorenz curve for income, health, or any X:</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<p>Relative Concentration Curve</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/lorenz.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="moving-beyond-binary-comparisons" class="slide level2">
-<h2>Moving Beyond Binary Comparisons</h2>
-<h3 id="rank-each-education-group-by-position-in-the-population-distribution">Rank each education group by position in the population distribution</h3>
-<p>Distribution of Socioeconomic Position in a Hypothetical Population</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Education Level</th>
-<th style="text-align: right;">%</th>
-<th style="text-align: center;">Cumulative %</th>
-<th style="text-align: center;">Range</th>
-<th style="text-align: right;">Midpoint</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">11.93</td>
-<td style="text-align: center;">11.93</td>
-<td style="text-align: center;">00.00 – 11.93</td>
-<td style="text-align: right;">5.97</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">&lt;Primary school</td>
-<td style="text-align: right;">15.04</td>
-<td style="text-align: center;">26.97</td>
-<td style="text-align: center;">11.93 – 26.97</td>
-<td style="text-align: right;">19.45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Primary school</td>
-<td style="text-align: right;">26.86</td>
-<td style="text-align: center;">53.83</td>
-<td style="text-align: center;">26.97 – 53.83</td>
-<td style="text-align: right;">40.40</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Secondary school</td>
-<td style="text-align: right;">16.05</td>
-<td style="text-align: center;">69.88</td>
-<td style="text-align: center;">53.83 – 69.88</td>
-<td style="text-align: right;">61.86</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Beyond Secondary</td>
-<td style="text-align: right;">30.12</td>
-<td style="text-align: center;">100</td>
-<td style="text-align: center;">69.88 – 100.0</td>
-<td style="text-align: right;">84.94</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="summarizing-across-sep">Summarizing across SEP</h3>
-<ul>
-<li><p>First rank the population by SEP</p></li>
-<li><p>Then count up the proportion of disease each group accounts for.</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<p>Relative Concentration Curve</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/cc-cumulative.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="summarizing-across-sep-1">Summarizing across SEP</h3>
-<ul>
-<li><p>Diagonal = no inequality</p></li>
-<li><p>Curve above diagonal: ill-health concentrated among poorer.</p></li>
-<li><p>Curve below diagonal: ill-health concentrated among richer.</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<p>Relative Concentration Curve</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/cc-both.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="summarizing-across-sep-2">Summarizing across SEP</h3>
-<ul>
-<li>Concentration Index measures the extent to which disease is ‘concentrated’ among different SEP groups.</li>
-</ul>
-</div><div class="column" style="width:75%;">
-<p>Concentration Index</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/cc-index.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="formula-for-writing-the-concentration-index" class="slide level2">
-<h2>Formula for writing the Concentration Index</h2>
-<div class="footnote">
-<p>Kakwani et al.&nbsp;(1997)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>One way of writing the CI is: <span class="math display">\[RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1\]</span> where <span class="math inline">\(\mu\)</span> is the mean of <span class="math inline">\(y_{i}\)</span> (e.g., smoking status), <span class="math inline">\(R_{i}\)</span> is the fractional rank of the <em>i</em>th person in the socioeconomic (i.e., income) distribution.</p>
-</div><div class="column" style="width:50%;">
-<p>. . .</p>
-<p>The Absolute Concentration Index multiplies <em>RCI</em> by the mean smoking rate: <span class="math display">\[ACI=\mu*RCI\]</span></p>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="example-of-relative-and-absolute-ci">Example of Relative and Absolute CI</h3>
-<p>1965: Smoking increases with education = + RCI</p>
-<p>2003: Smoking decreases with education = - RCI</p>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/women-smoking-ineq.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="slope-and-relative-index-of-inequality">Slope and Relative Index of Inequality</h3>
-<ul>
-<li><p>Conceptually similar to CI</p></li>
-<li><p>Correlation between SEP rank and health.</p></li>
-<li><p>SII: Absolute difference</p></li>
-<li><p>RII: Relative difference (or ratio)</p></li>
-</ul>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/sii-graph.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Hosseinpoor (2013)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="the-measure-may-matter">The measure may matter!</h3>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/hosseinpoor-quote.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="two-mechanisms-for-changing-inequality" class="slide level2">
-<h2>Two mechanisms for changing inequality</h2>
-<div class="footnote">
-<p>Renard (2019)</p>
-</div>
-<p>Size of social groups will also change SII/RII without mortality change. Increasing the size of higher educated groups (e.g., larger share with higher education) increases inequality:</p>
-
-<img data-src="../../images/renard-sii.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="overview-4" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues-4"><span class="gray">Conceptual Issues</span></h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality-4"><span class="gray">Absolute and Relative Inequality</span></h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures-4"><span class="gray">Simple vs.&nbsp;Complex Measures</span></h3>
-<p><br></p>
-<h3 id="weighting-4">Weighting</h3>
-<p><br></p>
-<h3 id="reference-points-4"><span class="gray">Reference Points</span></h3>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="is-the-amount-of-inequality-the-same-in-these-two-societies">Is the amount of inequality the same in these two societies?</h3>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/three-groups.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Quach et al.&nbsp;(2012)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<p>No way to ‘rank’ ethnicity</p>
-<p>Groups differ in size</p>
-<p>Should we account for it?</p>
-</div><div class="column" style="width:75%;">
-<p>How to summarize this variation by ethnicity?</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/ethnicity-vaccination.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="index-of-disparity" class="slide level2">
-<h2>Index of Disparity</h2>
-<div class="footnote">
-<p>Pearcy and Keppel (1999)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Measures the mean deviation of the group rates from some reference point as a proportion of that reference point</p>
-<p><span class="math display">\[ID = \sum_{j=1}^{J}(|y_{j} - y_{ref}|/n)/y_{ref}\]</span></p>
-<p>Where <span class="math inline">\(y_{j}\)</span> is the rate in group <span class="math inline">\(j\)</span>, <span class="math inline">\(y_{ref}\)</span> is the rate for the reference point, and <span class="math inline">\(J\)</span> is the number of groups, or the number of groups minus 1 if one of the groups is the reference point.</p>
-</div><div class="column" style="width:50%;">
-<p>Note that ID has a few important but potentially modifiable characteristics: - Measures relative inequality - Does not account for population size of groups - Uses best observed health as reference level</p>
-<p>Interpretation is also a little awkward: the average deviation across social groups as a proportion of the reference level</p>
-<p>Are there alternatives?</p>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<h3 id="inequality-as-disproportionality">Inequality as ‘Disproportionality’</h3>
-<p>Compares shares of health or disease with shares of the population.</p>
-<p>Perfect equality: %pop = %health</p>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/disproportionality-figure.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<p>Alternative: Mean Log Deviation - weights by pop - measures difference in log shares</p>
-<p>Sensitive to ‘transfers’ at different points of health distribution.</p>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/mld-idisp.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:25%;">
-<p>Does it matter?</p>
-<p>Ezzati et al.: “There was a <span class="red">steady increase in mortality inequality</span> across the US counties between 1983 and 1999, resulting from stagnation or increase in mortality among the worst-off segment of the population.”</p>
-</div><div class="column" style="width:75%;">
-<p>Geographic inequalities in life expectancy</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/ezzati-trends.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<div class="footnote">
-<p>Harper et al.&nbsp;(2010)</p>
-</div>
-<div class="columns">
-<div class="column" style="width:25%;">
-<p>Compared weighted to unweighted inequality measures</p>
-<p>Across: - counties - states - regions</p>
-</div><div class="column" style="width:75%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../../images/weighting-milbank.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="overview-5" class="slide level2 h2center">
-<h2>Overview</h2>
-<h3 id="conceptual-issues-5"><span class="gray">Conceptual Issues</span></h3>
-<p><br></p>
-<h3 id="absolute-and-relative-inequality-5"><span class="gray">Absolute and Relative Inequality</span></h3>
-<p><br></p>
-<h3 id="simple-vs.-complex-measures-5"><span class="gray">Simple vs.&nbsp;Complex Measures</span></h3>
-<p><br></p>
-<h3 id="weighting-5"><span class="gray">Weighting</span></h3>
-<p><br></p>
-<h3 id="reference-points-5">Reference Points</h3>
-</section>
-<section class="slide level2">
 
 
-<img data-src="../../images/diff-reference.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section class="slide level2">
 
 
-<img data-src="../../images/obesity-trends.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section class="slide level2">
 
 
-<img data-src="../../images/obesity-ineq.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="conclusions" class="slide level2">
-<h2>Conclusions</h2>
-<p>Measures of health inequality are not value neutral.</p>
-<ul>
-<li>Scale of measurement (absolute/relative)</li>
-<li>Weighting: how much and to whom?</li>
-<li>Reference points: different from what standard?</li>
-</ul>
-<p>The choices above have an important impact on our judgments of both the magnitude of health inequality and whether health inequalities are worsening or improving.</p>
-<p>Monitoring health inequalities requires both precise measurement and value judgments—they are inseparable.</p>
-<p>A suite of health inequality measures is likely necessary to provide a complete description of the magnitude of inequality.</p>
-</section>
-<section id="section" class="slide level2" data-background-image="../../images/who-launch.png" data-background-size="contain">
-<h2></h2>
-</section>
-<section id="break" class="slide level2 center">
-<h2>Break!</h2>
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
 
-</section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
+.left[
+## .orange[**1 Conceptual Issues**]
+## .orange[**2 Absolute and Relative Inequality**]
+## .orange[**3 Simple vs. Complex Measures**]
+## .orange[**4 Weighting**]
+## .orange[**5 Reference Points**]
+]
 
-</div>
-</div></div>
+---
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="02-inequality_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="02-inequality_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+.left[
+## .orange[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
+]
 
-  <script src="02-inequality_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="02-inequality_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+---
+## Why monitor health inequalities?
+.pull-left[
+### Surveillance
 
-  <script>
+- Natural complement to monitoring overall health
 
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+- Essential for detecting important changes in risk
+]
+
+--
+
+.pull-right[
+### Impact
+
+- Opportunity to evaluate etiological explanations for health inequalities
+
+- Evaluating the distributional impacts of public health interventions and medical innovations
+
+- Crucial for measuring the responsiveness of health care systems to those most in need
+]
+
+---
+## Inequalities in health are based on *observations*
+.right-column[
+### .red[We are relatively good at measuring inequalities.]
+
+- Poor people die younger than rich people
+
+- Low social class infants have lower birth weight
+
+- Smokers get more lung cancer than non-smokers
+
+- Women live longer than men
+]
+
+---
+## Inequities in health are based on *ethical judgements*
+.right-column[
+### .red[Inequities are much harder to measure]
+
+- Should poor people die younger than rich people?
+
+- Should low social class infants have lower birth weight?
+
+- Should smokers get more lung cancer than non-smokers?
+
+- Should women live longer than men?
+]
+
+---
+.footnote[Adapted from McGuire et al. *Health Services Research* 2006]
+
+.left-column[
+### Anatomy of an Inequality
+- How much of inequality is *unfair*?
+
+- How would you know?
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/mcguire-inequity.png" width="100%" height="100%" /&gt;
+]]
+---
+# Inequality is an ambiguous concept
+Different measures of inequality emphasize different concepts.
+
+.right-column[
+
+&gt;“If a concept has some basic ambiguity, then a precise representation of that ambiguous concept must preserve that ambiguity…This issue is quite central to the need for descriptive accuracy in inequality measurement, which has to be distinguished from fully ranked, unambiguous assertions.”
+
+&gt; Amartya Sen, On Economic Inequality, 1997
+]
+
+---
+## Measuring inequality: Some issues to consider
+.left-column[
+&lt;img src="02-inequality_files/figure-html/unnamed-chunk-3-1.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+1. What to measure? Total vs. Social Group Inequality
+
+1. Scale: Is inequality relative or absolute?
+
+1. Simple or complex measures of health inequality?
+
+1. Weighting: Who counts, and for how much?
+
+1. Reference points for measuring inequality: Different from what?
+]
+
+---
+## What should we measure?
+.pull-left[
+### Total Health Inequality
+- complement to measurement of average health
+- measured across all individuals
+- avoids normative choice of social groups
+- facilitates unambiguous comparisons over time/place
+]
+
+.pull-right[
+### Social Group Differences in Health
+- measured across normatively important social groups
+- particular social groups chosen a priori
+- provide insights into causal processes linking health and social position
+]
+
+---
+.footnote[Asada 2002]
+
+.left-column[
+### Health Inequality Between Whom?
+
+- Which society has more inequality?
+
+- Which one is worse from the perspective of inequality?
+]
+.right-column[
+&lt;img src="../../images/asada-distribution.png" width="100%" height="100%" /&gt;
+]
+
+---
+&lt;img src="../../images/van-ralte-title.png" width="40%" height="40%" /&gt;
+
+.right-column[
+- Life-span variation reflects uncertainty in the risk (timing) of death.
+- People are generally willing to pay to reduce uncertainty.
+
+- Heterogeneity is crucial for accurate forecasts in insurance and annuity markets, and should be measured.
+- Monitoring life-span variation may facilitate early detection of adverse  mortality developments and warrant social interventions at younger ages.
+]
+
+---
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
+
+.left[
+## .gray[**1 Conceptual Issues**]
+## .orange[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
+]
+
+---
+.left-column[
+### Easy case
+
+Evidence of clear progress
+]
+
+.right-column[
+.center[
+Trends in infant mortality, Brazil and Colombia, 1980-2006
+&lt;img src="../../images/bra-col-trends.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.left-column[
+### Easy case
+
+Evidence of clear progress
+]
+
+.right-column[
+.center[
+Trends in infant mortality, Brazil and Colombia, 1980-2006
+&lt;img src="../../images/bra-col-ineq.png" width="100%" height="100%" /&gt;
+]]
+
+
+---
+.footnote[Source: US NCI SEER*Stat Database]
+.left-column[
+### Harder case
+
+Are black-white inequalities in prostate cancer mortality increasing or decreasing?
+]
+
+.right-column[
+.center[
+Black and White Prostate Cancer Mortality Rates
+&lt;img src="../../images/bw-prostate-trends.png" width="100%" height="100%" /&gt;
+]]
+
+
+---
+.footnote[DeLancey (2008)]
+.center[
+&lt;img src="../../images/delancey-prostate-figure.png" width="80%" height="80%" /&gt;
+]
+
+
+---
+.footnote[Source: US NCI SEER*Stat Database]
+.center[
+&lt;img src="../../images/bw-prostate-ineq.png" width="80%" height="80%" /&gt;
+]
+
+
+---
+.footnote[Chapin-Bardales et al. 2017]
+.left-column[
+"Racial disparities rose sharply from 1984 to the early 2000s for Blacks...concerningly, we documented a significant increase from 2006 to 2013."
+
+On what scale?
+]
+
+.right-column[
+.center[
+New AIDS diagnoses by race/ethnicity, USA 1984-2013
+&lt;img src="../../images/sullivan-hiv-trends.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.pull-left[
+### Failure to consider the scale on which inequalities are measured can have dramatic impacts on study conclusions.
+- Steep declines on absolute scale.
+- Increases on relative scale.
+
+### This also has broad implications for thinking about explanations for inequality trends. 
+- Did the introduction of antiretrovirals exacerbate or mitigate inequalities?
+]
+
+.pull-right[
+&lt;img src="../../images/bw-hiv-ineq.png" width="90%" height="90%" /&gt;
+]
+
+
+---
+# Inequality is an ambiguous concept
+
+&gt;### .black[“There is no economic theory that tells us that inequality is relative, not absolute.  It is not that one concept is right and the other wrong.  Nor are they two ways of measuring the same thing.  Rather, they are two different concepts.”]
+
+&gt;### .black[Martin Ravallion, World Bank Economist, 2004]
+
+
+---
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
+
+.left[
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .orange[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .gray[**5 Reference Points**]
+]
+
+---
+
+.footnote[Source: Data2010]
+.left-column[
+### Pairwise comparisons work well for a few groups
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/two-groups.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Additional groups make summary measures appealing
+
+.footnote[Source: Persmark (2020)]
+.center[
+&lt;img src="../../images/persmark-2020-ann.png" width="100%" height="100%" /&gt;
+]
+
+---
+
+.footnote[Ezzati et al. (2008)]
+.left-column[
+### Summary measures definitely needed
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/ezzati-counties.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Range-type measures: ignore the entire distribution
+.left-column[
+### .white[x]
+
+- Does A or B have 'more' inequality?
+
+- Do you have a preference for A or B?
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/range-measure.png" width="80%" height="80%" /&gt;
+]]
+
+---
+.left-column[
+### Moving beyond simple comparisons
+
+- More complex measures look at the entire distribution.
+
+- E.g., Lorenz curve for income, health, or any X:
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/lorenz.png" width="100%" height="100%" /&gt;
+]]
+
+---
+# Moving Beyond Binary Comparisons
+
+### Rank each education group by position in the population distribution
+
+.center[
+Distribution of Socioeconomic Position in a Hypothetical Population
+]
+
+ Education Level |	%	| Cumulative % |	Range | 	Midpoint
+------------------|---|:--------:|:--------:|-----------:
+ None |	11.93	| 11.93	 | 00.00 – 11.93	| 5.97 
+ &lt;Primary school |	15.04 |	26.97 |	11.93 – 26.97 |	19.45 
+ Primary school |	26.86 |	53.83 |	26.97 – 53.83 | 	40.40
+ Secondary school |	16.05	| 69.88 | 53.83 – 69.88 |	61.86
+ Beyond Secondary |	30.12 |	100	| 69.88 – 100.0 |	84.94 
+
+
+---
+.left-column[
+### Summarizing across SEP
+
+- First rank the population by SEP
+
+- Then count up the proportion of disease each group accounts for.
+]
+
+.right-column[
+.center[
+Relative Concentration Curve
+&lt;img src="../../images/cc-cumulative.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.left-column[
+### Summarizing across SEP
+
+- Diagonal = no inequality
+
+- Curve above diagonal: ill-health concentrated among poorer.
+- Curve below diagonal: ill-health concentrated among richer.
+]
+
+.right-column[
+.center[
+Relative Concentration Curve
+&lt;img src="../../images/cc-both.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.left-column[
+### Summarizing across SEP
+
+- Concentration Index measures the extent to which disease is 'concentrated' among different SEP groups.
+]
+
+.right-column[
+.center[
+Concentration Index
+&lt;img src="../../images/cc-index.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Formula for writing the Concentration Index
+.footnote[Kakwani et al. (1997)]
+.pull-left[
+One way of writing the CI is:
+`$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$`
+where `\(\mu\)` is the mean of `\(y_{i}\)` (e.g., smoking status), `\(R_{i}\)` is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
+]
+
+--
+
+.pull-right[
+The Absolute Concentration Index multiplies *RCI* by the mean smoking rate:
+`$$ACI=\mu*RCI$$`
+]
+
+---
+.left-column[
+### Example of Relative and Absolute CI
+
+1965: Smoking increases with education = + RCI
+
+2003: Smoking decreases with education = - RCI
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/women-smoking-ineq.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.left-column[
+### Slope and Relative Index of Inequality
+
+- Conceptually similar to CI
+
+- Correlation between SEP rank and health.
+
+- SII: Absolute difference
+- RII: Relative difference (or ratio)
+]
+
+.right-column[
+&lt;img src="../../images/sii-graph.png" width="100%" height="100%" /&gt;
+]
+
+---
+.footnote[Hosseinpoor (2013)]
+
+.left-column[
+## The measure may matter!
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/hosseinpoor-quote.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Two mechanisms for changing inequality
+.footnote[Renard (2019)]
+Size of social groups will also change SII/RII without mortality change. Increasing the size of higher educated groups (e.g., larger share with higher education) increases inequality:
+
+.center[
+&lt;img src="../../images/renard-sii.png" width="80%" height="80%" /&gt;
+]
+
+---
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
+
+.left[
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .orange[**4 Weighting**]
+## .gray[**5 Reference Points**]
+]
+
+---
+.left-column[
+### Is the amount of inequality the same in these two societies?
+]
+
+.right-column[
+&lt;img src="../../images/three-groups.png" width="100%" height="100%" /&gt;
+]
+
+
+---
+.footnote[Quach et al. (2012)]
+.left-column[
+No way to 'rank' ethnicity
+
+Groups differ in size
+
+Should we account for it?
+]
+
+.right-column[
+.center[
+How to summarize this variation by ethnicity?
+&lt;img src="../../images/ethnicity-vaccination.png" width="100%" height="100%" /&gt;
+]]
+
+---
+### Index of Disparity
+.footnote[Pearcy and Keppel (1999)]
+
+.pull-left[
+Measures the mean deviation of the group rates from some reference point as a proportion of that reference point
+
+`$$ID = \sum_{j=1}^{J}(|y_{j} - y_{ref}|/n)/y_{ref}$$`
+Where `\(y_{j}\)` is the rate in group `\(j\)`, `\(y_{ref}\)` is the rate for the reference point, and `\(J\)` is the number of groups, or the number of groups minus 1 if one of the groups is the reference point.
+]
+
+.pull-right[
+Note that ID has a few important but potentially modifiable characteristics:
+- Measures relative inequality
+- Does not account for population size of groups
+- Uses best observed health as reference level
+
+Interpretation is also a little awkward: the average deviation across social groups as a proportion of the reference level
+
+Are there alternatives?
+]
+
+---
+.left-column[
+### Inequality as 'Disproportionality'
+
+Compares shares of health or disease with shares of the population.
+
+Perfect equality: 
+%pop = %health
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/disproportionality-figure.png" width="90%" height="90%" /&gt;
+]]
+
+---
+.left-column[
+Alternative: Mean Log Deviation
+- weights by pop
+- measures difference in log shares
+
+Sensitive to 'transfers' at different points of health distribution.
+]
+
+.right-column[
+&lt;img src="../../images/mld-idisp.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+Does it matter?
+
+Ezzati et al.: "There was a .red[steady increase in mortality inequality] across the US counties between 1983 and 1999, resulting from stagnation or increase in mortality among the worst-off segment of the population."
+]
+
+.right-column[
+.center[Geographic inequalities in life expectancy
+&lt;img src="../../images/ezzati-trends.png" width="80%" height="80%" /&gt;
+]]
+
+---
+.footnote[Harper et al. (2010)]
+.left-column[
+Compared weighted to unweighted inequality measures
+
+Across:
+ - counties
+ - states
+ - regions
  
-        // Display controls in the bottom right corner
-        controls: false,
+]
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
+.right-column[
+.center[
+&lt;img src="../../images/weighting-milbank.png" width="90%" height="90%" /&gt;
+]]
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
+---
+class: center, top, inverse
+# .orange[**Measuring Inequality**]
 
-        // Display a presentation progress bar
-        progress: true,
+.left[
+## .gray[**1 Conceptual Issues**]
+## .gray[**2 Absolute and Relative Inequality**]
+## .gray[**3 Simple vs. Complex Measures**]
+## .gray[**4 Weighting**]
+## .orange[**5 Reference Points**]
+]
 
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
+---
+.center[
+&lt;img src="../../images/diff-reference.png" width="75%" height="75%" /&gt;
+]
 
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+---
+.center[
+&lt;img src="../../images/obesity-trends.png" width="100%" height="100%" /&gt;
+]
 
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+---
+.center[
+&lt;img src="../../images/obesity-ineq.png" width="100%" height="100%" /&gt;
+]
 
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
+---
+## Conclusions
+.left-column[
+&lt;img src="02-inequality_files/figure-html/unnamed-chunk-34-1.png" width="100%" height="100%" /&gt;
+]
+.right-column[
+Measures of health inequality are not value neutral.
+- Scale of measurement (absolute/relative)
+- Weighting: how much and to whom?
+- Reference points: different from what standard?
 
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
+The choices above have an important impact on our judgments of both the magnitude of health inequality and whether health inequalities are worsening or improving.
 
-        // Push each slide change to the browser history
-        history: true,
+Monitoring health inequalities requires both precise measurement and value judgments—they are inseparable.
 
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
+A suite of health inequality measures is likely necessary to provide a complete description of the magnitude of inequality.
+]
 
-        // Enable the slide overview mode
-        overview: true,
+---
+background-image: url(../../images/who-launch.png)
+background-size: contain
 
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
+---
+class: center, top, inverse
+# .orange[**Break!**] ☕
+<div class="countdown" id="timer_9f0f3b35" data-update-every="1" tabindex="0" style="top:15%;right:0;bottom:15%;left:0;margin:5%;padding:50px;font-size:7em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
 
-        // Vertical centering of slides
-        center: false,
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
 
-        // Enables touch navigation on devices with touch input
-        touch: true,
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1600,
-
-        height: 900,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
-      });
-    </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
-        }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
-        }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
-            } else {
-              return "";
-            }
-          });
-        }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
-            }
-          } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
-            });
-          }
-        }
-      });
-      </script>
-    
-
-</body></html>
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

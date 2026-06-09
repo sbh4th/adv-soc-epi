@@ -23,6 +23,7 @@ library(labelled)
 library(modelsummary)
 library(rineq)
 library(ggplot2)
+library(modelsummary)
 library(tinytable)
 `%||%` <- function(a, b) if (!is.null(a)) a else b
 knitr::opts_chunk$set(
@@ -459,6 +460,7 @@ ess_smk |>
 ```
 :::
 
+
 ## 
 ```{r}
 smoke_by_dec <- readRDS(here("data", 
@@ -679,6 +681,7 @@ ggplot(educ_curve_data,
 
 ------------------------------------------------------------------------
 
+##
 ::::: columns
 ::: {.column width="25%"}
 ### Estimation for a specific factor: Education
@@ -701,7 +704,7 @@ Thus education accounts for -.04/ -.0939 = 41.6% of the overall $RCI$
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::::: columns
 ::: {.column width="25%"}
@@ -721,24 +724,51 @@ knitr::include_graphics(here("images", "decomp-table-determinants.png"))
 
 ::::: columns
 ::: {.column width="25%"}
-Decomposition of Income-Related Inequality in Smoking: Americas region
+Decomposition of Income-Related Inequality in Smoking: Sweden
 
-Overall RCI = -0.094
+Overall RCI = -0.096
 :::
 
 ::: {.column width="75%"}
 
 ```{r}
-ci_decomp <- readRDS(here("data", "ess-decomp.rds"))
+ci_decomp <- readRDS(here("data", "ess-decomp.rds")) |>
+  select(group, elasticity, ci_k, abs_contrib, pct_contrib)
 
 colnames(ci_decomp) <- c("Variable", "Elasticity",
   "CI_k", "Absolute", "%")
 
-tt(ci_decomp, digits = 1) |>
-  group_tt(j = list("Contribution" = 4:5))
+tt(ci_decomp, digits = 3,
+   notes = "Logistic regression; marginal effects used as elasticity weights.") |>
+  format_tt(j = 2:5, fn = \(x) ifelse(is.na(x), "—", sprintf("%.3f", x))) |>
+  group_tt(j = list("Contribution" = 4:5)) |>
+  style_tt(j = 1, align = "l") |>
+  style_tt(j = 2:5, align = "r")
 ```
 :::
-::::
+:::::
+
+## Uncertainty in the RCI Decomposition
+
+::::: columns
+::: {.column width="35%"}
+Each contribution is a product of two estimated quantities:^[@odonnell2008; @hosseinpoor2006]
+
+$$\underbrace{\frac{\hat{\beta}_k \bar{x}_k}{\hat{\mu}}}_{\text{elasticity}} \times \underbrace{\widehat{RCI}_k}_{\text{inequality in }x_k}$$
+
+Both carry sampling variability — so do the contributions.
+
+**Bootstrap** resamples the full dataset and re-runs the decomposition $B$ times to get empirical CIs.
+:::
+
+::: {.column width="65%"}
+```{r}
+knitr::include_graphics(
+  here("slides", "03-decomp", "figs", "ess11_decomp_bar.png")
+)
+```
+:::
+:::::
 
 ## Caveats for decomposing the RCI
 
