@@ -842,13 +842,11 @@ Decomposition results will be sensitive to the choice of determinants included (
 
 The regression equations are predictive and not causal models.
 
-Main utility is not in estimating the potential impact on $ y$ of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
+Main utility is not in estimating the potential impact on $y$ of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
 :::
 :::::
 
 ## Overview {.h2center}
-
-### [Life Table Decomposition]{.gray}
 
 <br>
 
@@ -856,22 +854,97 @@ Main utility is not in estimating the potential impact on $ y$ of changing the d
 
 <br>
 
-### Kitagawa-Blinder-Oaxaca Decomposition
+### [Kitagawa-Blinder-Oaxaca Decomposition]{.black}
 
 ## Idea for Decomposition of Means
+
+::::: columns
+::: {.column width="45%"}
+
+<br>
+
+The core idea is to explain the distribution of the outcome variable in question by a set of factors that vary systematically with exposure status.
+
+Thus, we want to know, on average, **why the mean level of health or disease differs between exposed and unexposed groups**.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+
+<br>
+
+Since, for most health outcomes there are multiple determinants, we may want to know which of these determinants plays more or less important roles in explaining the difference in average outcomes.
+
+"Unpacking" or "decomposing" difference.
+:::
+:::::
+
+## Origins
+
+::::: columns
+::: {.column width="25%"}
+```{r}
+knitr::include_graphics(here("images", "kitagawa-title.png"))
+```
+:::
+
+::: {.column width="75%"}
+Evelyn Kitagawa [-@kitagawa1955] was a sociologist and demographer who devised a non-parametric method for decomposing differences between rates, refined by Prithwis das Gupta in 1978.
+
+-   Focused on understanding group contributions to rate differences.
+
+Studies by @oaxaca1973 and @blinder1973 applied regression-based decomposition methods to analyze the wage gap between men and women and between whites and blacks in the USA.
+
+-   Focused on how much of wage gap was 'explained' by differences in observable characteristics
+:::
+:::::
+
+## Brief note on interpretation
 
 ::::: columns
 ::: {.column width="25%"}
 :::
 
 ::: {.column width="75%"}
-The core idea is to explain the distribution of the outcome variable in question by a set of factors that vary systematically with exposure status.
+Decomposition methods are based on regression analyses, and thus all of the usual caveats about good specification apply
 
-Thus, we want to know, on average, **why the mean level of health or disease differs between exposed and unexposed groups**.
+If regressions are purely descriptive, they reveal the associations that characterize the health inequality. Then inequality is explained in a statistical sense but implications for policies to reduce inequality are limited
 
-Since, for most health outcomes there are multiple determinants, we may want to know which of these determinants plays more or less important roles in explaining the difference in average outcomes.
+If data allow identification of causal effects, then the factors that generate the inequality are identified
 
-"Unpacking" or "decomposing" difference.
+Then one can (potentially) draw conclusions about how policies would impact on inequality
+:::
+:::::
+
+:::{.footnote}
+@odonnell2008
+:::
+
+##  
+
+```{r, out.width="80%"}
+knitr::include_graphics(here("images", 
+  "decomp-ex-spain.png"))
+```
+
+## Kitagawa-Blinder-Oaxaca: Basic Idea
+
+::::: columns
+::: {.column width="25%"}
+:::
+
+::: {.column width="75%"}
+### Two potential sources of mean differences in outcomes
+
+### 1. Means
+
+#### Differences in the prevalence of determinants of outcome
+
+### 2. Coefficients
+
+#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
 :::
 :::::
 
@@ -999,90 +1072,10 @@ pA + pB
 ```
 
 ::: {.footnote}
-Left: OLS regression line always passes through $(\bar{x}, \bar{y})$ because residuals sum to zero. Right: the gap in group means decomposes into **endowments** (different $\bar{x}$, same coefficients — grey triangle to blue dot) and **coefficients** (same $\bar{x}$, different slopes/intercepts — grey triangle to red dot).
+Left:  Right: the gap in group means decomposes into **endowments** (different $\bar{x}$, same coefficients — grey triangle to blue dot) and **coefficients** (same $\bar{x}$, different slopes/intercepts — grey triangle to red dot).
 :::
 
-
-## Origins
-
-::::: columns
-::: {.column width="25%"}
-```{r}
-knitr::include_graphics(here("images", "kitagawa-title.png"))
-```
-:::
-
-::: {.column width="75%"}
-Evelyn Kitagawa [-@kitagawa1955] was a sociologist and demographer who devised a non-parametric method for decomposing differences between rates, refined by Prithwis das Gupta in 1978.
-
--   Focused on understanding group contributions to rate differences.
-
-Studies by @oaxaca1973 and @blinder1973 applied regression-based decomposition methods to analyze the wage gap between men and women and between whites and blacks in the USA.
-
--   Focused on how much of wage gap was 'explained' by differences in observable characteristics
-:::
-:::::
-
-## Brief note on interpretation^[@odonnell2008]
-
-::::: columns
-::: {.column width="25%"}
-:::
-
-::: {.column width="75%"}
-Decomposition methods are based on regression analyses, and thus all of the usual caveats about good specification apply
-
-If regressions are purely descriptive, they reveal the associations that characterize the health inequality. Then inequality is explained in a statistical sense but implications for policies to reduce inequality are limited
-
-If data allow identification of causal effects, then the factors that generate the inequality are identified
-
-Then one can (potentially) draw conclusions about how policies would impact on inequality
-:::
-:::::
-
-##  {background-image="../../images/decomp-ex-spain.png" background-size="contain"}
-
-## Kitagawa-Blinder-Oaxaca: Basic Idea
-
-::::: columns
-::: {.column width="25%"}
-:::
-
-::: {.column width="75%"}
-### Two potential sources of mean differences in outcomes
-
-### 1. Means
-
-#### Differences in the prevalence of determinants of outcome
-
-### 2. Coefficients
-
-#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
-:::
-:::::
-
-------------------------------------------------------------------------
-
-::::: columns
-::: {.column width="25%"}
-Think of 2 regressions for a given determinant $X$:
-
-1.  Exposed
-2.  Unexposed
-
-Each generates its own coefficient and uses its own mean.
-
-Use these to generate counterfactuals.
-:::
-
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "kbo-idea.png"))
-```
-:::
-:::::
-
-------------------------------------------------------------------------
+##
 
 ### Two ways of expressing the mean difference in $y$
 
@@ -1257,6 +1250,44 @@ tt_decomp(show_cols = 3, hi_section = NULL)
 ```
 
 Pooled (Cotton) betas give a symmetric reference — no interaction term; the three columns bracket the range of plausible decompositions
+
+## Decomposition results: variable contributions
+
+```{r}
+#| label: decomp-wide-table
+# Wide table: one row per variable, endowments and coefficients side-by-side
+# Using GROUP_2 betas as reference
+e_rows <- decomp_tbl[decomp_tbl$section %in% c("endow_tot", "endow_var"), ]
+c_rows <- decomp_tbl[decomp_tbl$section %in% c("coef_tot",  "coef_var"), ]
+# Add blank intercept row to endowments so row counts match
+intercept_blank <- e_rows[1, ]; intercept_blank$label <- "Intercept"
+intercept_blank$g2_est <- NA; intercept_blank$g2_se <- NA
+intercept_blank$section <- "endow_var"; intercept_blank$bold <- FALSE
+e_rows <- rbind(e_rows, intercept_blank)
+
+disp <- data.frame(
+  Label = c_rows$label,  # same variables appear in same order
+  e_est = e_rows$g2_est,
+  e_se  = e_rows$g2_se,
+  c_est = c_rows$g2_est,
+  c_se  = c_rows$g2_se
+)
+disp$Label[c_rows$section %in% c("endow_var", "coef_var")] <-
+  paste0("   ", disp$Label[c_rows$section %in% c("endow_var", "coef_var")])
+
+disp$Label[disp$Label %in% c("Endowments", "Coefficients")] <- "Total"
+bold_rows <- which(c_rows$bold)
+
+tt(disp, width = 1) |>
+  format_tt(j = 2:5, fn = \(x) ifelse(is.na(x), "—", sprintf("%.3f", x))) |>
+  group_tt(j = list(" " = 1, "Endowments" = 2:3, "Coefficients" = 4:5)) |>
+  setNames(c("", "Est", "SE", "Est", "SE")) |>
+  style_tt(j = 1,   align = "l") |>
+  style_tt(j = 2:5, align = "r") |>
+  style_tt(i = bold_rows, bold = TRUE)
+```
+
+`r GROUP_2` betas used as reference; rows show each variable's contribution to the overall gap of `r round(gap, 2)` kg/m²
 
 ## Which covariates drive the endowments?
 
