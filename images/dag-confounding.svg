@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="arrow-black" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#737373"/>
+    </marker>
+  </defs>
+
+  <!-- U -> X (unmeasured: dashed, gray) -->
+  <line x1="278" y1="95" x2="136" y2="270" stroke="#737373" stroke-width="3"
+        stroke-dasharray="9 7" marker-end="url(#arrow-gray)"/>
+  <!-- U -> Y (unmeasured: dashed, gray) -->
+  <line x1="322" y1="95" x2="464" y2="270" stroke="#737373" stroke-width="3"
+        stroke-dasharray="9 7" marker-end="url(#arrow-gray)"/>
+  <!-- X -> Y (solid) -->
+  <line x1="155" y1="305" x2="440" y2="305" stroke="#000000" stroke-width="3"
+        marker-end="url(#arrow-black)"/>
+
+  <!-- nodes -->
+  <text x="300" y="80" font-size="56" font-style="italic" fill="#737373"
+        text-anchor="middle">U</text>
+  <text x="120" y="325" font-size="56" font-style="italic" fill="#000000"
+        text-anchor="middle">X</text>
+  <text x="480" y="325" font-size="56" font-style="italic" fill="#000000"
+        text-anchor="middle">Y</text>
+</svg>
