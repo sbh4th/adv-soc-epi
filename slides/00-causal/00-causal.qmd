@@ -1,0 +1,890 @@
+---
+title: "Counterfactuals and Causal Policy Effects"
+subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
+author: "Sam Harper, Arijit Nandi"
+date: 2024-12-02
+date-format: iso
+format:
+  revealjs:
+    theme: [default, ../custom.scss]
+    width: 1600
+    height: 900
+    slide-number: true
+    html-math-method: mathjax
+    auto-stretch: false
+    embed-resources: true
+title-slide-attributes:
+    data-background-image: "../../images/mcgill-epi-logo.png"
+    data-background-size: 30%
+    data-background-position: 50% 90%
+editor: source
+---
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+library(tinytable)
+library(janitor)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  out.width = "100%"
+)
+
+po <- tibble(
+  ID = 1:8,
+  di = rep(c(1, 0), each = 4),
+  yi1 = c(21, 18, 19, 22, 23, 19, 17, 21),
+  yi0 = c(18, 15, 15, 20, 22, 19, 15, 20)
+) |> mutate(ci = yi1 - yi0)
+
+po_1 <- po |> filter(di == 1) |> adorn_totals(name = "Mean") |>
+  mutate(across(where(is.numeric), ~ replace(., n(), .[n()] / (n() - 1))))
+po_0 <- po |> filter(di == 0) |> adorn_totals(name = "Mean") |>
+  mutate(across(where(is.numeric), ~ replace(., n(), .[n()] / (n() - 1))))
+pomt <- po |> adorn_totals(name = "Mean") |>
+  mutate(across(where(is.numeric), ~ replace(., n(), .[n()] / (n() - 1)))) |>
+  filter(di == 0.5)
+
+pate <- po_1 |> bind_rows(po_0) |> bind_rows(pomt)
+
+po_hdr <- list(" " = 1, "Treatment" = 2, "Potential Outcomes" = 3:4, "Effect" = 5)
+```
+
+## {background-color="#404040"}
+
+[**I. "What-If" Questions and Counterfactuals**]{.orange}
+
+[**II. Causal Parameters**]{.orange}
+
+[**III. Causal Assumptions**]{.orange}
+
+## {background-color="#404040"}
+
+[**I. "What-If" Questions and Counterfactuals**]{.orange}
+
+[**II. Causal Parameters**]{.gray}
+
+[**III. Causal Assumptions**]{.gray}
+
+## "What-ifs" and counterfactuals
+
+::::{.left-column}
+```{r}
+knitr::include_graphics(here("images", "counterfactual-image.png"))
+```
+::::
+
+::::{.right-column}
+- Questions about the impact of an intervention (the change that can be causally attributed to the program) are about what-ifs
+
+- Prospectively, we can think about how the world would be different *if we intervened* to change the status quo
+
+- Retrospectively, we can think about what *would have been* had we not implemented a particular policy or program
+
+- These alternative causal states are known as counterfactuals
+
+- We are surrounded by what-ifs with potential relevance to population health—just look at the recent headlines...
+::::
+
+## {background-image="../../images/dk-tax.png" background-size="contain"}
+
+::: {.footnote}
+Source: https://www.nytimes.com/2024/11/26/climate/denmark-methane-farm-animal-tax.html
+:::
+
+## {background-image=""}
+
+::: {.footnote}
+Source: https://www.economist.com/leaders/2023/08/31/to-fix-broken-mortgage-markets-look-to-denmark
+:::
+
+::::{.left-column}
+```{r}
+knitr::include_graphics(here("images", "great-danes.jpeg"))
+```
+::::
+
+::::{.right-column}
+```{r out.width="70%"}
+knitr::include_graphics(here("images", "dk-mortgage-effect.png"))
+```
+
+```{r out.width="80%"}
+knitr::include_graphics(here("images", "dk-mortgage-quote.png"))
+```
+::::
+
+## {background-image=""}
+
+::: {.footnote}
+Source: https://www.nytimes.com/2023/10/26/world/europe/denmark-housing.html
+:::
+
+::::{.pull-left}
+```{r}
+knitr::include_graphics(here("images", "dk-wrecking.png"))
+```
+::::
+
+::::{.pull-right}
+```{r}
+knitr::include_graphics(here("images", "dk-wrecking-quote.png"))
+```
+::::
+
+## Potential Outcomes Framework
+
+::::{.left-column}
+```{r}
+knitr::include_graphics(here("images", "counterfactual-image.png"))
+```
+::::
+
+::::{.right-column}
+- What-if or counterfactual questions are about hypotheticals—*so how can we answer them*?
+
+- The potential outcomes framework provides us with a guide for posing and answering counterfactual questions; it is the common language for impact evaluation in the social sciences
+
+- The potential outcomes framework uses the specification of well-defined causal states to which all members of the population of interest could be exposed to identify what **would have been** under an alternative counterfactual scenario
+::::
+
+## Alternative treatment states
+
+::::: columns
+:::: {.column width="25%"}
+Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$
+
+When only two alternative treatments are being considered they can be called the treatment and control states
+
+Individual $i$
+::::
+:::: {.column width="75%"}
+
+::::: columns
+:::: {.column width="50%"}
+<span style="color:blue; font-size:3em">●●●●</span>
+
+If "treated" $T_{i}=1$
+::::
+:::: {.column width="50%"}
+<span style="color:red; font-size:3em">●●●●</span>
+
+If "control" $T_{i}=0$
+::::
+:::::
+
+::::
+:::::
+
+## {.footnote}
+
+::: {.footnote}
+Collier (2009)
+:::
+
+::::{.left-column}
+James Lind is credited with introducing the concept of control and experimental groups; he is considered the father of clinical trials
+::::
+
+::::{.right-column}
+[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]{style="font-size: 0.85em"}
+
+```{r out.width="80%"}
+knitr::include_graphics(here("images", "lind.jpg"))
+```
+::::
+
+## Potential Outcomes
+
+- The potential outcomes for each individual are defined as the **true values** of the outcome that would result from exposure to well-defined, alternative causal states
+
+- *Each individual has a potential outcome under both the treatment and control states*
+
+- With a binary treatment, the potential outcomes are given by the random variables $Y^{1}$ and $Y^{0}$; we assume that each individual in the population has a potential outcome under both states
+
+::::: columns
+:::: {.column width="25%"}
+Potential outcomes $Y_{i}:$
+::::
+:::: {.column width="75%"}
+
+::::: columns
+:::: {.column width="50%"}
+<span style="color:blue; font-size:3em">●●●●</span>
+
+$y_{i}^{1}$
+::::
+:::: {.column width="50%"}
+<span style="color:red; font-size:3em">●●●●</span>
+
+$y_{i}^{0}$
+::::
+:::::
+
+::::
+:::::
+
+## Potential Outcomes
+
+::::{.left-column}
+### Potential Outcomes
+::::
+
+::::{.right-column}
+```{r}
+po_disp <- po |> select(ID, di, yi1, yi0)
+tt(po_disp, width = 0.6) |>
+  format_tt(j = 2:4, fn = \(x) sprintf("%.0f", x)) |>
+  group_tt(j = list(" " = 1, "Treatment" = 2, "Potential Outcomes" = 3:4)) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$")) |>
+  style_tt(j = 1:4, align = "c") |>
+  style_tt(fontsize = 0.9)
+```
+::::
+
+## The individual causal effect
+
+::::: columns
+:::: {.column width="40%"}
+Potential outcomes $Y_{i}:$
+
+::::: columns
+:::: {.column width="50%"}
+<span style="color:blue; font-size:2.5em">●●●●</span>
+
+$y_{i}^{1}$
+::::
+:::: {.column width="50%"}
+<span style="color:red; font-size:2.5em">●●●●</span>
+
+$y_{i}^{0}$
+::::
+:::::
+
+::::
+:::: {.column width="60%"}
+- The **individual causal effect** is the difference in outcomes *for the same individual* with and without the intervention.
+
+- A causal effect implies that the individual would have experienced the outcome if treated, but not untreated (or vice versa).
+::::
+:::::
+
+Causal effect:
+
+$\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
+
+## Individual causal effects
+
+::::{.left-column}
+### Individual causal effects
+::::
+
+::::{.right-column}
+```{r}
+tt(po, width = 0.7) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.0f", x)) |>
+  group_tt(j = list(" " = 1, "Treatment" = 2,
+                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(fontsize = 0.9)
+```
+::::
+
+## Individual causal effects (observed)
+
+::::{.left-column}
+### Individual causal effects
+::::
+
+::::{.right-column}
+```{r}
+# Highlight observed outcomes: yi1 for treated (di=1, rows 1-4),
+# yi0 for controls (di=0, rows 5-8)
+tt(po, width = 0.7) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.0f", x)) |>
+  group_tt(j = list(" " = 1, "Treatment" = 2,
+                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = 1:4, j = 3, color = "red") |>
+  style_tt(i = 5:8, j = 4, color = "red") |>
+  style_tt(fontsize = 0.9)
+```
+::::
+
+## A missing data problem
+
+| Observed exposure  | $Y^{1}$ |  $Y^{0}$  |
+| ------------- |:-------------:| -----:|
+| Treatment group | Observable as $Y$ | Counterfactual |
+| Control group     | Counterfactual      | Observable as $Y$ |
+
+<br>
+
+::::{.left-column}
+```{r out.width="40%"}
+knitr::include_graphics(here("images", "half.png"))
+```
+::::
+
+::::{.right-column}
+- Although $Y_{i}^{1}$ and $Y_{i}^{0}$ exist in theory, in practice we cannot directly observe the same person simultaneously in two different states, which prevents direct calculation of individual causal effects
+::::
+
+## The Average Treatment Effect (ATE)
+
+::::: columns
+:::: {.column width="25%"}
+<br><br><br>
+Potential outcomes $E(Y_{i})$:
+::::
+:::: {.column width="75%"}
+
+<div style="text-align:center">
+<span style="color:gray; font-size:2em">●●●●●●●●</span>
+
+Our target population
+</div>
+
+::::: columns
+:::: {.column width="50%"}
+<div style="text-align:center">
+<span style="color:blue; font-size:2em">●●●●●●●●</span>
+
+$E(y_{i}^{1})$
+</div>
+::::
+:::: {.column width="50%"}
+<div style="text-align:center">
+<span style="color:red; font-size:2em">●●●●●●●●</span>
+
+$E(y_{i}^{0})$
+</div>
+::::
+:::::
+
+::::
+:::::
+
+- Causal effect is $\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
+
+- The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented.
+
+## True (unobserved) impact
+
+::::{.left-column}
+### True (unobserved) impact of an intervention
+::::
+
+::::{.right-column}
+```{r}
+knitr::include_graphics(here("images", "true-impact-graph.png"))
+```
+::::
+
+## The average treatment effect
+
+::::{.left-column}
+### The average treatment effect
+::::
+
+::::{.right-column}
+```{r}
+pom <- po |> adorn_totals(name = "Mean") |>
+  mutate(across(where(is.numeric), ~ replace(., n(), .[n()] / (n() - 1))))
+
+tt(pom, width = 0.7) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
+  group_tt(j = list(" " = 1, "Treatment" = 2,
+                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = 9, bold = TRUE) |>
+  style_tt(i = 9, j = 5, color = "red") |>
+  style_tt(fontsize = 0.9)
+```
+::::
+
+## Fundamental problem of causal inference
+
+::::{.pull-left}
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE
+::::
+
+## Fundamental problem of causal inference
+
+::::: columns
+:::: {.column width="50%"}
+[- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE]{.gray}
+::::
+:::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "pre-post-graph.png"))
+```
+
+- We could observe the same group at different time periods (pre-post), but other things may have changed since the intervention
+::::
+:::::
+
+## Fundamental problem of causal inference
+
+::::: columns
+:::: {.column width="50%"}
+[- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE]{.gray}
+::::
+:::: {.column width="50%"}
+```{r}
+knitr::include_graphics(here("images", "treat-control-graph.png"))
+```
+
+- Alternatively, we can observe a different group that was unexposed
+::::
+:::::
+
+## These substitutes are not good counterfactuals
+
+::::: columns
+:::: {.column width="50%"}
+- Pre-post ignores "secular trends" (changes in other factors influencing the outcome since the intervention)
+
+<br>
+
+- Treated vs. control neglects unmeasured differences between the groups
+::::
+:::: {.column width="50%"}
+```{r out.width="80%"}
+knitr::include_graphics(here("images", "pre-post-graph.png"))
+```
+
+```{r out.width="80%"}
+knitr::include_graphics(here("images", "treat-control-graph.png"))
+```
+::::
+:::::
+
+## Naive estimate of the ATE
+
+<div style="text-align:center">
+<span style="color:blue; font-size:2em">●●●●</span><span style="color:red; font-size:2em">●●●●</span>
+
+Population showing actual treatment status, $D_{i}$
+</div>
+
+::::: columns
+:::: {.column width="25%"}
+Observed outcomes $E(Y_{i}|D_{i})$:
+::::
+:::: {.column width="75%"}
+
+::::: columns
+:::: {.column width="50%"}
+<div style="text-align:center">
+<span style="color:blue; font-size:2em">●●●●</span>
+
+$E(y_{i} | d_{i}=1)$
+</div>
+::::
+:::: {.column width="50%"}
+<div style="text-align:center">
+<span style="color:red; font-size:2em">●●●●</span>
+
+$E(y_{i} | d_{i}=0)$
+</div>
+::::
+:::::
+
+::::
+:::::
+
+- Naive estimate is: $E(\delta_{i, naive}) = E(y_{i} | d_{i}=1) - E(y_{i} | d_{i}=0)$
+
+- The naïve estimate of the ATE compares the outcomes for those observed to receive the treatment vs. the control condition
+
+## Estimated (observed) impact
+
+::::{.left-column}
+### Estimated (observed) impact of the program
+::::
+
+::::{.right-column}
+```{r}
+knitr::include_graphics(here("images", "naive-estimate.png"))
+```
+::::
+
+## The selection problem
+
+::::{.right-column}
+The naïve estimator rarely yields an unbiased treatment effect
+
+Why? Because treatment and control groups are rarely exchangeable (i.e., programs/policies are selectively placed in different areas and the decision to participate is often voluntary)
+
+These differences could affect potential outcomes, creating bias
+
+Economists call this selection or omitted variable bias
+
+In epidemiology, the effect of these pre-existing differences between groups is commonly called confounding bias
+::::
+
+## Recovering causal effects
+
+::::{.right-column}
+Without a credible substitute for the unobserved potential outcomes, causal impact cannot be established.
+
+The key is to generate groups of individuals that are statistically indistinguishable from one another in the absence of an intervention—we must somehow mimic the counterfactual
+
+We can use experimental or quasi-experimental techniques to attempt to recover the causal effect
+::::
+
+## What are randomized experiments?
+
+> the word experiment is used in a quite precise sense to mean an investigation where the system under study is under the control of the investigator. This means that the individuals or material investigated, the nature of the treatments or manipulations under study and the measurement procedures used are all selected, in their important features at least, by the investigator. (Cox, 2000)
+
+Randomized experiments are experiments "in which units are assigned to receive the treatment or an alternative condition by a random process such as the toss of a coin." (Shadish, 2002)
+
+## RCTs and exchangeability
+
+::::{.left-column}
+🎲
+::::
+
+::::{.right-column}
+If treatment is assigned randomly, it is said to be exogenous
+
+Comparison groups are the same with respect to measured and unmeasured characteristics (no unmeasured confounding or omitted variable bias) and each unit's potential outcomes are independent of actual treatment assignment, $(Y_{i}^{1}, Y_{i}^{0} | D)$
+
+Under these conditions, the treatment and control groups are exchangeable, which implies that **the probability of the outcome in the control group is the same as the probability of the outcome in the treated group had they been untreated** (and vice versa)
+
+Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
+::::
+
+## Causation vs. association under randomization
+
+::::: columns
+:::: {.column width="25%"}
+Target population
+
+<br>
+Randomization
+
+<br>
+Actual exposure
+::::
+:::: {.column width="75%"}
+<div style="text-align:center">
+<span style="color:gray; font-size:2em">●●●●●●●●</span>
+
+↓ 🎲 ↓
+
+<span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span>
+</div>
+
+::::: columns
+:::: {.column width="50%"}
+<div style="text-align:center">
+**Causation**
+
+<span style="color:blue; font-size:2em">●●●●●●●●</span>
+
+$E(y_{i}^{1})$ vs.
+
+<span style="color:red; font-size:2em">●●●●●●●●</span>
+
+$E(y_{i}^{0})$
+</div>
+::::
+:::: {.column width="50%"}
+<div style="text-align:center">
+**Association**
+
+<span style="color:blue; font-size:2em">●●●●</span>
+
+$E(y_{i} | d_{i}=1)$ vs.
+
+<span style="color:red; font-size:2em">●●●●</span>
+
+$E(y_{i} | d_{i}=0)$
+</div>
+::::
+:::::
+
+::::
+:::::
+
+## 'Quasi'-experiments
+
+::::{.right-column}
+Oftentimes we do not have control over treatment assignment and must investigate how individuals end up in alternative states
+
+The term quasi-experiment refers to:
+
+>"experiments that have treatments, outcome measures, and experimental units, but do not use random assignment to create the comparisons from which treatment-caused change is inferred." (Cook, 1979)
+
+Assignment is by self-selection, by which units choose treatment for themselves, or by means of administrator selection
+
+Consequently, unlike RCTs, comparison groups may differ in many systematic ways other than the presence of the treatment
+::::
+
+## {background-color="#404040"}
+
+[**I. "What-If" Questions and Counterfactuals**]{.gray}
+
+[**II. Causal Parameters**]{.orange}
+
+[**III. Causal Assumptions**]{.gray}
+
+## Treatment effects
+
+::::{.right-column}
+So far we have discussed the average treatment effect or ATE
+
+The ATE might, however, not be the only quantity of interest
+
+The causal parameters we can estimate will depend on our research question, and the design of our evaluation study
+::::
+
+## Average Treatment Effect on the Treated (ATT)
+
+It might make sense to evaluate the impact for those who self-select into certain exposures/programs, in which case a conditional average treatment effect may be more relevant; the ATT is the most widely-used measure of average impact
+
+The ATT is the average treatment effect for those who typically take the treatment:
+
+$$E(\delta_{i}|d_{i}=1) = E(y_{i}^{1}|d_{i} = 1) - E(y_{i}^{0}|d_{i} = 1)$$
+
+Unbiased estimation requires:
+
+$$E(y_{i}^{0}|d_{i} = 1) = E(y_{i}^{0}|d_{i} = 0)$$
+
+Thus, it relies on identification of one counterfactual, $E(y_{i}^{0}|d_{i} = 1)$
+
+## Calculate the ATE and the ATT
+
+::::{.left-column}
+### Calculate the ATE and the ATT
+::::
+
+::::{.right-column}
+```{r}
+tt(pate, width = 0.75) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = c(5, 10, 11), bold = TRUE) |>
+  style_tt(fontsize = 0.85)
+```
+::::
+
+## Calculate the ATE
+
+::::{.left-column}
+### Calculate the ATE
+::::
+
+::::{.right-column}
+```{r}
+# yi1, yi0 all red; ci red for overall Mean (row 11) only
+tt(pate, width = 0.75) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = c(5, 10, 11), bold = TRUE) |>
+  style_tt(i = c(1:4, 6:9, 11), j = 3, color = "red") |>
+  style_tt(i = c(1:4, 6:9, 11), j = 4, color = "red") |>
+  style_tt(i = 11, j = 5, color = "red") |>
+  style_tt(fontsize = 0.85)
+```
+::::
+
+## Calculate the ATT
+
+::::{.left-column}
+### Calculate the ATT
+::::
+
+::::{.right-column}
+```{r}
+# yi1, yi0 red for di=1 rows (1-5); ci red for Mean of di=1 (row 5)
+tt(pate, width = 0.75) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = c(5, 10, 11), bold = TRUE) |>
+  style_tt(i = 1:5, j = 3:4, color = "red") |>
+  style_tt(i = 5, j = 5, color = "red") |>
+  style_tt(fontsize = 0.85)
+```
+::::
+
+## More on the ATE vs. the ATT
+
+::::: columns
+:::: {.column width="25%"}
+Example from a basic income program for the unemployed
+::::
+:::: {.column width="75%"}
+- The ATE is the expected what-if difference in the outcome if we could take *randomly selected* unemployed workers and compare their outcomes in both the program vs. not
+
+- The ATT is the expected what-if difference in the outcome if we could observe workers *enrolled* in the basic income program under two scenarios, a factual one in which they were enrolled and the other in which they were not
+
+- Thus, the ATT answers the question about whether the social program was beneficial specifically among those who were enrolled, whereas the ATE examines whether it was beneficial across all of the unemployed workers who could potentially enroll, including those who did and those who didn't
+::::
+:::::
+
+## Average Treatment Effect on the Controls (ATC)
+
+A less common contrast is given by the average treatment effect on the controls (ATC):
+
+$$E(\delta_{i}|d_{i}=0) = E(y_{i}^{1}|d_{i} = 0) - E(y_{i}^{0}|d_{i} = 0)$$
+
+The ATC answers the question about whether the program is beneficial for those who are not enrolled (e.g., would a program that attempts to enroll nonparticipants be beneficial?)
+
+Unbiased estimation requires:
+$$E(y_{i}^{1}|d_{i} = 0) = E(y_{i}^{1}|d_{i} = 1)$$
+
+Thus, it relies on identification of one counterfactual, $E(y_{i}^{1} | d_{i}=0)$
+
+## Calculate the ATC
+
+::::{.left-column}
+### Calculate the ATC
+::::
+
+::::{.right-column}
+```{r}
+# yi1, yi0 red for di=0 rows (6-10); ci red for Mean of di=0 (row 10)
+tt(pate, width = 0.75) |>
+  format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  style_tt(j = 1:5, align = "c") |>
+  style_tt(i = c(5, 10, 11), bold = TRUE) |>
+  style_tt(i = 6:10, j = 3:4, color = "red") |>
+  style_tt(i = 10, j = 5, color = "red") |>
+  style_tt(fontsize = 0.85)
+```
+::::
+
+## Relation between ATE, ATT, and ATC
+
+::::{.right-column}
+- The ATE is the average of the ATT and ATC, weighted by the proportions who were treated ($\pi$) or control ($1-\pi$), respectively:
+
+$$ATE = \pi \times E(\delta|D=1) + (1-\pi) \times E(\delta|D=0)$$
+
+- In a RCT, the treatment effects should be the same among those randomized to treatment vs. control (ATE=ATT=ATC).
+
+- Why?
+::::
+
+## Simple example
+
+::::{.right-column}
+Using the table and assuming $\pi = 0.3$, calculate the:
+
+| Group | $E[Y^{1} \lvert.]$ |  $E[Y^{0} \lvert.]$  |
+| ------------- |:-------------:| -----:|
+| Treatment group $(D=1)$ | 10 | [6]{.blue} |
+| Control group $(D=0)$  | [8]{.blue} | 5 |
+
+- naïve estimate of the ATE
+- the ATE
+- the ATT
+- the ATC
+::::
+
+## {background-color="#404040"}
+
+[**I. "What-If" Questions and Counterfactuals**]{.gray}
+
+[**II. Causal Parameters**]{.gray}
+
+[**III. Causal Assumptions**]{.orange}
+
+## Exchangeability
+
+::::{.pull-left}
+For the observed contrasts to represent causal effects, we need the proxies to represent the unobserved counterfactual outcomes
+
+If the average outcome in the control group equals the average outcome in the treated group had it been untreated (and vice versa), the groups are exchangeable, i.e., for all $d$,
+
+$E(Y_{i}^{d}) = E(Y_{i}|D=d)$
+::::
+
+::::{.pull-right}
+```{r}
+knitr::include_graphics(here("images", "exchangeability.png"))
+```
+::::
+
+## Stable Unit Treatment Value Assumption (SUTVA)
+
+::::{.left-column}
+```{r}
+knitr::include_graphics(here("images", "spillovers.png"))
+```
+::::
+
+::::{.right-column}
+The Stable Unit Treatment Value Assumption (SUTVA) assumes that an individual's potential outcome is unaffected by the treatment status of other individuals
+
+This assumption is most commonly violated when there is interference (an individual's outcome depends on the treatment values of other individuals), or in the case of ecological treatments, if there are spillover effects
+
+Say we wanted to evaluate the impact of an education intervention assigned to randomly selected children in classrooms on substance use—what are some potential violations of SUTVA?
+::::
+
+## Consistency
+
+::: {.footnote}
+See Cole and Frangakis (2009)
+:::
+
+::::{.left-column}
+$Y_{j}^{obs}=Y_{j}(x)$ if $x=X_{j}$
+::::
+
+::::{.right-column}
+> individual $j$'s potential outcome $Y_{j}(x)$ under exposure $x$ as the outcome that would have been observed if individual $j$ had received exposure $x$
+
+Causal inference requires that a treatment is defined unambiguously, which is a general concern in social epidemiology
+
+This vagueness of some potential treatments has led some to suggest that only the causal effects of treatments that can be hypothetically manipulated should be considered (i.e., Holland's "no causation without manipulation")
+
+However, consistency violations are less of a concern in impact evaluation (and guaranteed by experiments) since we are dealing with treatments that are, by definition, manipulable
+::::
+
+## Positivity
+
+::::{.left-column}
+```{r}
+knitr::include_graphics(here("images", "positivity.png"))
+```
+::::
+
+::::{.right-column}
+The positivity assumption states that there is a nonzero (ie, positive) probability of receiving every level of exposure for every combination of values of exposure and confounders that occur among individuals in the population
+
+Generally less of a concern for RCTs, non-positivity, sometimes called structural confounding, is a concern for observational designs that often rely on regression adjustment for confounders to achieve conditional exchangeability
+::::
+
+## Further reading
+
+Holland, Paul W. "Statistics and causal inference." *Journal of the American Statistical Association* 81.396 (1986): 945-960.
+
+Morgan, Stephen L., and Christopher Winship. *Counterfactuals and causal inference*, Chapters 1 and 2. Cambridge University Press, 2007.
+
+William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. *Experimental and quasi-experimental designs for generalized causal inference*, Chapter 1. Wadsworth Cengage learning, 2002.
+
+Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." *Annual review of sociology* (1999): 659-706.
+
+## ☕ Break!

@@ -1,8 +1,8 @@
 ---
 title: "Overview of Quasi-Experimental Designs"
-subtitle: "Advanced Social Epidemiology PhD Course"
+subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
 author: "Sam Harper"
-date: 2024-12-02
+date: 2026-06-11
 date-format: iso
 format:
   revealjs:
@@ -12,6 +12,10 @@ format:
     slide-number: true
     html-math-method: mathjax
     embed-resources: true
+title-slide-attributes:
+    data-background-image: "../../images/mcgill-epi-logo.png"
+    data-background-size: 30%
+    data-background-position: 50% 90%
 editor: source
 ---
 
