@@ -22,9 +22,11 @@ library(here)
 
 ## 2026 Lectures
 
+0. Counterfactuals and Causal Policy Effects ([slides](slides/2026/00-causal.html))
+
 1. Measuring the 'Inequality' in Social Inequality ([slides](slides/2026/02-inequality.html))
 
-2. Decomposition Techniques ([slides](slides/2026/03-decomp.html)
+2. Decomposition Techniques ([slides](slides/2026/03-decomp.html))
 
 ---
 
