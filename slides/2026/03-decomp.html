@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Decomposition Techniques for Social Epidemiology</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sam Harper" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Decomposition Techniques for Social Epidemiology
+]
+.subtitle[
+## Advanced Social Epidemiology PhD Course
+]
+.author[
+### Sam Harper
+]
+.institute[
+### <br> </br>
+]
+.date[
+### University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>
+]
+
+---
+
+
+
+
+
+
+
+
+
+class: center, top, inverse
+# .orange[**Decomposition**]
+
+.left[
+## .orange[**1 Life Table Decomposition**]
+## .orange[**2 Concentration Index Decomposition**]
+## .orange[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
+]
+
+---
+class: center, top, inverse
+# .orange[**Decomposition**]
+
+.left[
+## .orange[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
+]
+
+---
+# Overview of Decomposition Techniques
+.pull-left[
+## Today:
+- Life table decomposition
+- Inequality decomposition: Concentration Index
+- Decomposing two-group differences: Kitagawa-Blinder-Oaxaca
+]
+
+.pull-right[
+## Not covered here:
+- Effect decomposition (i.e., mediation)
+- Decomposition of population rates
+- Inequality decomposition: Indexes for Nominal social groups
+]
+---
+# Moving from Description to Explanation
+.right-column[
+- Ultimately, we want to know why health inequalities are changing over time—what changed?
+  - Risk factors?
+  - Demographic composition?
+  - Social conditions?
+
+- Unpacking the ‘components’ of health inequality is an opportunity to better integrate the monitoring of health inequalities with the etiology of health inequalities.
+
+- These techniques often involve various kinds of ‘counterfactual’ scenarios
+]
+
+---
+class: center, top, inverse
+# .orange[**3. Decomposition**]
+
+.left[
+## .orange[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
+]
+
+---
+## Decomposing changes in life expectancy
+.right-column[
+Uses age- and cause-specific mortality rate differences between two (or more) populations to estimate the contribution of specific age groups and causes of death to changes in life expectancy.
+
+Not causal.
+
+Can provide a means of evaluating 'explanations' for changes in mortality.
+
+Between countries, genders, ethnic groups, social classes, etc.
+]
+
+---
+.footnote[See Arriaga (1984, 1989) for details.]
+
+.pull-left[
+&lt;img src="../../images/arriaga-1984.png" width="80%" /&gt;
+]
+
+.pull-right[
+&lt;img src="../../images/arriaga-1989.png" width="80%" /&gt;
+]
+
+---
+### Example from recent events
+.pull-left[
+&lt;img src="../../images/case-deaton-cover.png" width="60%" height="60%" /&gt;
+]
+
+.pull-right[
+&gt;Over the last century, Americans’ life expectancy at birth has risen from 49 to 77. Yet in recent years, that rise has faltered. Among white people age 45-54 — or a time many view as the prime of life — deaths have risen. .red[Especially vulnerable are white men without a four-year bachelor’s degree]. Curiously, midlife deaths have not climbed in other rich countries, nor, for the most part, have they risen for American Hispanics or blacks.
+
+&gt; NY Times Book Review, March 17, 2020
+
+]
+
+---
+## Specific causes are a key part of this narrative
+
+.right-column[
+ &gt;Although the surge in deaths in America is what we might see during the ravages of an infectious disease, like the Great Influenza Pandemic of 1918, this is an epidemic that is not carried by a virus or a bacterium, nor is it caused by an external agent, such as poisoning of the air or the fallout from a nuclear accident. Instead, people are doing this to themselves. .red[They are drinking themselves to death, or poisoning themselves with drugs, or shooting or hanging themselves].
+
+&gt; Case and Deaton (2019, p38)
+]
+
+---
+## Example of using life table decomposition
+.pull-left[
+.center[
+&lt;img src="../../images/arph-title.png" width="100%" height="100%" /&gt;
+]]
+
+.pull-right[
+Decompose the decline in life expectancy in the US between 2014 and 2017
+- By age
+
+- By cause of death
+
+- For 8 race-ethnic groups
+]
+
+---
+.center[
+What are we explaining?
+&lt;img src="../../images/le-estimates.png" width="80%" height="80%" /&gt;
+]
+
+Declines evident for all men and for most women 
+
+Largest for black men
+
+---
+### Results by cause: Men
+.footnote[Harper et al. 2020]
+.left-column[
+- Opioids (unintentional overdoses) played a large part.
+
+- Homicide for black men
+
+- Little role for suicide or alcohol.
+
+]
+
+.right-column[
+&lt;img src="../../images/decomp-cause-men.png" width="100%" height="100%" /&gt;
+]
+
+---
+### Results by cause: Women
+.footnote[Harper et al. 2020]
+.left-column[
+- Opioids, but also Alzheimer's.
+
+- Variations by race-ethnicity
+
+- Cancer mortality improved.
+
+]
+
+.right-column[
+&lt;img src="../../images/le-decomp-cause-women.png" width="100%" height="100%" /&gt;
+]
+
+---
+## Summary
+.right-column[
+Life table decomposition useful for understanding links between proximal risks and mortality, and how they may 'explain' changing patterns of life expectancy.
+
+Minimal assumptions, but not causal.
+
+Example showing how the 'Deaths of Despair' narrative is hard to reconcile with diverse mortality patterns:
+  - Declines have affected all race-ethnic groups.
+  - Most of the decline due to opioid overdoses, homicide, and Alzheimer’s disease.
+  - Deaths from suicide and alcohol-related causes have risen but explain little of America’s stagnating life expectancy trends.
+]
+
+---
+class: center, top, inverse
+# .orange[**Decomposition**]
+
+.left[
+## .gray[**1 Life Table Decomposition**]
+## .orange[**2 Concentration Index Decomposition**]
+## .gray[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
+]
+
+---
+We want to understand this:
+.center[
+&lt;img src="../../images/inc-health-dag.png" width="60%" /&gt;
+]
+
+---
+We want to understand this:
+.center[
+&lt;img src="../../images/inc-health-dag.png" width="60%" /&gt;
+]
+
+By estimating something like this:
+.center[
+&lt;img src="../../images/rci-arrows.png" width="70%" /&gt;
+]
+
+---
+.left-column[
+## Relative Concentration Curve
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/conc-curve.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## Formula for writing the Concentration Index
+.footnote[Kakwani et al. (1997)]
+.pull-left[
+Recall that we can write the CI as:
+
+`$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}y_{i}R_{i}-1$$`
+where `\(\mu\)` is the mean of `\(y_{i}\)` (e.g., smoking status), `\(R_{i}\)` is the fractional rank of the *i*th person in the socioeconomic (i.e., income) distribution.
+]
+
+
+.pull-right[
+The basic idea here is to develop a model for predicting `\(y\)` using several determinants, then plug that model back into the equation for the `\(RCI\)`
+]
+
+---
+## Decomposition of the RCI
+.footnote[Wagstaff et al. *J Econometrics* 2003]
+
+.right-column[
+Since the `\(RCI\)` is a function of health `\((y_{i})\)` and a socioeconomic rank variable `\((R_{i})\)`, i.e.
+`$$RCI= \frac{2}{n\mu} \sum_{i=1}^{n}{\color{red}{y_{i}}}R_{i}-1$$`
+
+Then suppose that one can write a regression equation expressing the health outcome of interest `\((y_{i})\)` as a function of several `\(k_{i}\)` determinants (e.g., age, gender, urban/rural status):
+`$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
+]
+
+---
+## Decomposition of the RCI
+Since *RCI* is a function of `\(y_{i}\)` and socioeconomic rank, one can then re-express the concentration index as:
+`$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
+Where 
+ - `\(\mu\)` is the mean of *y*, 
+ - `\(\bar{x}_{k}\)` is the mean of `\(x_{k}\)`, 
+ - `\(\beta_{k}\)` is the regression coefficient for `\(x_{k}\)`, and 
+ - `\(RCI_{k}\)` is the concentration index for `\(x_{k}\)`.
+
+The basic idea: how much of the overall inequality is due to other factors that are both differentially distributed by `\(x\)` (income) and also affect `\(y\)` (e.g., smoking)?
+
+---
+## Explained and unexplained components
+This equation results in 2 components of socioeconomic inequality:
+`$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
+.pull-left[
+One part `\((\beta_{k}\bar{x}_{k}/\mu)RCI_{k}\)` that is due to the association between income and other factors that predict health
+]
+
+.pull-right[
+The other part `\((gRCI_{e}/\mu)\)` is ‘unexplained’, i.e., inequality that cannot be explained by systematic variation across income groups in the determinants of health.
+]
+
+---
+## Two types of 'explained' components
+.pull-left[
+&lt;img src="../../images/inc-health-dag.png" width="80%" /&gt;
+
+&lt;br&gt;
+
+&lt;img src="../../images/rci-arrows-color.png" width="80%" /&gt;
+]
+.pull-right[
+The influence of determinants depends on two things:
+
+### `\(\color{blue}{RCI_{k}}\)`
+#### the strength of the relationship between each factor and income `\((C_{k})\)`
+
+### `\(\color{red}{\beta_{k}\bar{x}_{k}/\mu}\)`
+#### the strength of the relationship between each factor and health, and its prevalence in the population (elasticity).
+]
+
+---
+## Procedure for decomposing the Concentration Index
+
+.right-column[
+1 Estimate a regression equation predicting `\(y\)` (‘health’) from its determinants `\((\beta_{k}x_{k})\)`:
+
+`$$\color{red}{y_{i}}=\alpha + \sum{\beta_{x}x_{k_{i}}}+\epsilon_{i}$$`
+
+2 Calculate the mean of `\(y\)` `\((\mu)\)` and of each of the determinants (e.g., education, age)
+
+3 Calculate the Concentration Index for the health variable (C) *and* for each determinant in the equation predicting health `\((C_{k})\)`.
+
+- That is, use each determinant `\(x_{k}\)` as the "outcome" and estimate a CI for age, CI for education, etc.
+]
+
+---
+## Procedure for decomposing the Concentration Index
+
+.right-column[
+4 Calculate the absolute contribution of each determinant by multiplying its ‘elasticity’ by its concentration index `\((C_{k})\)`:
+
+`$$(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}$$`
+
+
+5 Calculate the percentage contribution of each determinant:
+
+`$$[(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}]/RCI$$`
+]
+
+---
+class: center, middle, inverse
+# Example: Decomposing Socioeconomic Inequality in Current Smoking
+
+---
+.left-column[
+### Smoking by income quintile
+]
+
+.right-column[
+&lt;img src="../../images/smoking-quintiles.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+### Concentration curve for smoking
+]
+
+.right-column[
+&lt;img src="../../images/cc-smoking.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+### Estimation for a specific factor: **Education**
+]
+.right-column[
+Recall the decomposition formula:
+
+`$$RCI=\sum{(\beta_{k}\bar{x}_{k}/\mu)RCI_{k}}+gRCI_{e}/\mu$$`
+- Estimated `\(\beta\)` coeff on education (logit scale): -.0389 (OR = 0.96)
+- Marginal effect on probability scale: -.0051 (0.5 pct points)
+- Mean education: 8.9 yrs
+- Mean smoking rate: 17.5%
+
+With these parameters, the elasticity of smoking with respect to education is: (-.0051 * 8.9 / .175) = -.2582
+
+Interpretation: a 1% increase in education decreases smoking by 26% (not percentage points!). 
+
+What about the RCI for education?
+]
+
+---
+.left-column[
+### Concentration curve for education
+
+Note the y-axis is cumulative share of *education*
+]
+
+.right-column[
+&lt;img src="../../images/rci-educ.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+### Estimation for a specific factor: Education
+]
+
+.right-column[
+Recall the decomposition formula:
+
+`$$RCI=\sum{(\color{red}{\beta_{k}\bar{x}_{k}/\mu})\color{blue}{RCI_{k}}}+gRCI_{e}/\mu$$`
+
+
+So the .red[elasticity of smoking] (from the previous slide) with respect to education is (-.0051 * 8.9 / .175) = -.2582
+
+Now we have the .blue[RCI for education] = 0.156
+
+So now we can calculate the contribution of education as:
+
+`$$\text{Elasticity}\times RCI_{ed} = -.2582 * .156 = -.04$$`
+
+Thus education accounts for -.04/ -.0939 = 41.6% of the overall `\(RCI\)`
+]
+
+---
+.left-column[
+Decomposition of Income-Related Inequality in Smoking: Americas region
+
+Overall RCI = -0.094
+]
+
+.right-column[
+&lt;img src="../../images/decomp-table-determinants.png" width="100%" height="100%" /&gt;
+]
+
+---
+## Caveats for decomposing the RCI
+.right-column[
+Decomposition results will be sensitive to the choice of determinants included (i.e., how well-specified the model is for predicting y).
+
+The regression equations are predictive and not causal models.
+
+Main utility is not in estimating the potential impact on y of changing the distribution of socioeconomic position, but in indicating the potential role that other factors may play in generating socioeconomic inequalities in health.
+]
+
+
+---
+class: center, top, inverse
+# .orange[**Decomposition**]
+
+.left[
+## .gray[**1 Life Table Decomposition**]
+## .gray[**2 Concentration Index Decomposition**]
+## .orange[**3 Kitagawa-Blinder-Oaxaca Decomposition**]
+]
+
+---
+# Idea for Decomposition of Means
+.right-column[
+The core idea is to explain the distribution of the outcome variable in question by a set of factors that vary systematically with exposure status.
+
+Thus, we want to know, on average, **why the mean level of health or disease differs between exposed and unexposed groups**.
+
+Since, for most health outcomes there are multiple determinants, we may want to know which of these determinants plays more or less important roles in explaining the difference in average outcomes.
+
+“Unpacking” or “decomposing” difference.
+]
+
+---
+# Origins
+.left-column[
+&lt;img src="../../images/kitagawa-title.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+Evelyn Kitagawa was sociologist and demographer who devised a non-parametric method (1955) for decomposing differences between rates, refined by Prithwis das Gupta in 1978.
+- Focused on understanding group contributions to rate differences.
+
+Studies by Oaxaca (1973) and Blinder (1973) applied regression-based decomposition methods to analyze the wage gap between men and women and between whites and blacks in the USA.
+- Focused on how much of wage gap was 'explained' by differences in observable characteristics
+]
+
+---
+## Brief note on interpretation
+.right-column[
+Decomposition methods are based on regression analyses, and thus all of the usual caveats about good specification apply
+
+If regressions are purely descriptive, they reveal the associations that characterize the health inequality
+Then inequality is explained in a statistical sense but implications for policies to reduce inequality are limited
+
+If data allow identification of causal effects, then the factors that generate the inequality are identified
+
+Then one can (potentially) draw conclusions about how policies would impact on inequality
+]
+
+.footnote[O'Donnell 2008]
+
+---
+background-image: url(../../images/decomp-ex-spain.png)
+background-size: contain
+
+---
+# Kitagawa-Blinder-Oaxaca: Basic Idea
+.right-column[
+### Two potential sources of mean differences in outcomes
+
+### 1. Means
+#### Differences in the prevalence of determinants of outcome
+
+### 2. Coefficients
+#### Differences in the coefficient of a given determinant on the outcome (i.e., effect measure modification)
+]
+
+---
+.left-column[
+Think of 2 regressions for a given determinant `\(X\)`:
+1. Exposed
+2. Unexposed
+
+Each generates its own coefficient and uses its own mean.
+
+Use these to generate counterfactuals.
+]
+
+.right-column[
+.center[
+&lt;img src="../../images/kbo-idea.png" width="100%" height="100%" /&gt;
+]]
+
+---
+### Two ways of expressing the mean difference in `\(y\)`
+
+.right-column[
+The overall gap between exposed and unexposed can be written as a function of differences the respective beta coefficients, evaluated at the mean for each group:
+&lt;img src="../../images/kbo-two-ways.png" width="100%" height="100%" /&gt;
+]
+
+---
+.left-column[
+### First method
+- Coefficients of unexposed
+
+- Means of exposed
+]
+
+.right-column[
+.center[
+`\(y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{unexp}-\Delta\beta x^{exp}\)`
+&lt;img src="../../images/kbo-first-method.png" width="100%" height="100%" /&gt;
+]]
+
+---
+.left-column[
+### Second method
+- Coefficients of exposed
+
+- Means of unexposed
+]
+
+.right-column[
+.center[
+`\(y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{exp}-\Delta\beta x^{unexp}\)`
+&lt;img src="../../images/kbo-second-method.png" width="100%" height="100%" /&gt;
+]]
+
+---
+## The two methods are equally valid
+.right-column[
+In the first,the differences in the `\(X\)`s are weighted by the .red[coefficients of the unexposed group] and the differences in the coefficients are weighted by the `\(X\)`s of the exposed group: 
+`$$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{unexp}-\Delta\beta x^{exp}$$`
+
+whereas, in the second, the differences in the `\(X\)`s are weighted by the .blue[coefficients of the exposed group] and the differences in the coefficients are weighted by the `\(X\)`s of the unexposed group: 
+`$$y^{exp} - y^{unexp} = \Delta\bar{x}\beta^{exp}-\Delta\beta x^{unexp}$$`
+]
+
+---
+class: center, middle, inverse
+# Example: Decomposing Educational Differences in Blood Pressure
+
+---
+# Basic question
+.left-column[
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+What is the average difference in blood pressure between those with low vs. high education?
+
+How much of this difference is due to the fact that determinants of blood pressure (e.g., BMI, smoking, demographics) differ between low and high educated groups?
+
+Any residual difference is due to educational differences in the associations of risk factors for blood pressure.
+]
+
+---
+# Example data
+.left-column[
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-25-1.png" width="100%" height="100%" /&gt;
+]
+.right-column[
+US NHANES follow up survey (1988-2006), baseline data
+
+Systolic blood pressure as outcome (mmHg)
+
+Overall difference by education (0: &gt;=12y educ, 1: &lt;12y educ)
+
+Potential determinants (the Xs):
+- age (years)
+- age squared
+- race (1 = non-white, 0 = other) 
+- marital status (1=married, 0=other)
+- body mass index (kg/m^2)
+- smoking (1=current smoker, 0=other)
+]
+
+---
+background-image: url(../../images/kbo-density.png)
+background-size: contain
+
+---
+## Differences in determinants
+.left-column[
+- Lower educated have higher BMI and are more likely to be smokers, as well as being older
+]
+
+.right-column[
+&lt;img src="../../images/kbo-means.png" width="100%" height="100%" /&gt;
+]
+
+---
+## Differences in coefficients
+.left-column[
+- BMI and smoking both have larger coefficients for the better educated group.
+
+- Age has a slightly stronger association for the less educated.
+]
+
+.right-column[
+&lt;img src="../../images/kbo-coefs.png" width="100%" height="100%" /&gt;
+]
+
+
+---
+background-image: url(../../images/kbo-margins.png)
+background-size: contain
+
+---
+background-image: url(../../images/kbo-decomp-r.png)
+background-size: contain
+
+---
+background-image: url(../../images/kbo-decomp-means-r.png)
+background-size: contain
+
+
+--
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;img src="../../images/kbo-means.png" width="50%" /&gt;
+
+---
+background-image: url(../../images/kbo-decomp-coefs-r.png)
+background-size: contain
+
+--
+
+&lt;img src="../../images/kbo-coefs.png" width="50%" /&gt;
+
+---
+background-image: url(../../images/kbo-decomp-coefs2-r.png)
+background-size: contain
+
+---
+background-image: url(../../images/kbo-decomp-pooled-r.png)
+background-size: contain
+
+---
+## Caveat: results depend on specification
+.left-column[
+Adding gender increases the “explained” component (i.e., “endowments”) from -2.77 to -2.95, so important consequences for how much of the gap is “unexplained”
+]
+
+.right-column[
+&lt;img src="../../images/decomp-stata.png" width="100%" height="100%" /&gt;
+]
+
+---
+.footnote[Jackson (2021)]
+.left-column[
+## Methods frontier
+- Attempting to reconcile the non-causal framework of KBO with mediation methods, new estimators.
+]
+
+.right-column[
+&lt;img src="../../images/jackson-epid-title.png" width="100%" height="100%" /&gt;
+]
+
+---
+# Summary
+.left-column[
+&lt;img src="03-decomp_files/figure-html/unnamed-chunk-32-1.png" width="100%" height="100%" /&gt;
+]
+
+.right-column[
+Various decomposition techniques exist that may be useful for analyzing social determinants of health
+Life table decomposition—over time or between groups, or both
+Regression-based decomposition of Concentration Index
+Oaxaca decomposition of mean health between groups
+
+All of these techniques make assumptions that need to be evaluated in the course of analysis
+
+When used properly, decomposition techniques can help to provide key evidence on why health inequalities exist and change over time.
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
