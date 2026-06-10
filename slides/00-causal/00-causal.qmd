@@ -2,7 +2,7 @@
 title: "Counterfactuals and Causal Policy Effects"
 subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
 author: "Sam Harper, Arijit Nandi"
-date: 2024-12-02
+date: 2026-06-11
 date-format: iso
 format:
   revealjs:
@@ -24,12 +24,25 @@ editor: source
 library(here)
 library(tidyverse)
 library(tinytable)
+library(icons)
 library(janitor)
+library(countdown)
 knitr::opts_chunk$set(
   echo = FALSE,
   fig.align = "center",
   out.width = "100%"
 )
+
+# Quarto stacks each chunk output vertically, so a row of icons must be
+# emitted as a single inline HTML string
+fa_row <- function(fills, scale = 2) {
+  htmltools::HTML(paste(vapply(
+    fills,
+    \(f) as.character(icon_style(fontawesome("female", style = "solid"),
+                                 scale = scale, fill = f)),
+    character(1)
+  ), collapse = " "))
+}
 
 po <- tibble(
   ID = 1:8,
@@ -51,21 +64,33 @@ pate <- po_1 |> bind_rows(po_0) |> bind_rows(pomt)
 po_hdr <- list(" " = 1, "Treatment" = 2, "Potential Outcomes" = 3:4, "Effect" = 5)
 ```
 
-## {background-color="#404040"}
+## Causal Policy Effects {.h2center}
 
-[**I. "What-If" Questions and Counterfactuals**]{.orange}
+<br>
 
-[**II. Causal Parameters**]{.orange}
+### [**I. "What-If" Questions and Counterfactuals**]{.black}
 
-[**III. Causal Assumptions**]{.orange}
+<br>
 
-## {background-color="#404040"}
+### [**II. Causal Parameters**]{.black}
 
-[**I. "What-If" Questions and Counterfactuals**]{.orange}
+<br>
 
-[**II. Causal Parameters**]{.gray}
+### [**III. Causal Assumptions**]{.black}
 
-[**III. Causal Assumptions**]{.gray}
+## Causal Policy Effects {.h2center}
+
+<br>
+
+### [**I. "What-If" Questions and Counterfactuals**]{.black}
+
+<br>
+
+### [**II. Causal Parameters**]{.gray}
+
+<br>
+
+### [**III. Causal Assumptions**]{.gray}
 
 ## "What-ifs" and counterfactuals
 
@@ -93,7 +118,7 @@ knitr::include_graphics(here("images", "counterfactual-image.png"))
 Source: https://www.nytimes.com/2024/11/26/climate/denmark-methane-farm-animal-tax.html
 :::
 
-## {background-image=""}
+##
 
 ::: {.footnote}
 Source: https://www.economist.com/leaders/2023/08/31/to-fix-broken-mortgage-markets-look-to-denmark
@@ -115,7 +140,7 @@ knitr::include_graphics(here("images", "dk-mortgage-quote.png"))
 ```
 ::::
 
-## {background-image=""}
+##
 
 ::: {.footnote}
 Source: https://www.nytimes.com/2023/10/26/world/europe/denmark-housing.html
@@ -153,31 +178,40 @@ knitr::include_graphics(here("images", "counterfactual-image.png"))
 
 ::::: columns
 :::: {.column width="25%"}
-Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$
+<br>
+::::
+:::: {.column width="75%"}
+- Suppose that individuals $i$ in a population can be simultaneously assigned to two (or more) alternative treatments, $T_{i}$
 
-When only two alternative treatments are being considered they can be called the treatment and control states
+- When only two alternative treatments are being considered they can be called the treatment and control states
+::::
+:::::
+
+::::: columns
+:::: {.column width="33%"}
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "gray")
+```
 
 Individual $i$
 ::::
-:::: {.column width="75%"}
-
-::::: columns
-:::: {.column width="50%"}
-<span style="color:blue; font-size:3em">●●●●</span>
+:::: {.column width="33%"}
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
 
 If "treated" $T_{i}=1$
 ::::
-:::: {.column width="50%"}
-<span style="color:red; font-size:3em">●●●●</span>
+:::: {.column width="34%"}
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
 
 If "control" $T_{i}=0$
 ::::
 :::::
 
-::::
-:::::
-
-## {.footnote}
+##
 
 ::: {.footnote}
 Collier (2009)
@@ -188,7 +222,7 @@ James Lind is credited with introducing the concept of control and experimental 
 ::::
 
 ::::{.right-column}
-[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]{style="font-size: 0.85em"}
+[In 1747 Lind tested several scurvy treatments on crew members of the British navy and discovered that lemons and oranges were most effective.]{.smaller}
 
 ```{r out.width="80%"}
 knitr::include_graphics(here("images", "lind.jpg"))
@@ -204,28 +238,26 @@ knitr::include_graphics(here("images", "lind.jpg"))
 - With a binary treatment, the potential outcomes are given by the random variables $Y^{1}$ and $Y^{0}$; we assume that each individual in the population has a potential outcome under both states
 
 ::::: columns
-:::: {.column width="25%"}
+:::: {.column width="33%"}
 Potential outcomes $Y_{i}:$
 ::::
-:::: {.column width="75%"}
-
-::::: columns
-:::: {.column width="50%"}
-<span style="color:blue; font-size:3em">●●●●</span>
+:::: {.column width="33%"}
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
 
 $y_{i}^{1}$
 ::::
-:::: {.column width="50%"}
-<span style="color:red; font-size:3em">●●●●</span>
+:::: {.column width="34%"}
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
 
 $y_{i}^{0}$
 ::::
 :::::
 
-::::
-:::::
-
-## Potential Outcomes
+##
 
 ::::{.left-column}
 ### Potential Outcomes
@@ -237,7 +269,8 @@ po_disp <- po |> select(ID, di, yi1, yi0)
 tt(po_disp, width = 0.6) |>
   format_tt(j = 2:4, fn = \(x) sprintf("%.0f", x)) |>
   group_tt(j = list(" " = 1, "Treatment" = 2, "Potential Outcomes" = 3:4)) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$")) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>")) |>
   style_tt(j = 1:4, align = "c") |>
   style_tt(fontsize = 0.9)
 ```
@@ -251,12 +284,16 @@ Potential outcomes $Y_{i}:$
 
 ::::: columns
 :::: {.column width="50%"}
-<span style="color:blue; font-size:2.5em">●●●●</span>
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "blue")
+```
 
 $y_{i}^{1}$
 ::::
 :::: {.column width="50%"}
-<span style="color:red; font-size:2.5em">●●●●</span>
+```{r}
+icon_style(fontawesome("female", style = "solid"), scale = 5, fill = "red")
+```
 
 $y_{i}^{0}$
 ::::
@@ -274,7 +311,7 @@ Causal effect:
 
 $\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
 
-## Individual causal effects
+##
 
 ::::{.left-column}
 ### Individual causal effects
@@ -284,15 +321,15 @@ $\delta_{i} = y_{i}^{1} - y_{i}^{0}$ or $\delta_{i} = y_{i}^{1} / y_{i}^{0}$
 ```{r}
 tt(po, width = 0.7) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.0f", x)) |>
-  group_tt(j = list(" " = 1, "Treatment" = 2,
-                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(fontsize = 0.9)
 ```
 ::::
 
-## Individual causal effects (observed)
+##
 
 ::::{.left-column}
 ### Individual causal effects
@@ -304,9 +341,9 @@ tt(po, width = 0.7) |>
 # yi0 for controls (di=0, rows 5-8)
 tt(po, width = 0.7) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.0f", x)) |>
-  group_tt(j = list(" " = 1, "Treatment" = 2,
-                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = 1:4, j = 3, color = "red") |>
   style_tt(i = 5:8, j = 4, color = "red") |>
@@ -342,26 +379,32 @@ Potential outcomes $E(Y_{i})$:
 ::::
 :::: {.column width="75%"}
 
-<div style="text-align:center">
-<span style="color:gray; font-size:2em">●●●●●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("gray", 8))
+```
 
 Our target population
-</div>
+:::
 
 ::::: columns
 :::: {.column width="50%"}
-<div style="text-align:center">
-<span style="color:blue; font-size:2em">●●●●●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("blue", 8))
+```
 
 $E(y_{i}^{1})$
-</div>
+:::
 ::::
 :::: {.column width="50%"}
-<div style="text-align:center">
-<span style="color:red; font-size:2em">●●●●●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("red", 8))
+```
 
 $E(y_{i}^{0})$
-</div>
+:::
 ::::
 :::::
 
@@ -372,7 +415,7 @@ $E(y_{i}^{0})$
 
 - The ATE compares potential outcomes *in the same population* under a treated scenario in which the policy is implemented and a control situation in which the policy is not implemented.
 
-## True (unobserved) impact
+##
 
 ::::{.left-column}
 ### True (unobserved) impact of an intervention
@@ -384,7 +427,7 @@ knitr::include_graphics(here("images", "true-impact-graph.png"))
 ```
 ::::
 
-## The average treatment effect
+##
 
 ::::{.left-column}
 ### The average treatment effect
@@ -397,9 +440,9 @@ pom <- po |> adorn_totals(name = "Mean") |>
 
 tt(pom, width = 0.7) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
-  group_tt(j = list(" " = 1, "Treatment" = 2,
-                    "Potential Outcomes" = 3:4, "Effect" = 5)) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  group_tt(j = po_hdr) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = 9, bold = TRUE) |>
   style_tt(i = 9, j = 5, color = "red") |>
@@ -419,9 +462,11 @@ tt(pom, width = 0.7) |>
 
 ::::: columns
 :::: {.column width="50%"}
-[- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+::: {.gray}
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
 
-- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE]{.gray}
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE
+:::
 ::::
 :::: {.column width="50%"}
 ```{r}
@@ -436,9 +481,11 @@ knitr::include_graphics(here("images", "pre-post-graph.png"))
 
 ::::: columns
 :::: {.column width="50%"}
-[- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
+::: {.gray}
+- As with individuals, it is not possible to observe the same target population simultaneously under two different conditions
 
-- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE]{.gray}
+- Unlike their individual-level analogues, we can use our observed data to estimate $E(y_{i})$ and calculate a "naïve" estimate of the ATE
+:::
 ::::
 :::: {.column width="50%"}
 ```{r}
@@ -449,7 +496,7 @@ knitr::include_graphics(here("images", "treat-control-graph.png"))
 ::::
 :::::
 
-## These substitutes are not good counterfactuals
+## These substitutes are not good counterfactuals {.h2center}
 
 ::::: columns
 :::: {.column width="50%"}
@@ -472,11 +519,13 @@ knitr::include_graphics(here("images", "treat-control-graph.png"))
 
 ## Naive estimate of the ATE
 
-<div style="text-align:center">
-<span style="color:blue; font-size:2em">●●●●</span><span style="color:red; font-size:2em">●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep(c("blue", "red"), each = 4))
+```
 
 Population showing actual treatment status, $D_{i}$
-</div>
+:::
 
 ::::: columns
 :::: {.column width="25%"}
@@ -486,18 +535,22 @@ Observed outcomes $E(Y_{i}|D_{i})$:
 
 ::::: columns
 :::: {.column width="50%"}
-<div style="text-align:center">
-<span style="color:blue; font-size:2em">●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("blue", 4))
+```
 
 $E(y_{i} | d_{i}=1)$
-</div>
+:::
 ::::
 :::: {.column width="50%"}
-<div style="text-align:center">
-<span style="color:red; font-size:2em">●●●●</span>
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("red", 4))
+```
 
 $E(y_{i} | d_{i}=0)$
-</div>
+:::
 ::::
 :::::
 
@@ -508,7 +561,7 @@ $E(y_{i} | d_{i}=0)$
 
 - The naïve estimate of the ATE compares the outcomes for those observed to receive the treatment vs. the control condition
 
-## Estimated (observed) impact
+##
 
 ::::{.left-column}
 ### Estimated (observed) impact of the program
@@ -536,6 +589,16 @@ In epidemiology, the effect of these pre-existing differences between groups is 
 
 ## Recovering causal effects
 
+::::{.left-column}
+::: {style="text-align: center;"}
+<br>
+
+```{r}
+icon_style(fontawesome("pencil-ruler", style = "solid"), scale = 4, fill = "steelblue")
+```
+:::
+::::
+
 ::::{.right-column}
 Without a credible substitute for the unobserved potential outcomes, causal impact cannot be established.
 
@@ -553,7 +616,9 @@ Randomized experiments are experiments "in which units are assigned to receive t
 ## RCTs and exchangeability
 
 ::::{.left-column}
-🎲
+```{r}
+icon_style(fontawesome("dice", style = "solid"), scale = 4)
+```
 ::::
 
 ::::{.right-column}
@@ -566,53 +631,83 @@ Under these conditions, the treatment and control groups are exchangeable, which
 Randomization is so highly valued because, under ideal conditions, it provides an unbiased estimate of the causal impact of the intervention in the population under study
 ::::
 
-## Causation vs. association under randomization
+##
 
 ::::: columns
 :::: {.column width="25%"}
 Target population
 
 <br>
+
 Randomization
 
 <br>
+
 Actual exposure
 ::::
 :::: {.column width="75%"}
-<div style="text-align:center">
-<span style="color:gray; font-size:2em">●●●●●●●●</span>
 
-↓ 🎲 ↓
+::: {style="text-align: center;"}
+```{r}
+fa_row(rep("gray", 8))
+```
 
-<span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span><span style="color:blue; font-size:2em">●</span><span style="color:red; font-size:2em">●</span>
-</div>
+```{r}
+icon_style(fontawesome("arrow-down", style = "solid"), scale = 2)
+```
+
+```{r}
+icon_style(fontawesome("dice", style = "solid"), scale = 2)
+```
+
+```{r}
+fa_row(rep(c("blue", "red"), 4))
+```
+:::
 
 ::::: columns
-:::: {.column width="50%"}
-<div style="text-align:center">
-**Causation**
+:::: {.column width="46%"}
+::: {style="text-align: center;"}
+Causation
 
-<span style="color:blue; font-size:2em">●●●●●●●●</span>
+```{r}
+fa_row(rep("blue", 8))
+```
 
-$E(y_{i}^{1})$ vs.
+$E(y_{i}^{1})$
 
-<span style="color:red; font-size:2em">●●●●●●●●</span>
+vs
+
+```{r}
+fa_row(rep("red", 8))
+```
 
 $E(y_{i}^{0})$
-</div>
+:::
 ::::
-:::: {.column width="50%"}
-<div style="text-align:center">
-**Association**
+:::: {.column width="8%"}
+<br><br><br><br>
 
-<span style="color:blue; font-size:2em">●●●●</span>
+[**=**]{style="font-size: 2em;"}
+::::
+:::: {.column width="46%"}
+::: {style="text-align: center;"}
+Association
 
-$E(y_{i} | d_{i}=1)$ vs.
+```{r}
+fa_row(rep("blue", 4))
+```
 
-<span style="color:red; font-size:2em">●●●●</span>
+$E(y_{i} | d_{i}=1)$
+
+vs
+
+```{r}
+fa_row(rep("red", 4))
+```
 
 $E(y_{i} | d_{i}=0)$
-</div>
+:::
 ::::
 :::::
 
@@ -633,15 +728,31 @@ Assignment is by self-selection, by which units choose treatment for themselves,
 Consequently, unlike RCTs, comparison groups may differ in many systematic ways other than the presence of the treatment
 ::::
 
-## {background-color="#404040"}
+## Causal Policy Effects {.h2center}
 
-[**I. "What-If" Questions and Counterfactuals**]{.gray}
+<br>
 
-[**II. Causal Parameters**]{.orange}
+### [**I. "What-If" Questions and Counterfactuals**]{.gray}
 
-[**III. Causal Assumptions**]{.gray}
+<br>
+
+### [**II. Causal Parameters**]{.black}
+
+<br>
+
+### [**III. Causal Assumptions**]{.gray}
 
 ## Treatment effects
+
+::::{.left-column}
+::: {style="text-align: center;"}
+<br>
+
+```{r}
+icon_style(fontawesome("question", style = "solid"), scale = 4, fill = "steelblue")
+```
+:::
+::::
 
 ::::{.right-column}
 So far we have discussed the average treatment effect or ATE
@@ -665,7 +776,7 @@ $$E(y_{i}^{0}|d_{i} = 1) = E(y_{i}^{0}|d_{i} = 0)$$
 
 Thus, it relies on identification of one counterfactual, $E(y_{i}^{0}|d_{i} = 1)$
 
-## Calculate the ATE and the ATT
+##
 
 ::::{.left-column}
 ### Calculate the ATE and the ATT
@@ -676,14 +787,15 @@ Thus, it relies on identification of one counterfactual, $E(y_{i}^{0}|d_{i} = 1)
 tt(pate, width = 0.75) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
   group_tt(j = po_hdr) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = c(5, 10, 11), bold = TRUE) |>
   style_tt(fontsize = 0.85)
 ```
 ::::
 
-## Calculate the ATE
+##
 
 ::::{.left-column}
 ### Calculate the ATE
@@ -695,7 +807,8 @@ tt(pate, width = 0.75) |>
 tt(pate, width = 0.75) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
   group_tt(j = po_hdr) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = c(5, 10, 11), bold = TRUE) |>
   style_tt(i = c(1:4, 6:9, 11), j = 3, color = "red") |>
@@ -705,7 +818,7 @@ tt(pate, width = 0.75) |>
 ```
 ::::
 
-## Calculate the ATT
+##
 
 ::::{.left-column}
 ### Calculate the ATT
@@ -717,7 +830,8 @@ tt(pate, width = 0.75) |>
 tt(pate, width = 0.75) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
   group_tt(j = po_hdr) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = c(5, 10, 11), bold = TRUE) |>
   style_tt(i = 1:5, j = 3:4, color = "red") |>
@@ -754,7 +868,7 @@ $$E(y_{i}^{1}|d_{i} = 0) = E(y_{i}^{1}|d_{i} = 1)$$
 
 Thus, it relies on identification of one counterfactual, $E(y_{i}^{1} | d_{i}=0)$
 
-## Calculate the ATC
+##
 
 ::::{.left-column}
 ### Calculate the ATC
@@ -766,7 +880,8 @@ Thus, it relies on identification of one counterfactual, $E(y_{i}^{1} | d_{i}=0)
 tt(pate, width = 0.75) |>
   format_tt(j = 2:5, fn = \(x) sprintf("%.1f", x)) |>
   group_tt(j = po_hdr) |>
-  setNames(c("ID", "$d_{i}$", "$y_{i}^{1}$", "$y_{i}^{0}$", "$\\delta_{i}$")) |>
+  setNames(c("ID", "d<sub>i</sub>", "y<sub>i</sub><sup>1</sup>",
+             "y<sub>i</sub><sup>0</sup>", "&delta;<sub>i</sub>")) |>
   style_tt(j = 1:5, align = "c") |>
   style_tt(i = c(5, 10, 11), bold = TRUE) |>
   style_tt(i = 6:10, j = 3:4, color = "red") |>
@@ -803,13 +918,19 @@ Using the table and assuming $\pi = 0.3$, calculate the:
 - the ATC
 ::::
 
-## {background-color="#404040"}
+## Causal Policy Effects {.h2center}
 
-[**I. "What-If" Questions and Counterfactuals**]{.gray}
+<br>
 
-[**II. Causal Parameters**]{.gray}
+### [**I. "What-If" Questions and Counterfactuals**]{.gray}
 
-[**III. Causal Assumptions**]{.orange}
+<br>
+
+### [**II. Causal Parameters**]{.gray}
+
+<br>
+
+### [**III. Causal Assumptions**]{.black}
 
 ## Exchangeability
 
@@ -887,4 +1008,13 @@ William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. *Experimental an
 
 Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." *Annual review of sociology* (1999): 659-706.
 
-## ☕ Break!
+## **Break!** ☕ {.h2center}
+
+```{r}
+countdown(minutes = 15,
+          left = 0, right = 0, bottom = "15%", top = "15%",
+          padding = "50px",
+          margin = "5%",
+          font_size = "7em",
+          color_text = "#f5bc6c")
+```

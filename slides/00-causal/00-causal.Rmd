@@ -1,9 +1,8 @@
 ---
 title: "Counterfactuals and Causal Policy Effects"
-subtitle: "Advanced Social Epidemiology PhD Course"  
+subtitle: "Advanced Social Epidemiology PhD Course <br> University of Copenhagen </br>"
 author: "Sam Harper, Arijit Nandi"
-institute: " <br> </br>"
-date: "University of Copenhagen <br> 2024-12-02 to 2024-12-06 </br>"
+date: "2026-06-11"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -49,21 +48,21 @@ library(xaringanthemer)
 style_xaringan(text_color = "#000000", header_color = "#737373", text_font_size = "24px",  text_font_family = "'Lucida Sans'", header_font_google = google_font("Source Sans Pro"), header_font_weight="lighter", title_slide_background_color =  "#ffffff", title_slide_text_color = "#000000", link_color = "#0000ee", footnote_font_size = "0.5em")
 ```
 
-class: center, top, inverse
-# .orange[**Causal Policy Effects**]
+class: center, top, outline
+# **Causal Policy Effects**
 
 .left[
-## .orange[**I. "What-If" Questions and Counterfactuals**]
-## .orange[**II. Causal Parameters**]
-## .orange[**III. Causal Assumptions**]
+## **I. "What-If" Questions and Counterfactuals**
+## **II. Causal Parameters**
+## **III. Causal Assumptions**
 ]
 
 ---
-class: center, top, inverse
-# .orange[**Causal Policy Effects**]
+class: center, top, outline
+# **Causal Policy Effects**
 
 .left[
-## .orange[**I. "What-If" Questions and Counterfactuals**]
+## **I. "What-If" Questions and Counterfactuals**
 ## .gray[**II. Causal Parameters**]
 ## .gray[**III. Causal Assumptions**]
 ]
@@ -800,12 +799,12 @@ Consequently, unlike RCTs, comparison groups may differ in many systematic ways 
 
 
 ---
-class: center, top, inverse
-# .orange[**Causal Policy Effects**]
+class: center, top, outline
+# **Causal Policy Effects**
 
 .left[
 ## .gray[**I. "What-If" Questions and Counterfactuals**]
-## .orange[**II. Causal Parameters**]
+## **II. Causal Parameters**
 ## .gray[**III. Causal Assumptions**]
 ]
 
@@ -1054,13 +1053,13 @@ Using the table and assuming $\pi = 0.3$, calculate the:
 
 
 ---
-class: center, top, inverse
-# .orange[**Causal Policy Effects**]
+class: center, top, outline
+# **Causal Policy Effects**
 
 .left[
 ## .gray[**I. "What-If" Questions and Counterfactuals**]
 ## .gray[**II. Causal Parameters**]
-## .orange[**III. Causal Assumptions**]
+## **III. Causal Assumptions**
 ]
 
 ---
@@ -1142,8 +1141,8 @@ William R. Shadish, Thomas D. Cook, and Donald Thomas Campbell. Experimental and
 Winship, Christopher, and Stephen L. Morgan. "The estimation of causal effects from observational data." Annual review of sociology (1999): 659-706.
 
 ---
-class: center, top, inverse
-# .orange[**Break!**] `r emo::ji("coffee")`
+class: center, top
+# **Break!** `r emo::ji("coffee")`
 ```{r, echo=F}
 countdown(minutes = 15, 
           left = 0, right = 0, bottom = "15%", top = "15%",

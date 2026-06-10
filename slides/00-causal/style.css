@@ -1,7 +1,36 @@
 .title-slide {
-  background-image: url();
-  background-size: 500px;
-  background-position: 50% 65%;
+  background-image: url('mcgill-epi-logo.png');
+  background-size: 30%;
+  background-position: 50% 90%;
+  padding-bottom: 6em;
+}
+
+/* match the 2026 Quarto RevealJS title slides */
+.title-slide h1 {
+  color: #737373;
+  font-weight: 300;
+  font-size: 2.75em;
+  margin-bottom: 0.9em;
+}
+
+.title-slide h2 {
+  color: #000000;
+  font-size: 1.3em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 1.6em;
+}
+
+.title-slide h3 {
+  color: #000000;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin: 0.3em 0;
+}
+
+/* section overview slides: black items so .gray[] marks inactive sections */
+.outline h2 {
+  color: #000000;
 }
 
 .blue { color: blue; }

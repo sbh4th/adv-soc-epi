@@ -62,99 +62,53 @@ knitr::opts_chunk$set(
 
 ### [Final Thoughts]{.gray}
 
----
+## What's the problem?
 
-### Stylized "forms" of questions asked in social epidemiology
-
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-What question do most studies in social epidemiology answer?
 
-- Do individuals who are disadvantaged with respect to social position have worse health than those who are advantaged?
+<br>
 
-Other kinds of questions that could be asked:
+-   We are mainly (though not exclusively) interested in causal effects.
 
-- **Would** individuals who are disadvantaged with respect to social position have better health **if they were to become advantaged**?
+-   We want to know:
 
-- **Would** individuals who are advantaged with respect to social position have worse health **if they were to become disadvantaged**?
+    -   Should we intervene to reduce exposure to $X$?, or
+    -   Did the program work? If so, for whom? If not, why not?, or
+    -   If we implement the program elsewhere, should we expect the same result?
 
-These are **causal** questions.
+-   These questions involve counterfactuals about what would happen **if** we intervened to do something.
+
+-   These are causal questions.
 :::
-:::
+:::::
 
----
+## Causation, Association, and Confounding
 
-### "Normal" etiological science in social epidemiology
-
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-1. Follow-up of individuals in different social groups for various health outcomes (incidence, mortality, risk factors)
 
-2. Adjustment for various confounders/mediators (are inequalities "explained" by....A, B, C?).
+-   **Causal effect**: Do individuals randomly
+    [assigned]{style="color: red"} (i.e., SET) to treatment have better
+    outcomes?
 
-- "Our results demonstrate that"...we should:
+    $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)$$
 
-    - *raise* education levels
-    - *increase* economic assistance to the poor
-    - *remove* noxious exposures from the environment
-    - *reduce* psychosocial workplace hazards
-    - *eliminate* hierarchies, and the like.
+-   **Association**: Do individuals who [happen to
+    be]{style="color: red"} treated have better outcomes?
 
-- These statements are based on making **causal** inferences.
+    $$E\left(Y|Treated\right)-E(Y|Untreated)$$
+
+-   **Confounding**:
+    $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)\neq E\left(Y|Treated\right)-E\left(Y|Untreated\right)$$
 :::
-:::
-
----
-
-### What's the problem?
-
-::: {.columns}
-::: {.column width="25%"}
-:::
-::: {.column width="75%"}
-- We are mainly (though not exclusively) interested in causal effects.
-
-- We want to know:
-
-    - Should we intervene to reduce exposure to $X$?, or
-    - Did the program work? If so, for whom? If not, why not?, or
-    - If we implement the program elsewhere, should we expect the same result?
-
-- These questions involve counterfactuals about what would happen **if** we intervened to do something.
-
-- These are causal questions.
-:::
-:::
-
----
-
-### How to interpret statistical associations of health inequality?
-
-::: {.columns}
-::: {.column width="25%"}
-:::
-::: {.column width="75%"}
-We have lots of statistical associations between social exposures and health.
-
-$$X---Y$$
-
-Some possible situations *consistent* with statistical associations:
-
-1. Causal $X\rightarrow Y$
-
-2. Heterogeneity $X_{a}\;\;Y_{a}$ vs. $X_{b}\rightarrow Y_{b}$
-
-3. Reverse causation $Y\rightarrow X$
-
-4. Confounding $X\leftarrow C\rightarrow Y$
-
-5. Selection bias $X\rightarrow S\leftarrow Y$
-:::
-:::
+::::::
 
 ## Overview {.h2center}
 
@@ -174,161 +128,164 @@ Some possible situations *consistent* with statistical associations:
 
 ## Randomized Trials vs. Observational Studies
 
-::: {.columns}
-::: {.column width="50%"}
+:::::: columns
+::: {.column width="45%"}
+<br>
+
 ### RCTs, Defined
 
 RCTs involve:
 
-1. comparing treated and control groups;
-2. the treatment assignment is random;
-3. investigator does the randomizing.
+1.  comparing treated and control groups;
+2.  the treatment assignment is random;
+3.  investigator does the randomizing.
 
 In an RCT, treatment/exposure is [assigned]{.red} by the investigator
 :::
 
-::: {.column width="50%"}
-
-. . .
-
-- In observational studies, exposed/unexposed groups [exist]{.red} in the source population and are selected by the investigator.
-
-- Good natural experiments do (1) and (2), but not (3).
-
-- Because there is no control over assignment, the credibility of natural experiments hinges on how good "as-if random" approximates (2).
-:::
+::: {.column width="5%"}
 :::
 
----
+::: {.column width="45%"}
+<br>
+
+### Observational studies
+
+-   Exposed/unexposed groups [exist]{.red} in the source population and are selected by the investigator.
+
+-   Good natural experiments do (1) and (2), but not (3).
+
+-   Because there is no control over assignment, the credibility of natural experiments hinges on how good "as-if random" approximates (2).
+:::
+::::::
+
+------------------------------------------------------------------------
 
 ### Strength of randomized treatment allocation
 
-- Recall that randomization means that we can generally estimate the causal effect *of being randomized* without bias.
+-   Recall that randomization means that we can generally estimate the causal effect *of being randomized* without bias.
 
-- Randomization guarantees exchangeability on measured and unmeasured factors.
+-   Randomization guarantees exchangeability on measured and unmeasured factors.
 
 ```{r, out.width="80%"}
 knitr::include_graphics(here("images", "rct-dag.png"))
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Keall et al. (2015)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
 ### Randomize if you can
 
-- Randomization leads to:
+-   Randomization leads to:
 
-    - balance on measured factors.
-    - balance on unmeasured factors.
+    -   balance on measured factors.
+    -   balance on unmeasured factors.
 
-- Unmeasured factors cannot bias the estimate of the exposure effect.
+-   Unmeasured factors cannot bias the estimate of the exposure effect.
 
-- Example from Home Injury Prevention Intervention cluster RCT
+-   Example from Home Injury Prevention Intervention cluster RCT
 
-- What do you notice about Table 1?
+-   What do you notice about Table 1?
 :::
+
 ::: {.column width="50%"}
 ```{r, out.width="80%"}
 knitr::include_graphics(here("images", "keall-lancet-t1.png"))
 ```
 :::
-:::
+:::::
 
 ## Or maybe don't randomize?
 
-::: {.columns}
-::: {.column width="50%"}
+:::: columns
+::: {.column width="45%"}
+<br>
+
 ### RCT limitations
 
-- Non-compliance.
-- Attrition.
-- Spillovers.
-- Blinding (esp. in clinical trials).
+-   Non-compliance.
+-   Attrition.
+-   Spillovers.
+-   Blinding (esp. in clinical trials).
 :::
 
-::: {.column width="50%"}
+::: {.column width = "5%"}
+::::
 
-. . .
+::: {.column width="50%"}
+<br>
 
 ### Other trial challenges:
 
-- Unethical (poverty, parental social class, job loss)
-- Impossible (ethnic background, place of birth)
-- Expensive (neighborhood environments)
-- Long latency periods (many years before outcomes are observable).
-- Effects may be produced by complex, intermediate pathways.
+-   Unethical (poverty, parental social class, job loss)
+-   Impossible (ethnic background, place of birth)
+-   Expensive (neighborhood environments)
+-   Long latency periods (many years before outcomes are observable).
+-   Effects may be produced by complex, intermediate pathways.
 
 <br>
 
-- We need alternatives to RCTs.
-:::
+-   We need alternatives to RCTs.
 :::
 
----
+:::
+
+------------------------------------------------------------------------
 
 ### Unmeasured confounding is a serious challenge
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- We often compare socially advantaged and disadvantaged on health.
+-   We often compare socially advantaged and disadvantaged on health.
 
-- Key problem: people choose/end up in treated or untreated group for reasons that are difficult to measure and that may be correlated with their outcomes.
+-   Key problem: people choose/end up in treated or untreated group for reasons that are difficult to measure and that may be correlated with their outcomes.
 
-- So...**adjust.**
+-   So...**adjust.**
 
-    - Measure and adjust (regression) for $C$ confounding factors.
+    -   Measure and adjust (regression) for $C$ confounding factors.
 
-    - Conditional on $C$, we are supposed to believe assignment is "as good as random" = causal.
+    -   Conditional on $C$, we are supposed to believe assignment is "as good as random" = causal.
 :::
-:::
+:::::
 
-##
+## 
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
 ### Key issue is credibility
 
-- If we have a good design and assume that we have measured all of the confounders, then regression can give us exactly what we want: an estimate of the causal effect of exposure to $T$.
+-   If we have a good design and assume that we have measured all of the confounders, then regression can give us exactly what we want: an estimate of the causal effect of exposure to $T$.
 
-- Core issue: How credible is this assumption?
+-   Core issue: How credible is this assumption?
 :::
+
 ::: {.column width="50%"}
 ```{r, out.width="90%"}
 knitr::include_graphics(here("images", "wishful-thinking-veley.jpg"))
 ```
 :::
-:::
+:::::
 
-##
+------------------------------------------------------------------------
 
-::: {.footnote}
-Beauchamp et al. (2010)
-:::
-
-SEP and CVD in Australia. [Many low p-values]{.red}
-
-```{r, fig.height=4, fig.width=7}
-knitr::include_graphics(here("images", "beauchamp-t1r.png"))
-```
-
----
-
-::: {.footnote}
+::: footnote
 Jones et al. (2018)
 :::
 
 ### Why we worry about observational studies
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
 Recent evaluation of "Workplace Wellness" program in US state of Illinois
 
@@ -336,20 +293,20 @@ Treatment: biometric health screening; online health risk assessment, access to 
 
 Randomized evaluation:
 
-- 3,300 individuals assigned treated group.
-- 1,534 assigned to control (could not access the program).
+-   3,300 individuals assigned treated group.
+-   1,534 assigned to control (could not access the program).
 
 Also analyzed as an observational study comparing "participants" vs. non-participants in treated group.
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Carroll, *New York Times*, Aug 6, 2018.
 :::
 
-```{r, out.width="80%"}
+```{r, out.width="50%"}
 knitr::include_graphics(here("images", "carroll-nyt-wellness.png"))
 ```
 
@@ -371,122 +328,136 @@ knitr::include_graphics(here("images", "carroll-nyt-wellness.png"))
 
 ## How can quasi-experiments help?
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- Quasi-experiments aim to mimic RCTs.
+-   Quasi-experiments aim to mimic RCTs.
 
-- "Accidents of chance" that create:
+-   "Accidents of chance" that create:
 
-    1. Comparable treated and control units
-    2. Random or "as-if" random assignment to treatment.
+    1.  Comparable treated and control units
+    2.  Random or "as-if" random assignment to treatment.
 
-- Control for (some) sources of bias that cannot be adequately controlled using regression adjustment.
+-   Control for (some) sources of bias that cannot be adequately controlled using regression adjustment.
 
-- More credible designs also help us to understand the relevance of other factors that may be implicated in generating inequalities.
+-   More credible designs also help us to understand the relevance of other factors that may be implicated in generating inequalities.
 :::
-:::
+:::::
 
 ## Selection on "observables" and "unobservables"
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- Observables: Things you measured or can measure
+<br>
 
-- Unobservables: Things you can't measure (e.g., innate abilities, motivation)
+-   Observables: Things you measured or can measure
 
-- Exogenous variation: predicts exposure but (**we assume**) [not]{.red} associated with anything else [mimicking random assignment].
+-   Unobservables: Things you can't measure (e.g., innate abilities, motivation)
+
+-   Exogenous variation: predicts exposure but (**we assume**) [not]{.red} associated with anything else \[mimicking random assignment\].
 :::
+
 ::: {.column width="50%"}
+<br>
+
 ```{r}
 knitr::include_graphics(here("images", "qe-dag.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ### Strategies based on observables and unobservables
 
-::: {.columns}
-::: {.column width="50%"}
-- Most observational study designs control for *measured* factors using:
+:::: columns
+::: {.column width="45%"}
+<br>
 
-    - Stratification
-    - Regression adjustment
-    - Matching (propensity scores, etc.)
+-   Most observational study designs control for *measured* factors using:
+
+    -   Stratification
+    -   Regression adjustment
+    -   Matching (propensity scores, etc.)
 :::
 
-::: {.column width="50%"}
+::: {.column width = "5%"}
+::::
 
-. . .
+::: {.column width="45%"}
+<br>
 
-- Quasi-experimental strategies [aim]{.red} to control for some *unmeasured* factors using:
+-   Quasi-experimental strategies [aim]{.red} to control for some *unmeasured* factors using:
 
-    - Interrupted time series (ITS)
-    - Difference-in-differences (DD)
-    - Synthetic controls (SC)
-    - Instrumental variables (IV)
-    - Regression discontinuity (RD)
+    -   Interrupted time series (ITS)
+    -   Difference-in-differences (DD)
+    -   Synthetic controls (SC)
+    -   Instrumental variables (IV)
+    -   Regression discontinuity (RD)
 :::
+
 :::
 
----
+------------------------------------------------------------------------
 
 ## Some *potential* sources of natural experiments
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ```{r}
 knitr::include_graphics(here("images", "dunning.jpeg"))
 ```
 :::
+
 ::: {.column width="75%"}
-- Law changes
-- Eligibility for social programs (roll-outs)
-- Lotteries
-- Genes
-- Weather shocks (rainfall, disasters)
-- Arbitrary policy or clinical guidelines (thresholds)
-- Business / factory closures
-- Historical legacies (physical environment)
-- Seasonality
+-   Law changes
+-   Eligibility for social programs (roll-outs)
+-   Lotteries
+-   Genes
+-   Weather shocks (rainfall, disasters)
+-   Arbitrary policy or clinical guidelines (thresholds)
+-   Business / factory closures
+-   Historical legacies (physical environment)
+-   Seasonality
 :::
-:::
+:::::
 
 ## Difference-in-Differences {.center .h2center}
 
----
+------------------------------------------------------------------------
 
 ### Difference-in-Differences: Basic Idea
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
 In the simplest DD setting, outcomes are observed for units in two groups and in two time periods.
 
 Treated:
 
-- only units in one of the two groups are exposed to a treatment, in the second time period.
+-   only units in one of the two groups are exposed to a treatment, in the second time period.
 
 Control:
 
-- Never observed to be exposed to the treatment.
+-   Never observed to be exposed to the treatment.
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ### Difference-in-Differences: Basic Idea
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
 ```{r}
 knitr::include_graphics(here("images", "ddfig.png"))
 ```
 :::
+
 ::: {.column width="50%"}
 The average [change]{.blue} over time in the non-exposed (control) group is [subtracted]{.blue} from the gain over time in the exposed (treatment) group.
 
@@ -494,14 +465,14 @@ These are our two 'differences'.
 
 Double differencing removes biases in second period comparisons between the treatment and control group that could be the result from
 
-- permanent differences between those groups
-- secular trends affecting both groups.
+-   permanent differences between those groups
+-   secular trends affecting both groups.
 :::
-:::
+:::::
 
 ## Visual Intuition of DD
 
-::: {.footnote}
+::: footnote
 Gertler et al. (2011)
 :::
 
@@ -509,26 +480,25 @@ Gertler et al. (2011)
 knitr::include_graphics(here("images", "gertler1.png"))
 ```
 
----
+------------------------------------------------------------------------
 
 ### Difference-in-Differences without Regression
 
 DD is just differences in means! Let $\mu_{it}=E(Y_{it})$
 
-- $i=0$ is control group, $i=1$ is treatment.
-- $t=0$ is pre-period, $t=1$ is post-period.
+-   $i=0$ is control group, $i=1$ is treatment.
 
-- One 'difference' estimate of causal effect is:
-$\mu_{11}—\mu_{10}$ (pre-post in treated)
+-   $t=0$ is pre-period, $t=1$ is post-period.
 
-- Differences-in-Differences estimate of causal effect is:
-$(\mu_{11}-\mu_{10})-(\mu_{01}-\mu_{00})$
+-   One 'difference' estimate of causal effect is: $\mu_{11}—\mu_{10}$ (pre-post in treated)
+
+-   Differences-in-Differences estimate of causal effect is: $(\mu_{11}-\mu_{10})-(\mu_{01}-\mu_{00})$
 
 | Area    | Before | After | Difference (A - B) |
 |:--------|-------:|------:|:------------------:|
-| Treated | 135    | 100   | -35                |
-| Control | 80     | 60    | -20                |
-| T - C   | 55     | 40    | **-15**            |
+| Treated |    135 |   100 |        -35         |
+| Control |     80 |    60 |        -20         |
+| T - C   |     55 |    40 |      **-15**       |
 
 ## A social epidemiology example
 
@@ -536,318 +506,337 @@ $(\mu_{11}-\mu_{10})-(\mu_{01}-\mu_{00})$
 knitr::include_graphics(here("images", "mccormick-title.png"))
 ```
 
-- Evaluated impact of MA reform on inequalities in hospital admissions.
-- Compared MA to nearby states: NY, NJ, PA.
-- Intervention "worked": % uninsured halved (12% to 6%) from 2004-06 to 2008-09.
+-   Evaluated impact of MA reform on inequalities in hospital admissions.
+-   Compared MA to nearby states: NY, NJ, PA.
+-   Intervention "worked": % uninsured halved (12% to 6%) from 2004-06 to 2008-09.
 
----
+------------------------------------------------------------------------
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
 ### Evaluating pre-intervention trends
 
-- Adds credibility to assumption that post-intervention trends [would have been similar]{.red} in the absence of the intervention.
+-   Adds credibility to assumption that post-intervention trends [would have been similar]{.red} in the absence of the intervention.
 
-- "Null" results help focus on alternative mechanisms linking disadvantage to hospital admissions.
+-   "Null" results help focus on alternative mechanisms linking disadvantage to hospital admissions.
 :::
+
 ::: {.column width="50%"}
 ```{r, out.width="80%"}
 knitr::include_graphics(here("images", "mccormick-fig.png"))
 ```
 :::
-:::
+:::::
 
 ## Synthetic Controls {.center .h2center}
 
 ## Synthetic control methods
 
-::: {.footnote}
+::: footnote
 Abadie and Gardeazabel (2003)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- Inference from comparative case studies is limited if we cannot identify a control to represent the counterfactual scenario.
+-   Inference from comparative case studies is limited if we cannot identify a control to represent the counterfactual scenario.
 
-- Abadie and Gardeazabel (2003) pioneered the synthetic control method to examine the economic impact of terrorism in the Basque country, using other Spanish regions as control groups.
+-   Abadie and Gardeazabel (2003) pioneered the synthetic control method to examine the economic impact of terrorism in the Basque country, using other Spanish regions as control groups.
 
-- The synthetic control method uses a data driven approach to compare the trend of an outcome in a treated unit with the trend in a synthetic composite area (the "synthetic control").
+-   The synthetic control method uses a data driven approach to compare the trend of an outcome in a treated unit with the trend in a synthetic composite area (the "synthetic control").
 :::
-:::
+:::::
 
 ## What is a synthetic control?
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- A synthetic control is a weighted average of available control units that approximates the most relevant characteristics of the treated unit prior to the treatment
+-   A synthetic control is a weighted average of available control units that approximates the most relevant characteristics of the treated unit prior to the treatment
 
-- The synthetic control mimics the values of the predictors of the outcome, including pre-intervention values of the outcome, for the treated unit before the intervention occurred
+-   The synthetic control mimics the values of the predictors of the outcome, including pre-intervention values of the outcome, for the treated unit before the intervention occurred
 
-- The synthetic control represents the counterfactual scenario for a treated unit in the absence of the intervention under scrutiny
+-   The synthetic control represents the counterfactual scenario for a treated unit in the absence of the intervention under scrutiny
 
-- Intuition: A weighted combination of comparison units (the "synthetic control") provides a better comparison for the treated unit than any single comparison unit alone
+-   Intuition: A weighted combination of comparison units (the "synthetic control") provides a better comparison for the treated unit than any single comparison unit alone
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 McLelland (2017)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Example of 1999 cigarette sales tax in California
 
-- No control state looks like a good 'match'.
+-   No control state looks like a good 'match'.
 
-- SC creates a weighted control.
+-   SC creates a weighted control.
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "pre-ca.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 McLelland (2017)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Example of 1999 cigarette sales tax in California
 
-- No control state looks like a good 'match'.
+-   No control state looks like a good 'match'.
 
-- SC creates a weighted control.
+-   SC creates a weighted control.
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "synthetic-ca.png"))
 ```
 :::
-:::
+:::::
 
----
+## 
 
-::: {.footnote}
+::: footnote
 Spruk and Kovac (2020)
 :::
 
-```{r, out.width="70%"}
+```{r, out.width="60%"}
 knitr::include_graphics(here("images", "dk-trans.png"))
 ```
 
----
+## 
 
-::: {.footnote}
+::: footnote
 Spruk and Kovac (2020)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- 'Synthetic' DK mostly SWE, ITA, USA, and FIN.
+-   'Synthetic' DK mostly SWE, ITA, USA, and FIN.
 
-- Also declines in CVD mortality.
+-   Also declines in CVD mortality.
 
-- Robustness checks:
+-   Robustness checks:
 
 > By deliberately assigning TFA policy to wrong dates and other countries, we show the effect of the 2001 TFA policy intervention is specific to Denmark and does not appear to be driven by alternative dates
 :::
+
 ::: {.column width="50%"}
 ```{r}
 knitr::include_graphics(here("images", "dk-syn-aobesity.png"))
 ```
 :::
-:::
+:::::
 
 ## Instrumental Variables {.center .h2center}
 
----
+------------------------------------------------------------------------
 
 ### Challenge of conventional observational study (again)
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- WHO: "Educational attainment is linked to improved health outcomes."
+-   WHO: "Educational attainment is linked to improved health outcomes."
 
-- But what about unmeasured confounding? Unmeasured factors such as personality traits, cognitive ability, etc. may be predictive of both education and disease.
+-   But what about unmeasured confounding? Unmeasured factors such as personality traits, cognitive ability, etc. may be predictive of both education and disease.
 
-- Failure to measure such factors will falsely attribute their effects to education.
+-   Failure to measure such factors will falsely attribute their effects to education.
 :::
+
 ::: {.column width="50%"}
 ```{r}
 knitr::include_graphics(here("images", "ed-confounded-dag.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ### Possible solution: Quasi-experiment
 
-"Instrumental variable": predicts education but [not]{.red} associated with anything else [mimicking random assignment].
+"Instrumental variable": predicts education but [not]{.red} associated with anything else \[mimicking random assignment\].
 
 ```{r}
 knitr::include_graphics(here("images", "qe-educ-comp.png"))
 ```
 
----
+------------------------------------------------------------------------
 
 ### Non-randomized instrument creates additional issues
 
-- In an RCT we know the treatment assignment is not associated directly with the outcome or with other unmeasured common causes.
+-   In an RCT we know the treatment assignment is not associated directly with the outcome or with other unmeasured common causes.
 
-- This assumption is less credible when our "instrument" is non-randomized.
+-   This assumption is less credible when our "instrument" is non-randomized.
 
 ```{r, out.width="70%"}
 knitr::include_graphics(here("images", "iv-bias-dag.png"))
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Glymour et al. (2008)
 :::
 
 ### Non-randomized examples of IV: Policies
 
-- Does education affect cognitive functioning?
+-   Does education affect cognitive functioning?
 
-- **Instrument**: changes in compulsory schooling laws [mimicking random assignment].
+-   **Instrument**: changes in compulsory schooling laws \[mimicking random assignment\].
 
 ```{r, out.width="70%"}
 knitr::include_graphics(here("images", "csl-dag.png"))
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 The lower line shows the proportion of British-born adults aged 32 to 64 from the 1983 to 1998 General Household Surveys who report leaving full-time education at or before age 14 from 1935 to 1965. The upper line shows the same, but for age 15. The minimum school-leaving age in Great Britain changed in 1947 from 14 to 15 (Oreopoulos 2006).
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### What does a quasi-experiment look like?
 
 Fraction left full-time education by year aged 14 and 15 (Great Britain)
 :::
+
 ::: {.column width="75%"}
 ```{r, out.width="90%"}
 knitr::include_graphics(here("images", "uk-education.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 Average schooling increases by exactly half a year between the cohorts that were age 14 in 1946 and in 1948.
 :::
+
 ::: {.column width="75%"}
 ```{r, out.width="90%"}
 knitr::include_graphics(here("images", "oreo.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Ex: Education and HIV
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "bor.png"))
 ```
 :::
-:::
+:::::
 
 ## Regression Discontinuity {.center .h2center}
 
 ## RD: Basic Idea
 
-::: {.columns}
-::: {.column width="50%"}
-- Take advantage of arbitrary thresholds that sometimes assign treatment to individuals.
+:::::: columns
+::: {.column width="45%"}
+<br>
 
-- When an administrative or rule-based cutoff in a continuous variable (present in your data) predicts treatment assignment, being on one side or the other of this cutoff determines, or predicts, treatment received.
+-   Take advantage of arbitrary thresholds that sometimes assign treatment to individuals.
+
+-   When an administrative or rule-based cutoff in a continuous variable (present in your data) predicts treatment assignment, being on one side or the other of this cutoff determines, or predicts, treatment received.
 :::
 
-::: {.column width="50%"}
-
-. . .
-
-- The continuous variable is called the "assignment" or "forcing" variable.
-
-- Groups just on either side are the threshold considered "as good as randomly" assigned to treatment.
-:::
+::: {.column width="5%"}
 :::
 
----
+::: {.column width="45%"}
+<br>
+
+-   The continuous variable is called the "assignment" or "forcing" variable.
+
+-   Groups just on either side are the threshold considered "as good as randomly" assigned to treatment.
+:::
+::::::
+
+## 
 
 ### RD: Motivating example
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- Suppose we want to estimate the impact of a cash transfer program on daily food expenditure of poor households.
+<br>
 
-- Poverty is measured by a continuous score between 0 and 100 that is used to rank households from poorest to richest.
+-   Suppose we want to estimate the impact of a cash transfer program on daily food expenditure of poor households.
 
-- Poverty is the assignment variable, $Z$, that determines eligibility for the cash transfer program.
+-   Poverty is measured by a continuous score between 0 and 100 that is used to rank households from poorest to richest.
 
-- The outcome of interest, daily food expenditure, is denoted by $Y$.
+-   Poverty is the assignment variable, $Z$, that determines eligibility for the cash transfer program.
+
+-   The outcome of interest, daily food expenditure, is denoted by $Y$.
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Gertler (2011)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 At baseline, you might expect poorer households to spend less on food, on average, than richer ones, which might look like this
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "gertler-rd1.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Gertler (2011)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 Under the program's rules, only households with a poverty score, $Z$, below 50 are eligible for the cash payment
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "gertler-rd3.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Gertler (2011)
 :::
 
@@ -857,91 +846,95 @@ As we approach the cutoff value from above and below, the individuals in both gr
 knitr::include_graphics(here("images", "gertler-rd6.png"))
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Smith et al. (2015)
 :::
 
 ### Applied example: HPV vaccine and sexual behaviors
 
-- Does getting the HPV vaccine affect sexual behaviors?
-- Vaccine policy: predicts vaccine receipt but (**we assume**) [not]{.red} associated with anything else [mimicking random assignment].
+-   Does getting the HPV vaccine affect sexual behaviors?
+-   Vaccine policy: predicts vaccine receipt but (**we assume**) [not]{.red} associated with anything else \[mimicking random assignment\].
 
 ```{r, out.width="70%"}
 knitr::include_graphics(here("images", "hpv-dag.png"))
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Smith et al. (2015)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Does the cutoff predict treatment?
 
-- Girls "assigned" to HPV program by quarter of birth.
+-   Girls "assigned" to HPV program by quarter of birth.
 
-- Pr(vaccine) jumps discontinuously at cutoff
+-   Pr(vaccine) jumps discontinuously at cutoff
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "smith-treatment.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Smith et al. (2015)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### What does a credible natural experiment look like?
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "smith-t1.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
-::: {.footnote}
+::: footnote
 Smith et al. (2015)
 :::
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 ### Note little impact of adjustment
 :::
+
 ::: {.column width="75%"}
 ```{r}
 knitr::include_graphics(here("images", "smith-t3.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ### Issues related to generalizability
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- RD estimates local average impacts around the eligibility cutoff where treated and control units are most similar and results cannot be generalized to units whose scores are further away from the cutoff (unless we assume treatment heterogeneity).
+-   RD estimates local average impacts around the eligibility cutoff where treated and control units are most similar and results cannot be generalized to units whose scores are further away from the cutoff (unless we assume treatment heterogeneity).
 
-- If the goal is to answer whether the program should exist or not, then RD is likely not the appropriate methodology.
+-   If the goal is to answer whether the program should exist or not, then RD is likely not the appropriate methodology.
 
-- However, if the question is whether the program should be cut or expanded at the margin, then it produces the local estimate of interest to inform this policy decision
+-   However, if the question is whether the program should be cut or expanded at the margin, then it produces the local estimate of interest to inform this policy decision
 :::
-:::
+:::::
 
 ## Overview {.h2center}
 
@@ -959,84 +952,88 @@ knitr::include_graphics(here("images", "smith-t3.png"))
 
 ### Final Thoughts
 
----
+------------------------------------------------------------------------
 
 ### Be careful, and skeptical
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- Correlations between social factors and health are easy to find.
+-   Correlations between social factors and health are easy to find.
 
-- They do not necessarily reflect **causal** relationships.
+-   They do not necessarily reflect **causal** relationships.
 
-- Need to search hard for alternative explanations.
+-   Need to search hard for alternative explanations.
 
-- Important to consider the strength of evidence in considering interventions.
+-   Important to consider the strength of evidence in considering interventions.
 :::
+
 ::: {.column width="50%"}
 ```{r}
 knitr::include_graphics(here("images", "feynman-fool.jpeg"))
 ```
 :::
-:::
+:::::
 
 ## Are natural experiments always more credible?
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- Not necessarily, but probably.
+-   Not necessarily, but probably.
 
-- Key is "as-if" randomization of treatment:
+-   Key is "as-if" randomization of treatment:
 
-    - If this is credible, it is a much stronger **design** than most observational studies.
-    - Should eliminate self-selection in to exposure groups.
+    -   If this is credible, it is a much stronger **design** than most observational studies.
+    -   Should eliminate self-selection in to exposure groups.
 
-- Allows for simple, transparent analysis of average differences between groups.
+-   Allows for simple, transparent analysis of average differences between groups.
 
-- Allows us to rely on weaker assumptions.
+-   Allows us to rely on weaker assumptions.
 :::
-:::
+:::::
 
 ## Assumptions still matter!
 
-::: {.columns}
+::::: columns
 ::: {.column width="50%"}
-- Quasi-experimental studies are still observational.
+-   Quasi-experimental studies are still observational.
 
-- Most credible if they create unconditional randomized treatment groups (e.g., lottery).
+-   Most credible if they create unconditional randomized treatment groups (e.g., lottery).
 
-- Credibility is continuous, not binary.
+-   Credibility is continuous, not binary.
 
-- I worry about the cognitive impact of the "quasi-experimental" label.
+-   I worry about the cognitive impact of the "quasi-experimental" label.
 :::
+
 ::: {.column width="50%"}
 ```{r}
 knitr::include_graphics(here("images", "qe-confounded-dag.png"))
 ```
 :::
-:::
+:::::
 
----
+------------------------------------------------------------------------
 
 ### Back to basics: assumptions and costs
 
-::: {.columns}
+::::: columns
 ::: {.column width="25%"}
 :::
+
 ::: {.column width="75%"}
-- Major benefit of randomized evaluations are that few assumptions are needed to estimate a causal effect.
+-   Major benefit of randomized evaluations are that few assumptions are needed to estimate a causal effect.
 
-- Necessary assumptions can often be checked.
+-   Necessary assumptions can often be checked.
 
-- Non-randomization means more assumptions, more possibility for assumptions to be violated.
+-   Non-randomization means more assumptions, more possibility for assumptions to be violated.
 
-- Should lead us to spend lots of time trying to test the credibility of these assumptions.
+-   Should lead us to spend lots of time trying to test the credibility of these assumptions.
 
-    - How good is "as-if random"?
-    - Are there compelling non-causal alternative explanations for the observed results?
+    -   How good is "as-if random"?
+    -   Are there compelling non-causal alternative explanations for the observed results?
 
-- Not all non-randomized designs are created equal.
+-   Not all non-randomized designs are created equal.
 :::
-:::
+:::::

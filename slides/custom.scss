@@ -149,6 +149,19 @@ $theme-gray:  #cccccc;
   border-bottom: 1px solid black;
 }
 
+// ── Native Quarto columns ─────────────────────────────────────────────────────
+// Quarto's embedded HTML-format CSS overrides reveal's flex columns with
+// display:initial/inline-block, which silently breaks nested ::: columns
+// layouts (second column wraps below). Restore the intended flex behavior.
+.reveal div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+.reveal div.columns > div.column {
+  display: block;
+  vertical-align: initial;
+}
+
 // ── Column helpers (xaringan-style) ──────────────────────────────────────────
 // 50/50 split — no wrapper div needed
 .reveal .pull-left {
@@ -179,6 +192,13 @@ $theme-gray:  #cccccc;
 .red     { color: $theme-red;  }
 .gray    { color: $theme-gray; }
 .black   { color: #000000;     }
+
+// As divs the color utilities need extra specificity to beat the
+// .reveal p/li body-text rules above
+.reveal .blue,  .reveal .blue p,  .reveal .blue li  { color: $theme-blue; }
+.reveal .red,   .reveal .red p,   .reveal .red li   { color: $theme-red;  }
+.reveal .gray,  .reveal .gray p,  .reveal .gray li  { color: $theme-gray; }
+.reveal .black, .reveal .black p, .reveal .black li { color: #000000;     }
 .smaller { font-size: 0.8em;   }
 
 .h2center h2 {
