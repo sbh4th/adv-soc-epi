@@ -12,6 +12,20 @@ format:
     slide-number: true
     html-math-method: mathjax
     embed-resources: true
+    include-in-header:
+      text: |
+        <style>
+        /* deck-wide body text size (headers unchanged) */
+        .reveal .slides section p,
+        .reveal .slides section li,
+        .reveal .slides section td,
+        .reveal .slides section th {
+          font-size: 38px;
+        }
+        .reveal .slides section .footnote p {
+          font-size: inherit;
+        }
+        </style>
 title-slide-attributes:
     data-background-image: "../../images/mcgill-epi-logo.png"
     data-background-size: 30%
@@ -88,27 +102,24 @@ knitr::opts_chunk$set(
 
 ## Causation, Association, and Confounding
 
-::::: columns
-::: {.column width="25%"}
-:::
-
-::: {.column width="75%"}
-
--   **Causal effect**: Do individuals randomly
-    [assigned]{style="color: red"} (i.e., SET) to treatment have better
-    outcomes?
+-   **Causal effect**: Difference between those randomly
+    [assigned]{style="color: red"} to treatment:
 
     $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)$$
 
--   **Association**: Do individuals who [happen to
-    be]{style="color: red"} treated have better outcomes?
+-   **Association**: Difference between those who [happen to be]{style="color: red"} treated:
 
     $$E\left(Y|Treated\right)-E(Y|Untreated)$$
 
 -   **Confounding**:
-    $$E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right)\neq E\left(Y|Treated\right)-E\left(Y|Untreated\right)$$
-:::
-::::::
+   $$
+\begin{gathered}
+E\left(Y|SET\left[Treated\right]\right)-E\left(Y|SET\left[Untreated\right]\right) \\
+\neq \\
+E\left(Y|Treated\right)-E\left(Y|Untreated\right)
+\end{gathered}
+$$
+
 
 ## Overview {.h2center}
 
@@ -426,46 +437,50 @@ knitr::include_graphics(here("images", "dunning.jpeg"))
 
 ## Difference-in-Differences {.center .h2center}
 
-------------------------------------------------------------------------
+## Difference-in-Differences: Basic Idea
 
-### Difference-in-Differences: Basic Idea
+<br>
+
+In the simplest DD setting, outcomes are observed for units in two groups and in two time periods.
 
 ::::: columns
 ::: {.column width="25%"}
 :::
 
 ::: {.column width="75%"}
-In the simplest DD setting, outcomes are observed for units in two groups and in two time periods.
 
-Treated:
+<br>
 
--   only units in one of the two groups are exposed to a treatment, in the second time period.
+[Treated:]{.red}
 
-Control:
+-   Only units in one of the two groups are exposed to a treatment, in the second time period.
+
+[Control:]{.blue}
 
 -   Never observed to be exposed to the treatment.
 :::
 :::::
 
-------------------------------------------------------------------------
 
-### Difference-in-Differences: Basic Idea
+## Difference-in-Differences: Basic Idea
+
+<br>
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="30%"}
 ```{r}
-knitr::include_graphics(here("images", "ddfig.png"))
+knitr::include_graphics(here("images", "dd-dag.png"))
 ```
 :::
 
-::: {.column width="50%"}
-The average [change]{.blue} over time in the non-exposed (control) group is [subtracted]{.blue} from the gain over time in the exposed (treatment) group.
+::: {.column width="70%"}
+The average [change]{.blue} over time (first difference) in the non-exposed (control) group is [subtracted]{.blue} (second difference) from the gain over time in the exposed (treatment) group.
 
-These are our two 'differences'.
+<br>
 
-Double differencing removes biases in second period comparisons between the treatment and control group that could be the result from
+Double differencing removes biases in post-period that could result from *unmeasured*::
 
--   permanent differences between those groups
+-   fixed differences between those groups
 -   secular trends affecting both groups.
 :::
 :::::
