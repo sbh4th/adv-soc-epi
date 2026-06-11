@@ -12,6 +12,7 @@ format:
     slide-number: true
     html-math-method: mathjax
     embed-resources: true
+    auto-stretch: false
     include-in-header:
       text: |
         <style>
@@ -31,6 +32,7 @@ title-slide-attributes:
     data-background-size: 30%
     data-background-position: 50% 90%
 editor: source
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -46,27 +48,19 @@ knitr::opts_chunk$set(
 
 ## Overview {.h2center}
 
-### Motivation
+### [Motivation]{.black}
 
 <br>
 
-### Randomization and Observation
+### [Quasi-Experimental Designs]{.black}
 
 <br>
 
-### Quasi-Experimental Designs
-
-<br>
-
-### Final Thoughts
+### [Final Thoughts]{.black}
 
 ## Overview {.h2center}
 
-### Motivation
-
-<br>
-
-### [Randomization and Observation]{.gray}
+### [Motivation]{.black}
 
 <br>
 
@@ -121,56 +115,7 @@ E\left(Y|Treated\right)-E\left(Y|Untreated\right)
 $$
 
 
-## Overview {.h2center}
-
-### [Motivation]{.gray}
-
-<br>
-
-### Randomization and Observation
-
-<br>
-
-### [Quasi-Experimental Designs]{.gray}
-
-<br>
-
-### [Final Thoughts]{.gray}
-
-## Randomized Trials vs. Observational Studies
-
-:::::: columns
-::: {.column width="45%"}
-<br>
-
-### RCTs, Defined
-
-RCTs involve:
-
-1.  comparing treated and control groups;
-2.  the treatment assignment is random;
-3.  investigator does the randomizing.
-
-In an RCT, treatment/exposure is [assigned]{.red} by the investigator
-:::
-
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
-<br>
-
-### Observational studies
-
--   Exposed/unexposed groups [exist]{.red} in the source population and are selected by the investigator.
-
--   Good natural experiments do (1) and (2), but not (3).
-
--   Because there is no control over assignment, the credibility of natural experiments hinges on how good "as-if random" approximates (2).
-:::
-::::::
-
-------------------------------------------------------------------------
+##
 
 ### Strength of randomized treatment allocation
 
@@ -182,10 +127,10 @@ In an RCT, treatment/exposure is [assigned]{.red} by the investigator
 knitr::include_graphics(here("images", "rct-dag.png"))
 ```
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Keall et al. (2015)
+@keall2015
 :::
 
 ::::: columns
@@ -237,35 +182,12 @@ knitr::include_graphics(here("images", "keall-lancet-t1.png"))
 -   Impossible (ethnic background, place of birth)
 -   Expensive (neighborhood environments)
 -   Long latency periods (many years before outcomes are observable).
--   Effects may be produced by complex, intermediate pathways.
-
-<br>
 
 -   We need alternatives to RCTs.
 :::
 
 :::
 
-------------------------------------------------------------------------
-
-### Unmeasured confounding is a serious challenge
-
-::::: columns
-::: {.column width="25%"}
-:::
-
-::: {.column width="75%"}
--   We often compare socially advantaged and disadvantaged on health.
-
--   Key problem: people choose/end up in treated or untreated group for reasons that are difficult to measure and that may be correlated with their outcomes.
-
--   So...**adjust.**
-
-    -   Measure and adjust (regression) for $C$ confounding factors.
-
-    -   Conditional on $C$, we are supposed to believe assignment is "as good as random" = causal.
-:::
-:::::
 
 ## 
 
@@ -285,10 +207,10 @@ knitr::include_graphics(here("images", "wishful-thinking-veley.jpg"))
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Jones et al. (2018)
+@jones2019
 :::
 
 ### Why we worry about observational studies
@@ -311,40 +233,30 @@ Also analyzed as an observational study comparing "participants" vs. non-partici
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Carroll, *New York Times*, Aug 6, 2018.
+@carroll2018
 :::
 
-```{r, out.width="50%"}
+```{r, out.width="80%"}
 knitr::include_graphics(here("images", "carroll-nyt-wellness.png"))
 ```
 
-## Overview {.h2center}
 
-### [Motivation]{.gray}
-
-<br>
-
-### [Randomization and Observation]{.gray}
-
-<br>
-
-### Quasi-Experimental Designs
-
-<br>
-
-### [Final Thoughts]{.gray}
 
 ## How can quasi-experiments help?
+
+<br>
+
+### Quasi-experiments aim to mimic RCTs.
 
 ::::: columns
 ::: {.column width="25%"}
 :::
 
 ::: {.column width="75%"}
--   Quasi-experiments aim to mimic RCTs.
+
 
 -   "Accidents of chance" that create:
 
@@ -379,7 +291,7 @@ knitr::include_graphics(here("images", "qe-dag.png"))
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ### Strategies based on observables and unobservables
 
@@ -415,6 +327,10 @@ knitr::include_graphics(here("images", "qe-dag.png"))
 
 ## Some *potential* sources of natural experiments
 
+::: footnote
+@dunning2012
+:::
+
 ::::: columns
 ::: {.column width="25%"}
 ```{r}
@@ -434,6 +350,18 @@ knitr::include_graphics(here("images", "dunning.jpeg"))
 -   Seasonality
 :::
 :::::
+
+## Overview {.h2center}
+
+### [Motivation]{.gray}
+
+<br>
+
+### [Quasi-Experimental Designs]{.black}
+
+<br>
+
+### [Final Thoughts]{.gray}
 
 ## Difference-in-Differences {.center .h2center}
 
@@ -488,7 +416,7 @@ Double differencing removes biases in post-period that could result from *unmeas
 ## Visual Intuition of DD
 
 ::: footnote
-Gertler et al. (2011)
+@gertler2011
 :::
 
 ```{r, out.width="60%"}
@@ -516,6 +444,10 @@ DD is just differences in means! Let $\mu_{it}=E(Y_{it})$
 | T - C   |     55 |    40 |      **-15**       |
 
 ## A social epidemiology example
+
+::: footnote
+@mccormick2015
+:::
 
 ```{r, out.width="80%"}
 knitr::include_graphics(here("images", "mccormick-title.png"))
@@ -548,7 +480,7 @@ knitr::include_graphics(here("images", "mccormick-fig.png"))
 ## Synthetic control methods
 
 ::: footnote
-Abadie and Gardeazabel (2003)
+@abadie2003
 :::
 
 ::::: columns
@@ -558,7 +490,7 @@ Abadie and Gardeazabel (2003)
 ::: {.column width="75%"}
 -   Inference from comparative case studies is limited if we cannot identify a control to represent the counterfactual scenario.
 
--   Abadie and Gardeazabel (2003) pioneered the synthetic control method to examine the economic impact of terrorism in the Basque country, using other Spanish regions as control groups.
+-   @abadie2003 pioneered the synthetic control method to examine the economic impact of terrorism in the Basque country, using other Spanish regions as control groups.
 
 -   The synthetic control method uses a data driven approach to compare the trend of an outcome in a treated unit with the trend in a synthetic composite area (the "synthetic control").
 :::
@@ -581,64 +513,21 @@ Abadie and Gardeazabel (2003)
 :::
 :::::
 
-------------------------------------------------------------------------
-
-::: footnote
-McLelland (2017)
-:::
-
-::::: columns
-::: {.column width="25%"}
-### Example of 1999 cigarette sales tax in California
-
--   No control state looks like a good 'match'.
-
--   SC creates a weighted control.
-:::
-
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "pre-ca.png"))
-```
-:::
-:::::
-
-------------------------------------------------------------------------
-
-::: footnote
-McLelland (2017)
-:::
-
-::::: columns
-::: {.column width="25%"}
-### Example of 1999 cigarette sales tax in California
-
--   No control state looks like a good 'match'.
-
--   SC creates a weighted control.
-:::
-
-::: {.column width="75%"}
-```{r}
-knitr::include_graphics(here("images", "synthetic-ca.png"))
-```
-:::
-:::::
-
 ## 
 
 ::: footnote
-Spruk and Kovac (2020)
+@spruk2020
 :::
 
-```{r, out.width="60%"}
-knitr::include_graphics(here("images", "dk-trans.png"))
+```{r, out.width = "70%"}
+knitr::include_graphics(here("images",
+  "dk-trans.png"))
 ```
 
 ## 
 
 ::: footnote
-Spruk and Kovac (2020)
+@spruk2020
 :::
 
 ::::: columns
@@ -661,13 +550,15 @@ knitr::include_graphics(here("images", "dk-syn-aobesity.png"))
 
 ## Instrumental Variables {.center .h2center}
 
-------------------------------------------------------------------------
 
-### Challenge of conventional observational study (again)
+
+## Challenge of conventional observational study (again)
 
 ::::: columns
 ::: {.column width="50%"}
--   WHO: "Educational attainment is linked to improved health outcomes."
+<br>
+
+-   Everyone: "Educational attainment is linked to improved health outcomes."
 
 -   But what about unmeasured confounding? Unmeasured factors such as personality traits, cognitive ability, etc. may be predictive of both education and disease.
 
@@ -675,13 +566,15 @@ knitr::include_graphics(here("images", "dk-syn-aobesity.png"))
 :::
 
 ::: {.column width="50%"}
+<br>
+
 ```{r}
 knitr::include_graphics(here("images", "ed-confounded-dag.png"))
 ```
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ### Possible solution: Quasi-experiment
 
@@ -703,10 +596,10 @@ knitr::include_graphics(here("images", "qe-educ-comp.png"))
 knitr::include_graphics(here("images", "iv-bias-dag.png"))
 ```
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Glymour et al. (2008)
+@glymour2008
 :::
 
 ### Non-randomized examples of IV: Policies
@@ -719,10 +612,10 @@ Glymour et al. (2008)
 knitr::include_graphics(here("images", "csl-dag.png"))
 ```
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-The lower line shows the proportion of British-born adults aged 32 to 64 from the 1983 to 1998 General Household Surveys who report leaving full-time education at or before age 14 from 1935 to 1965. The upper line shows the same, but for age 15. The minimum school-leaving age in Great Britain changed in 1947 from 14 to 15 (Oreopoulos 2006).
+The lower line shows the proportion of British-born adults aged 32 to 64 from the 1983 to 1998 General Household Surveys who report leaving full-time education at or before age 14 from 1935 to 1965. The upper line shows the same, but for age 15. The minimum school-leaving age in Great Britain changed in 1947 from 14 to 15 [@oreopoulos2006].
 :::
 
 ::::: columns
@@ -754,6 +647,10 @@ knitr::include_graphics(here("images", "oreo.png"))
 :::::
 
 ------------------------------------------------------------------------
+
+::: footnote
+@deneve2015
+:::
 
 ::::: columns
 ::: {.column width="25%"}
@@ -792,9 +689,7 @@ knitr::include_graphics(here("images", "bor.png"))
 :::
 ::::::
 
-## 
-
-### RD: Motivating example
+## RD: Motivating example
 
 ::::: columns
 ::: {.column width="25%"}
@@ -813,10 +708,10 @@ knitr::include_graphics(here("images", "bor.png"))
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Gertler (2011)
+@gertler2011
 :::
 
 ::::: columns
@@ -831,10 +726,10 @@ knitr::include_graphics(here("images", "gertler-rd1.png"))
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Gertler (2011)
+@gertler2011
 :::
 
 ::::: columns
@@ -849,10 +744,10 @@ knitr::include_graphics(here("images", "gertler-rd3.png"))
 :::
 :::::
 
-------------------------------------------------------------------------
+##
 
 ::: footnote
-Gertler (2011)
+@gertler2011
 :::
 
 As we approach the cutoff value from above and below, the individuals in both groups become more and more alike, on both measured and unobserved characteristics — in a small area around the threshold, the only difference is in treatment assignment
@@ -861,13 +756,11 @@ As we approach the cutoff value from above and below, the individuals in both gr
 knitr::include_graphics(here("images", "gertler-rd6.png"))
 ```
 
-------------------------------------------------------------------------
+## Applied example: HPV vaccine and sexual behaviors
 
 ::: footnote
-Smith et al. (2015)
+@smith2015
 :::
-
-### Applied example: HPV vaccine and sexual behaviors
 
 -   Does getting the HPV vaccine affect sexual behaviors?
 -   Vaccine policy: predicts vaccine receipt but (**we assume**) [not]{.red} associated with anything else \[mimicking random assignment\].
@@ -879,7 +772,7 @@ knitr::include_graphics(here("images", "hpv-dag.png"))
 ------------------------------------------------------------------------
 
 ::: footnote
-Smith et al. (2015)
+@smith2015
 :::
 
 ::::: columns
@@ -901,7 +794,7 @@ knitr::include_graphics(here("images", "smith-treatment.png"))
 ------------------------------------------------------------------------
 
 ::: footnote
-Smith et al. (2015)
+@smith2015
 :::
 
 ::::: columns
@@ -919,7 +812,7 @@ knitr::include_graphics(here("images", "smith-t1.png"))
 ------------------------------------------------------------------------
 
 ::: footnote
-Smith et al. (2015)
+@smith2015
 :::
 
 ::::: columns
@@ -957,15 +850,11 @@ knitr::include_graphics(here("images", "smith-t3.png"))
 
 <br>
 
-### [Randomization and Observation]{.gray}
-
-<br>
-
 ### [Quasi-Experimental Designs]{.gray}
 
 <br>
 
-### Final Thoughts
+### [Final Thoughts]{.black}
 
 ------------------------------------------------------------------------
 
@@ -1019,7 +908,6 @@ knitr::include_graphics(here("images", "feynman-fool.jpeg"))
 
 -   Credibility is continuous, not binary.
 
--   I worry about the cognitive impact of the "quasi-experimental" label.
 :::
 
 ::: {.column width="50%"}
@@ -1052,3 +940,8 @@ knitr::include_graphics(here("images", "qe-confounded-dag.png"))
 -   Not all non-randomized designs are created equal.
 :::
 :::::
+
+## References
+
+::: {#refs}
+:::
