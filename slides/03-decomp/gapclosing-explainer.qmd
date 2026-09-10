@@ -1,6 +1,6 @@
 ---
-title: "The Gap-Closing Estimand: From Black Box to By Hand"
-subtitle: "Replicating Lundberg (2021) manually"
+title: "The Gap-Closing Estimand"
+subtitle: "Replicating Lundberg (2024) manually"
 author: "Sam Harper"
 date: today
 format:
@@ -21,8 +21,7 @@ editor:
 @lundberg2024 introduces the **gap-closing estimand**: a way to ask *how
 much of an observed gap between social groups would close if we
 intervened on a treatment?* This document works through the mechanics
-using the package's own simulated dataset — first calling `gapclosing()`
-as a black box, then replicating each step by hand.
+using the package's own simulated dataset — first calling `gapclosing()`, then replicating each step 'by hand'.
 
 The three manual estimators we cover are:
 
@@ -34,9 +33,14 @@ The three manual estimators we cover are:
 #| label: setup
 #| message: false
 #| warning: false
+library(here)
 library(gapclosing)
 library(tidyverse)
-library(knitr)
+library(tinytable)
+library(marginaleffects)
+library(ggdag)
+library(dagitty)
+library(ggraph)
 ```
 
 ------------------------------------------------------------------------
@@ -48,43 +52,42 @@ we assume. The DAG below encodes our assumptions:
 
 ```{r}
 #| label: dag
-#| fig-width: 5
-#| fig-height: 1.8
+#| fig-width: 6
+#| fig-height: 3
 #| fig-align: center
 #| echo: false
 #| warning: false
 
-# Pure ggplot2 — same approach as Lundberg's own vignette.
-nodes <- data.frame(
-  label = c("Category\n(X)", "Confounder\n(L)", 
-    "Treatment\n(T)", "Outcome\n(Y)"),
-  x     = c(1, 2, 3, 4),
-  y     = c(1, 1, 1, 1)
+dag <- dagify(
+  T ~ L + X,
+  Y ~ T + L + X,
+  L ~ X,
+  coords = list(
+    x = c(X = 1, L = 2.5, T = 2.5, Y = 4),
+    y = c(X = 1, L = 2,   T = 0,   Y = 1)
+  ),
+  labels = c(
+    X = "Category\n(X)",
+    L = "Confounder\n(L)",
+    T = "Treatment\n(T)",
+    Y = "Outcome\n(Y)"
+  )
 )
 
-arr <- arrow(length = unit(0.1, "in"))
+dag |>
+  tidy_dagitty() |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges_link(
+    arrow = grid::arrow(length = grid::unit(6, "pt"), type = "closed"),
+    edge_colour = "black", edge_width = 0.6
+  ) +
+  geom_dag_point(color = "white", size = 18, stroke = 1,
+                 shape = 21, fill = "white") +
+  geom_dag_label(aes(label = label), colour = "black", size = 3,
+                 fontface = "plain", fill = NA, label.size = 0) +
+  theme_dag_blank() +
+  theme(plot.background = element_rect(fill = "white", color = NA))
 
-ggplot(nodes, aes(x = x, y = y, label = label)) +
-  # Category → Confounder (straight)
-  annotate("segment", x = 1, y = 1, xend = 1.6, yend = 1, arrow = arr) +
-  # Category → Treatment (curved over)
-  annotate("curve", x = 1, y = 1, xend = 2.9, yend = 1.2,
-           arrow = arr, curvature = -0.3) +
-  # Category → Outcome (curved over)
-  annotate("curve", x = 1, y = 1, xend = 3.9, yend = 1.2,
-           arrow = arr, curvature = -0.25) +
-  # Confounder → Treatment (straight)
-  annotate("segment", x = 2, y = 1, xend = 2.65, yend = 1, arrow = arr) +
-  # Confounder → Outcome (curved under — the backdoor path)
-  annotate("curve", x = 2, y = 1, xend = 3.75, yend = 0.82,
-           arrow = arr, curvature = 0.3) +
-  # Treatment → Outcome (straight, highlighted in blue)
-  annotate("segment", x = 3, y = 1, xend = 3.65, yend = 1,
-           color = "blue", linewidth = 1.1, arrow = arr) +
-  geom_label(fill = "white", label.size = 0.3) +
-  ylim(0.5, 1.5) +
-  xlim(0.5, 4.8) +
-  theme_void()
 ```
 
 **Reading the DAG:**
@@ -135,7 +138,9 @@ dat <- data.frame(
                     category == "B" ~  0.0,
                     category == "C" ~ -1.2),
     # Y | L, T, X ~ N(L + T*tau_X, 1)
-    outcome = rnorm(n, mean = confounder + treatment * tau, sd = 1)
+    outcome = rnorm(n, 
+      mean = confounder + treatment * tau, 
+      sd = 1)
   ) |>
   select(-tau)   # not observed in practice
 
@@ -154,9 +159,9 @@ The key design features:
 
 ------------------------------------------------------------------------
 
-## Step 1 — The factual gap
+## Step 1 — The gap
 
-Before any counterfactual reasoning, what do we actually observe?
+Before any counterfactual reasoning, what group differences do we actually observe?
 
 ```{r}
 #| label: factual
@@ -164,7 +169,7 @@ factual <- dat |>
   group_by(category) |>
   summarise(mean_y = mean(outcome), n = n(), .groups = "drop")
 
-factual |> kable(digits = 3)
+tt(factual, digits = 2)
 ```
 
 ```{r}
@@ -178,32 +183,69 @@ cat("Factual gap  A - B:", round(gap_AB_fact, 3),
     "\nFactual gap  C - B:", round(gap_CB_fact, 3), "\n")
 ```
 
-These observed gaps conflate two things: (a) the causal effect of
-treatment and (b) differences in the confounder L across categories.
-Group C has the highest L mean, so its members get treated more often
-*and* have higher baseline outcomes — even though τ_C is actually
-negative.
+These observed gaps conflate two things: (a) the effect of
+treatment and (b) differences in the confounder L across categories. Group C has the highest L mean, so its members get treated more often *and* have higher baseline outcomes — even though τ_C is actually negative.
 
 ------------------------------------------------------------------------
 
-## Step 2 — The `gapclosing()` black box
+## Step 2 — What are we actually estimating?
+
+Before fitting any models it is worth being precise about the estimand,
+because the gap-closing estimand is easy to confuse with a treatment
+effect.
+
+**What it is not.** A treatment effect contrast asks: for people in
+group $x$, how much does treatment help?
+
+$$E[Y(1) \mid X=x] - E[Y(0) \mid X=x] \quad \text{(ATE within category)}$$
+
+**What it is.** The gap-closing estimand asks: after a common
+intervention that sets $T=1$ for everyone, how much inequality *between*
+groups remains?
+
+$$E[Y(1) \mid X=A] - E[Y(1) \mid X=B] \quad \text{(gap-closing estimand)}$$
+
+The comparison is *across groups under a shared counterfactual*, not
+*across treatment arms within a group*. You hold the treatment fixed at
+$T=1$ for everyone and ask how the outcome means still differ by
+category.
+
+The connection to the factual gap is what makes this useful for health
+equity work. Start with the observed gap:
+
+$$\underbrace{E[Y \mid X=A] - E[Y \mid X=B]}_{\text{factual gap}}$$
+
+This conflates differential treatment rates, confounder differences, and
+treatment effect heterogeneity. The gap-closing estimand isolates one
+specific mechanism: *if we equalized treatment uptake at $T=1$, what
+share of that gap would close?*
+
+The answer need not be "most of it." In this simulation the gap nearly
+closes because it is almost entirely driven by differential treatment
+rates (through L). But equalizing treatment could leave most of the gap
+intact — if the gap is driven by something treatment does not touch —
+which is itself a substantive finding.
+
+------------------------------------------------------------------------
+
+## Step 3 — The `gapclosing()` function  {#sec-pkg}
 
 **Counterfactual intervention:** set T = 1 for everyone.
 
-The `gapclosing()` function fits an outcome model and a propensity
-model, combines them in a doubly-robust estimator, and returns the
-counterfactual mean for each category.
+The `gapclosing()` function fits an outcome model and a propensity model, combines them in a doubly-robust estimator, and returns the counterfactual mean for each category.
 
 ```{r}
 #| label: gapclosing-pkg
 #| message: false
+#| warning: false
+#| cache: true
 estimate <- gapclosing(
   data                     = dat,
   counterfactual_assignments = 1,
   outcome_formula          = formula(outcome ~ confounder + category * treatment),
   treatment_formula        = formula(treatment ~ confounder + category),
   category_name            = "category",
-  se                       = FALSE   # skip bootstrap for speed
+  se                       = FALSE
 )
 
 summary(estimate)
@@ -211,9 +253,8 @@ summary(estimate)
 
 Now let's recreate those numbers ourselves.
 
-------------------------------------------------------------------------
 
-## Step 3 — By hand
+## Step 4 — By hand
 
 The identification assumption throughout is **no unmeasured
 confounding** given (category, confounder):
@@ -222,12 +263,9 @@ $$Y(t) \perp\!\!\!\perp T \mid \{\text{category},\, L\}$$
 
 Because we generated the data, we know this holds by construction.
 
-### 3a. Outcome model (g-computation)
+### 3a. Outcome model (standardization)
 
-**Logic:** fit an outcome model on the observed data, then predict every
-person's outcome *as if* they had been treated (T = 1), and average
-within each category. This "standardizes" over the confounder
-distribution.
+**Logic:** fit an outcome model on the observed data, then predict every person's outcome *as if* they had been treated (T = 1), and average within each category. This "standardizes" over the confounder distribution.
 
 $$\hat{E}[Y(1) \mid X = x] = \frac{1}{n_x} \sum_{i: X_i = x} \hat{E}[Y \mid L_i, X_i, T = 1]$$
 
@@ -245,26 +283,52 @@ cf_om <- dat |>
   group_by(category) |>
   summarise(cf_mean_om = mean(yhat_t1), .groups = "drop")
 
-cf_om |> kable(digits = 3)
+tt(cf_om, digits = 2)
 ```
 
-The outcome model is consistent when the outcome model is correctly
-specified. It can fail if the model is misspecified (wrong functional
-form, missing interactions).
+This can also be accomplished with `marginaleffects`, but it takes some care in estimating. Using the `var` option with `datagrid=1` set the entire sample to a specific category then generates predictions and averages them:
+
+```{r}
+#| label: out_mp
+
+cf_om_mp <- avg_predictions(m_out, 
+  var = "category",
+  datagrid(treatment=1)) |>
+  select(category, estimate, conf.low, conf.high)
+
+tt(cf_om_mp, digits = 2)
+```
+
+What we want, in fact, is specific predictions within each category while setting the treatment indicator to 1 for everyone, regardless of their actual treatment status: 
+
+```{r}
+#| label: out_mp2
+
+tt(cf_om_mp, digits = 2)
+
+cf_om_mp2 <- avg_predictions(m_out, 
+  by = "category", 
+  newdata = transform(dat, treatment = 1)) |>
+  select(category, estimate, conf.low, conf.high)
+
+tt(cf_om_mp2, digits = 2)
+
+```
+
+
+The outcome model is consistent when the outcome model is correctly specified. It can fail if the model is misspecified (wrong functional form, missing interactions).
 
 ### 3b. Inverse probability weighting (IPW)
 
-**Logic:** reweight treated observations so that, within each category,
-the treated look like a random draw from the full population. Treated
-people with a low propensity (lucky to be treated) get upweighted; those
-with a high propensity get downweighted.
+**Logic:** reweight treated observations so that, within each category, the treated look like a random draw from the full population. Treated people with a low propensity (lucky to be treated) get upweighted; those with a high propensity get downweighted. Once again, there is more than one way to accomplish this.
 
-We use the **Hajek (stabilized) estimator** to keep weights
-well-behaved:
+One way is to use the **Hajek (stabilized) estimator** to keep weights well-behaved:
 
 $$\hat{E}[Y(1) \mid X = x] = \frac{\sum_{i: X_i = x} \frac{T_i Y_i}{\hat{p}_i}}{\sum_{i: X_i = x} \frac{T_i}{\hat{p}_i}}$$
 
 where $\hat{p}_i = \hat{P}(T = 1 \mid L_i, X_i)$.
+
+Then one can just estimate the weighted means by category (weighted by IPW):
 
 ```{r}
 #| label: ipw
@@ -282,7 +346,26 @@ cf_ipw <- dat |>
     .groups = "drop"
   )
 
-cf_ipw |> kable(digits = 3)
+cf_ipw
+```
+
+Alternatively, one can also pursue a regression-based approach using stabilized weights:
+
+```{r}
+# Marginal treatment probability (scalar)
+p_marginal <- mean(dat$treatment)
+
+# Stabilized weights for treated observations
+dat <- dat |>
+  mutate(sw = if_else(treatment == 1, 
+    p_marginal / ps, NA_real_))
+
+# Weighted regression on treated only
+m_ipw_stab <- lm(outcome ~ category, 
+                 data   = dat[dat$treatment == 1, ],
+                 weights = sw)
+
+coef(m_ipw_stab)
 ```
 
 IPW is consistent when the propensity model is correctly specified. It
@@ -312,12 +395,12 @@ cf_dr <- dat |>
   group_by(category) |>
   summarise(cf_mean_dr = mean(psi), .groups = "drop")
 
-cf_dr |> kable(digits = 3)
+cf_dr
 ```
 
 ------------------------------------------------------------------------
 
-## Step 4 — Compare all estimators
+## Step 5 — Compare all estimators
 
 ```{r}
 #| label: compare
@@ -328,8 +411,7 @@ results <- factual |>
   left_join(cf_ipw, by = "category") |>
   left_join(cf_dr,  by = "category")
 
-results |> kable(digits = 3,
-  col.names = c("Category", "Factual", "Outcome model", "IPW", "Doubly-robust"))
+results
 ```
 
 ### Gap-closing fractions
@@ -351,8 +433,7 @@ gcf <- function(cf_col) {
 tibble(
   Estimator       = c("Outcome model", "IPW", "Doubly-robust"),
   `Gap A-B closed` = map_dbl(c("cf_mean_om","cf_mean_ipw","cf_mean_dr"), gcf)
-) |>
-  kable(digits = 3)
+)
 ```
 
 ```{r}
